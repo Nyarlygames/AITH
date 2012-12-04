@@ -25,13 +25,20 @@ package
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);
 			}
-			if ((FlxG.keys.pressed("UP")) && (play.player.y + play.player.frameHeight == play.background.y)) {
+			if ((FlxG.keys.pressed("SHIFT")) && (play.player.y + play.player.frameHeight == play.background.y)) {
 				jump = new FlxDelay(1000);
 				jump.start();
 				play.player.acceleration.y = -50;
 			}
+			if (FlxG.keys.pressed("UP")) {
+				play.player.acceleration.y = -50;
+			}
+			if (FlxG.keys.pressed("DOWN")) {
+				play.player.acceleration.y = 50;
+			}
 			if ((jump != null) && (jump.hasExpired == true)) {
-				play.player.acceleration.y = +50;
+				play.player.acceleration.y = 50;
+				jump = null;
 			}
 		}
 		
