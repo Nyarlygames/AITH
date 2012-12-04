@@ -23,18 +23,6 @@ package
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);
 			}
-			if (play.isMoving == false) {
-				if (FlxG.keys.justPressed("UP")  && (play.cursor.pos > 0)) {
-					play.cursor.pos--;
-					play.cursor.y = (play.choices.choice.frameHeight /4) * play.cursor.pos;
-					play.select.y = (play.choices.choice.frameHeight /4)* play.cursor.pos;
-				}
-				if (FlxG.keys.justPressed("DOWN") && (play.cursor.pos < 3)) {
-					play.cursor.pos++;
-					play.cursor.y = (play.choices.choice.frameHeight /4) * play.cursor.pos;
-					play.select.y = (play.choices.choice.frameHeight /4)* play.cursor.pos;
-				}
-			}
 		}
 		
 	}

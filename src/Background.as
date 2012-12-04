@@ -16,9 +16,9 @@ package
 		public function Background() 
 		{
 			super(0, 0, ImgBackground);
-			sound = new FlxSound();
+			/*sound = new FlxSound();
 			sound.loadStream("../assets/sfx/musiques/Shinshuu_Plains_I.mp3", true, true);
-			sound.play();
+			sound.play();*/
 			
 		}
 		

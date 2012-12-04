@@ -17,14 +17,8 @@ package
 		public function Dragons(x:int, y:int) 
 		{
 			super(x, y, ImgDragons);
-			sound = new FlxSound();
-			sound.loadStream("../assets/sfx/attaque.mp3", false, true);
 		}
 		
-		public function on_hit():void {
-			//sound.play();
-			exists = false;
-		}
 		
 	}
 

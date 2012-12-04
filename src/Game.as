@@ -8,14 +8,14 @@ package
 	public class Game extends FlxState 
 	{
 		public var keyboard:KeyEvent;
-		public var play:Play;/* = new Play();*/
+		public var play:Play = new Play();
 		
 		public function Game() 
 		{
 			super.update();
-			/*keyboard = new KeyEvent(play);
+			keyboard = new KeyEvent(play);
 			add(keyboard);
-			add(play);*/
+			add(play);
 		}
 		
 	}
