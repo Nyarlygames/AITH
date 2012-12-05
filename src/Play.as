@@ -11,6 +11,7 @@ package
 	import org.flixel.plugin.photonstorm.FlxControl;
 	import org.flixel.plugin.photonstorm.FlxControlHandler;
 	import org.flixel.FlxObject;
+	import org.flixel.plugin.photonstorm.FlxScrollZone;
 	
 	/**
 	 * Niveau
@@ -23,7 +24,11 @@ package
 		public var background:Background = new Background();
 		
 		public function Play() 
-		{	
+		{	 
+			if (FlxG.getPlugin(FlxScrollZone) == null)
+			{
+				FlxG.addPlugin(new FlxScrollZone);
+			}
 			super.update();
 			add(background);
 			player = new Player(200,FlxG.height - background.frameHeight);

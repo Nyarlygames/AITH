@@ -3,6 +3,8 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxSound;
 	import org.flixel.FlxG;
+	import org.flixel.plugin.photonstorm.FlxScrollZone;
+	import flash.geom.Rectangle;
 	
 	/**
 	 * ...
@@ -19,6 +21,7 @@ package
 			super(0, FlxG.height, ImgBackground);
 			y -= frameHeight;
 			immovable = true;
+			FlxScrollZone.add(this, new Rectangle(0, 0, this.width, this.height), -3, 0);
 			/*sound = new FlxSound();
 			sound.loadStream("../assets/sfx/musiques/Shinshuu_Plains_I.mp3", true, true);
 			sound.play();*/
