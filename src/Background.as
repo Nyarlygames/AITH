@@ -13,15 +13,18 @@ package
 	public class Background extends FlxSprite 
 	{
 		public var sound:FlxSound;
-			
+		public var sol:FlxSprite;
 		
 		 [Embed(source = '../assets/gfx/background.png')] public var ImgBackground:Class;
+		 [Embed(source = '../assets/gfx/sol.png')] public var ImgSol:Class;
 		public function Background() 
 		{
 			super(0, FlxG.height, ImgBackground);
 			y -= frameHeight;
-			immovable = true;
-			FlxScrollZone.add(this, new Rectangle(0, 0, this.width, this.height), -3, 0);
+			sol = new FlxSprite(0, FlxG.height, ImgSol);
+			sol.y -= sol.frameHeight;
+			sol.immovable = true;
+			//FlxScrollZone.add(this, new Rectangle(0, 0, this.width, this.height), -3, 0);
 			/*sound = new FlxSound();
 			sound.loadStream("../assets/sfx/musiques/Shinshuu_Plains_I.mp3", true, true);
 			sound.play();*/

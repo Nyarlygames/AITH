@@ -31,13 +31,15 @@ package
 			}
 			super.update();
 			add(background);
-			player = new Player(200,FlxG.height - background.frameHeight);
+			add(background.sol);
+			player = new Player(200,FlxG.height - background.sol.frameHeight);
+			add(player.roues);
 			add(player);
 		}
 		
 		override public function update():void {
 			super.update();
-			FlxG.collide(player, background);
+			FlxG.collide(player, background.sol);
 		}
 				
 	}
