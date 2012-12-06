@@ -32,14 +32,17 @@ package
 			super.update();
 			add(background);
 			add(background.sol);
-			player = new Player(200,FlxG.height - background.sol.frameHeight);
+			player = new Player(200,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight);
+			add(new TubeVert(500,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2));
+			add(new Alien(600,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2));
 			add(player.roues);
 			add(player);
 		}
 		
 		override public function update():void {
 			super.update();
-			FlxG.collide(player, background.sol);
+			FlxG.collide(player.roues, background.sol);
+			FlxG.collide(player, player.roues);
 		}
 				
 	}

@@ -21,7 +21,9 @@ package
 		{
 			super(0, FlxG.height, ImgBackground);
 			y -= frameHeight;
-			sol = new FlxSprite(0, FlxG.height, ImgSol);
+			sol = new FlxSprite(0, FlxG.height - 50, ImgSol);
+			
+			sol.makeGraphic(FlxG.width, 10, 0xaaFFFFFF, true);
 			sol.y -= sol.frameHeight;
 			sol.immovable = true;
 			//FlxScrollZone.add(this, new Rectangle(0, 0, this.width, this.height), -3, 0);

@@ -21,13 +21,13 @@ package
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);
-			y -= frameHeight
+			y -= frameHeight;
 			roues.add(roue = new FlxSprite(this.x, this.y + frameHeight, ImgRoue)); 
 			roue.x += roue.frameWidth/2;
 			roue.y -= roue.frameHeight/2;
 			roues.add(roue = new FlxSprite(this.x + frameWidth, this.y + frameHeight, ImgRoue)); 
 			roue.x -= roue.frameWidth + 5;
-			roue.y -= roue.frameHeight/2;
+			roue.y -= roue.frameHeight / 2;
 			
 		}
 		
