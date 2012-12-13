@@ -37,8 +37,11 @@ package
 			add(background);
 			add(background.sol);
 			player = new Player(50,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight);
-		/*	add(new TubeVert(500,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2));
-			add(new Alien(600,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2, 1));*/
+			for each (var item:FlxSprite in map.ens.members) {
+				if (item != null){
+					item.y = background.sol.y - item.frameHeight;
+				}
+			}
 			add(map.ens);
 			add(player.roues);
 			add(player);
@@ -48,6 +51,12 @@ package
 			super.update();
 			FlxG.collide(player.roues, background.sol);
 			FlxG.collide(player, player.roues);
+			for each (var item:FlxSprite in map.ens.members) {
+				if (item != null){
+					FlxG.collide(player.roues, item);
+					FlxG.collide(player, item);
+				}
+			}
 		}
 				
 	}

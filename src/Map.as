@@ -45,6 +45,9 @@ package
 							case "Tube":
 								ens.add(new TubeVert(en[1], en[2], speed));
 							break;
+							case "Jump":
+								ens.add(new Jump(en[1], en[2], en[3], speed));
+							break;
 							default:
 								ens.add(new Alien(en[1], en[2], en[3], speed));
 						}
