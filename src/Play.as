@@ -21,20 +21,25 @@ package
 	{
 		
 		public var player:Player;
+		public var map:Map;
 		public var background:Background = new Background();
+		public var speed:int = 0;
 		
-		public function Play() 
+		public function Play(lvl:Map) 
 		{	 
 			if (FlxG.getPlugin(FlxScrollZone) == null)
 			{
 				FlxG.addPlugin(new FlxScrollZone);
 			}
 			super.update();
+			map = lvl;
+			speed = lvl.speed;
 			add(background);
 			add(background.sol);
-			player = new Player(200,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight);
-			add(new TubeVert(500,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2));
-			add(new Alien(600,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2));
+			player = new Player(50,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight);
+		/*	add(new TubeVert(500,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2));
+			add(new Alien(600,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight/2, 1));*/
+			add(map.ens);
 			add(player.roues);
 			add(player);
 		}

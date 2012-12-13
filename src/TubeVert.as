@@ -11,10 +11,11 @@ package
 		
 		[Embed(source = '../assets/gfx/tubevert.png')] protected var ImgTube:Class;
 		
-		public function TubeVert(xpos:int, ypos:int) 
+		public function TubeVert(xpos:int, ypos:int, init:int) 
 		{
 			super(xpos, ypos, ImgTube);
 			y -= frameHeight;
+			velocity.x = init;
 		}
 		
 	}

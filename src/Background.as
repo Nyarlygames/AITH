@@ -15,7 +15,7 @@ package
 		public var sound:FlxSound;
 		public var sol:FlxSprite;
 		
-		 [Embed(source = '../assets/gfx/background.png')] public var ImgBackground:Class;
+		 [Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
 		 [Embed(source = '../assets/gfx/sol.png')] public var ImgSol:Class;
 		public function Background() 
 		{
@@ -26,7 +26,7 @@ package
 			sol.makeGraphic(FlxG.width, 10, 0xaaFFFFFF, true);
 			sol.y -= sol.frameHeight;
 			sol.immovable = true;
-			//FlxScrollZone.add(this, new Rectangle(0, 0, this.width, this.height), -3, 0);
+			FlxScrollZone.add(this, new Rectangle(0, 0, this.width, this.height), -1, 0);
 			/*sound = new FlxSound();
 			sound.loadStream("../assets/sfx/musiques/Shinshuu_Plains_I.mp3", true, true);
 			sound.play();*/
