@@ -5,6 +5,7 @@ package
 	import org.flixel.FlxObject;
 	import org.flixel.plugin.photonstorm.FlxDelay;
 	import org.flixel.plugin.photonstorm.FlxScrollZone;
+	import org.flixel.FlxSprite;
 	
 	/**
 	 * Event des touches
@@ -27,10 +28,14 @@ package
 				System.exit(0);
 			}
 			if (FlxG.keys.pressed("UP")) {
+				for each (var item:FlxSprite in play.map.ens.members)
+					item.velocity.x = -75;
 				//play.player.acceleration.x = -30;
 				FlxScrollZone.updateX(play.background, -1);
 			}
 			if (FlxG.keys.pressed("DOWN")) {
+				for each (var item:FlxSprite in play.map.ens.members)
+					item.velocity.x = -50;
 				//play.player.acceleration.x = +30;
 				FlxScrollZone.updateX(play.background, -3);
 				//play.player.acceleration.y = 50;

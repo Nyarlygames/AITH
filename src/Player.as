@@ -17,10 +17,12 @@ package
 		[Embed(source = '../assets/gfx/roue.png')] protected var ImgRoue:Class;
 		public var roues:FlxGroup = new FlxGroup;
 		public var roue:FlxSprite;
+		public var pos:int = 0;
 		
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);
+			pos = xPos;
 			y -= frameHeight;
 			roues.add(roue = new FlxSprite(this.x, this.y + frameHeight, ImgRoue)); 
 			roue.x += roue.frameWidth/2;
@@ -33,6 +35,7 @@ package
 		
 		override public function update():void 
 		{
+			pos++;
 			for each (var roue:FlxSprite in roues.members) {
 				roue.angle += 10;
 			}

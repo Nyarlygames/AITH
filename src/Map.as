@@ -10,6 +10,7 @@ package
 	{
 		
 		public var ens:FlxGroup = new FlxGroup();
+		public var obs:FlxGroup = new FlxGroup();
 		public var speed:int = 0;
 		public var id:int = 0;
 		public var bg:String = new String("");
@@ -46,7 +47,7 @@ package
 								ens.add(new TubeVert(en[1], en[2], speed));
 							break;
 							case "Jump":
-								ens.add(new Jump(en[1], en[2], en[3], speed));
+								obs.add(new Jump(en[1], en[2], en[3], speed));
 							break;
 							default:
 								ens.add(new Alien(en[1], en[2], en[3], speed));

@@ -43,6 +43,7 @@ package
 				}
 			}
 			add(map.ens);
+			add(map.obs);
 			add(player.roues);
 			add(player);
 		}
@@ -51,10 +52,19 @@ package
 			super.update();
 			FlxG.collide(player.roues, background.sol);
 			FlxG.collide(player, player.roues);
+			
+			if (player.pos == 700) {
+				for each (var ob:Jump in map.obs.members) {
+					if (ob != null){
+						player.followPath(ob.my_path);
+					}
+				}
+			}
+			
 			for each (var item:FlxSprite in map.ens.members) {
 				if (item != null){
-					FlxG.collide(player.roues, item);
-					FlxG.collide(player, item);
+				//	FlxG.collide(player.roues, item);
+				//	FlxG.collide(player, item);
 				}
 			}
 		}
