@@ -14,7 +14,7 @@ package
 	import org.flixel.FlxObject;
 	import org.flixel.plugin.photonstorm.FlxScrollZone;
 	import org.flixel.FlxCamera;
-	
+	import flash.events.Event;
 	/**
 	 * Niveau
 	 * @author ...
@@ -56,6 +56,8 @@ package
 			FlxG.camera.setBounds(0, 0, map.tile.width, map.tile.height, true);
 			FlxG.camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 		}
+
+		
 		
 		override public function update():void {
 			super.update();
