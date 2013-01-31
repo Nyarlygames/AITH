@@ -25,8 +25,8 @@ package
 		public var bg:String = new String("");
         public var tile:FlxTilemapExt;
 		public var tilemap:FlxTilemap = new FlxTilemap();
-        [Embed(source = 'slopeTiles.png')] public var MapTiles:Class;
-        [Embed(source = 'slopeTest.csv', mimeType = "application/octet-stream")] public var MapData:Class;
+        [Embed(source = '../assets/gfx/aith_tiles.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/slopeTest.csv', mimeType = "application/octet-stream")] public var MapData:Class;
 		
 		public function Map(map:Class) 
 		{

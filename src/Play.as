@@ -39,7 +39,7 @@ package
 			
 			add(background);
 			//add(background.sol);
-			player = new Player(50,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight);
+			player = new Player(50,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight - 25);
 			/*for each (var item:FlxSprite in map.ens.members) {
 				if (item != null){
 					item.y = background.sol.y - item.frameHeight;
@@ -48,7 +48,7 @@ package
 			add(map.ens);
 			add(map.obs);*/
 			map.tile = new FlxTilemapExt;
-            map.tile.loadMap(new map.MapData, map.MapTiles);
+            map.tile.loadMap(new map.MapData, map.MapTiles, 120, 40);
 			
 			add(map.tile);
 			add(player.roues);

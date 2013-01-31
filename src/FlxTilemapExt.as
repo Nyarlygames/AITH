@@ -14,7 +14,7 @@ package
 		private var _slopePoint:FlxPoint = new FlxPoint();
 		private var _objPoint:FlxPoint = new FlxPoint();
 		
-		public static const SLOPE_FLOOR_LEFT:uint  = 2;
+		public static const SLOPE_FLOOR_LEFT:uint  = 1;
 		public static const SLOPE_FLOOR_RIGHT:uint = 3;
 		public static const SLOPE_CEIL_LEFT:uint   = 4;
 		public static const SLOPE_CEIL_RIGHT:uint  = 5;
@@ -190,7 +190,6 @@ package
 			//this would be one side of the object projected onto the slope's surface
 			_slopePoint.x = _objPoint.x;
 			_slopePoint.y = (slope.y + _tileHeight) - (_slopePoint.x - slope.x);
-			
 			//fix the slope point to the slope tile
 			fixSlopePoint(slope);
 				
