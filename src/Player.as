@@ -77,7 +77,11 @@ package
 				wheel.acceleration.x += wheel.drag.x;	
 			}
 			acceleration.x = 0;
-			acceleration.x += drag.x;	
+			acceleration.x += drag.x;
+			
+			if (angle >= -45 && angle < 0) {
+				angularVelocity = 10;
+			}
 		}
 		
 		

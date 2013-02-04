@@ -63,18 +63,24 @@ package
 		public function test(obj1:FlxObject, obj2:FlxObject):void {
 			//(obj2 as FlxTilemapExt).getTile
 			var mytile:uint = (obj2 as FlxTilemapExt).getTile( Math.floor((player.x + 60) / 40),  Math.round((player.y + 80) / 40));	
-			if (mytile == FlxTilemapExt.SLOPE_FLOOR_LEFT) {
+			if (mytile == FlxTilemapExt.SLOPE_FLOOR_LEFT && player.angle >= -45) {
 				player.angularVelocity = -50;
+				FlxG.log("LEFT");
+
 			}
 			else if (mytile == FlxTilemapExt.SLOPE_FLOOR_RIGHT) {
 				player.angularVelocity = 50;
 			}
-			/*else if (mytile == FlxTilemapExt.SLOPE_FLOOR) {
-				player.angle = 0;
-				player.angularVelocity = 0;
-			}*/
-			if ((player.angle <= -45) || (player.angle >= 45))
-				player.angularVelocity = 0;
+			else {
+				if (player.angle > 0) {
+					//player.angle = 0;
+					player.angularVelocity = 10;
+					FlxG.log("test");
+				}
+			}
+			trace(mytile);
+			//if ((player.angle <= -45) || (player.angle >= 45))
+			//	player.angularVelocity = 0;
 		}
 
 	}

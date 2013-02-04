@@ -39,17 +39,16 @@ package
 			}
 			
 			
-			if (FlxG.keys.pressed("UP")) {
-				if (play.player.g.scale.x <= 1)
+			/*if (FlxG.keys.pressed("UP")) {
+				if ((play.player.g.scale.x <= 1) && (play.player.v.scale.x >= 0))
 					play.player.g.scale.x += FlxG.elapsed;
-				if (play.player.v.scale.x >= 0) {
 					play.player.v.scale.x -= FlxG.elapsed;
+					play.player.maxVelocity.x -= 5* FlxG.elapsed;
+					play.player.acceleration.y += 10 * FlxG.elapsed;
 				}
-			}
-			else {
-				if (play.player.g.scale.x >= 0 )
-					play.player.g.scale.x -= FlxG.elapsed;
-				if (play.player.v.scale.x <= 1)
+			}*/
+			/*else if ((play.player.g.scale.x >= 0 ) && (play.player.v.scale.x <= 1)) {
+				play.player.g.scale.x -= FlxG.elapsed;
 				play.player.v.scale.x += FlxG.elapsed;
 			}
 			
