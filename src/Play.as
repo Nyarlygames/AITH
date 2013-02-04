@@ -73,9 +73,8 @@ package
 				player.angle = 0;
 				player.angularVelocity = 0;
 			}*/
-			trace(mytile);
-			/*if ((player.angle <= -45) || (player.angle >= 45))
-				player.angularVelocity = 0;*/
+			if ((player.angle <= -45) || (player.angle >= 45))
+				player.angularVelocity = 0;
 		}
 
 	}

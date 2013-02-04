@@ -15,8 +15,8 @@ package
 		
 		[Embed(source = '../assets/gfx/player2.png')] protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/roue.png')] protected var ImgRoue:Class;
-		[Embed(source = '../assets/gfx/vit.png')] protected var ImgG:Class;
-		[Embed(source = '../assets/gfx/grav.png')] protected var ImgV:Class;
+		[Embed(source = '../assets/gfx/vit.png')] protected var ImgV:Class;
+		[Embed(source = '../assets/gfx/grav.png')] protected var ImgG:Class;
 		public var roues:FlxGroup = new FlxGroup;
 		public var roue:FlxSprite;
 		public var g:FlxSprite;

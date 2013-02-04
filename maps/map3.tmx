@@ -3,9 +3,6 @@
  <tileset firstgid="1" name="aith_tiles" tilewidth="40" tileheight="40">
   <image source="../assets/gfx/aith_tiles.png" width="240" height="40"/>
  </tileset>
- <tileset firstgid="7" name="aith_tiles" tilewidth="40" tileheight="40">
-  <image source="../assets/gfx/aith_tiles.png" width="240" height="40"/>
- </tileset>
  <layer name="Tile" width="50" height="15">
   <data encoding="csv">
 0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -27,6 +24,10 @@
  </layer>
  <objectgroup name="Objs" width="50" height="15">
   <object name="&amp;" type="Alien" x="451" y="379" width="31" height="29"/>
-  <object type="Tube" x="599" y="390"/>
+  <object type="Tube" x="599" y="390">
+   <properties>
+    <property name="test" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

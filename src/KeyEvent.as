@@ -40,8 +40,17 @@ package
 			
 			
 			if (FlxG.keys.pressed("UP")) {
-				play.player.g.scale.x +=FlxG.elapsed;
-				play.player.v.scale.y -=FlxG.elapsed;
+				if (play.player.g.scale.x <= 1)
+					play.player.g.scale.x += FlxG.elapsed;
+				if (play.player.v.scale.x >= 0) {
+					play.player.v.scale.x -= FlxG.elapsed;
+				}
+			}
+			else {
+				if (play.player.g.scale.x >= 0 )
+					play.player.g.scale.x -= FlxG.elapsed;
+				if (play.player.v.scale.x <= 1)
+				play.player.v.scale.x += FlxG.elapsed;
 			}
 			
 			/*if ((FlxG.keys.pressed("SHIFT")) && (play.player.y + play.player.frameHeight == play.background.y)) {
