@@ -15,6 +15,7 @@ package
 		private var _objPoint:FlxPoint = new FlxPoint();
 		
 		public static const SLOPE_FLOOR_LEFT:uint  = 1;
+		public static const SLOPE_FLOOR:uint = 2;
 		public static const SLOPE_FLOOR_RIGHT:uint = 3;
 		public static const SLOPE_CEIL_LEFT:uint   = 4;
 		public static const SLOPE_CEIL_RIGHT:uint  = 5;

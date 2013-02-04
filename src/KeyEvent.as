@@ -28,13 +28,20 @@ package
 				System.exit(0);
 			}
 			if (FlxG.keys.pressed("SPACE")) {
-				play.player.roues.members[0].maxVelocity.x = 2 * play.player.speed;
-				play.player.roues.members[1].maxVelocity.x = 2 * play.player.speed;
+				/*play.player.roues.members[0].maxVelocity.x = 2 * play.player.speed;
+				play.player.roues.members[1].maxVelocity.x = 2 * play.player.speed;*/
 				play.player.maxVelocity.x = 2 * play.player.speed;
+				play.player.acceleration.y = 5000;
 				/*	RALENTISSEMENT
 				 * 	for each (var item:FlxSprite in play.map.ens.members)
 						item.velocity.x = -75;
 					play.player.acceleration.x = -30;*/
+			}
+			
+			
+			if (FlxG.keys.pressed("UP")) {
+				play.player.g.scale.x +=FlxG.elapsed;
+				play.player.v.scale.y -=FlxG.elapsed;
 			}
 			
 			/*if ((FlxG.keys.pressed("SHIFT")) && (play.player.y + play.player.frameHeight == play.background.y)) {

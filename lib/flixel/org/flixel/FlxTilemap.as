@@ -1484,5 +1484,6 @@ package org.flixel
 			}
 			_rects[Index] = (new Rectangle(rx,ry,_tileWidth,_tileHeight));
 		}
+		
 	}
 }
