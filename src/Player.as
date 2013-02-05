@@ -31,8 +31,8 @@ package
 			drag.x = 600;
 			maxVelocity.x = 100;
 			acceleration.x = speed;
-			acceleration.y = 400;
-			maxVelocity.y = 400;
+			acceleration.y = 100;
+			maxVelocity.y = 5000;
 			drag.y = 600;
 			facing = RIGHT;
 			width = 60;
@@ -41,6 +41,7 @@ package
 			
 			g = new FlxSprite(0, 0, ImgG);
 			g.scrollFactor.x = g.scrollFactor.y = 0;
+			g.scale.x = 0.1;
 			v = new FlxSprite(0, 20, ImgV);
 			v.scrollFactor.x = v.scrollFactor.y = 0;
 
