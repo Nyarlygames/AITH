@@ -1514,5 +1514,6 @@
     <property name="test" value="1"/>
    </properties>
   </object>
+  <object type="Alien" x="2254" y="541"/>
  </objectgroup>
 </map>

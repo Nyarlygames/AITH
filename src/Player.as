@@ -31,7 +31,7 @@ package
 			drag.x = 600;
 			maxVelocity.x = 100;
 			acceleration.x = speed;
-			acceleration.y = 100;
+			acceleration.y = 40;
 			maxVelocity.y = 5000;
 			drag.y = 600;
 			facing = RIGHT;

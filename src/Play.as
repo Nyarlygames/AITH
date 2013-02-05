@@ -1,5 +1,6 @@
 package  
 {
+	import flash.media.Camera;
 	import flash.utils.Timer;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxRect;
@@ -24,6 +25,7 @@ package
 	{
 		
 		public var player:Player;
+		public var cam:Cam;
 		public var map:Map;
 		public var background:Background = new Background();
 		public var speed:int = 0;
@@ -39,7 +41,8 @@ package
 			speed = lvl.speed;
 			
 			add(background);
-			player = new Player(50,FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight - 25);
+			player = new Player(50, FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight + 20);
+			cam = new Cam(player);
 			/*for each (var item:FlxSprite in map.ens.members) {
 				if (item != null){
 					item.y = background.sol.y - item.frameHeight;
@@ -49,13 +52,18 @@ package
 			add(player.roues);
 			add(player.g);
 			add(player.v);
-			FlxG.camera.setBounds(0, 0, map.tile.width, map.tile.height, true);
-			FlxG.camera.follow(player, FlxCamera.STYLE_PLATFORMER);
+			add(cam);
+		//	FlxG.camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 		}
 
 		override public function update():void {
 			super.update();
-			FlxG.camera.follow(player, FlxCamera.STYLE_PLATFORMER);
+			
+			trace(player.acceleration.y);
+			FlxG.camera.setBounds(0, 0, map.tile.width, map.tile.height, true);
+			//FlxG.camera.target = player;
+			FlxG.camera.follow(cam, FlxCamera.STYLE_LOCKON);
+			//FlxG.collide(player, map.ens);
 			FlxG.collide(player, map.tile, test);
 			FlxG.collide(player.roues, map.tile);
 		}
@@ -78,6 +86,11 @@ package
 					FlxG.log("test");
 				}
 			}*/
+			
+			if (mytile == 0) {
+				
+			}
+			
 			//if ((player.angle <= -45) || (player.angle >= 45))
 			//	player.angularVelocity = 0;
 		}

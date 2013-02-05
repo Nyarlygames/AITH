@@ -53,7 +53,6 @@ package
 				play.player.maxVelocity.x += 30* FlxG.elapsed;
 				play.player.acceleration.y -= 1000 * FlxG.elapsed;
 			}
-			trace(play.player.acceleration.y);
 			/*if ((FlxG.keys.pressed("SHIFT")) && (play.player.y + play.player.frameHeight == play.background.y)) {
 				jump = new FlxDelay(1000);
 				jump.start();
