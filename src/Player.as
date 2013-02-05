@@ -21,7 +21,7 @@ package
 		public var roue:FlxSprite;
 		public var g:FlxSprite;
 		public var v:FlxSprite;
-		public var speed:int = 20;
+		public var speed:int = 30;
 		public var gravity:int = 5000;
 		
 		public function Player(xPos:int, yPos:int) 
@@ -29,7 +29,7 @@ package
 			super(xPos, yPos, ImgPlayer);
 			y -= frameHeight;			
 			drag.x = 600;
-			maxVelocity.x = 100;
+			maxVelocity.x = 155;
 			acceleration.x = speed;
 			acceleration.y = 40;
 			maxVelocity.y = 5000;
@@ -77,7 +77,6 @@ package
 				wheel.acceleration.x = 0;
 				wheel.acceleration.x += wheel.drag.x;	
 			}
-			acceleration.x = 0;
 			acceleration.x += drag.x;
 			
 			if (angle >= -45 && angle < 0) {

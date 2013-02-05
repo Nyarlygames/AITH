@@ -151,7 +151,7 @@ package
 			obj.touching = FLOOR;
 						
 			//adjust the object's velocity
-			obj.velocity.y = 0;
+			//obj.velocity.y = 0;
 				
 			//reposition the object
 			obj.y = _slopePoint.y - obj.height;

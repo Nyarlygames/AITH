@@ -8,6 +8,7 @@ package
 	import net.pixelpracht.tmx.TmxMap;
 	import net.pixelpracht.tmx.TmxObject;
 	import net.pixelpracht.tmx.TmxObjectGroup;
+	import net.pixelpracht.tmx.TmxPropertySet;
 	import org.flixel.FlxG;
 	import org.flixel.FlxState;
 	
@@ -31,7 +32,7 @@ package
 		{
 			var loader:URLLoader = new URLLoader();
 			loader.addEventListener(Event.COMPLETE,onTmxLoaded);
-			loader.load(new	URLRequest('../maps/map3.tmx'));
+			loader.load(new	URLRequest('../maps/map3bis.tmx'));
 			var fileContent:String = new map();
 			var lignes:Array = fileContent.split('\n');
 			var en:Array;
@@ -52,6 +53,8 @@ package
 			
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
 			for each(var object:TmxObject in group.objects) {
+				if ((object as TmxObject).custom != null)
+					trace((object as TmxObject));
 				switch(object.type) {
 					case "Tube":
 						obs.add (new TubeVert(object.x, object.y));

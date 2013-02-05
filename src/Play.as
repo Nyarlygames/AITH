@@ -29,6 +29,7 @@ package
 		public var map:Map;
 		public var background:Background = new Background();
 		public var speed:int = 0;
+		public var lasttile:int = 0;
 		
 		public function Play(lvl:Map) 
 		{	 
@@ -59,18 +60,26 @@ package
 		override public function update():void {
 			super.update();
 			
-			trace(player.acceleration.y);
 			FlxG.camera.setBounds(0, 0, map.tile.width, map.tile.height, true);
 			//FlxG.camera.target = player;
 			FlxG.camera.follow(cam, FlxCamera.STYLE_LOCKON);
 			//FlxG.collide(player, map.ens);
-			FlxG.collide(player, map.tile, test);
+			FlxG.overlap(player, map.obs, getTube);
+			if (!FlxG.collide(player, map.tile, test)) {
+				lasttile = 0;
+			}
 			FlxG.collide(player.roues, map.tile);
 		}
-		
+
+		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
+			FlxG.score += 10;
+			obj2.kill();
+			obj2.destroy();
+		}
+
 		public function test(obj1:FlxObject, obj2:FlxObject):void {
 			//(obj2 as FlxTilemapExt).getTile
-			var mytile:uint = (obj2 as FlxTilemapExt).getTile( Math.floor((player.x + 60) / 40),  Math.round((player.y + 80) / 40));	
+			var mytile:uint = (obj2 as FlxTilemapExt).getTile( Math.floor((player.x + 60) / 40),  Math.round((player.y + 80) / 40));
 			/*if (mytile == FlxTilemapExt.SLOPE_FLOOR_LEFT && player.angle >= -45) {
 				player.angularVelocity = -50;
 				FlxG.log("LEFT");
@@ -86,11 +95,9 @@ package
 					FlxG.log("test");
 				}
 			}*/
-			
-			if (mytile == 0) {
-				
-			}
-			
+			if ((lasttile == 1) && (mytile != 1))
+				player.velocity.y = -(player.velocity.x);
+			lasttile = mytile;	
 			//if ((player.angle <= -45) || (player.angle >= 45))
 			//	player.angularVelocity = 0;
 		}
