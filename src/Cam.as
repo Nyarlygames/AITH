@@ -20,13 +20,15 @@ package
 		
 		public function Cam(joueur:Player) 
 		{
-			super(400, 0);
+			super(400, 400);
 			player = joueur;
 		}
 		
 		override public function update():void 
 		{
 			x = player.x + 350;
+			if (player.y <= 400) y = player.y - player.frameHeight;
+			else y = 400;
 		}
 		
 		

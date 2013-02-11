@@ -19,7 +19,7 @@ package
 			var title:FlxText = new FlxText(FlxG.width / 2 - 100, FlxG.height / 2 - 200, 200, "Aliens In The Hood");
 			title.setFormat(null, 16, 0x044071);
 			add(title);
-			var notice:FlxText = new FlxText(FlxG.width / 2 - 200, FlxG.height / 2, 500, "Appuyez sur ESCPACE pour commencer.");
+			var notice:FlxText = new FlxText(FlxG.width / 2 - 200, FlxG.height / 2, 500, "Appuyez sur Entree pour commencer.");
 			notice.setFormat(null, 16, 0x044071);
 			add(notice);
 		}
@@ -32,8 +32,8 @@ package
 			super.update();
 			
 			// Démarre le jeu
-			if (FlxG.keys.pressed("SPACE")) {
-				FlxG.switchState(new Game());
+			if (FlxG.keys.pressed("ENTER")) {
+				FlxG.switchState(new Play());
 			}
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);

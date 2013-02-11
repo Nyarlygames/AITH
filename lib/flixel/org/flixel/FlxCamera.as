@@ -292,8 +292,9 @@ package org.flixel
 			//or doublecheck our deadzone and update accordingly.
 			if(target != null)
 			{
-				if(deadzone == null)
+				if (deadzone == null) {
 					focusOn(target.getMidpoint(_point));
+				}
 				else
 				{
 					var edge:Number;

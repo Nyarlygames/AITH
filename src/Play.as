@@ -7,6 +7,7 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxTilemap;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	import org.flixel.plugin.photonstorm.FlxVelocity;
 	import org.flixel.FlxPoint;
@@ -17,29 +18,32 @@ package
 	import org.flixel.FlxCamera;
 	import flash.events.Event;
 	import org.flixel.system.FlxTile;
+	import net.pixelpracht.tmx.TmxObject;
+	import net.pixelpracht.tmx.TmxObjectGroup;
 	/**
 	 * Niveau
 	 * @author ...
 	 */
 	public class Play extends FlxState 
 	{
-		
+		[Embed(source = "../maps/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
+
 		public var player:Player;
 		public var cam:Cam;
 		public var map:Map;
 		public var background:Background = new Background();
 		public var speed:int = 0;
 		public var lasttile:int = 0;
+		public var keyboard:KeyEvent;
 		
-		public function Play(lvl:Map) 
+		override public function create():void
 		{	 
 			if (FlxG.getPlugin(FlxScrollZone) == null)
 			{
 				FlxG.addPlugin(new FlxScrollZone);
 			}
-			super.update();
-			map = lvl;
-			speed = lvl.speed;
+			keyboard = new KeyEvent(this);
+			add(keyboard);
 			
 			add(background);
 			player = new Player(50, FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight + 20);
@@ -50,31 +54,52 @@ package
 				}
 			}*/
 			add(player);
-			add(player.roues);
+			map = new Map(mapfile);
+			speed = map.speed;
+
+			//add(map.item);
 			add(player.g);
 			add(player.v);
 			add(cam);
-		//	FlxG.camera.follow(player, FlxCamera.STYLE_PLATFORMER);
+			FlxG.worldBounds = new FlxRect(0, 0, 5000, 600 + 1000);
+			FlxG.camera.setBounds(0, -1000, 5000, 600 + 1000);
+			FlxG.camera.follow(cam);
 		}
 
 		override public function update():void {
 			super.update();
 			
-			FlxG.camera.setBounds(0, 0, map.tile.width, map.tile.height, true);
-			//FlxG.camera.target = player;
-			FlxG.camera.follow(cam, FlxCamera.STYLE_LOCKON);
 			//FlxG.collide(player, map.ens);
-			FlxG.overlap(player, map.obs, getTube);
+			FlxG.overlap(player, map.item, getTube);
+			FlxG.overlap(player, map.destructible, check_ground);
 			if (!FlxG.collide(player, map.tile, test)) {
 				lasttile = 0;
 			}
-			FlxG.collide(player.roues, map.tile);
 		}
 
 		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
 			FlxG.score += 10;
 			obj2.kill();
 			obj2.destroy();
+		}
+		
+		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
+			/*for each(var object:TmxObject in map.destructible.members) {
+				if (object.custom["plaque"] == (obj2 as TmxObject).custom["plaque"]) {
+					(object as FlxObject).kill();
+				}
+			}*/
+			/*for each (var item:FlxSprite in map.ens.members) {
+				if (item != null){
+					item.y = background.sol.y - item.frameHeight;
+				}
+			}*/
+			/*for (var i:int = 0; i < map.links.length; i++) {
+				if (map.links[i] == "1")
+					map.destructible.members[i].kill();
+			}*/
+		/*	if (player.acceleration.y > 500)
+				obj2.kill();*/
 		}
 
 		public function test(obj1:FlxObject, obj2:FlxObject):void {
@@ -97,7 +122,9 @@ package
 			}*/
 			if ((lasttile == 1) && (mytile != 1))
 				player.velocity.y = -(player.velocity.x);
-			lasttile = mytile;	
+			lasttile = mytile;
+			trace(Math.round((player.y + 80) / 40) * 40 +Math.floor((player.x + 60) / 40));
+			(obj2 as FlxTilemap).setTileByIndex( Math.round((player.y + 80) / 40) * 40 +Math.floor((player.x + 60) / 40) * 40, 0, true);
 			//if ((player.angle <= -45) || (player.angle >= 45))
 			//	player.angularVelocity = 0;
 		}

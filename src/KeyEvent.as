@@ -27,32 +27,8 @@ package
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);
 			}
-			if (FlxG.keys.pressed("SPACE")) {
-				/*play.player.roues.members[0].maxVelocity.x = 2 * play.player.speed;
-				play.player.roues.members[1].maxVelocity.x = 2 * play.player.speed;*/
-				play.player.maxVelocity.x = 2 * play.player.speed;
-				play.player.acceleration.y = 5000;
-				/*	RALENTISSEMENT
-				 * 	for each (var item:FlxSprite in play.map.ens.members)
-						item.velocity.x = -75;
-					play.player.acceleration.x = -30;*/
-			}
-			
-			
-			if (FlxG.keys.pressed("UP")) {
-				if ((play.player.g.scale.x <= 1) && (play.player.v.scale.x >= 0)) {
-					play.player.g.scale.x += FlxG.elapsed;
-					play.player.v.scale.x -= FlxG.elapsed;
-					play.player.maxVelocity.x -= 30* FlxG.elapsed;
-					play.player.acceleration.y += 1000 * FlxG.elapsed;
-				}
-			}
-			else if ((play.player.g.scale.x >= 0 ) && (play.player.v.scale.x <= 1)) {
-				play.player.g.scale.x -= FlxG.elapsed;
-				play.player.v.scale.x += FlxG.elapsed;
-				play.player.maxVelocity.x += 30* FlxG.elapsed;
-				play.player.acceleration.y -= 1000 * FlxG.elapsed;
-			}
+
+
 			/*if ((FlxG.keys.pressed("SHIFT")) && (play.player.y + play.player.frameHeight == play.background.y)) {
 				jump = new FlxDelay(1000);
 				jump.start();
