@@ -15,17 +15,11 @@ package
 		public var sound:FlxSound;
 		public var sol:FlxSprite;
 		
-		 [Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
-		 [Embed(source = '../assets/gfx/sol.png')] public var ImgSol:Class;
+		 [Embed(source = '../assets/gfx/aithlvl1.png')] public var ImgBackground:Class;
 		public function Background() 
 		{
 			super(0, FlxG.height, ImgBackground);
 			y -= frameHeight;
-			sol = new FlxSprite(0, FlxG.height -40, ImgSol);
-			
-			sol.makeGraphic(FlxG.width, 10, 0xaaFFFFFF, true);
-			sol.y -= sol.frameHeight;
-			sol.immovable = true;
 			/*sound = new FlxSound();
 			sound.loadStream("../assets/sfx/musiques/Shinshuu_Plains_I.mp3", true, true);
 			sound.play();*/

@@ -55,17 +55,7 @@
   <object name="Tube" x="4880" y="520"/>
   <object name="Tube" x="4840" y="520"/>
   <object name="Piques" x="3320" y="40" width="120" height="120"/>
-  <object name="Des_sol" x="920" y="240" width="40" height="40">
-   <properties>
-    <property name="p" value="1"/>
-   </properties>
-  </object>
   <object name="Des_sol" x="880" y="240" width="40" height="40">
-   <properties>
-    <property name="p" value="1"/>
-   </properties>
-  </object>
-  <object name="Des_sol" x="960" y="240" width="40" height="40">
    <properties>
     <property name="p" value="1"/>
    </properties>

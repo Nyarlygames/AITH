@@ -1,6 +1,3 @@
 1
 -50
-bg.png
-Alien/600/550/1
-Tube/500/550
-Jump/700/550/1
+aithlvl1.png

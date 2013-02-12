@@ -20,6 +20,8 @@ package
 	import org.flixel.system.FlxTile;
 	import net.pixelpracht.tmx.TmxObject;
 	import net.pixelpracht.tmx.TmxObjectGroup;
+	import flash.system.System;
+	
 	/**
 	 * Niveau
 	 * @author ...
@@ -34,7 +36,6 @@ package
 		public var background:Background = new Background();
 		public var speed:int = 0;
 		public var lasttile:int = 0;
-		public var keyboard:KeyEvent;
 		
 		override public function create():void
 		{	 
@@ -42,11 +43,9 @@ package
 			{
 				FlxG.addPlugin(new FlxScrollZone);
 			}
-			keyboard = new KeyEvent(this);
-			add(keyboard);
 			
 			add(background);
-			player = new Player(50, FlxG.height - (FlxG.height - background.sol.y) - background.sol.frameHeight + 20);
+			player = new Player(50, FlxG.height - 40);
 			cam = new Cam(player);
 			/*for each (var item:FlxSprite in map.ens.members) {
 				if (item != null){
@@ -69,10 +68,15 @@ package
 		override public function update():void {
 			super.update();
 			
+			
+			if (FlxG.keys.pressed("ESCAPE")) {
+				System.exit(0);
+			}
+			
 			//FlxG.collide(player, map.ens);
 			FlxG.overlap(player, map.item, getTube);
 			FlxG.overlap(player, map.destructible, check_ground);
-			if (!FlxG.collide(player, map.tile, test)) {
+			if (!FlxG.collide(player, map.tile, tiles_coll)) {
 				lasttile = 0;
 			}
 		}
@@ -98,11 +102,11 @@ package
 				if (map.links[i] == "1")
 					map.destructible.members[i].kill();
 			}*/
-		/*	if (player.acceleration.y > 500)
-				obj2.kill();*/
+			if (player.acceleration.y > 500)
+				obj2.kill();
 		}
 
-		public function test(obj1:FlxObject, obj2:FlxObject):void {
+		public function tiles_coll(obj1:FlxObject, obj2:FlxObject):void {
 			//(obj2 as FlxTilemapExt).getTile
 			var mytile:uint = (obj2 as FlxTilemapExt).getTile( Math.floor((player.x + 60) / 40),  Math.round((player.y + 80) / 40));
 			/*if (mytile == FlxTilemapExt.SLOPE_FLOOR_LEFT && player.angle >= -45) {
@@ -120,13 +124,11 @@ package
 					FlxG.log("test");
 				}
 			}*/
-			if ((lasttile == 1) && (mytile != 1))
+			if ((lasttile == 1) && (mytile != 1)) {
 				player.velocity.y = -(player.velocity.x);
+			}
 			lasttile = mytile;
-			trace(Math.round((player.y + 80) / 40) * 40 +Math.floor((player.x + 60) / 40));
-			(obj2 as FlxTilemap).setTileByIndex( Math.round((player.y + 80) / 40) * 40 +Math.floor((player.x + 60) / 40) * 40, 0, true);
-			//if ((player.angle <= -45) || (player.angle >= 45))
-			//	player.angularVelocity = 0;
+		//	trace(Math.round((player.y + 80) / 40) * 40 +Math.floor((player.x + 60) / 40));
 		}
 
 	}

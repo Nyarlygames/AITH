@@ -13,7 +13,7 @@ package
 	public class Player extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/player2.png')] protected var ImgPlayer:Class;
+		[Embed(source = '../assets/gfx/player.png')] protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/vit.png')] protected var ImgV:Class;
 		[Embed(source = '../assets/gfx/grav.png')] protected var ImgG:Class;
 		public var g:FlxSprite;
@@ -34,7 +34,6 @@ package
 			drag.x = 600;
 			drag.y = 600;
 			maxVelocity.x = maxspeed;
-			acceleration.x = maxspeed;
 			acceleration.y = 24;
 			maxVelocity.y = maxgravity;
 			facing = RIGHT;
@@ -50,7 +49,7 @@ package
 		
 		override public function update():void 
 		{
-			acceleration.x += drag.x;;
+			acceleration.x += drag.x;
 			
 			if (angle >= -45 && angle < 0) {
 				angularVelocity = 10;
@@ -59,11 +58,10 @@ package
 			if (FlxG.keys.pressed("UP")) {
 				
 				if (acceleration.y < maxgravity) {
-					acceleration.x = speeddown * FlxG.elapsed;
+					velocity.x -= speeddown * FlxG.elapsed;
 					acceleration.y += gravityup * FlxG.elapsed;
 					g.scale.x += FlxG.elapsed;
 					v.scale.x -= FlxG.elapsed;
-					trace(acceleration.y, acceleration.x, maxgravity);
 				}
 				
 				
@@ -75,9 +73,10 @@ package
 				}*/
 			}
 			else if ((g.scale.x >= 0 ) && (v.scale.x <= 1)) {
+				trace(velocity.y);
 				g.scale.x -= FlxG.elapsed;
 				v.scale.x += FlxG.elapsed;
-				acceleration.x += speedup * FlxG.elapsed;
+				velocity.x += speedup * FlxG.elapsed;
 				acceleration.y -= gravitydown * FlxG.elapsed;
 				
 			}

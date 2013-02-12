@@ -75,7 +75,6 @@ package
 						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
-						links.push(object.custom["p"]);
 						destructible.add(ground);
 						break;
 				}
