@@ -11,6 +11,7 @@ package
 	import net.pixelpracht.tmx.TmxPropertySet;
 	import org.flixel.FlxG;
 	import org.flixel.FlxState;
+	import org.flixel.FlxRect;
 	import org.flixel.FlxSprite;
 	
 	/**
@@ -20,61 +21,67 @@ package
 	public class Map 
 	{
 		
-		public var ens:FlxGroup = new FlxGroup();
-		public var item:FlxGroup = new FlxGroup();
-		public var destructible:FlxGroup = new FlxGroup();
-		public var speed:int = 0;
-		public var id:int = 0;
-		public var bg:String = new String("");
-		public var links:Array = new Array();
-        public var tile:FlxTilemapExt = new FlxTilemapExt();
-		public var tilemap:FlxTilemap = new FlxTilemap();
-        [Embed(source = '../assets/gfx/aith_tiles.png')] public var MapTiles:Class;
+		public var ens:FlxGroup = new FlxGroup();											// ALIENS
+		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
+		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
+		public var id:int = 0;																// NIVEAU
+        public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
+		public var loaded:Boolean = false;													// MAP CHARGEE?
+		public var player:Player;															// JIMI
+		public var cam:Cam;																	// CAMERA
+        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
+		
+		
+		/**
+		 * FORMAT TXT
+		 * 
+		 * LEVEL
+		 * MAP.TMX
+		 * 
+		 */
 		
 		public function Map(map:Class) 
 		{
-			
-			
-			var loader:URLLoader = new URLLoader();
-			loader.addEventListener(Event.COMPLETE,onTmxLoaded);
-			loader.load(new	URLRequest('../maps/map3bis.tmx'));
+			// PARCOURS LE .TXT
 			var fileContent:String = new map();
 			var lignes:Array = fileContent.split('\n'); 
 			var en:Array;
 			if (lignes != null) {
 				id = lignes[0];
-				speed = lignes[1];
-				bg = lignes[2];
+				var loader:URLLoader = new URLLoader();
+				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
+				loader.load(new	URLRequest(lignes[1]));
 			}
 		}
 		
+		// PARCOURS LE TMX
 		public function onTmxLoaded(e:Event):void {
 			
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
 
-			var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles'));
+			// RECUPERATION DES TILES CSV
+			var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
 			tile.loadMap(csv, MapTiles, 40, 40);
 			FlxG.state.add(tile);
 			
+			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
 			for each(var object:TmxObject in group.objects) {
-				if (object.custom != null) {
-					//object.custom["test"];			OBJ PROPRETY
-				}
 				switch(object.name) {
 					case "Tube":
-						item.add (new TubeVert(object.x, object.y));
+						item.add (new TubeVert(object.x, object.y, 10));
 						break;
 					case "Alien":
 						ens.add (new Alien(object.x, object.y, 100));
 						break;
 					case "Piques":
-						item.add (new TubeVert(object.x, object.y));
+						item.add (new TubeVert(object.x, object.y, 10));
 						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
+						ground.immovable = true;
 						destructible.add(ground);
 						break;
 				}
@@ -82,6 +89,18 @@ package
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(ens);
+			// CHARGEMENT FINIT
+			loaded = true;
+			// AJOUT PLAYER ET CAM
+			player = new Player(50, FlxG.height - 40);
+			cam = new Cam(player);
+			FlxG.state.add(player);
+			FlxG.state.add(player.g);
+			FlxG.state.add(player.v);
+			FlxG.state.add(cam);
+			FlxG.worldBounds = new FlxRect(0, 0, 5000, 600 + 1000);
+			FlxG.camera.setBounds(0, -1000, 5000, 600 + 1000);
+			FlxG.camera.follow(cam);
 		}
 	}
 

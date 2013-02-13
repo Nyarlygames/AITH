@@ -26,7 +26,10 @@ package
 		
 		override public function update():void 
 		{
+			// CAM SUIT LE JOUEUR
 			x = player.x + 350;
+			
+			// DEPASSEMENT VERTICAL
 			if (player.y <= 400) y = player.y - player.frameHeight;
 			else y = 400;
 		}

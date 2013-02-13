@@ -8,9 +8,11 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	import org.flixel.FlxSubState;
+	import org.flixel.plugin.photonstorm.FlxCollision;
 
 	/**
-	 * @author IQAndreas
+	 * Pause
+	 * @author 
 	 */
 	public class PauseMenu extends FlxSubState
 	{
@@ -18,8 +20,16 @@ package
 		public static const RESUME_GAME:String = "PauseMenu::resume_game";
 		public static const RESTART:String = "PauseMenu::restart_game";
 		public var text:FlxText;
-		public var resumeBtn:FlxButton;
-		public var quitBtn:FlxButton;
+		public var restartText:FlxText;
+		public var resumeText:FlxText;
+		public var quitText:FlxText;
+		public var cursor:FlxSprite;
+		public var resumePic:FlxSprite;
+		public var restartPic:FlxSprite;
+		public var quitPic:FlxSprite;
+		[Embed(source = '../assets/gfx/cursor.png')] protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/pausemenu.png')] protected var ImgMenu:Class;
+		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		
 		public function PauseMenu()
 		{
@@ -27,61 +37,102 @@ package
 		}
 		
 		public override function create():void
-		{
-			FlxG.mouse.show();
-			//Sorry about all the hardcoded position values. :(
-			var currentY:Number = 50;
+		{			
+			// RESUME			
+			resumePic = new FlxSprite(0, FlxG.height *3/15, ImgMenu);
+			resumePic.x = (FlxG.width / 2) - (resumePic.frameWidth / 2);
+			FlxG.state.add(resumePic);
+			resumePic.scrollFactor = new FlxPoint(0, 0);
 			
-			text = new FlxText(0, currentY, FlxG.width, "PAUSE");
-			text.setFormat(null, 50, 0x00FF8000, TextAlign.CENTER, 0xFFCCCCCC);
+			resumeText = new FlxText(0, FlxG.height * 3 / 15, FlxG.width, "Reprendre");
+			resumeText.y += resumePic.frameHeight / 7;
+			resumeText.setFormat("philly", 40, 0x00000000, TextAlign.CENTER, 0xFFCCCCCC);
+			FlxG.state.add(resumeText);
+			resumeText.scrollFactor = new FlxPoint(0, 0);
+			
+			
+			// RESTART
+			restartPic = new FlxSprite(0, FlxG.height *6/15, ImgMenu);
+			restartPic.x = (FlxG.width / 2) - (restartPic.frameWidth / 2);
+			FlxG.state.add(restartPic);
+			restartPic.scrollFactor = new FlxPoint(0, 0);
+			
+			restartText = new FlxText(0, FlxG.height * 6 / 15, FlxG.width, "Recommencer");
+			restartText.y += restartPic.frameHeight / 7;
+			restartText.setFormat("philly", 40, 0x00000000, TextAlign.CENTER, 0xFFCCCCCC);
+			FlxG.state.add(restartText);
+			restartText.scrollFactor = new FlxPoint(0, 0);
+			
+			// RETOUR AU MENU
+			quitPic = new FlxSprite(0, FlxG.height *9/15, ImgMenu);
+			quitPic.x = (FlxG.width / 2) - (quitPic.frameWidth / 2);
+			FlxG.state.add(quitPic);
+			quitPic.scrollFactor = new FlxPoint(0, 0);
+			
+			quitText = new FlxText(0, FlxG.height * 9 / 15, FlxG.width, "Retour au menu");
+			quitText.y += quitPic.frameHeight / 7;
+			quitText.setFormat("philly", 40, 0x00000000, TextAlign.CENTER, 0xFFCCCCCC);
+			FlxG.state.add(quitText);
+			quitText.scrollFactor = new FlxPoint(0, 0);
+			
+			
+			// PAUSE
+			text = new FlxText(0, FlxG.height /15, FlxG.width, "PAUSE");
+			text.setFormat("philly", 60, 0x00FF8000, TextAlign.CENTER, 0xFFCCCCCC);
 			FlxG.state.add(text);
-			currentY += text.height + 50;
 			text.scrollFactor = new FlxPoint(0, 0);
 			
-			resumeBtn = new FlxButton(0, currentY, "Reprendre", resume);
-			resumeBtn.x = (FlxG.width / 2) - (resumeBtn.width / 2);
-			FlxG.state.add(resumeBtn);
-			currentY = resumeBtn.y + 80;
-			resumeBtn.scrollFactor = new FlxPoint(0, 0);
-			
-			quitBtn = new FlxButton(0, currentY, "Retourner au Menu", tryQuit);
-			quitBtn.x = (FlxG.width / 2) - (quitBtn.width / 2);
-			FlxG.state.add(quitBtn);
-			quitBtn.scrollFactor = new FlxPoint(0, 0);
-			
-			quitBtn.scale = new FlxPoint(3, 3);
-			resumeBtn.scale = new FlxPoint(3, 3);
+			// CURSEUR SOURIS
+			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y, ImgCursor);
+			FlxG.state.add(cursor)
 		}
 		
+		// UPDATE DU MENU PAUSE
+		public function inPause():void {
+			// GESTION CLICS SOURIS
+			if (FlxG.mouse.justPressed()) {
+				
+				//RESTART
+				if (FlxCollision.pixelPerfectCheck(cursor, restartPic))
+					restart();
+					
+				//RESUME
+				if (FlxCollision.pixelPerfectCheck(cursor, resumePic))
+					resume();
+					
+				//QUIT
+				if (FlxCollision.pixelPerfectCheck(cursor, quitPic))
+					tryQuit();
+	
+			}
+			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
+			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	
+		}
+		
+		// REDEMARRER
+		private function restart():void
+		{
+			this.close(RESTART);
+		}
+		
+		// REPRENDRE
 		private function resume():void
 		{
-			FlxG.mouse.hide();
-			quitBtn.visible = false;
-			resumeBtn.visible = false;
+			quitPic.visible = false;
+			resumePic.visible = false;
+			restartPic.visible = false;
+			quitText.visible = false;
+			resumeText.visible = false;
+			restartText.visible = false;
+			cursor.visible = false;
 			text.visible = false;
 			this.close(RESUME_GAME);
 		}
 		
+		// RETOUR AU MENU
 		private function tryQuit():void
 		{
 			this.close(QUIT_GAME);
-
-			//TODO
-			//this.setSubState(new Dialog("Are you sure you want to quit?", yes, no));
-			//this.quit(null, yes);
 		}
-		
-		/*
-		private const yes:String = "Yes";
-		private const no:String = "No";
-		
-		private function quit(state:FlxSubState, result:String):void
-		{
-			if (result == yes)
-			{
-				this.close(QUIT_GAME);
-			}
-		}*/
-
 	}
 }

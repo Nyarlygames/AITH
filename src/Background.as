@@ -15,15 +15,24 @@ package
 		public var sound:FlxSound;
 		public var sol:FlxSprite;
 		
-		 [Embed(source = '../assets/gfx/aithlvl1.png')] public var ImgBackground:Class;
-		public function Background() 
+		 [Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
+		 [Embed(source = '../assets/gfx/aithlvl1.png')] public var ImgBackground2:Class;
+		public function Background(level:int) 
 		{
-			super(0, FlxG.height, ImgBackground);
+			// CHANGE L ARRIERE PLAN SUIVANT LE NIVEAU
+			super(0, FlxG.height);
+			switch (level) {
+				case 1:
+					loadGraphic(ImgBackground2);
+					break;
+				case 2:
+					loadGraphic(ImgBackground);
+					break;
+				case 3:
+					loadGraphic(ImgBackground2);
+					break;
+			}
 			y -= frameHeight;
-			/*sound = new FlxSound();
-			sound.loadStream("../assets/sfx/musiques/Shinshuu_Plains_I.mp3", true, true);
-			sound.play();*/
-			
 		}
 		
 	}

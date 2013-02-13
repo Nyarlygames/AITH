@@ -16,8 +16,9 @@ package
 		
 		public static const SLOPE_FLOOR_LEFT:uint  = 1;
 		public static const SLOPE_FLOOR_RIGHT:uint = 3;
-		public static const SLOPE_CEIL_LEFT:uint   = 4;
+		public static const SLOPE_CEIL_LEFT:uint   = 5;
 		public static const SLOPE_CEIL_RIGHT:uint  = 5;
+		public static const SLOPE_TOP_LEFT:uint  = 4;
 		
 		override public function loadMap(MapData:String, TileGraphic:Class, TileWidth:uint=0, TileHeight:uint=0, AutoTile:uint=OFF, StartingIndex:uint=0, DrawIndex:uint=1, CollideIndex:uint=1):FlxTilemap
 		{
@@ -26,6 +27,7 @@ package
 			//set properties for slope tiles (to use our own collision detection)
 			setTileProperties(SLOPE_FLOOR_LEFT, RIGHT | FLOOR, solveCollisionSlopeFloorLeft);
 			setTileProperties(SLOPE_FLOOR_RIGHT, LEFT | FLOOR, solveCollisionSlopeFloorRight);
+			setTileProperties(SLOPE_TOP_LEFT, RIGHT | CEILING, solveCollisionSlopeTopLeft);
 			setTileProperties(SLOPE_CEIL_LEFT, RIGHT | CEILING, solveCollisionSlopeCeilLeft);
 			setTileProperties(SLOPE_CEIL_RIGHT, LEFT | CEILING, solveCollisionSlopeCeilRight);
 			
@@ -106,7 +108,7 @@ package
 
 						//solve slope collisions if no overlap was found
 						if (overlapFound 
-						|| (!overlapFound && (tile.index == SLOPE_FLOOR_LEFT || tile.index == SLOPE_FLOOR_RIGHT || tile.index == SLOPE_CEIL_LEFT || tile.index == SLOPE_CEIL_RIGHT)))
+						|| (!overlapFound && (tile.index == SLOPE_FLOOR_LEFT || tile.index == SLOPE_FLOOR_RIGHT || tile.index == SLOPE_TOP_LEFT || tile.index == SLOPE_CEIL_LEFT || tile.index == SLOPE_CEIL_RIGHT)))
 						{
 							if((tile.callback != null) && ((tile.filter == null) || (Object is tile.filter)))
 							{
@@ -168,7 +170,7 @@ package
 			obj.touching = CEILING;
 						
 			//adjust the object's velocity
-			obj.velocity.y = 0;
+		//	obj.velocity.y = 0;
 				
 			//reposition the object
 			obj.y = _slopePoint.y;
@@ -181,6 +183,34 @@ package
 		 * @param	obj		the object that collides with the slope
 		 */
 		final private function solveCollisionSlopeFloorLeft(slope:FlxTile, obj:FlxObject):void
+		{						
+			//calculate the corner point of the object
+			_objPoint.x = FlxU.floor(obj.x + obj.width + _snapping);
+			_objPoint.y = FlxU.floor(obj.y + obj.height);
+			
+			//calculate position of the point on the slope that the object might overlap
+			//this would be one side of the object projected onto the slope's surface
+			_slopePoint.x = _objPoint.x;
+			_slopePoint.y = (slope.y + _tileHeight) - (_slopePoint.x - slope.x);
+			//fix the slope point to the slope tile
+			fixSlopePoint(slope);
+				
+			//check if the object is inside the slope
+			if (_objPoint.x > slope.x + _snapping
+			&& _objPoint.x < slope.x + _tileWidth + obj.width + _snapping
+			&& _objPoint.y >= _slopePoint.y
+			&& _objPoint.y <= slope.y + _tileHeight)
+			{				
+				//call the collide function for the floor slope
+				onCollideFloorSlope(slope, obj);
+			}
+		}
+		/**
+		 * TOP SLOPE TO JUMP
+		 * @param	slope	the slope to check against
+		 * @param	obj		the object that collides with the slope
+		 */
+		final private function solveCollisionSlopeTopLeft(slope:FlxTile, obj:FlxObject):void
 		{						
 			//calculate the corner point of the object
 			_objPoint.x = FlxU.floor(obj.x + obj.width + _snapping);

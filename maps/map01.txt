@@ -1,3 +1,2 @@
 1
--50
-aithlvl1.png
+../maps/map3bis.tmx

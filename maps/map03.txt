@@ -1,0 +1,2 @@
+3
+../maps/map3bis.tmx

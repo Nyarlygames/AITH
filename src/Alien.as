@@ -17,8 +17,6 @@ package
 			super(xpos, ypos, ImgAlien);
 			y -= frameHeight;
 			loot = count;
-			/*elasticity = 1;
-			immovable = true;*/
 		}
 		
 	}

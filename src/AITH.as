@@ -14,7 +14,7 @@ package
 		public function AITH()
 		{
 			//Function to call to create the game at a specified screen size and display the first state (MenuState)
-			super(800, 600, Menu);
+			super(800, 600, Start);
 		}
 		
 	}
