@@ -33,6 +33,7 @@ package
 		[Embed(source = "../maps/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
 		[Embed(source = "../maps/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
 		[Embed(source="../assets/sfx/gori_instru.mp3")] public  var Sfx_BG:Class;
+		[Embed(source="../assets/sfx/binding.mp3")] public  var Sfx_BG2:Class;
 
 		public var player:Player;
 		public var map:Map;
@@ -59,7 +60,7 @@ package
 			// SON ARRIERE PLAN
 			if (sound == null) {
 				sound = new FlxSound();
-				sound.loadEmbedded(Sfx_BG, true, true);
+				sound.loadEmbedded(Sfx_BG2, true, true);
 				sound.play();
 			}
 		}
@@ -178,7 +179,7 @@ package
 			if (result == PauseMenu.QUIT_GAME)
 			{
 				sound.destroy();
-				FlxG.switchState(new LevelChooser()); 
+				FlxG.switchState(new UnivChooser()); 
 			}
 			// REDEMARRE LE NIVEAU (pas encore d'option dans PauseMenu)
 			else if (result == PauseMenu.RESTART)

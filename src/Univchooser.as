@@ -116,19 +116,19 @@ package
 				//UNIVERS 1
 				if (FlxCollision.pixelPerfectCheck(cursor, uni1)) {
 					FlxG.score = -1;
-					FlxG.switchState(new Play());
+					FlxG.switchState(new LevelChooser());
 				}
 
 				//UNIVERS 2
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2)) {
 					FlxG.score = -2;
-					FlxG.switchState(new Play());
+					FlxG.switchState(new LevelChooser());
 				}
 
 				//UNIVERS 3
 				if (FlxCollision.pixelPerfectCheck(cursor, uni3)) {
 					FlxG.score = -3;
-					FlxG.switchState(new Play());
+					FlxG.switchState(new LevelChooser());
 				}
 			}
 			

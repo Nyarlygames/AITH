@@ -49,7 +49,7 @@ package
 			// VERS CHOIX DE L'UNIVERS
 			if (FlxG.mouse.justPressed()) {
 				if (FlxCollision.pixelPerfectCheck(cursor, logo))
-					FlxG.switchState(new LevelChooser());
+					FlxG.switchState(new UnivChooser());
 			}
 			// DEV : FERME LA FENETRE (à supprimer plus tard)
 			if (FlxG.keys.pressed("ESCAPE")) {
