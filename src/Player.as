@@ -20,20 +20,24 @@ package
 		[Embed(source = '../assets/gfx/grav.png')] protected var ImgG:Class;
 		public var g:FlxSprite;
 		public var v:FlxSprite;
-		public var init_speed:int = 200;  	// VITESSE DE BASE (max vitesse)
-		public var speedup:int = 150;	  	// ACCELERATION
-		public var speeddown:int = 150;   	// DECELERATION
-		public var speedjumpdown:int = 70;	// GRAVITE MINIMALE DURANT LE SAUT
-		public var minspeed:int = 50;		// VITESSE MIN
-		public var mingravity:int = 300;	// GRAVITE MIN (en dehors des sauts)
-		public var maxgravity:int = 5000;	// GRAVITY MAX
-		public var gravityup:int = 1200;	// AUGMENTATION GRAVITE
-		public var gravitydown:int = 1200;	// REDUCTION GRAVITE
-		public var cur_velocity:FlxPoint;	// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
+		public var init_speed:int = 200;  		// VITESSE DE BASE (max vitesse)
+		public var speedup:int = 150;	  		// ACCELERATION
+		public var speeddown:int = 150;   		// DECELERATION
+		public var speedjumpdown:int = 70;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
+		public var minspeed:int = 50;			// VITESSE MIN
+		public var mingravity:int = 5;			// GRAVITE MIN
+		public var maxgravity:int = 5000;		// GRAVITY MAX
+		public var gravityup:int = 1200;		// AUGMENTATION GRAVITE
+		public var gravitydown:int = 1200;		// REDUCTION GRAVITE
+		public var cur_velocity:FlxPoint;		// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
+		public var gravity:int = 300;			// GRAVITE
 		
-		public var jumping:Boolean = false;	// LE JOUEUR SAUTE?
-		public var pause:Boolean = false;	// LE JEU EST EN PAUSE?
-		public var set_old:Boolean = true;	// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
+		public var floating:Boolean = false;	// LE JOUEUR FLOTTE?
+		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
+		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?
+		public var set_old:Boolean = true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
+		
+		public var checkpoint:FlxPoint = new FlxPoint(50, FlxG.height - 40);
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -43,6 +47,7 @@ package
 			maxVelocity.x = init_speed;
 			facing = RIGHT;
 			velocity.y = mingravity;
+			gravity = mingravity;
 			velocity.x = init_speed;
 			cur_velocity = new FlxPoint(init_speed, mingravity);
 			
@@ -58,7 +63,7 @@ package
 			// SI PAUSE ON GARDE LES VALEURS DE VITESSE ET GRAVITE
 			if ((pause) && (set_old == true)) {
 				cur_velocity.x = velocity.x;
-				cur_velocity.y = velocity.y;
+				cur_velocity.y = gravity;
 				// ET ON BLOQUE JIMI
 				velocity.x = 0;
 				velocity.y = 0;
@@ -66,26 +71,27 @@ package
 			}
 			else if (!pause) {
 				// SI ON APPUIE SUR HAUT
-				if (FlxG.keys.pressed("UP") && (velocity.y < maxgravity)) {
+				if (FlxG.keys.pressed("UP") && (gravity < maxgravity)) {
 					if (velocity.x > minspeed)
 						velocity.x -= speeddown * FlxG.elapsed;
-					velocity.y += gravityup * FlxG.elapsed;
+					gravity += gravityup * FlxG.elapsed;
 				}
 				// SI ON APPUIE SUR RIEN
-				else if (!FlxG.keys.any() && (velocity.y > mingravity)) {
+				else if (!FlxG.keys.any() && (gravity > mingravity)) {
 					velocity.x += speedup * FlxG.elapsed;
-					velocity.y -= gravitydown * FlxG.elapsed;
+					gravity -= gravitydown * FlxG.elapsed;
 				}
 				// RETOMBE AUTOMATIQUEMENT LORS D'UN SAUT
-				if (jumping)
-					velocity.y += speedjumpdown * FlxG.elapsed;
+				if ((jumping) || (floating)) {
+					velocity.y += (speedjumpdown * FlxG.elapsed) + (gravity * FlxG.elapsed);
+				}
 					
 				// SAUVEGUARDE LA VITESSE POUR LES COLLISIONS
 				cur_velocity.x = velocity.x;
-				cur_velocity.y = velocity.y;
+				cur_velocity.y = gravity;
 					
 				// Affichage vitesse/gravité
-				g.scale.x = velocity.y /1000;
+				g.scale.x = gravity /1000;
 				v.scale.x = velocity.x / 100;
 			}
 

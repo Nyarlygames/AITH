@@ -22,8 +22,8 @@
 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3
 </data>
  </layer>
- <objectgroup name="Objs" width="125" height="15">
-  <object name="Alien" x="520" y="0" width="80" height="80"/>
+ <objectgroup color="#a42a69" name="Objs" width="125" height="15">
+  <object name="Alien" x="531" y="505" width="80" height="80"/>
   <object name="Alien" x="1360" y="0" width="80" height="80"/>
   <object name="Alien" x="3800" y="440" width="80" height="80"/>
   <object name="Alien" x="4560" y="480" width="80" height="80"/>

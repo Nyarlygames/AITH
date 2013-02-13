@@ -40,6 +40,7 @@ package
 		public var lasttile:int = 0;
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
+		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
 		
 		override public function create():void
 		{	
@@ -84,11 +85,13 @@ package
 				}
 				
 				// COLLISIONS
-				//FlxG.collide(player, map.ens);
+				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
 				FlxG.collide(player, map.destructible, check_ground);
-				FlxG.collide(player, map.tile, tiles_coll);
-				
+				if (!FlxG.collide(player, map.tile, tiles_coll))
+					player.floating = true;
+				else
+					player.floating = false;
 				// UPDATE PAUSE SCREEN
 				if (player.pause) {
 					pause.inPause();
@@ -110,8 +113,30 @@ package
 				player.velocity.y = player.cur_velocity.y; // réapplique la gravité (obligatoire a chaque collide)
 				player.velocity.x = player.cur_velocity.x;
 			}
-			if (player.velocity.y > 2000)
+			if (player.gravity > 2000)
 				obj2.kill();
+		}
+		
+		// GESTION Collision alien
+		public function alien_coll(obj1:FlxObject, obj2:FlxObject):void {
+			var from:int = 1; // 0 => haut, 1 => partout ailleurs
+			if (player.y <= obj2.y)
+				from = 0;
+			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
+				// TUE L'alien
+				if ((player.gravity > alienkill) && (from == 0)) {
+					obj2.kill();
+				}
+				// REBONDS
+				else if (from == 0) {
+					player.velocity.y = - 2*player.velocity.x;
+				}
+				// MEURT
+				else {
+					player.x = player.checkpoint.x;
+					player.y = player.checkpoint.y;
+				}
+			}
 		}
 
 		// GESTIONS DES COLLISIONS DE TILES
@@ -135,12 +160,14 @@ package
 			// RETOUR AU SOL
 			else if ((player.jumping) && (lasttile == 0) && (mytile != 0)) {
 				player.jumping = false;
-				player.velocity.y = player.mingravity;
 				player.velocity.x = player.maxVelocity.x;
 			}
 			// ROULE SUR LE SOL
 			else if ((!player.pause) && (!player.jumping)) {
-				player.velocity.y = player.cur_velocity.y;
+				player.velocity.x = player.cur_velocity.x;
+			}
+			// COLLI
+			else if ((!player.pause) && (player.jumping)) {
 				player.velocity.x = player.cur_velocity.x;
 			}
 		}

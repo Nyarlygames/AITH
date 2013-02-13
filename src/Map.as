@@ -29,6 +29,7 @@ package
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
+		public var offsety:int = 1000;														// DEPASSEMENT VERTICAL AUTORISE
         [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
 		
@@ -98,8 +99,8 @@ package
 			FlxG.state.add(player.g);
 			FlxG.state.add(player.v);
 			FlxG.state.add(cam);
-			FlxG.worldBounds = new FlxRect(0, 0, 5000, 600 + 1000);
-			FlxG.camera.setBounds(0, -1000, 5000, 600 + 1000);
+			FlxG.worldBounds = new FlxRect(0, -offsety, 5000, 600 + offsety);
+			FlxG.camera.setBounds(0, -offsety, 5000, 600 + offsety);
 			FlxG.camera.follow(cam);
 		}
 	}
