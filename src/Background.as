@@ -38,7 +38,7 @@ package
 					break;
 			}
 			y -= frameHeight;
-			sol.y -= frameHeight;
+			sol.y -= sol.frameHeight;
 			FlxG.state.add(this);
 			FlxG.state.add(sol);
 		}

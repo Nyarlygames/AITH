@@ -73,23 +73,23 @@ package
 			
 			// GESTION CLICS SOURIS
 			if (FlxG.mouse.justPressed()) {
-				//REPLAY
+				// RETURN
 				if (FlxCollision.pixelPerfectCheck(cursor, replaypic))
 					FlxG.switchState(new UnivChooser());
 
-				//UNIVERS 1
+				// NIVEAU 1
 				if (FlxCollision.pixelPerfectCheck(cursor, uni1)) {
 					FlxG.score = -1;
 					FlxG.switchState(new Play());
 				}
 
-				//UNIVERS 2
+				// NIVEAU 2
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2)) {
 					FlxG.score = -2;
 					FlxG.switchState(new Play());
 				}
 
-				//UNIVERS 3
+				// NIVEAU 3
 				if (FlxCollision.pixelPerfectCheck(cursor, uni3)) {
 					FlxG.score = -3;
 					FlxG.switchState(new Play());

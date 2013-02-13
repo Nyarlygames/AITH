@@ -31,7 +31,7 @@ package
 			
 			// DEPASSEMENT VERTICAL
 			if (player.y - player.frameHeight/2 <= 300)
-				y = player.y + 290;
+				y = player.y + 260;
 			else y = 300;
 		}
 		

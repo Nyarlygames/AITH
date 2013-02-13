@@ -32,13 +32,11 @@ package
 		[Embed(source = "../maps/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source = "../maps/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
 		[Embed(source = "../maps/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
-		[Embed(source="../assets/sfx/gori_instru.mp3")] public  var Sfx_BG:Class;
-		[Embed(source="../assets/sfx/binding.mp3")] public  var Sfx_BG2:Class;
+		[Embed(source="../assets/sfx/binding2.mp3")] public  var Sfx_BG2:Class;
 
 		public var player:Player;
 		public var map:Map;
 		public var background:Background;
-		public var lasttile:int = 0;
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
@@ -73,6 +71,7 @@ package
 				
 				// MENU PAUSE
 				if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
+					trace(player.velocity.y, player.gravity);
 					player.pause = true;
 					this.setSubState(pause, onMenuClosed);
 				}
@@ -88,10 +87,11 @@ package
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
 				FlxG.collide(player, map.destructible, check_ground);
-				if (!FlxG.collide(player, map.tile, tiles_coll))
+				if (!FlxG.collide(player, map.tile, player.tiles_coll))
 					player.floating = true;
-				else
+				else {
 					player.floating = false;
+				}
 				// UPDATE PAUSE SCREEN
 				if (player.pause) {
 					pause.inPause();
@@ -99,7 +99,6 @@ package
 			}
 		}
 
-		
 		// GESTION RECUP TUBE VERT
 		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
 			FlxG.score += 10;
@@ -139,39 +138,6 @@ package
 			}
 		}
 
-		// GESTIONS DES COLLISIONS DE TILES
-		public function tiles_coll(obj1:FlxObject, obj2:FlxObject):void {
-			
-			// GET LA TILE COURANTE
-			var mytile:uint = (obj2 as FlxTilemap).getTile(Math.floor(player.x / 40) +2, Math.round(player.y/40) +2);
-
-			// HAUT DU TREMPLIN
-			if ((mytile == 4) && (player.jumping == false)) {
-				lasttile = 4;
-				player.velocity.y = player.cur_velocity.y;
-				player.velocity.x = player.cur_velocity.x;
-			}
-			// SAUTE (élan)
-			else if ((lasttile == 4) && (mytile == 0)) { // SOUCIS DE CALCUL D'UNE TILE, LOGIQUE BONNE
-				player.velocity.y = -(player.cur_velocity.x); // ELAN EN FONCTION DE VITESSE (à modifier ?)
-				player.jumping = true;
-				lasttile = 0;
-			}
-			// RETOUR AU SOL
-			else if ((player.jumping) && (lasttile == 0) && (mytile != 0)) {
-				player.jumping = false;
-				player.velocity.x = player.maxVelocity.x;
-			}
-			// ROULE SUR LE SOL
-			else if ((!player.pause) && (!player.jumping)) {
-				player.velocity.x = player.cur_velocity.x;
-			}
-			// COLLISION EN L'AIR
-			else if ((!player.pause) && (player.jumping)) {
-				player.velocity.x = player.cur_velocity.x;
-			}
-		}
-
 		// FIN DU MENU PAUSE
 		private function onMenuClosed(state:FlxSubState, result:String):void
 		{
@@ -192,6 +158,7 @@ package
 			else if (result == PauseMenu.RESUME_GAME) {
 				player.velocity.x = player.cur_velocity.x;
 				player.velocity.y = player.cur_velocity.y;
+				player.angularspeed = player.cur_angularspeed;
 				player.pause = false;
 				player.set_old = true;
 			}

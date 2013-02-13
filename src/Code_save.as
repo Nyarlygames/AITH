@@ -2,7 +2,6 @@
 // ROTATION JIMI SUR TREMPLIN (manque le retour à la normale)
 	if (mytile == FlxTilemapExt.SLOPE_FLOOR_LEFT && player.angle >= -45) {
 		player.angularVelocity = -50;
-		FlxG.log("LEFT");
 
 	}
 	else if (mytile == FlxTilemapExt.SLOPE_FLOOR_RIGHT) {
@@ -79,9 +78,9 @@
 	
 	
 // PROPRIETE OBJET (score des tubes vert?)
-	if (object.custom != null) {
+	/*if (object.custom != null) {
 		//object.custom["test"];
-	}
+	}*/
 	
 // SON ARRIERE PLAN
 	/*sound = new FlxSound();
