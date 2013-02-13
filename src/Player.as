@@ -139,7 +139,7 @@ package
 				jumping = false;
 				if (velocity.x == 0)
 					cur_velocity.x = minspeed;
-				velocity.x = cur_velocity.x;
+				velocity.x = maxVelocity.x;
 			}
 			// ROULE SUR LE SOL
 			else if ((!pause) && (!jumping)) {

@@ -32,7 +32,7 @@ package
 		public var offsety:int = 1000;														// DEPASSEMENT VERTICAL AUTORISE
         [Embed(source = '../assets/gfx/aith_tiles3.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
-		
+		public var background:Background;
 		
 		/**
 		 * FORMAT TXT
@@ -87,6 +87,7 @@ package
 						break;
 				}
 			}
+			background = new Background(id);
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(ens);

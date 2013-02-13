@@ -36,7 +36,6 @@ package
 
 		public var player:Player;
 		public var map:Map;
-		public var background:Background;
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
@@ -53,8 +52,7 @@ package
 				case -3:
 					map = new Map(mapfile3);
 					break;
-			}	
-			background = new Background(map.id);
+			}
 			// SON ARRIERE PLAN
 			if (sound == null) {
 				sound = new FlxSound();
