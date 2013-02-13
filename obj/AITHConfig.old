@@ -22,15 +22,15 @@
     <omit-trace-statements>true</omit-trace-statements>
     <verbose-stacktraces>false</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Nyarly\Documents\GitHub\AITHsave\src</path-element>
-      <path-element>C:\Users\Nyarly\Documents\GitHub\AITHsave\lib\flixel</path-element>
-      <path-element>C:\Users\Nyarly\Documents\GitHub\AITHsave\lib\tmx</path-element>
-      <path-element>C:\Users\Nyarly\Documents\GitHub\AITHsave\lib\glueit1.06</path-element>
+      <path-element>C:\Users\Nyarly\Documents\GitHub\AITH\src</path-element>
+      <path-element>C:\Users\Nyarly\Documents\GitHub\AITH\lib\flixel</path-element>
+      <path-element>C:\Users\Nyarly\Documents\GitHub\AITH\lib\tmx</path-element>
+      <path-element>C:\Users\Nyarly\Documents\GitHub\AITH\lib\glueit1.06</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Nyarly\Documents\GitHub\AITHsave\src\AITH.AS</path-element>
+    <path-element>C:\Users\Nyarly\Documents\GitHub\AITH\src\AITH.AS</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

@@ -85,7 +85,7 @@ package
 			}
 			else if (!pause) {
 				// SI ON APPUIE SUR HAUT
-				if (FlxG.keys.pressed("UP") && (gravity < maxgravity)) {
+				if (FlxG.keys.pressed("SPACE") && (gravity < maxgravity)) {
 					if (velocity.x > minspeed)
 						velocity.x -= speeddown * FlxG.elapsed;
 					gravity += gravityup * FlxG.elapsed;
