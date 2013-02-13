@@ -30,7 +30,7 @@ package
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 1000;														// DEPASSEMENT VERTICAL AUTORISE
-        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/aith_tiles3.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
 		
 		
@@ -63,7 +63,7 @@ package
 			var tmx:TmxMap = new TmxMap(xml);
 
 			// RECUPERATION DES TILES CSV
-			var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
+			var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles3'));
 			tile.loadMap(csv, MapTiles, 40, 40);
 			FlxG.state.add(tile);
 			

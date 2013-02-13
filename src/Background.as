@@ -14,25 +14,33 @@ package
 	{
 		public var sound:FlxSound;
 		public var sol:FlxSprite;
-		
-		 [Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
-		 [Embed(source = '../assets/gfx/aithlvl1.png')] public var ImgBackground2:Class;
+		 
+		[Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
+		[Embed(source = '../assets/gfx/aithlvl1.png')] public var ImgBackground2:Class;
+		[Embed(source = '../assets/gfx/sol.png')] public var ImgSol:Class;
+		 
 		public function Background(level:int) 
 		{
 			// CHANGE L ARRIERE PLAN SUIVANT LE NIVEAU
 			super(0, FlxG.height);
 			switch (level) {
 				case 1:
+					sol = new FlxSprite(0, FlxG.height, ImgSol);
 					loadGraphic(ImgBackground2);
 					break;
 				case 2:
+					sol = new FlxSprite(0, FlxG.height, ImgSol);
 					loadGraphic(ImgBackground);
 					break;
 				case 3:
+					sol = new FlxSprite(0, FlxG.height, ImgSol);
 					loadGraphic(ImgBackground2);
 					break;
 			}
 			y -= frameHeight;
+			sol.y -= frameHeight;
+			FlxG.state.add(this);
+			FlxG.state.add(sol);
 		}
 		
 	}

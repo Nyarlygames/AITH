@@ -31,7 +31,7 @@ package
 		public var gravitydown:int = 1200;		// REDUCTION GRAVITE
 		public var cur_velocity:FlxPoint;		// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
 		public var gravity:int = 300;			// GRAVITE
-		
+
 		public var floating:Boolean = false;	// LE JOUEUR FLOTTE?
 		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
 		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?

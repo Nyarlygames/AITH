@@ -56,7 +56,6 @@ package
 					break;
 			}	
 			background = new Background(map.id);
-			add(background);	
 			// SON ARRIERE PLAN
 			if (sound == null) {
 				sound = new FlxSound();
@@ -129,7 +128,7 @@ package
 				}
 				// REBONDS
 				else if (from == 0) {
-					player.velocity.y = - 2*player.velocity.x;
+					player.velocity.y = - player.velocity.x * 9 / 10;
 				}
 				// MEURT
 				else {
@@ -166,7 +165,7 @@ package
 			else if ((!player.pause) && (!player.jumping)) {
 				player.velocity.x = player.cur_velocity.x;
 			}
-			// COLLI
+			// COLLISION EN L'AIR
 			else if ((!player.pause) && (player.jumping)) {
 				player.velocity.x = player.cur_velocity.x;
 			}

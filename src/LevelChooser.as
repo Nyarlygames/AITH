@@ -9,7 +9,7 @@ package
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	 
 	/**
-	 * Menu
+	 * LEVEL
 	 * @author 
 	 */
 	public class LevelChooser extends FlxState
