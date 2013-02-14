@@ -29,7 +29,7 @@ package
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
-		public var offsety:int = 1000;														// DEPASSEMENT VERTICAL AUTORISE
+		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
         [Embed(source = '../assets/gfx/aith_tiles3.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
 		public var background:Background;

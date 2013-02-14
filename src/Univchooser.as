@@ -47,16 +47,16 @@ package
 			add(replaytext);			
 			
 			// UNIVERS 1 IMAGE
-			uni1 = new FlxSprite(50, FlxG.height /2, ImgUni1);
+			uni1 = new FlxSprite(150, FlxG.height /2, ImgUni1);
 			add(uni1);
 			
 			// UNIVERS 2 IMAGE
-			uni2 = new FlxSprite(300, FlxG.height /2, ImgUni2);
+			uni2 = new FlxSprite(450, FlxG.height /2, ImgUni2);
 			add(uni2);
 			
-			// UNIVERS 3 IMAGE
+			/*// UNIVERS 3 IMAGE
 			uni3 = new FlxSprite(550, FlxG.height /2, ImgUni3);
-			add(uni3);
+			add(uni3);*/
 			
 			
 			//SCORE 1
@@ -72,7 +72,7 @@ package
 			
 			
 			//SCORE 2
-			var uni2text:FlxText = new FlxText(uni2.x + uni2.frameWidth/5, uni2.y + uni2.frameHeight /2, uni2.frameWidth, "0");
+			var uni2text:FlxText = new FlxText(uni2.x + uni2.frameWidth*2/5, uni2.y + uni2.frameHeight /2, uni2.frameWidth, "0");
 			uni2text.setFormat("slick", 32, 0x044071);
 			add(uni2text);	
 			
@@ -83,7 +83,7 @@ package
 			add(uni2text2);	
 			
 			
-			//SCORE 3
+			/*//SCORE 3
 			var uni3text:FlxText = new FlxText(uni3.x + uni3.frameWidth/5, uni3.y + uni3.frameHeight /2, uni3.frameWidth, "0");
 			uni3text.setFormat("slick", 32, 0x044071);
 			add(uni3text);	
@@ -92,7 +92,7 @@ package
 			var uni3text2:FlxText = new FlxText(uni3.x, uni3.y + uni3.frameHeight *4/5, uni3.frameWidth *4/5, "17");
 			uni3text2.setFormat("slick", 32, 0x044071);
 			uni3text2.alignment = "right";
-			add(uni3text2);
+			add(uni3text2);*/
 			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y, ImgCursor);
@@ -125,11 +125,11 @@ package
 					FlxG.switchState(new LevelChooser());
 				}
 
-				//UNIVERS 3
+				/*//UNIVERS 3
 				if (FlxCollision.pixelPerfectCheck(cursor, uni3)) {
 					FlxG.score = -3;
 					FlxG.switchState(new LevelChooser());
-				}
+				}*/
 			}
 			
 			// DEV : FERME LA FENETRE (à supprimer plus tard)

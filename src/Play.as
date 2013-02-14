@@ -39,6 +39,8 @@ package
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
+		public var dest_ground:int = 1000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		
 		
 		override public function create():void
 		{	
@@ -74,8 +76,8 @@ package
 					this.setSubState(pause, onMenuClosed);
 				}
 				
-				// DEV : RESTART (à supprimer plus tard)
-				if (FlxG.keys.pressed("BACKSPACE")) {
+				// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
+				if ((FlxG.keys.pressed("BACKSPACE")) || (!player.onScreen(FlxG.camera))) {
 					sound.destroy();
 					FlxG.score = -map.id;
 					FlxG.resetState();
@@ -110,7 +112,7 @@ package
 				player.velocity.y = player.cur_velocity.y; // réapplique la gravité (obligatoire a chaque collide)
 				player.velocity.x = player.cur_velocity.x;
 			}
-			if (player.gravity > 2000)
+			if (player.gravity > dest_ground)
 				obj2.kill();
 		}
 		

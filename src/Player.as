@@ -22,10 +22,10 @@ package
 		[Embed(source = '../assets/gfx/grav.png')] protected var ImgG:Class;
 		public var g:FlxSprite;
 		public var v:FlxSprite;
-		public var init_speed:int = 200;  		// VITESSE DE BASE (max vitesse)
+		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)
 		public var speedup:int = 150;	  		// ACCELERATION
 		public var speeddown:int = 150;   		// DECELERATION
-		public var speedjumpdown:int = 70;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
+		public var speedjumpdown:int = 110;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
 		public var minspeed:int = 50;			// VITESSE MIN
 		public var mingravity:int = 5;			// GRAVITE MIN
 		public var maxgravity:int = 5000;		// GRAVITY MAX
