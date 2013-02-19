@@ -16,7 +16,7 @@ package
 		public var sol:FlxSprite;
 		 
 		[Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
-		[Embed(source = '../assets/gfx/aithlvl1.png')] public var ImgBackground2:Class;
+		[Embed(source = '../assets/gfx/level/background/bg_level_1_1_1_alt1.png')] public var ImgBackground2:Class;
 		[Embed(source = '../assets/gfx/sol.png')] public var ImgSol:Class;
 		 
 		public function Background(level:int) 
