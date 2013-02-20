@@ -44,15 +44,34 @@ package
 		
 		override public function create():void
 		{	
-			switch (FlxG.score) { // Score = - Level à la création
-				case -1:
-					map = new Map(mapfile);
+			switch (FlxG.univ) {
+				// UNIVERS 1
+				case 1:
+					switch (FlxG.level) { 
+						case 1:
+							map = new Map(mapfile);
+							break;
+						case 2:
+							map = new Map(mapfile2);
+							break;
+						case 3:
+							map = new Map(mapfile3);
+							break;
+					}
 					break;
-				case -2:
-					map = new Map(mapfile2);
-					break;
-				case -3:
-					map = new Map(mapfile3);
+				// UNIVERS 2
+				case 2:
+					switch (FlxG.level) { 
+						case 1:
+							map = new Map(mapfile);
+							break;
+						case 2:
+							map = new Map(mapfile2);
+							break;
+						case 3:
+							map = new Map(mapfile3);
+							break;
+					}
 					break;
 			}
 			// SON ARRIERE PLAN
@@ -71,7 +90,6 @@ package
 				
 				// MENU PAUSE
 				if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
-					trace(player.velocity.y, player.gravity);
 					player.pause = true;
 					this.setSubState(pause, onMenuClosed);
 				}

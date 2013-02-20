@@ -78,7 +78,7 @@ package
 						ens.add (new Alien(object.x, object.y, 100));
 						break;
 					case "Piques":
-						item.add (new TubeVert(object.x, object.y, 10));
+						item.add (new Piques(object.x, object.y));
 						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
