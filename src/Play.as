@@ -104,6 +104,7 @@ package
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
+				FlxG.overlap(player, map.piques, die_motherfucker);
 				FlxG.collide(player, map.destructible, check_ground);
 				if (!FlxG.collide(player, map.tile, player.tiles_coll))
 					player.floating = true;
@@ -117,12 +118,19 @@ package
 			}
 		}
 
+		// GESTION PIQUES
+		public function die_motherfucker(obj1:FlxObject, obj2:FlxObject):void {
+			player.x = player.checkpoint.x;
+			player.y = player.checkpoint.y;
+		}
+		
 		// GESTION RECUP TUBE VERT
 		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
-			FlxG.score += 10;
 			obj2.kill();
 			obj2.destroy();
+			FlxG.state.add(new Loot(player,(obj2 as TubeVert).loot));
 		}
+
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
@@ -143,6 +151,7 @@ package
 				// TUE L'alien
 				if ((player.gravity > alienkill) && (from == 0)) {
 					obj2.kill();
+					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
 				// REBONDS
 				else if (from == 0) {

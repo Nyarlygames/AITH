@@ -23,6 +23,7 @@ package
 		
 		public var ens:FlxGroup = new FlxGroup();											// ALIENS
 		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
+		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
 		public var id:int = 0;																// NIVEAU
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
@@ -47,7 +48,6 @@ package
 			// PARCOURS LE .TXT
 			var fileContent:String = new map();
 			var lignes:Array = fileContent.split('\n'); 
-			var en:Array;
 			if (lignes != null) {
 				id = lignes[0];
 				var loader:URLLoader = new URLLoader();
@@ -70,15 +70,15 @@ package
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
 			for each(var object:TmxObject in group.objects) {
-				switch(object.name) {
+				switch(object.type) {
 					case "Tube":
-						item.add (new TubeVert(object.x, object.y, 10));
+						item.add (new TubeVert(object.x, object.y, object.custom["loot"]));
 						break;
 					case "Alien":
-						ens.add (new Alien(object.x, object.y, 100));
+						ens.add (new Alien(object.x, object.y, object.custom["loot"]));
 						break;
 					case "Piques":
-						item.add (new Piques(object.x, object.y));
+						piques.add (new Piques(object.x, object.y));
 						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
@@ -90,6 +90,7 @@ package
 			background = new Background(id);
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
+			FlxG.state.add(piques);
 			FlxG.state.add(ens);
 			// CHARGEMENT FINIT
 			loaded = true;
