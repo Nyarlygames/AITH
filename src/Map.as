@@ -74,7 +74,10 @@ package
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
 					case "Tube":
-						item.add (new TubeVert(object.x, object.y, object.custom["loot"]));
+						item.add (new TubeVert(object.x, object.y, 1,0));
+						break;
+					case "GrosTube":
+						item.add (new TubeVert(object.x, object.y, 5,1));
 						break;
 					case "Alien":
 						ens.add (new Alien(object.x, object.y, object.custom["loot"]));

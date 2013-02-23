@@ -108,26 +108,7 @@ package
 				FlxG.collide(player, map.destructible, check_ground);
 				
 				// POUBELLE JOUEUR
-				if (FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed)) {
-					// POUBELLE RIEN
-					if (player.push != null) {
-						player.push.x = player.x + player.push.frameWidth;
-						player.push.y = player.y;
-					}
-					// POUSSE PLUS
-					if ((player.pushing == false) && (player.push != null)) {
-					/*	trace("ici");
-						FlxG.state.remove(player.push);
-						player.push.destroy();
-						player.pushing = false;
-						player.push = null;*/
-					}
-				}
-				/*else {
-					// POUBELLE SOL
-					if (FlxG.collide(map.DustbinBieber, map.tile)) {
-					}
-				}*/
+				//FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed);
 				
 				
 				if (!FlxG.collide(player, map.tile, player.tiles_coll))
@@ -152,7 +133,9 @@ package
 		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
 			obj2.kill();
 			obj2.destroy();
+			FlxG.score += (obj2 as TubeVert).loot;
 			FlxG.state.add(new Loot(player,(obj2 as TubeVert).loot));
+			trace(FlxG.score);
 		}
 
 		

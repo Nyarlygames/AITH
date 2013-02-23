@@ -27,7 +27,6 @@ package
 			y += frameHeight;
 			loot = value;
 			timer.start(1, 1, goaway);
-			FlxG.score += loot;
 			scrollFactor = new FlxPoint(0, 0);
 		}
 		

@@ -42,7 +42,7 @@ package
 		public var angularspeed:int = 150;		// VITESSE DE ROTATION
 		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION
 		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
-		public var push:FlxSprite = null;		// POUBELLE POUSSEE
+		public var push:Poubelle = null;		// POUBELLE POUSSEE
 		
 		public var checkpoint:FlxPoint = new FlxPoint(50, FlxG.height - 40);
 		
@@ -115,17 +115,6 @@ package
 					angle += 0.5;
 				if (angle < -50)
 					angularVelocity = 0;
-					
-				//ARRET POUBELLE
-				if ((push == true) && (push != null) && ((FlxG.tilemap.getTile(Math.floor(push.x / 40) +2, Math.round(push.y / 40) +1)) == 1)) {
-					trace("test");
-					push.velocity.x = 0;
-					velocity.x = 0;
-					push.immovable = true;
-					if (gravity > 500) {
-						pushing = false;
-					}
-				}
 			}
 		}
 		
@@ -180,7 +169,8 @@ package
 			if ((pushing != true) && (push == null)){
 				obj2.x = x + (obj2 as Poubelle).frameWidth;
 				obj2.velocity.x = velocity.x = init_speed;
-				push = (obj2 as FlxSprite);
+				push = (obj2 as Poubelle);
+				(push as Poubelle).player = this;
 				pushing = true;
 			}
 		}
