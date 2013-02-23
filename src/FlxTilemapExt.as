@@ -14,11 +14,11 @@ package
 		private var _slopePoint:FlxPoint = new FlxPoint();
 		private var _objPoint:FlxPoint = new FlxPoint();
 		
-		public static const SLOPE_FLOOR_LEFT:uint  = 1;
+		public static const SLOPE_FLOOR_LEFT:uint = 1;
 		public static const SLOPE_FLOOR_RIGHT:uint = 3;
-		public static const SLOPE_CEIL_LEFT:uint   = 5;
-		public static const SLOPE_CEIL_RIGHT:uint  = 5;
-		public static const SLOPE_TOP_LEFT:uint  = 4;
+		public static const SLOPE_CEIL_LEFT:uint = 5;
+		public static const SLOPE_CEIL_RIGHT:uint = 5;
+		public static const SLOPE_TOP_LEFT:uint = 4;
 		
 		override public function loadMap(MapData:String, TileGraphic:Class, TileWidth:uint=0, TileHeight:uint=0, AutoTile:uint=OFF, StartingIndex:uint=0, DrawIndex:uint=1, CollideIndex:uint=1):FlxTilemap
 		{

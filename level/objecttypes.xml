@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
- <objecttype name="Alien" color="#a43334"/>
- <objecttype name="Tube" color="#42a42c"/>
- <objecttype name="Piques" color="#0a0a0b"/>
- <objecttype name="Caisses" color="#8a3711"/>
- <objecttype name="Des_sol" color="#3b20a4"/>
+ <objecttype name="Tube" color="#2fd41d"/>
+ <objecttype name="Alien" color="#a4292b"/>
+ <objecttype name="Piques" color="#545456"/>
+ <objecttype name="Des_sol" color="#9a4131"/>
+ <objecttype name="Poubelles" color="#030304"/>
+ <objecttype name="GrosTube" color="#0b4a00"/>
 </objecttypes>

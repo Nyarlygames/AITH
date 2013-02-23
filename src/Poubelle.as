@@ -25,14 +25,12 @@ package
 		
 		override public function update():void {
 			if (player != null) {
-				
 				// POUBELLE RIEN
 				if ((FlxG.tilemap.getTile(Math.floor(player.push.x / 40) +2, Math.round(player.push.y / 40) +1)) == 0) {
 					player.push.x = player.x + player.push.frameWidth;
 					player.push.y = player.y;
 					player.push.velocity.x = player.velocity.x;
 				}
-				
 				//ARRET POUBELLE
 				else {
 					player.push.velocity.x = 0;
@@ -41,7 +39,6 @@ package
 					if (player.gravity > 500)
 						player.pushing = false;
 				}
-				
 				if (player.pushing == false)
 					FlxG.state.remove(this);
 			}	

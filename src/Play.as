@@ -135,14 +135,13 @@ package
 			obj2.destroy();
 			FlxG.score += (obj2 as TubeVert).loot;
 			FlxG.state.add(new Loot(player,(obj2 as TubeVert).loot));
-			trace(FlxG.score);
 		}
 
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
 			if (obj2 != null){ 
-				player.velocity.y = player.cur_velocity.y; // réapplique la gravité (obligatoire a chaque collide)
+				player.velocity.y = player.cur_velocity.y;
 				player.velocity.x = player.cur_velocity.x;
 			}
 			if (player.gravity > dest_ground)

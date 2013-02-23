@@ -191,5 +191,6 @@
    </properties>
   </object>
   <object name="Poubelles" type="Poubelles" x="624" y="510" width="31" height="30"/>
+  <object type="AlienVert" x="1269" y="288" width="41" height="47"/>
  </objectgroup>
 </map>

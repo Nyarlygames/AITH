@@ -80,7 +80,10 @@ package
 						item.add (new TubeVert(object.x, object.y, 5,1));
 						break;
 					case "Alien":
-						ens.add (new Alien(object.x, object.y, object.custom["loot"]));
+						ens.add (new Alien(object.x, object.y, 1));
+						break;
+					case "AlienVert":
+						ens.add (new AlienVert(object.x, object.y, 1));
 						break;
 					case "Piques":
 						piques.add (new Piques(object.x, object.y));
