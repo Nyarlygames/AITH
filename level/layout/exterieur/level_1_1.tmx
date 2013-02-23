@@ -194,5 +194,9 @@
   <object type="AlienVert" x="1269" y="288" width="41" height="47"/>
   <object type="AlienHorizontal" x="1786" y="254"/>
   <object type="AlienTireur" x="2282" y="322"/>
+  <object type="Checkpoints" x="133" y="525"/>
+  <object type="Checkpoints" x="1432" y="529"/>
+  <object type="Checkpoints" x="2854" y="534"/>
+  <object type="Checkpoints" x="3956" y="540"/>
  </objectgroup>
 </map>

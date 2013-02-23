@@ -6,4 +6,8 @@
  <objecttype name="Des_sol" color="#9a4131"/>
  <objecttype name="Poubelles" color="#030304"/>
  <objecttype name="GrosTube" color="#0b4a00"/>
+ <objecttype name="AlienVert" color="#600770"/>
+ <objecttype name="AlienHorizontal" color="#e23290"/>
+ <objecttype name="AlienTireur" color="#2845a4"/>
+ <objecttype name="Checkpoints" color="#00a48b"/>
 </objecttypes>

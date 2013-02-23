@@ -25,6 +25,7 @@ package
 		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
+		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
@@ -93,6 +94,9 @@ package
 					case "AlienHorizontal":
 						ens.add (new AlienHorizontal(object.x, object.y));
 						break;
+					case "Checkpoints":
+						checkpoints.add (new Checkpoints(object.x, object.y));
+						break;
 					case "Piques":
 						piques.add (new Piques(object.x, object.y));
 						break;
@@ -111,6 +115,7 @@ package
 			FlxG.state.add(piques);
 			FlxG.state.add(DustbinBieber);
 			FlxG.state.add(ens);
+			FlxG.state.add(checkpoints);
 			// CHARGEMENT FINIT
 			loaded = true;
 			// AJOUT PLAYER ET CAM

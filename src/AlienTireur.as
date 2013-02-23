@@ -26,7 +26,7 @@ package
 			shoot.makeImageBullet(maxtir, ImgShoot, frameWidth/2, frameHeight/2);
 			shoot.setFireRate(rate);
 			shoot.setBulletSpeed(speed);
-			shoot.setBulletBounds(new FlxRect(0, 0, 5000, 800));
+			shoot.setBulletBounds(new FlxRect(x - 800, y - 300, x, y+300));
 			FlxG.state.add(shoot.group);
 		}
 		

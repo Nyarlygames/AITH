@@ -23,7 +23,7 @@ package
 			pathnodes.push(new FlxPoint(x, y-length));
 			pathnodes.push(new FlxPoint(x, y+length));
 			my_path = new FlxPath(pathnodes);
-			followPath(my_path,  100, PATH_LOOP_FORWARD);
+			followPath(my_path, 100, PATH_LOOP_FORWARD);
 		}
 		
 	}

@@ -175,10 +175,13 @@ package
 			}
 		}
 		
-		// GESTION PIQUES
+		// MORT
 		public function die_motherfucker():void {
 			x = checkpoint.x;
 			y = checkpoint.y;
+			velocity.x = init_speed;
+			velocity.y = mingravity;
+			gravity = mingravity;
 		}
 		
 	}

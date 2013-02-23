@@ -78,7 +78,7 @@ package
 			if (sound == null) {
 				sound = new FlxSound();
 				sound.loadEmbedded(Sfx_BG2, true, true);
-				sound.play();
+				//sound.play();
 			}
 		}
 
@@ -95,11 +95,13 @@ package
 				}
 				
 				// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
-				if ((FlxG.keys.pressed("BACKSPACE")) || (!player.onScreen(FlxG.camera))) {
-					sound.destroy();
+				if (FlxG.keys.pressed("BACKSPACE")) {
+					//sound.destroy();
 					FlxG.score = -map.id;
 					FlxG.resetState();
 				}
+				if (!player.onScreen(FlxG.camera))
+					player.die_motherfucker();
 				
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
