@@ -26,6 +26,7 @@ package
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
 		public var id:int = 0;																// NIVEAU
+		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
@@ -66,6 +67,7 @@ package
 			var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles3'));
 			tile.loadMap(csv, MapTiles, 40, 40);
 			FlxG.state.add(tile);
+			FlxG.tilemap = tile;
 			
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
@@ -80,6 +82,9 @@ package
 					case "Piques":
 						piques.add (new Piques(object.x, object.y));
 						break;
+					case "Poubelles":
+						DustbinBieber.add (new Poubelle(object.x, object.y));
+						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
 						ground.immovable = true;
@@ -91,6 +96,7 @@ package
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(piques);
+			FlxG.state.add(DustbinBieber);
 			FlxG.state.add(ens);
 			// CHARGEMENT FINIT
 			loaded = true;

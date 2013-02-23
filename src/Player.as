@@ -38,9 +38,11 @@ package
 		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
 		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?
 		public var set_old:Boolean = true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
-		public var lasttile:int = 0;
+		public var lasttile:int = 0;			
 		public var angularspeed:int = 150;		// VITESSE DE ROTATION
-		public var cur_angularspeed:int = 150;		// VITESSE DE ROTATION
+		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION
+		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
+		public var push:FlxSprite = null;		// POUBELLE POUSSEE
 		
 		public var checkpoint:FlxPoint = new FlxPoint(50, FlxG.height - 40);
 		
@@ -113,6 +115,17 @@ package
 					angle += 0.5;
 				if (angle < -50)
 					angularVelocity = 0;
+					
+				//ARRET POUBELLE
+				if ((push == true) && (push != null) && ((FlxG.tilemap.getTile(Math.floor(push.x / 40) +2, Math.round(push.y / 40) +1)) == 1)) {
+					trace("test");
+					push.velocity.x = 0;
+					velocity.x = 0;
+					push.immovable = true;
+					if (gravity > 500) {
+						pushing = false;
+					}
+				}
 			}
 		}
 		
@@ -159,6 +172,16 @@ package
 			// ROTATION JIMMY SOL
 			else if ((mytile == 2) && (lasttile != 1)) {
 				angle = 0;
+			}
+		}
+		
+		// GESTIONS DES COLLISIONS DE POUBELLES
+		public function dustbin_pushed(obj1:FlxObject, obj2:FlxObject):void {
+			if ((pushing != true) && (push == null)){
+				obj2.x = x + (obj2 as Poubelle).frameWidth;
+				obj2.velocity.x = velocity.x = init_speed;
+				push = (obj2 as FlxSprite);
+				pushing = true;
 			}
 		}
 		

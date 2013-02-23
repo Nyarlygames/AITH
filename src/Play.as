@@ -29,9 +29,9 @@ package
 	 */
 	public class Play extends FlxState 
 	{
-		[Embed(source = "../maps/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
-		[Embed(source = "../maps/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
-		[Embed(source = "../maps/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
+		[Embed(source = "../level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
+		[Embed(source = "../level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
+		[Embed(source = "../level/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
 		[Embed(source="../assets/sfx/binding2.mp3")] public  var Sfx_BG2:Class;
 
 		public var player:Player;
@@ -106,6 +106,30 @@ package
 				FlxG.overlap(player, map.item, getTube);
 				FlxG.overlap(player, map.piques, die_motherfucker);
 				FlxG.collide(player, map.destructible, check_ground);
+				
+				// POUBELLE JOUEUR
+				if (FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed)) {
+					// POUBELLE RIEN
+					if (player.push != null) {
+						player.push.x = player.x + player.push.frameWidth;
+						player.push.y = player.y;
+					}
+					// POUSSE PLUS
+					if ((player.pushing == false) && (player.push != null)) {
+					/*	trace("ici");
+						FlxG.state.remove(player.push);
+						player.push.destroy();
+						player.pushing = false;
+						player.push = null;*/
+					}
+				}
+				/*else {
+					// POUBELLE SOL
+					if (FlxG.collide(map.DustbinBieber, map.tile)) {
+					}
+				}*/
+				
+				
 				if (!FlxG.collide(player, map.tile, player.tiles_coll))
 					player.floating = true;
 				else {
@@ -174,7 +198,7 @@ package
 				sound.destroy();
 				FlxG.switchState(new UnivChooser()); 
 			}
-			// REDEMARRE LE NIVEAU (pas encore d'option dans PauseMenu)
+			// REDEMARRE LE NIVEAU
 			else if (result == PauseMenu.RESTART)
 			{
 				sound.destroy();

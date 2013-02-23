@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<objecttypes>
- <objecttype name="Alien" color="#a43334"/>
- <objecttype name="Tube" color="#42a42c"/>
- <objecttype name="Piques" color="#0a0a0b"/>
- <objecttype name="Caisses" color="#8a3711"/>
- <objecttype name="Des_sol" color="#3b20a4"/>
-</objecttypes>
