@@ -10,13 +10,13 @@ package
 	{
 		
 		[Embed(source = '../assets/gfx/tubevert.png')] protected var ImgTube:Class;
-		public var value:int = 0;
+		public var loot:int = 0;
 		
 		public function TubeVert(xpos:int, ypos:int, point:int) 
 		{
 			super(xpos, ypos, ImgTube);
 			y -= frameHeight;
-			value = point;
+			loot = point;
 		}
 		
 	}

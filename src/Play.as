@@ -29,9 +29,9 @@ package
 	 */
 	public class Play extends FlxState 
 	{
-		[Embed(source = "../maps/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
-		[Embed(source = "../maps/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
-		[Embed(source = "../maps/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
+		[Embed(source = "../level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
+		[Embed(source = "../level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
+		[Embed(source = "../level/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
 		[Embed(source="../assets/sfx/binding2.mp3")] public  var Sfx_BG2:Class;
 
 		public var player:Player;
@@ -44,15 +44,34 @@ package
 		
 		override public function create():void
 		{	
-			switch (FlxG.score) { // Score = - Level à la création
-				case -1:
-					map = new Map(mapfile);
+			switch (FlxG.univ) {
+				// UNIVERS 1
+				case 1:
+					switch (FlxG.level) { 
+						case 1:
+							map = new Map(mapfile);
+							break;
+						case 2:
+							map = new Map(mapfile2);
+							break;
+						case 3:
+							map = new Map(mapfile3);
+							break;
+					}
 					break;
-				case -2:
-					map = new Map(mapfile2);
-					break;
-				case -3:
-					map = new Map(mapfile3);
+				// UNIVERS 2
+				case 2:
+					switch (FlxG.level) { 
+						case 1:
+							map = new Map(mapfile);
+							break;
+						case 2:
+							map = new Map(mapfile2);
+							break;
+						case 3:
+							map = new Map(mapfile3);
+							break;
+					}
 					break;
 			}
 			// SON ARRIERE PLAN
@@ -71,7 +90,6 @@ package
 				
 				// MENU PAUSE
 				if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
-					trace(player.velocity.y, player.gravity);
 					player.pause = true;
 					this.setSubState(pause, onMenuClosed);
 				}
@@ -86,7 +104,32 @@ package
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
+				FlxG.overlap(player, map.piques, die_motherfucker);
 				FlxG.collide(player, map.destructible, check_ground);
+				
+				// POUBELLE JOUEUR
+				if (FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed)) {
+					// POUBELLE RIEN
+					if (player.push != null) {
+						player.push.x = player.x + player.push.frameWidth;
+						player.push.y = player.y;
+					}
+					// POUSSE PLUS
+					if ((player.pushing == false) && (player.push != null)) {
+					/*	trace("ici");
+						FlxG.state.remove(player.push);
+						player.push.destroy();
+						player.pushing = false;
+						player.push = null;*/
+					}
+				}
+				/*else {
+					// POUBELLE SOL
+					if (FlxG.collide(map.DustbinBieber, map.tile)) {
+					}
+				}*/
+				
+				
 				if (!FlxG.collide(player, map.tile, player.tiles_coll))
 					player.floating = true;
 				else {
@@ -99,12 +142,19 @@ package
 			}
 		}
 
+		// GESTION PIQUES
+		public function die_motherfucker(obj1:FlxObject, obj2:FlxObject):void {
+			player.x = player.checkpoint.x;
+			player.y = player.checkpoint.y;
+		}
+		
 		// GESTION RECUP TUBE VERT
 		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
-			FlxG.score += 10;
 			obj2.kill();
 			obj2.destroy();
+			FlxG.state.add(new Loot(player,(obj2 as TubeVert).loot));
 		}
+
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
@@ -125,6 +175,7 @@ package
 				// TUE L'alien
 				if ((player.gravity > alienkill) && (from == 0)) {
 					obj2.kill();
+					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
 				// REBONDS
 				else if (from == 0) {
@@ -147,7 +198,7 @@ package
 				sound.destroy();
 				FlxG.switchState(new UnivChooser()); 
 			}
-			// REDEMARRE LE NIVEAU (pas encore d'option dans PauseMenu)
+			// REDEMARRE LE NIVEAU
 			else if (result == PauseMenu.RESTART)
 			{
 				sound.destroy();

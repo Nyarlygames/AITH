@@ -9,15 +9,12 @@ package
 	public class Piques extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/alien.png')] protected var ImgAlien:Class;
-		public var loot:int = 0;
+		[Embed(source = '../assets/gfx/piques.png')] protected var ImgPique:Class;
 		
-		public function Piques(xpos:int, ypos:int, count:int) 
+		public function Piques(xpos:int, ypos:int) 
 		{
-			super(xpos, ypos, ImgAlien);
+			super(xpos, ypos, ImgPique);
 			y -= frameHeight;
-			loot = count;
-			elasticity = 1;
 			immovable = true;
 		}
 		

@@ -154,6 +154,10 @@ package org.flixel
 		static public var level:int;
 		static public var scores:Array;
 		static public var score:int;
+		// UNIVERS
+		static public var univ:int = 0;
+		static public var tilemap:FlxTilemapExt = null;
+		
 		/**
 		 * <code>FlxG.saves</code> is a generic bucket for storing
 		 * FlxSaves so you can access them whenever you want.
