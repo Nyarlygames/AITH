@@ -157,6 +157,8 @@ package org.flixel
 		// UNIVERS
 		static public var univ:int = 0;
 		static public var tilemap:FlxTilemapExt = null;
+		static public var player:Player = null;
+		static public var map:Map = null;
 		
 		/**
 		 * <code>FlxG.saves</code> is a generic bucket for storing

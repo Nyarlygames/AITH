@@ -104,7 +104,8 @@ package
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
-				FlxG.overlap(player, map.piques, die_motherfucker);
+				if (FlxG.overlap(player, map.piques))
+					player.die_motherfucker();
 				FlxG.collide(player, map.destructible, check_ground);
 				
 				// POUBELLE JOUEUR
@@ -121,12 +122,6 @@ package
 					pause.inPause();
 				}
 			}
-		}
-
-		// GESTION PIQUES
-		public function die_motherfucker(obj1:FlxObject, obj2:FlxObject):void {
-			player.x = player.checkpoint.x;
-			player.y = player.checkpoint.y;
 		}
 		
 		// GESTION RECUP TUBE VERT
@@ -165,8 +160,7 @@ package
 				}
 				// MEURT
 				else {
-					player.x = player.checkpoint.x;
-					player.y = player.checkpoint.y;
+					player.die_motherfucker();
 				}
 			}
 		}

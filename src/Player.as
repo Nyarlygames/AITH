@@ -175,6 +175,11 @@ package
 			}
 		}
 		
+		// GESTION PIQUES
+		public function die_motherfucker():void {
+			x = checkpoint.x;
+			y = checkpoint.y;
+		}
 		
 	}
 

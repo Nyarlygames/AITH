@@ -55,6 +55,7 @@ package
 				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
 				loader.load(new	URLRequest(lignes[1]));
 			}
+			FlxG.map = this;
 		}
 		
 		// PARCOURS LE TMX
@@ -68,6 +69,7 @@ package
 			tile.loadMap(csv, MapTiles, 40, 40);
 			FlxG.state.add(tile);
 			FlxG.tilemap = tile;
+			background = new Background(id);
 			
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
@@ -104,7 +106,6 @@ package
 						break;
 				}
 			}
-			background = new Background(id);
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(piques);
@@ -114,6 +115,7 @@ package
 			loaded = true;
 			// AJOUT PLAYER ET CAM
 			player = new Player(50, FlxG.height - 40);
+			FlxG.player = player;
 			cam = new Cam(player);
 			FlxG.state.add(player);
 			FlxG.state.add(player.g);
