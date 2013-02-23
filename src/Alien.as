@@ -10,13 +10,12 @@ package
 	{
 		
 		[Embed(source = '../assets/gfx/alien.png')] protected var ImgAlien:Class;
-		public var loot:int = 0;
+		public var loot:int = 1;
 		
-		public function Alien(xpos:int, ypos:int, count:int) 
+		public function Alien(xpos:int, ypos:int, img:Class) 
 		{
-			super(xpos, ypos, ImgAlien);
+			super(xpos, ypos, img);
 			y -= frameHeight;
-			loot = count;
 			elasticity = 1;
 			immovable = true;
 		}

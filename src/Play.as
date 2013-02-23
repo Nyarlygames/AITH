@@ -54,7 +54,7 @@ package
 						case 2:
 							map = new Map(mapfile2);
 							break;
-						case 3:
+						case 3:    
 							map = new Map(mapfile3);
 							break;
 					}

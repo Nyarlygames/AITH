@@ -80,10 +80,16 @@ package
 						item.add (new TubeVert(object.x, object.y, 5,1));
 						break;
 					case "Alien":
-						ens.add (new Alien(object.x, object.y, 1));
+						ens.add (new AlienNormal(object.x, object.y));
 						break;
 					case "AlienVert":
-						ens.add (new AlienVert(object.x, object.y, 1));
+						ens.add (new AlienVert(object.x, object.y));
+						break;
+					case "AlienTireur":
+						ens.add (new AlienTireur(object.x, object.y));
+						break;
+					case "AlienHorizontal":
+						ens.add (new AlienHorizontal(object.x, object.y));
 						break;
 					case "Piques":
 						piques.add (new Piques(object.x, object.y));
