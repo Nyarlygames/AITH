@@ -14,7 +14,7 @@ package
 	{
 		[Embed(source = '../assets/gfx/alien_tireur.png')] protected var ImgAlienTir:Class;
 		[Embed(source = '../assets/gfx/tir.png')] public var ImgShoot:Class;
-		public var rate:int = 1000;							// CADENCE DE TIR
+		public var rate:int = 1500;							// CADENCE DE TIR
 		public var maxtir:int = 200;						// MAXIMUM DE TIR
 		public var speed:int = 300;							// VITESSE DE TIR
 		public var gravity:int = 1000;						// GRAVITE DE TIR

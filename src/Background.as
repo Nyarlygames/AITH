@@ -17,7 +17,8 @@ package
 		 
 		[Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
 		[Embed(source = '../assets/gfx/level/background/bg_level_1_1_1_alt1.png')] public var ImgBackground2:Class;
-		[Embed(source = '../assets/gfx/sol_test.png')] public var ImgSol:Class;
+		[Embed(source = '../assets/gfx/sol_old.png')] public var ImgSol:Class;
+		[Embed(source = '../assets/gfx/sol_test.png')] public var ImgSol2:Class;
 		 
 		public function Background(level:int) 
 		{
@@ -26,11 +27,11 @@ package
 			switch (level) {
 				case 1:
 					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);
-					loadGraphic(ImgBackground2);
+					loadGraphic(ImgBackground);
 					break;
 				case 2:
-					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);
-					loadGraphic(ImgBackground);
+					sol = new FlxSprite(0, FlxG.height + 200, ImgSol2);
+					loadGraphic(ImgBackground2);
 					break;
 				case 3:
 					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);

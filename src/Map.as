@@ -36,7 +36,8 @@ package
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
-        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/aith_tiles3.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles2:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
 		public var background:Background;
 		
@@ -74,6 +75,15 @@ package
 			FlxG.state.add(tile);
 			FlxG.tilemap = tile;
 			background = new Background(id);
+			
+			if (id == 1) {
+				// RECUPERATION DES TILES VISIBLES
+				var csv2:String = tmx.getLayer('Tilevisible').toCsv(tmx.getTileSet('aith_tiles2'));
+				var tile2:FlxTilemapExt = new FlxTilemapExt();
+				tile2.loadMap(csv, MapTiles2, 40, 40);
+				FlxG.state.add(tile2);
+				FlxG.tilemap = tile2;
+			}
 			
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
@@ -113,7 +123,10 @@ package
 						DustbinBieber.add (new Poubelle(object.x, object.y));
 						break;
 					case "Soufflerie":
-						souffleries.add (new Soufflerie(object.x, object.y));
+						if (object.custom != null)
+							souffleries.add (new Soufflerie(object.x, object.y, object.custom["angle"]));
+						else
+							souffleries.add (new Soufflerie(object.x, object.y, 90));
 						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
