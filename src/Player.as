@@ -43,7 +43,6 @@ package
 		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION
 		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle = null;		// POUBELLE POUSSEE
-		
 		public var checkpoint:FlxPoint = new FlxPoint(50, FlxG.height - 40);
 		
 		public function Player(xPos:int, yPos:int) 
@@ -123,7 +122,7 @@ package
 			
 			// GET LA TILE COURANTE
 			var mytile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y/40) +2);
-
+			
 			// HAUT DU TREMPLIN
 			if ((mytile == 4) && (jumping == false)) {
 				lasttile = 4;

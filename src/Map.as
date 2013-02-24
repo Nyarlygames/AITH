@@ -25,6 +25,8 @@ package
 		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
+		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
+		public var triggers:FlxGroup = new FlxGroup();										// TRIGGERS
 		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
@@ -94,8 +96,14 @@ package
 					case "AlienHorizontal":
 						ens.add (new AlienHorizontal(object.x, object.y));
 						break;
+					case "Ascenceur":
+						ascenceurs.add (new Ascenceur(object.x, object.y));
+						break;
 					case "Checkpoints":
 						checkpoints.add (new Checkpoints(object.x, object.y));
+						break;
+					case "Trigger":
+						triggers.add(new Trigger(object.x, object.y));
 						break;
 					case "Piques":
 						piques.add (new Piques(object.x, object.y));
@@ -112,6 +120,8 @@ package
 			}
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
+			FlxG.state.add(ascenceurs);
+			FlxG.state.add(triggers);
 			FlxG.state.add(piques);
 			FlxG.state.add(DustbinBieber);
 			FlxG.state.add(ens);
