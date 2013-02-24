@@ -1,5 +1,6 @@
 package  
 {
+	import adobe.utils.CustomActions;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxTilemap;
@@ -20,33 +21,39 @@ package
 		public function Poubelle(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgDustbinBieber);
-			y -= frameHeight -40;
+			immovable = true;
 		}
 		
 		override public function update():void {
-			if (player != null) {
+			if ((player != null) && (player.pushing == true)) {
 				// POUBELLE RIEN
-				if ((FlxG.tilemap.getTile(Math.floor(player.push.x / 40) +2, Math.round(player.push.y / 40) +1)) == 0) {
-					player.push.x = player.x + player.push.frameWidth;
-					player.push.y = player.y;
-					player.push.velocity.x = player.velocity.x;
+				if ((FlxG.tilemap.getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1)) == 0) {
+					x = player.x + player.push.frameWidth;
+					velocity.x = player.velocity.x;
 				}
 				//ARRET POUBELLE
 				else {
-					player.push.velocity.x = 0;
+					velocity.x = 0;
 					player.velocity.x = 0;
-					player.push.immovable = true;
 					if (player.gravity > 500) {
-						player.pushing = false;
+						destruction();
 					}
 				}
-				if (player.pushing == false) {
-					kill();
-					destroy();
-					FlxG.state.remove(this);
-					FlxG.player.velocity.x = FlxG.player.init_speed;
+				
+				// POUBELLE VIDE
+				if (FlxG.tilemap.getTile(Math.floor(x / 40), Math.round(y / 40) +2) == 0) {
+					y += frameHeight;
+					velocity.x = 0;
+					FlxG.player.pushing = false;
 				}
 			}	
+		}
+		
+		public function destruction():void {
+			FlxG.player.velocity.x = FlxG.player.init_speed;
+			kill();
+			destroy();
+			FlxG.state.remove(this);
 		}
 	}
 

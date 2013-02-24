@@ -27,6 +27,7 @@ package
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
 		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
+		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
 		public var triggers:FlxGroup = new FlxGroup();										// TRIGGERS
 		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
@@ -79,21 +80,13 @@ package
 			}
 			else {
 				// RECUPERATION DES TILES CSV
-				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
-				tile.loadMap(csv, MapTiles, 40, 40);
+				var csv2:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
+				tile.loadMap(csv2, MapTiles, 40, 40);
 				FlxG.state.add(tile);
 				FlxG.tilemap = tile;
 				background = new Background(id);
 			}
 			
-			/*if (id == 1) {
-				// RECUPERATION DES TILES VISIBLES
-				var csv2:String = tmx.getLayer('Tilevisible').toCsv(tmx.getTileSet('aith_tiles2'));
-				var tile2:FlxTilemapExt = new FlxTilemapExt();
-				tile2.loadMap(csv, MapTiles2, 40, 40);
-				FlxG.state.add(tile2);
-				FlxG.tilemap = tile2;
-			}*/
 			
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
@@ -132,6 +125,9 @@ package
 					case "Poubelles":
 						DustbinBieber.add (new Poubelle(object.x, object.y));
 						break;
+					case "Soucoupe":
+						soucoupes.add (new Soucoupe(object.x, object.y));
+						break;
 					case "Soufflerie":
 						if (object.custom != null)
 							souffleries.add (new Soufflerie(object.x, object.y, object.custom["angle"]));
@@ -152,6 +148,7 @@ package
 			FlxG.state.add(piques);
 			FlxG.state.add(DustbinBieber);
 			FlxG.state.add(souffleries);
+			FlxG.state.add(soucoupes);
 			FlxG.state.add(ens);
 			FlxG.state.add(checkpoints);
 			// CHARGEMENT FINIT

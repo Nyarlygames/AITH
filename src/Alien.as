@@ -15,7 +15,6 @@ package
 		public function Alien(xpos:int, ypos:int, img:Class) 
 		{
 			super(xpos, ypos, img);
-			y -= frameHeight;
 			elasticity = 1;
 			immovable = true;
 		}
