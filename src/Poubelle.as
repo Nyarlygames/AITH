@@ -36,11 +36,16 @@ package
 					player.push.velocity.x = 0;
 					player.velocity.x = 0;
 					player.push.immovable = true;
-					if (player.gravity > 500)
+					if (player.gravity > 500) {
 						player.pushing = false;
+					}
 				}
-				if (player.pushing == false)
+				if (player.pushing == false) {
+					kill();
+					destroy();
 					FlxG.state.remove(this);
+					FlxG.player.velocity.x = FlxG.player.init_speed;
+				}
 			}	
 		}
 	}

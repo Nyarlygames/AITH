@@ -111,7 +111,7 @@ package
 				FlxG.collide(player, map.destructible, check_ground);
 				
 				// POUBELLE JOUEUR
-				//FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed);
+				FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed);
 				
 				
 				if (!FlxG.collide(player, map.tile, player.tiles_coll))
