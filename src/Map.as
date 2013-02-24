@@ -36,8 +36,7 @@ package
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
-        [Embed(source = '../assets/gfx/aith_tiles3.png')] public var MapTiles:Class;
-        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles2:Class;
+        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
 		public var background:Background;
 		
@@ -68,22 +67,33 @@ package
 			
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
-
-			// RECUPERATION DES TILES CSV
-			var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles3'));
-			tile.loadMap(csv, MapTiles, 40, 40);
-			FlxG.state.add(tile);
-			FlxG.tilemap = tile;
-			background = new Background(id);
+			
 			
 			if (id == 1) {
+				background = new Background(id);
+				// RECUPERATION DES TILES CSV
+				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
+				tile.loadMap(csv, MapTiles, 40, 40);
+				FlxG.state.add(tile);
+				FlxG.tilemap = tile;
+			}
+			else {
+				// RECUPERATION DES TILES CSV
+				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
+				tile.loadMap(csv, MapTiles, 40, 40);
+				FlxG.state.add(tile);
+				FlxG.tilemap = tile;
+				background = new Background(id);
+			}
+			
+			/*if (id == 1) {
 				// RECUPERATION DES TILES VISIBLES
 				var csv2:String = tmx.getLayer('Tilevisible').toCsv(tmx.getTileSet('aith_tiles2'));
 				var tile2:FlxTilemapExt = new FlxTilemapExt();
 				tile2.loadMap(csv, MapTiles2, 40, 40);
 				FlxG.state.add(tile2);
 				FlxG.tilemap = tile2;
-			}
+			}*/
 			
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
