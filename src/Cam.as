@@ -20,7 +20,7 @@ package
 		
 		public function Cam(joueur:Player) 
 		{
-			super(0, 300);
+			super(0, 500);
 			player = joueur;
 		}
 		
@@ -30,9 +30,9 @@ package
 			x = player.x + 350;
 			
 			// DEPASSEMENT VERTICAL
-			if (player.y - player.frameHeight/2 <= 300)
+			if (player.y - player.frameHeight/2 <= 500)
 				y = player.y + 260;
-			else y = 300;
+			else y = 500;
 		}
 		
 		

@@ -14,9 +14,10 @@ package
 	{
 		[Embed(source = '../assets/gfx/alien_tireur.png')] protected var ImgAlienTir:Class;
 		[Embed(source = '../assets/gfx/tir.png')] public var ImgShoot:Class;
-		public var rate:int = 300;							// CADENCE DE TIR
+		public var rate:int = 1000;							// CADENCE DE TIR
 		public var maxtir:int = 200;						// MAXIMUM DE TIR
 		public var speed:int = 300;							// VITESSE DE TIR
+		public var gravity:int = 1000;						// GRAVITE DE TIR
 		public var shoot:FlxWeapon;
 		
 		public function AlienTireur(xpos:int, ypos:int) 
@@ -26,7 +27,8 @@ package
 			shoot.makeImageBullet(maxtir, ImgShoot, frameWidth/2, frameHeight/2);
 			shoot.setFireRate(rate);
 			shoot.setBulletSpeed(speed);
-			shoot.setBulletBounds(new FlxRect(x - 800, y - 300, x, y+300));
+			shoot.setBulletBounds(new FlxRect(x - 800, y, x, y + 600));
+			shoot.setBulletGravity(0, gravity);
 			FlxG.state.add(shoot.group);
 		}
 		

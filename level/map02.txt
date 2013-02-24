@@ -1,2 +1,2 @@
 2
-../maps/map3bisold.tmx
+../level/layout/exterieur/level_1_2.tmx

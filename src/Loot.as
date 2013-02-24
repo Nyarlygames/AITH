@@ -23,18 +23,17 @@ package
 		public function Loot(joueur:Player, value:int) 
 		{
 			player = joueur;
-			super(50, player.y, ImgTube);
-			y += frameHeight;
+			super(50, player.y - 200, ImgTube);
+			y -= frameHeight;
 			loot = value;
 			timer.start(1, 1, goaway);
 			scrollFactor = new FlxPoint(0, 0);
 		}
 		
 		override public function update():void {
-			y = player.y - frameHeight - up;
+			y = player.y - 200 - frameHeight - up;
 			up += 100 * FlxG.elapsed;
 		}
-		
 		
 		public function goaway(timeur:FlxTimer):void {
 			FlxG.state.remove(this);

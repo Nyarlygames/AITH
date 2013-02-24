@@ -26,6 +26,7 @@ package
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
 		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
+		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var triggers:FlxGroup = new FlxGroup();										// TRIGGERS
 		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
@@ -35,7 +36,7 @@ package
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
-        [Embed(source = '../assets/gfx/aith_tiles3.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
 		public var background:Background;
 		
@@ -111,6 +112,9 @@ package
 					case "Poubelles":
 						DustbinBieber.add (new Poubelle(object.x, object.y));
 						break;
+					case "Soufflerie":
+						souffleries.add (new Soufflerie(object.x, object.y));
+						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
 						ground.immovable = true;
@@ -124,20 +128,21 @@ package
 			FlxG.state.add(triggers);
 			FlxG.state.add(piques);
 			FlxG.state.add(DustbinBieber);
+			FlxG.state.add(souffleries);
 			FlxG.state.add(ens);
 			FlxG.state.add(checkpoints);
 			// CHARGEMENT FINIT
 			loaded = true;
 			// AJOUT PLAYER ET CAM
-			player = new Player(50, FlxG.height - 40);
+			player = new Player(50, 800 - 40);
 			FlxG.player = player;
 			cam = new Cam(player);
 			FlxG.state.add(player);
 			FlxG.state.add(player.g);
 			FlxG.state.add(player.v);
 			FlxG.state.add(cam);
-			FlxG.worldBounds = new FlxRect(0, -offsety, 5000, 600 + offsety);
-			FlxG.camera.setBounds(0, -offsety, 5000, 600 + offsety);
+			FlxG.worldBounds = new FlxRect(0, 0, 5000, 600 + offsety);
+			FlxG.camera.setBounds(0, 0, 5000, 600 + offsety);
 			FlxG.camera.follow(cam);
 		}
 	}

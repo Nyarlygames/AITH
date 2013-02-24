@@ -43,7 +43,7 @@ package
 		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION
 		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle = null;		// POUBELLE POUSSEE
-		public var checkpoint:FlxPoint = new FlxPoint(50, FlxG.height - 40);
+		public var checkpoint:FlxPoint = new FlxPoint(50, 700 - 40);
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -182,7 +182,6 @@ package
 			velocity.y = mingravity;
 			gravity = mingravity;
 		}
-		
 	}
 
 }

@@ -22,18 +22,18 @@ package
 		public function Background(level:int) 
 		{
 			// CHANGE L ARRIERE PLAN SUIVANT LE NIVEAU
-			super(0, FlxG.height);
+			super(0, FlxG.height + 200);
 			switch (level) {
 				case 1:
-					sol = new FlxSprite(0, FlxG.height, ImgSol);
+					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);
 					loadGraphic(ImgBackground2);
 					break;
 				case 2:
-					sol = new FlxSprite(0, FlxG.height, ImgSol);
+					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);
 					loadGraphic(ImgBackground);
 					break;
 				case 3:
-					sol = new FlxSprite(0, FlxG.height, ImgSol);
+					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);
 					loadGraphic(ImgBackground2);
 					break;
 			}
