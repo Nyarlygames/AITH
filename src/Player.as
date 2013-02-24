@@ -48,7 +48,6 @@ package
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);
-			y -= frameHeight;
 			maxVelocity.y = maxgravity;
 			maxVelocity.x = init_speed;
 			facing = RIGHT;

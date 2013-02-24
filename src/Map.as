@@ -26,6 +26,8 @@ package
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
 		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
+		public var shootemup:FlxGroup = new FlxGroup();										// SHOOTEMUP
+		public var boss:FlxGroup = new FlxGroup();											// VAGUES
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
 		public var triggers:FlxGroup = new FlxGroup();										// TRIGGERS
@@ -69,8 +71,8 @@ package
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
 			
-			
-			if (id == 1) {
+			// TEMPORAIRE EN ATTENDANT LE VRAI SOL
+			if ((id == 1) || (id == 3)){
 				background = new Background(id);
 				// RECUPERATION DES TILES CSV
 				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
@@ -113,6 +115,12 @@ package
 					case "Ascenceur":
 						ascenceurs.add (new Ascenceur(object.x, object.y));
 						break;
+					case "ShootemUp":
+						shootemup.add (new ShootemUp(object.x, object.y));
+						break;
+					case "Boss":
+						boss.add (new Boss(object.x, object.y));
+						break;
 					case "Checkpoints":
 						checkpoints.add (new Checkpoints(object.x, object.y));
 						break;
@@ -147,6 +155,7 @@ package
 			FlxG.state.add(triggers);
 			FlxG.state.add(piques);
 			FlxG.state.add(DustbinBieber);
+			FlxG.state.add(shootemup);
 			FlxG.state.add(souffleries);
 			FlxG.state.add(soucoupes);
 			FlxG.state.add(ens);

@@ -96,7 +96,7 @@ package
 				
 				// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
 				if (FlxG.keys.pressed("BACKSPACE")) {
-					//sound.destroy();
+					sound.destroy();
 					FlxG.score = -map.id;
 					FlxG.resetState();
 				}
