@@ -14,11 +14,10 @@ package
 	 */
 	public class UnivChooser extends FlxState
 	{
-		[Embed(source = '../assets/gfx/replay.png')] protected var ImgReplay:Class;
-		[Embed(source = '../assets/gfx/cursor.png')] protected var ImgCursor:Class;
-		[Embed(source = '../assets/gfx/uni1.png')] protected var ImgUni1:Class;
-		[Embed(source = '../assets/gfx/uni2.png')] protected var ImgUni2:Class;
-		[Embed(source = '../assets/gfx/uni3.png')] protected var ImgUni3:Class;
+		[Embed(source = '../assets/gfx/ui/btn_replay.png')] protected var ImgReplay:Class;
+		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/univ_1.png')] protected var ImgUni1:Class;
+		[Embed(source = '../assets/gfx/ui/univ_2.png')] protected var ImgUni2:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;

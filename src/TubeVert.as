@@ -9,8 +9,8 @@ package
 	public class TubeVert extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/tubevert.png')] protected var ImgTube:Class;
-		[Embed(source = '../assets/gfx/grostubevert.png')] protected var ImgGrosTube:Class;
+		[Embed(source = '../assets/gfx/gameplay/petit_tube.png')] protected var ImgTube:Class;
+		[Embed(source = '../assets/gfx/gameplay/gros_tube.png')] protected var ImgGrosTube:Class;
 		public var loot:int = 0;
 		
 		public function TubeVert(xpos:int, ypos:int, point:int, id:int) 

@@ -8,7 +8,7 @@ package
 	 */
 	public class Piques extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/piques.png')] protected var ImgPique:Class;
+		[Embed(source = '../assets/gfx/gameplay/piques.png')] protected var ImgPique:Class;
 		
 		public function Piques(xpos:int, ypos:int) 
 		{

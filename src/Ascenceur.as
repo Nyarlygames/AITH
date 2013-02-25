@@ -10,7 +10,7 @@ package
 	 */
 	public class Ascenceur extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/ascenceur.png')] protected var ImgAscenceur:Class;
+		[Embed(source = '../assets/gfx/gameplay/ascenseur.png')] protected var ImgAscenceur:Class;
 		public var speed:int = 100;						// VITESSE DEPLACEMENT ASCENCEUR
 		public var blocked:Boolean = false;				// JOUEUR BLOQUE?
 		public var unlock:Boolean = false;				// JOUEUR BLOQUE?

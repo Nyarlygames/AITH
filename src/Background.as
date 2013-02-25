@@ -7,7 +7,7 @@ package
 	import flash.geom.Rectangle;
 	
 	/**
-	 * ...
+	 * Arriere plan
 	 * @author ...
 	 */
 	public class Background extends FlxSprite 
@@ -15,10 +15,10 @@ package
 		public var sound:FlxSound;
 		public var sol:FlxSprite;
 		 
-		[Embed(source = '../assets/gfx/bg.png')] public var ImgBackground:Class;
-		[Embed(source = '../assets/gfx/level/background/bg_level_1_1_1_alt1.png')] public var ImgBackground2:Class;
-		[Embed(source = '../assets/gfx/sol_old.png')] public var ImgSol:Class;
-		[Embed(source = '../assets/gfx/sol_test.png')] public var ImgSol2:Class;
+		[Embed(source = '../assets/gfx/levels/bg_lvl_1_1.png')] public var ImgBackground:Class;
+		[Embed(source = '../assets/gfx/levels/bg_lvl_1_2.png')] public var ImgBackground2:Class;
+		[Embed(source = '../assets/gfx/levels/sol_lvl_1_1.png')] public var ImgSol:Class;
+		[Embed(source = '../assets/gfx/levels/sol_lvl_1_2.png')] public var ImgSol2:Class;
 		 
 		public function Background(level:int) 
 		{

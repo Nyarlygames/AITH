@@ -10,7 +10,7 @@ package
 	 */
 	public class Soufflerie extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/soufflerie.png')] protected var ImgSoufflerie:Class;
+		[Embed(source = '../assets/gfx/gameplay/soufflerie.png')] protected var ImgSoufflerie:Class;
 		public var gravity:int = 100;								// GRAVITY MODIFIER
 		public var applied:Boolean = false;
 		public var boost:int = 200;

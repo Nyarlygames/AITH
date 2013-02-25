@@ -11,8 +11,8 @@ package
 	 */
 	public class Soucoupe extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/soucoupe.png')] protected var ImgSoucoupe:Class;
-		[Embed(source = '../assets/gfx/halo.png')] protected var ImgHalo:Class;
+		[Embed(source = '../assets/gfx/gameplay/soucoupe.png')] protected var ImgSoucoupe:Class;
+		[Embed(source = '../assets/gfx/gameplay/halo_soucoupe.png')] protected var ImgHalo:Class;
 		public var gravity:int = 100;								// GRAVITY MODIFIER
 		public var applied:Boolean = false;
 		public var halo:FlxSprite;

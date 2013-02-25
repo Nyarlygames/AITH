@@ -12,7 +12,7 @@ package
 	 */
 	public class Poubelle extends FlxSprite
 	{
-		[Embed(source = '../assets/gfx/DustbinBieber.png')] protected var ImgDustbinBieber:Class;
+		[Embed(source = '../assets/gfx/gameplay/dustbin_bieber.png')] protected var ImgDustbinBieber:Class;
 		public var poids:int = 500;									// Gravité (vitesse?) requise pour la déplacer
 		public var vitesse:int = 250;								// Vitesse produite sur le joueur (?) NYI
 		public var cur_tile:int = 0;								// Type tile courante

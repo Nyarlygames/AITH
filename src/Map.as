@@ -39,8 +39,8 @@ package
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
-        [Embed(source = '../assets/gfx/aith_tiles2.png')] public var MapTiles:Class;
-        [Embed(source = '../assets/gfx/des_ground.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
 		public var background:Background;
 		
 		/**

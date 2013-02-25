@@ -9,6 +9,8 @@ package
 	import org.flixel.FlxRect;
 	import org.flixel.FlxObject;
 	import org.flixel.FlxTilemap;
+	import org.flixel.FlxEmitter;
+	import org.flixel.FlxParticle;
 	
 	/**
 	 * Joueur (jimi)
@@ -17,9 +19,10 @@ package
 	public class Player extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/player.png')] protected var ImgPlayer:Class;
-		[Embed(source = '../assets/gfx/vit.png')] protected var ImgV:Class;
-		[Embed(source = '../assets/gfx/grav.png')] protected var ImgG:Class;
+		[Embed(source = '../assets/gfx/gameplay/player.png')] protected var ImgPlayer:Class;
+		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
+		[Embed(source = '../assets/gfx/ui/jauge_vitesse.png')] protected var ImgV:Class;
+		[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
 		public var g:FlxSprite;
 		public var v:FlxSprite;
 		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)
@@ -40,9 +43,10 @@ package
 		public var set_old:Boolean = true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
 		public var lasttile:int = 0;			
 		public var angularspeed:int = 150;		// VITESSE DE ROTATION
-		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION
+		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION0
 		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle = null;		// POUBELLE POUSSEE
+		public var emitter:FlxEmitter;			// MOTEUR
 		public var checkpoint:FlxPoint = new FlxPoint(50, 700 - 40);
 		
 		public function Player(xPos:int, yPos:int) 
@@ -57,6 +61,20 @@ package
 			cur_velocity = new FlxPoint(init_speed, mingravity);
 			cur_angularspeed = angularspeed;
 			
+			
+			
+			emitter = new FlxEmitter(xPos, yPos, 5);
+			for(var i:int = 0; i < 10; i++) {
+				var p:FlxParticle = new FlxParticle();
+				p.loadGraphic(ImgParticle);
+				emitter.add(p);
+			}
+			emitter.y += frameHeight;
+			emitter.gravity = 10;
+			emitter.setXSpeed(-10, -2);
+			emitter.start(false, 0.4, 0.05, 0);
+			FlxG.state.add(emitter);
+			
 			g = new FlxSprite(FlxG.width / 2, 0, ImgG);
 			g.scrollFactor.x = g.scrollFactor.y = 0;
 			g.scale.x = 0.1;
@@ -66,6 +84,8 @@ package
 		
 		override public function update():void 
 		{
+			emitter.x = x;
+			emitter.y = y + frameHeight;
 			// SI PAUSE ON GARDE LES VALEURS DE VITESSE ET GRAVITE
 			if ((pause) && (set_old == true)) {
 				cur_velocity.x = velocity.x;

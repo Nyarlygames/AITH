@@ -14,8 +14,8 @@ package
 	public class Boss extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/boss.png')] protected var ImgBoss:Class;
-		[Embed(source = '../assets/gfx/tir_boss.png')] public var ImgShoot:Class;
+		[Embed(source = '../assets/gfx/gameplay/boss_exterieur.png')] protected var ImgBoss:Class;
+		[Embed(source = '../assets/gfx/gameplay/tir_boss.png')] public var ImgShoot:Class;
 		public var rate:int = 20;							// CADENCE DE TIR
 		public var maxtir:int = 500;						// MAXIMUM DE TIR
 		public var speed:int = 20;							// VITESSE DE TIR

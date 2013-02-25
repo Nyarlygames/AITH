@@ -10,7 +10,7 @@ package
 	 */
 	public class ShootemUp extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/troika.png')] protected var ImgShootemUp:Class;
+		[Embed(source = '../assets/gfx/gameplay/troika.png')] protected var ImgShootemUp:Class;
 		public var speed:int = 100;						// VITESSE DEPLACEMENT ASCENCEUR
 		public var blocked:Boolean = false;				// JOUEUR BLOQUE?
 		public var unlock:Boolean = false;				// JOUEUR BLOQUE?

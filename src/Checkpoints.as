@@ -9,8 +9,8 @@ package
 	 */
 	public class Checkpoints extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/checkpoint.png')] protected var ImgCheck:Class;
-		[Embed(source = '../assets/gfx/checkpoint_validated.png')] protected var ImgCheckValid:Class;
+		[Embed(source = '../assets/gfx/gameplay/checkpoint.png')] protected var ImgCheck:Class;
+		[Embed(source = '../assets/gfx/gameplay/checkpoint_validated.png')] protected var ImgCheckValid:Class;
 		public var validated:Boolean = false;
 		
 		public function Checkpoints(xpos:int, ypos:int) 

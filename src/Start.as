@@ -13,8 +13,8 @@ package
 	 */
 	public class Start extends FlxState
 	{
-		[Embed(source = '../assets/gfx/aith_logo.png')] protected var ImgLogo:Class;
-		[Embed(source = '../assets/gfx/cursor.png')] protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/aith_logo.png')] protected var ImgLogo:Class;
+		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		public var logo:FlxSprite;
 		public var cursor:FlxSprite;

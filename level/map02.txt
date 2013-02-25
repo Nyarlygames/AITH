@@ -1,2 +1,0 @@
-2
-../level/layout/exterieur/level_1_2.tmx
