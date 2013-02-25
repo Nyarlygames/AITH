@@ -52,8 +52,8 @@ package
 		
 		//	------------------------------------------------ CONSTANTES DE TEST ----------------
 		public var accumulateur:int = 0;
-		public var palier_accumulateur:int = 50;
-		public var test_gravity:int = 2500;
+		public var palier_accumulateur:int = -3000;
+		public var test_gravity:int = 2300;
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -103,25 +103,22 @@ package
 			
 			// TILE COURANTE DE COLLISION
 			var current_tile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1);
-			// TILE QUI IGNORE LES "TROUS"
-			var mytile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y / 40) +2);
-			
 			// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
 			if ((current_tile == 1) || (current_tile == 4))
-				accumulateur -= palier_accumulateur;
+				accumulateur += palier_accumulateur * FlxG.elapsed;
 				
 			// DERNIERE TILE DU TREMPLIN
-			if ((mytile == 4) && (jumping == false)) {
+			if ((current_tile == 4) && (jumping == false)) {
 				lasttile = 4;
 			}
 			// SORTIT DU TREMPLIN
-			else if ((lasttile == 4) && (mytile == 0)) {
+			else if ((lasttile == 4) && (current_tile == 0)) {
 				acceleration.y = accumulateur;
 				jumping = true;
 				lasttile = 0;
 			}
 			// RAZ DE L'ACCUMULATEUR AU RETOUR AU SOL
-			else if ((jumping) && (lasttile == 0) && (mytile != 0)) {
+			else if ((jumping) && (acceleration.y > 0)) {
 				jumping = false;
 				accumulateur = 0;
 			}
