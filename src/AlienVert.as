@@ -11,7 +11,7 @@ package
 	public class AlienVert extends Alien
 	{
 		
-		[Embed(source = '../assets/gfx/alien_vert.png')] protected var ImgAlienVer:Class;
+		[Embed(source = '../assets/gfx/gameplay/alien_vertical.png')] protected var ImgAlienVer:Class;
 		
 		public var pathnodes:Array = new Array();
 		public var my_path:FlxPath;

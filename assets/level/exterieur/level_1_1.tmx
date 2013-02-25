@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="125" height="20" tilewidth="40" tileheight="40">
- <tileset firstgid="1" name="aith_tiles2" tilewidth="40" tileheight="40">
-  <image source="../../../assets/gfx/aith_tiles2.png" width="240" height="40"/>
+ <tileset firstgid="1" name="aith_tiles" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/misc/aith_tiles.png" width="240" height="40"/>
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
   <object name="Piques" type="Piques" x="3957" y="0" width="79" height="166"/>

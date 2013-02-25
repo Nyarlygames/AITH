@@ -27,8 +27,8 @@ package
 		public var resumePic:FlxSprite;
 		public var restartPic:FlxSprite;
 		public var quitPic:FlxSprite;
-		[Embed(source = '../assets/gfx/cursor.png')] protected var ImgCursor:Class;
-		[Embed(source = '../assets/gfx/pausemenu.png')] protected var ImgMenu:Class;
+		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgMenu:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		
 		public function PauseMenu()

@@ -9,7 +9,7 @@ package
 	public class AlienNormal extends Alien
 	{
 		
-		[Embed(source = '../assets/gfx/alien.png')] protected var ImgAlienNormal:Class;
+		[Embed(source = '../assets/gfx/gameplay/alien.png')] protected var ImgAlienNormal:Class;
 		
 		public function AlienNormal(xpos:int, ypos:int) 
 		{

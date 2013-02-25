@@ -13,6 +13,8 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxRect;
 	import org.flixel.FlxSprite;
+	import flash.errors.IOError;
+	import flash.events.IOErrorEvent;
 	
 	/**
 	 * Maps
@@ -42,12 +44,14 @@ package
         [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
 		public var background:Background;
+		public var largeur:int;																// LARGEUR DE LA MAP
 		
 		/**
 		 * FORMAT TXT
 		 * 
 		 * LEVEL
 		 * MAP.TMX
+		 * LARGEUR DE LA MAP
 		 * 
 		 */
 		
@@ -58,16 +62,22 @@ package
 			var lignes:Array = fileContent.split('\n'); 
 			if (lignes != null) {
 				id = lignes[0];
+				trace(lignes);
 				var loader:URLLoader = new URLLoader();
+				loader.addEventListener(IOErrorEvent.IO_ERROR, ioerror);
 				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
 				loader.load(new	URLRequest(lignes[1]));
+				largeur = lignes[2];
 			}
 			FlxG.map = this;
 		}
 		
+		public function ioerror(e:Event):void {
+			trace("erreur de chargement du fichier.");
+		}
+		
 		// PARCOURS LE TMX
 		public function onTmxLoaded(e:Event):void {
-			
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
 			
@@ -75,14 +85,14 @@ package
 			if ((id == 1) || (id == 3)){
 				background = new Background(id);
 				// RECUPERATION DES TILES CSV
-				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
+				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles'));
 				tile.loadMap(csv, MapTiles, 40, 40);
 				FlxG.state.add(tile);
 				FlxG.tilemap = tile;
 			}
 			else {
 				// RECUPERATION DES TILES CSV
-				var csv2:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles2'));
+				var csv2:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles'));
 				tile.loadMap(csv2, MapTiles, 40, 40);
 				FlxG.state.add(tile);
 				FlxG.tilemap = tile;
@@ -170,8 +180,8 @@ package
 			FlxG.state.add(player.g);
 			FlxG.state.add(player.v);
 			FlxG.state.add(cam);
-			FlxG.worldBounds = new FlxRect(0, 0, 30000, 600 + offsety);
-			FlxG.camera.setBounds(0, 0, 30000, 600 + offsety);
+			FlxG.worldBounds = new FlxRect(0, 0, largeur, 600 + offsety);
+			FlxG.camera.setBounds(0, 0, largeur, 600 + offsety);
 			FlxG.camera.follow(cam);
 		}
 	}

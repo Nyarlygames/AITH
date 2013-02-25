@@ -10,7 +10,7 @@ package
 	public class AlienHorizontal extends Alien 
 	{
 		
-		[Embed(source = '../assets/gfx/alien_horizontal.png')] protected var ImgAlienHor:Class;
+		[Embed(source = '../assets/gfx/gameplay/alien_horizontal.png')] protected var ImgAlienHor:Class;
 		public var speed:int = 200;							// VITESSE DE DEPLACEMENT
 		
 		public function AlienHorizontal(xpos:int, ypos:int) 

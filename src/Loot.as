@@ -13,7 +13,7 @@ package
 	public class Loot extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/tubevert.png')] protected var ImgTube:Class;
+		[Embed(source = '../assets/gfx/gameplay/petit_tube.png')] protected var ImgTube:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font:Class;
 		public var loot:int = 0;
 		public var up:int = 0;

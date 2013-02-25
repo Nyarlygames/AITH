@@ -1,0 +1,3 @@
+3
+../assets/level/exterieur/level_1_3.tmx
+30000
