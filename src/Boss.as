@@ -36,8 +36,8 @@ package
 			shoot.setBulletSpeed(speed);
 		//	shoot.setBulletBounds(new FlxRect(x -600, y-600, x+frameWidth, y + 600));
 			shoot.setBulletBounds(new FlxRect(x - 800, y, x, y + 600));
-			FlxG.state.add(shoot.group);
 			FlxG.state.add(this);
+			FlxG.state.add(shoot.group);
 			FlxG.state.add(pv);
 		}
 		

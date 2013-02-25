@@ -13,8 +13,6 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxRect;
 	import org.flixel.FlxSprite;
-	import flash.errors.IOError;
-	import flash.events.IOErrorEvent;
 	
 	/**
 	 * Maps
@@ -44,14 +42,13 @@ package
         [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
         [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
 		public var background:Background;
-		public var largeur:int;																// LARGEUR DE LA MAP
+		public var largeur:int = 30000;														// LARGEUR DE LA MAP
 		
 		/**
 		 * FORMAT TXT
 		 * 
 		 * LEVEL
 		 * MAP.TMX
-		 * LARGEUR DE LA MAP
 		 * 
 		 */
 		
@@ -62,22 +59,17 @@ package
 			var lignes:Array = fileContent.split('\n'); 
 			if (lignes != null) {
 				id = lignes[0];
-				trace(lignes);
+				largeur = lignes[1];
 				var loader:URLLoader = new URLLoader();
-				loader.addEventListener(IOErrorEvent.IO_ERROR, ioerror);
 				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
-				loader.load(new	URLRequest(lignes[1]));
-				largeur = lignes[2];
+				loader.load(new	URLRequest(lignes[2]));
 			}
 			FlxG.map = this;
 		}
 		
-		public function ioerror(e:Event):void {
-			trace("erreur de chargement du fichier.");
-		}
-		
 		// PARCOURS LE TMX
 		public function onTmxLoaded(e:Event):void {
+			
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
 			

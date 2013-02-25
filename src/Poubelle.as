@@ -12,7 +12,7 @@ package
 	 */
 	public class Poubelle extends FlxSprite
 	{
-		[Embed(source = '../assets/gfx/gameplay/dustbin_bieber.png')] protected var ImgDustbinBieber:Class;
+		[Embed(source = '../assets/gfx/gameplay/dustbin_bieber_visible.png')] protected var ImgDustbinBieber:Class;
 		public var poids:int = 500;									// Gravité (vitesse?) requise pour la déplacer
 		public var vitesse:int = 250;								// Vitesse produite sur le joueur (?) NYI
 		public var cur_tile:int = 0;								// Type tile courante
@@ -44,6 +44,7 @@ package
 				if (FlxG.tilemap.getTile(Math.floor(x / 40), Math.round(y / 40) +2) == 0) {
 					y += frameHeight;
 					velocity.x = 0;
+					FlxG.player.velocity.x = FlxG.player.init_speed;
 					FlxG.player.pushing = false;
 				}
 			}	

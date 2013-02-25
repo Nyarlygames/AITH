@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="125" height="20" tilewidth="40" tileheight="40">
- <tileset firstgid="1" name="aith_tiles2" tilewidth="40" tileheight="40">
-  <image source="../../../assets/gfx/aith_tiles2.png" width="240" height="40"/>
+ <tileset firstgid="1" name="aith_tiles" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/misc/aith_tiles.png" width="240" height="40"/>
+ </tileset>
+  <tileset firstgid="7" name="alien_horizontal" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/gameplay/alien_horizontal.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="8" name="alien_tireur" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/gameplay/alien_tireur.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="9" name="alien_vertical" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/gameplay/alien_vertical.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="10" name="poubelle" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/gameplay/dustbin_bieber_visible.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="11" name="tube_gros" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/gros_tube.png" width="44" height="51"/>
+ </tileset>
+ <tileset firstgid="12" name="tube_petit" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/petit_tube.png" width="44" height="51"/>
+ </tileset>
+ <tileset firstgid="13" name="soufflerie" tilewidth="40" tileheight="80">
+  <image source="../../../assets/gfx/gameplay/soufflerie.png" width="40" height="80"/>
+ </tileset>
+ <tileset firstgid="14" name="soucoupe" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/soucoupe.png" width="80" height="40"/>
+ </tileset>
+ <tileset firstgid="15" name="piques" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/piques.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="16" name="ascenseur" tilewidth="120" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/ascenseur.png" width="120" height="40"/>
+ </tileset>
+ <tileset firstgid="17" name="sol_destructible" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/destructible.png" width="120" height="40"/>
+ </tileset>
+ <tileset firstgid="18" name="boss_exterieur" tilewidth="400" tileheight="800">
+  <image source="../../../assets/gfx/gameplay/boss_exterieur.png" width="400" height="800"/>
+ </tileset>
+ <tileset firstgid="19" name="plateforme_shootemup" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/gameplay/troika.png" width="120" height="40"/>
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
   <object name="Alien" type="Alien" x="560" y="200" width="80" height="80">

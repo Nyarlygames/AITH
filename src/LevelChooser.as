@@ -27,9 +27,9 @@ package
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
 		public var replaypic:FlxSprite;
 		public var cursor:FlxSprite;
-		public var uni1:FlxSprite;
-		public var uni2:FlxSprite;
-		public var uni3:FlxSprite;
+		public var level1:FlxSprite;
+		public var level2:FlxSprite;
+		public var level3:FlxSprite;
 		
 		override public function create():void
 		{
@@ -50,16 +50,16 @@ package
 			add(replaytext);			
 			
 			// LEVEL 1 IMAGE
-			uni1 = new FlxSprite(50, FlxG.height /2, ImgLevel1);
-			add(uni1);
+			level1 = new FlxSprite(50, FlxG.height /2, ImgLevel1);
+			add(level1);
 			
 			// LEVEL 2 IMAGE
-			uni2 = new FlxSprite(300, FlxG.height /2, ImgLevel2);
-			add(uni2);
+			level2 = new FlxSprite(300, FlxG.height /2, ImgLevel2);
+			add(level2);
 			
 			// LEVEL 3 IMAGE
-			uni3 = new FlxSprite(550, FlxG.height /2, ImgLevel3);
-			add(uni3);
+			level3 = new FlxSprite(550, FlxG.height /2, ImgLevel3);
+			add(level3);
 			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y, ImgCursor);
@@ -81,22 +81,39 @@ package
 					FlxG.switchState(new UnivChooser());
 
 				// NIVEAU 1
-				if (FlxCollision.pixelPerfectCheck(cursor, uni1)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
 					FlxG.level = 1;
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 2
-				if (FlxCollision.pixelPerfectCheck(cursor, uni2)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
 					FlxG.level = 2;
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 3
-				if (FlxCollision.pixelPerfectCheck(cursor, uni3)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
 					FlxG.level = 3;
 					FlxG.switchState(new Play());
 				}
+			}
+			
+			
+			
+			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
+					FlxG.level = 1;
+					FlxG.switchState(new Play());
+			}
+			
+			if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
+					FlxG.level = 2;
+					FlxG.switchState(new Play());
+			}
+			
+			if (FlxG.keys.justPressed("THREE") || FlxG.keys.justPressed("NUMPADTHREE")) {
+					FlxG.level = 3;
+					FlxG.switchState(new Play());
 			}
 			
 			// DEV : FERME LA FENETRE (à supprimer plus tard)
