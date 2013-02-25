@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="125" height="20" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="aith_tiles2" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/aith_tiles2.png" width="240" height="40"/>
+ </tileset>
+ <objectgroup color="#ff2718" name="Objs" width="125" height="20">
+  <object name="Alien" type="Alien" x="560" y="200" width="80" height="80">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="320" y="680">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="760" y="400">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="800" y="400">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="GrosTube" x="840" y="400">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="1080" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Ascenceur" type="Ascenceur" x="880" y="440" width="40" height="40"/>
+  <object name="Piques" type="Piques" x="4120" y="360" width="80" height="80"/>
+  <object name="Tube" type="Tube" x="1120" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="GrosTube" x="1160" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="1320" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="1480" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="2400" y="520">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="2480" y="520">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="2440" y="520">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3120" y="640">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3160" y="600">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3200" y="560">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3360" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3400" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3440" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="3600" y="680">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="4040" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="4120" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="4800" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="4840" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="4880" y="720">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Alien" type="Alien" x="1480" y="200" width="80" height="80">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Alien" type="Alien" x="2508" y="653" width="80" height="80">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Alien" type="Alien" x="3360" y="400" width="80" height="80">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Alien" type="Alien" x="3800" y="680" width="80" height="80">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Alien" type="Alien" x="4559" y="697" width="80" height="80">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="2196" y="372">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="2236" y="372">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Tube" type="Tube" x="2156" y="372">
+   <properties>
+    <property name="loot" value="10"/>
+   </properties>
+  </object>
+  <object name="Poubelles" type="Poubelles" x="600" y="680" width="80" height="80"/>
+  <object type="AlienVert" x="1269" y="488" width="41" height="47"/>
+  <object type="AlienHorizontal" x="1715" y="269" width="21" height="24"/>
+  <object type="AlienTireur" x="2282" y="522"/>
+  <object type="Checkpoints" x="120" y="760" width="26" height="21"/>
+  <object type="Checkpoints" x="1440" y="760" width="25" height="22"/>
+  <object type="Checkpoints" x="2840" y="760" width="26" height="18"/>
+  <object type="Checkpoints" x="3960" y="760" width="28" height="27"/>
+  <object type="Trigger" x="960" y="760" width="40" height="40"/>
+  <object name="Des_sol" type="Des_sol" x="440" y="760" width="40" height="40"/>
+  <object type="Trigger" x="960" y="200" width="40" height="40"/>
+  <object type="Soufflerie" x="1760" y="760" width="40" height="40">
+   <properties>
+    <property name="angle" value="90"/>
+   </properties>
+  </object>
+  <object type="Soucoupe" x="1240" y="160" width="80" height="40"/>
+ </objectgroup>
+ <layer name="Tile" width="125" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3
+</data>
+ </layer>
+</map>

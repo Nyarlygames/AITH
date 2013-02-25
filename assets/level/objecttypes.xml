@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="Tube" color="#2fd41d"/>
+ <objecttype name="Alien" color="#a4292b"/>
+ <objecttype name="Piques" color="#545456"/>
+ <objecttype name="Des_sol" color="#9a6868"/>
+ <objecttype name="Poubelles" color="#030304"/>
+ <objecttype name="GrosTube" color="#0b4a00"/>
+ <objecttype name="AlienVert" color="#600770"/>
+ <objecttype name="AlienHorizontal" color="#e23290"/>
+ <objecttype name="AlienTireur" color="#2845a4"/>
+ <objecttype name="Checkpoints" color="#00a48b"/>
+ <objecttype name="Ascenceur" color="#a43633"/>
+ <objecttype name="Trigger" color="#f11616"/>
+ <objecttype name="Soufflerie" color="#bea10e"/>
+ <objecttype name="Soucoupe" color="#dc02e3"/>
+</objecttypes>
