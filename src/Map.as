@@ -170,8 +170,8 @@ package
 			FlxG.state.add(player.g);
 			FlxG.state.add(player.v);
 			FlxG.state.add(cam);
-			FlxG.worldBounds = new FlxRect(0, 0, 5000, 600 + offsety);
-			FlxG.camera.setBounds(0, 0, 5000, 600 + offsety);
+			FlxG.worldBounds = new FlxRect(0, 0, 30000, 600 + offsety);
+			FlxG.camera.setBounds(0, 0, 30000, 600 + offsety);
 			FlxG.camera.follow(cam);
 		}
 	}

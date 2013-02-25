@@ -3,6 +3,45 @@
  <tileset firstgid="1" name="aith_tiles2" tilewidth="40" tileheight="40">
   <image source="../../../assets/gfx/aith_tiles2.png" width="240" height="40"/>
  </tileset>
+ <tileset firstgid="7" name="alien_horizontal" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/alien_horizontal.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="8" name="alien_tireur" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/alien_tireur.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="9" name="alien_vert" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/alien_vert.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="10" name="DustbinBieber" tilewidth="80" tileheight="80">
+  <image source="../../../assets/gfx/DustbinBieber.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="11" name="grostubevert" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/grostubevert.png" width="44" height="51"/>
+ </tileset>
+ <tileset firstgid="12" name="tubevert" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/tubevert.png" width="44" height="51"/>
+ </tileset>
+ <tileset firstgid="13" name="soufflerie" tilewidth="40" tileheight="80">
+  <image source="../../../assets/gfx/soufflerie.png" width="40" height="80"/>
+ </tileset>
+ <tileset firstgid="14" name="soucoupe" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/soucoupe.png" width="80" height="40"/>
+ </tileset>
+ <tileset firstgid="15" name="piques" tilewidth="40" tileheight="40">
+  <image source="../../../assets/gfx/piques.png" width="40" height="40"/>
+ </tileset>
+ <tileset firstgid="16" name="ascenceur" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/ascenceur.png" width="120" height="40"/>
+ </tileset>
+ <tileset firstgid="17" name="des_ground" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/des_ground.png" width="120" height="40"/>
+ </tileset>
+ <tileset firstgid="18" name="boss" tilewidth="400" tileheight="800">
+  <image source="../../../assets/gfx/boss.png" width="400" height="800"/>
+ </tileset>
+ <tileset firstgid="19" name="troika" tilewidth="80" tileheight="40">
+  <image source="../../../assets/gfx/troika.png" width="120" height="40"/>
+ </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
   <object name="Piques" type="Piques" x="3957" y="0" width="79" height="166"/>
   <object name="TubeGros" type="TubeGros" x="961" y="703" width="42" height="43"/>
