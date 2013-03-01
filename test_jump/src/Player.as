@@ -37,13 +37,13 @@
                     public var cur_velocity:FlxPoint;               // STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
                     public var gravity:int = 300;                   // GRAVITE
      
-                    public var floating:Boolean = false;    // LE JOUEUR FLOTTE?
+                    public var floating:Boolean = false;    		// LE JOUEUR FLOTTE?
                     public var jumping:Boolean = false;             // LE JOUEUR SAUTE?
                     public var pause:Boolean = false;               // LE JEU EST EN PAUSE?
                     public var set_old:Boolean = true;              // LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
                     public var lasttile:int = 0;                   
                     public var angularspeed:int = 135;              // VITESSE DE ROTATION
-                    public var cur_angularspeed:int = 135;  // VITESSE DE ROTATION0
+                    public var cur_angularspeed:int = 135;  		// VITESSE DE ROTATION ACTUELLE
                     public var pushing:Boolean = false;             // ENTRAIN DE POUSSER UNE POUBELLE?
                     public var push:Poubelle = null;                // POUBELLE POUSSEE
                     public var emitter:FlxEmitter;                  // MOTEUR
@@ -54,12 +54,13 @@
                     public var accumulateur:int = 0;
                     public var palier_accumulateur:int = -3430;
                     public var test_gravity:int = 2050;
-                    public var test_descente:int = 1500;
+                    public var maxgravity_test:int = 500;
+                    public var test_descente:int = 200;
                    
                     public function Player(xPos:int, yPos:int)
                     {
                             super(xPos, yPos, ImgPlayer);
-                            maxVelocity.y = maxgravity;
+                            maxVelocity.y = maxgravity_test;
                             maxVelocity.x = init_speed;
                             facing = RIGHT;
                             acceleration.y = mingravity;
@@ -94,13 +95,12 @@
                             if (!pause) {
                                     // JOUEUR ENTRAIN DE SAUTER
                                     if ((jumping) || (floating)) {
-											if (velocity.y > 0) {
-												acceleration.y = test_descente * FlxG.elapsed;
-												trace("descente", acceleration.y, velocity.y);
+											if (velocity.y > 0)  {
+												maxVelocity.y = test_descente;
 											}
                                             else {
+												maxVelocity.y = maxgravity_test;
 												acceleration.y += test_gravity * FlxG.elapsed;
-												trace("montee-", acceleration.y, velocity.y);
 											}
                                     }
                             }
@@ -126,13 +126,13 @@
                                     acceleration.y += accumulateur;
                                     jumping = true;
                                     lasttile = 0;
-                            }
+                            }*/
                             // RAZ DE L'ACCUMULATEUR AU RETOUR AU SOL
                             else if ((jumping) && (acceleration.y > 0)) {
                                     jumping = false;
                                     accumulateur = 0;
                                     angle = 0;
-                            }*/
+                            }
 
                             // ROTATION JIMMY TREMPLIN
                             if (((current_tile == 1) || (current_tile == 4)))

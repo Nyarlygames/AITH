@@ -19,6 +19,7 @@
     <class path="lib\flixel" />
     <class path="lib\tmx" />
     <class path="lib\glueit1.06" />
+    <class path="..\lib\flixel" />
   </classpaths>
   <!-- Build options -->
   <build>
