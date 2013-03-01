@@ -31,11 +31,21 @@ package
 	{
 		[Embed(source = "../assets/level/map_test.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level1:Class;
+		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level2:Class;
+		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level3:Class;
+		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level5:Class;
+		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level4:Class;
+		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level6:Class;
 
 		public var player:Player;
 		public var map:Map;
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
+		public var sound2:FlxSound;
+		public var sound3:FlxSound;
+		public var sound4:FlxSound;
+		public var sound5:FlxSound;
+		public var sound6:FlxSound;
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 1000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		
@@ -76,7 +86,24 @@ package
 			if (sound == null) {
 				sound = new FlxSound();
 				sound.loadEmbedded(Sfx_Level1, true, true);
-				//sound.play();
+				sound2 = new FlxSound();
+				sound2.loadEmbedded(Sfx_Level2, true, true);
+				sound3 = new FlxSound();
+				sound3.loadEmbedded(Sfx_Level3, true, true);
+				sound4 = new FlxSound();
+				sound4.loadEmbedded(Sfx_Level4, true, true);
+				sound5 = new FlxSound();
+				sound5.loadEmbedded(Sfx_Level5, true, true);
+				sound6 = new FlxSound();
+				sound6.loadEmbedded(Sfx_Level6, true, true);
+				sound.play();
+				sound.volume = 0;
+				sound2.play();
+				sound2.volume = 0;
+				sound3.play();
+				sound4.play();
+				sound5.play();
+				sound6.play();
 			}
 		}
 
@@ -90,6 +117,8 @@ package
 				if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
 					player.pause = true;
 					this.setSubState(pause, onMenuClosed);
+					sound3.volume = 0;
+					sound2.volume = 0;
 				}
 				
 				// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)

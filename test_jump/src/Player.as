@@ -54,6 +54,7 @@
                     public var accumulateur:int = 0;
                     public var palier_accumulateur:int = -3430;
                     public var test_gravity:int = 2050;
+                    public var test_descente:int = 1500;
                    
                     public function Player(xPos:int, yPos:int)
                     {
@@ -93,7 +94,14 @@
                             if (!pause) {
                                     // JOUEUR ENTRAIN DE SAUTER
                                     if ((jumping) || (floating)) {
-                                            acceleration.y += test_gravity * FlxG.elapsed;
+											if (velocity.y > 0) {
+												acceleration.y = test_descente * FlxG.elapsed;
+												trace("descente", acceleration.y, velocity.y);
+											}
+                                            else {
+												acceleration.y += test_gravity * FlxG.elapsed;
+												trace("montee-", acceleration.y, velocity.y);
+											}
                                     }
                             }
                     }
@@ -109,9 +117,11 @@
                                    
                             // DERNIERE TILE DU TREMPLIN
                             if ((current_tile == 4) && (jumping == false)) {
-                                    lasttile = 4;
-                            }
-                            // SORTIT DU TREMPLIN
+								    acceleration.y += accumulateur;
+                                    jumping = true;
+                            }                          
+                           
+							/* // SORTIT DU TREMPLIN
                             else if ((lasttile == 4) && (current_tile == 0)) {
                                     acceleration.y += accumulateur;
                                     jumping = true;
@@ -122,9 +132,8 @@
                                     jumping = false;
                                     accumulateur = 0;
                                     angle = 0;
-                            }
-                           
-                           
+                            }*/
+
                             // ROTATION JIMMY TREMPLIN
                             if (((current_tile == 1) || (current_tile == 4)))
                             {
@@ -132,6 +141,9 @@
                             }
                             else if (angle < -50)
                                     angularVelocity = 0;
+									
+									
+
                     }
                    
                    
