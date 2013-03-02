@@ -27,7 +27,7 @@ package
 			switch (level) {
 				case 1:
 					sol = new FlxSprite(0, FlxG.height + 200, ImgSol);
-					loadGraphic(ImgBackground);
+					loadGraphic(ImgBackground2);
 					break;
 				case 2:
 					sol = new FlxSprite(0, FlxG.height + 200, ImgSol2);
