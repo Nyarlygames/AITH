@@ -34,20 +34,20 @@
   <image source="../../gfx/gameplay/ascenseur.png" width="120" height="40"/>
  </tileset>
  <tileset firstgid="17" name="sol_destructible" tilewidth="80" tileheight="40">
-  <image source="../../gfx/gameplay/destructible.png" width="120" height="40"/>
+  <image source="../../gfx/gameplay/destructible.png" width="200" height="40"/>
  </tileset>
- <tileset firstgid="18" name="boss_exterieur" tilewidth="400" tileheight="800">
+ <tileset firstgid="19" name="boss_exterieur" tilewidth="400" tileheight="800">
   <image source="../../gfx/gameplay/boss_exterieur.png" width="400" height="800"/>
  </tileset>
- <tileset firstgid="19" name="plateforme_shootemup" tilewidth="80" tileheight="40">
+ <tileset firstgid="20" name="plateforme_shootemup" tilewidth="80" tileheight="40">
   <image source="../../gfx/gameplay/troika.png" width="120" height="40"/>
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
-  <object name="alien_im" type="Alien" x="160" y="0" width="80" height="120"/>
+  <object name="alien_im" type="Alien" x="40" y="160" width="80" height="120"/>
   <object name="mobil" type="AlienVert" x="280" y="0" width="80" height="120"/>
   <object name="alien_ronde" type="AlienVert" x="160" y="160" width="80" height="120"/>
   <object name="alien_tireur" type="AlienTireur" x="280" y="160" width="80" height="120"/>
-  <object name="Sol_Destructible" type="Des_sol" x="400" y="0" width="200" height="40"/>
+  <object name="Sol_Destructible" type="Des_sol" x="40" y="80" width="200" height="40"/>
   <object name="Boss_Exterieur" x="400" y="80" width="400" height="360"/>
   <object name="Boss_Alien" x="840" y="80" width="400" height="360"/>
   <object name="check" type="Checkpoints" x="160" y="320" width="40" height="80"/>
@@ -58,6 +58,7 @@
   <object name="soucoupe" type="Soucoupe" x="240" y="520" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="240" y="600" width="80" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="160" y="600" width="40" height="40"/>
+  <object name="ascenseur" type="Ascenceur" x="360" y="520" width="120" height="40"/>
  </objectgroup>
  <layer name="Tile" width="125" height="20">
   <data encoding="csv">
