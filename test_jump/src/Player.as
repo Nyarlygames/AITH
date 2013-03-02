@@ -26,12 +26,12 @@
                     public var g:FlxSprite;
                     public var v:FlxSprite;
                     public var init_speed:int = 250;                // VITESSE DE BASE (max vitesse)
-                    public var speedup:int = 150;                   // ACCELERATION
-                    public var speeddown:int = 150;                 // DECELERATION
+                    public var speedup:int = 100;                   // ACCELERATION
+                    public var speeddown:int = 100;                 // DECELERATION
                     public var speedjumpdown:int = 110;             // DESCENTE AUTOMATIQUYE DURANT LE SAUT
                     public var minspeed:int = 50;                   // VITESSE MIN
                     public var mingravity:int = 30;                 // GRAVITE MIN
-                    public var maxgravity:int = 5000;               // GRAVITY MAX
+                    public var maxgravity:int = 3000;               // GRAVITY MAX
                     public var gravityup:int = 1200;                // AUGMENTATION GRAVITE
                     public var gravitydown:int = 1200;              // REDUCTION GRAVITE
                     public var cur_velocity:FlxPoint;               // STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
@@ -55,7 +55,7 @@
                     public var palier_accumulateur:int = -3430;
                     public var test_gravity:int = 2050;
                     public var maxgravity_test:int = 500;
-                    public var test_descente:int = 200;
+                    public var test_descente:int = 275;
                    
                     public function Player(xPos:int, yPos:int)
                     {
@@ -103,6 +103,19 @@
 												acceleration.y += test_gravity * FlxG.elapsed;
 											}
                                     }
+									if (FlxG.keys.pressed("SPACE") && (velocity.x < maxVelocity.x)) 
+									{
+										if (velocity.x > minspeed)
+										{
+											velocity.x -= speeddown * FlxG.elapsed;
+											
+										}
+									}
+									else if (!FlxG.keys.any() && (velocity.x > 30))
+									{
+										velocity.x += speedup * FlxG.elapsed;
+										
+									}
                             }
                     }
                    

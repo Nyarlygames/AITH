@@ -96,14 +96,6 @@ package
 				sound5.loadEmbedded(Sfx_Level5, true, true);
 				sound6 = new FlxSound();
 				sound6.loadEmbedded(Sfx_Level6, true, true);
-				sound.play();
-				sound.volume = 0;
-				sound2.play();
-				sound2.volume = 0;
-				sound3.play();
-				sound4.play();
-				sound5.play();
-				sound6.play();
 			}
 		}
 
