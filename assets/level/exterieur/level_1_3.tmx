@@ -42,6 +42,9 @@
  <tileset firstgid="19" name="plateforme_shootemup" tilewidth="80" tileheight="40">
   <image source="../../../assets/gfx/gameplay/troika.png" width="120" height="40"/>
  </tileset>
+ <tileset firstgid="21" name="alien_normal" tilewidth="80" tileheight="120">
+  <image source="../../gfx/gameplay/alien_normal.png" width="80" height="120"/>
+ </tileset>
  <layer name="Tile" width="125" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

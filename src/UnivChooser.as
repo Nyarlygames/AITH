@@ -14,7 +14,8 @@ package
 	 */
 	public class UnivChooser extends FlxState
 	{
-		[Embed(source = '../assets/gfx/ui/btn_replay.png')] protected var ImgReplay:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgReplay:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgReplayOn:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1.png')] protected var ImgUni1:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2.png')] protected var ImgUni2:Class;
@@ -32,7 +33,7 @@ package
 			
 			FlxG.bgColor = 0xaa519CCA;
 			// TEXTE EXPLICATIF
-			var title:FlxText = new FlxText(50, 50, FlxG.height*2 / 3, "Les aliens ont envahi la terre et veulent nous détruire! Aidez Jimi à leur botter le train hors de notre belle planète");
+			var title:FlxText = new FlxText(50, 50, FlxG.height*2 / 4, "Les aliens ont envahi la terre et veulent nous détruire! Aidez Jimi à leur botter le train hors de notre belle planète");
 			title.setFormat("onedalism", 22, 0x044071);
 			add(title);
 			
@@ -88,13 +89,19 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
-			
+
+			//REPLAY
+
+			if (FlxCollision.pixelPerfectCheck(cursor, replaypic)) {
+				replaypic.loadGraphic(ImgReplayOn);
+				if (FlxG.mouse.justPressed())
+					FlxG.switchState(new Start());
+			}
+			else
+				replaypic.loadGraphic(ImgReplay);
+
 			// GESTION CLICS SOURIS
 			if (FlxG.mouse.justPressed()) {
-				//REPLAY
-				if (FlxCollision.pixelPerfectCheck(cursor, replaypic))
-					FlxG.switchState(new Start());
-
 				//UNIVERS 1
 				if (FlxCollision.pixelPerfectCheck(cursor, uni1)) {
 					FlxG.univ = 1;

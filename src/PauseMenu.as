@@ -29,6 +29,7 @@ package
 		public var quitPic:FlxSprite;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgMenu:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgMenuOn:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		
 		public function PauseMenu()
@@ -89,22 +90,33 @@ package
 		
 		// UPDATE DU MENU PAUSE
 		public function inPause():void {
-			// GESTION CLICS SOURIS
-			if (FlxG.mouse.justPressed()) {
-				
+			// GESTION CLICS SOURIS				
 				//RESTART
-				if (FlxCollision.pixelPerfectCheck(cursor, restartPic))
+				if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) {
+					restartPic.loadGraphic(ImgMenuOn);
+					if (FlxG.mouse.justPressed())
 					restart();
+				}
+				else
+					restartPic.loadGraphic(ImgMenu);
 					
 				//RESUME
-				if (FlxCollision.pixelPerfectCheck(cursor, resumePic))
+				if (FlxCollision.pixelPerfectCheck(cursor, resumePic)) {
+					resumePic.loadGraphic(ImgMenuOn);
+					if (FlxG.mouse.justPressed())
 					resume();
-					
+				}
+				else
+					resumePic.loadGraphic(ImgMenu);
+				
 				//QUIT
-				if (FlxCollision.pixelPerfectCheck(cursor, quitPic))
+				if (FlxCollision.pixelPerfectCheck(cursor, quitPic)) {
+					quitPic.loadGraphic(ImgMenuOn);
+					if (FlxG.mouse.justPressed())
 					tryQuit();
-	
-			}
+				}
+				else
+					quitPic.loadGraphic(ImgMenu);
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	
 		}

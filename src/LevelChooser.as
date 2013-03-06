@@ -14,7 +14,8 @@ package
 	 */
 	public class LevelChooser extends FlxState
 	{
-		[Embed(source = '../assets/gfx/ui/btn_replay.png')] protected var ImgReplay:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgReplay:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgReplayOn:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/exte_niv1.png')] protected var ImgLevel1:Class;
 		[Embed(source = '../assets/gfx/ui/exte_niv2.png')] protected var ImgLevel2:Class;
@@ -74,12 +75,17 @@ package
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
 			
+			// RETURN
+			if (FlxCollision.pixelPerfectCheck(cursor, replaypic)) {
+				replaypic.loadGraphic(ImgReplayOn);
+				if (FlxG.mouse.justPressed())
+					FlxG.switchState(new UnivChooser());
+			}
+			else
+				replaypic.loadGraphic(ImgReplay);
+
 			// GESTION CLICS SOURIS
 			if (FlxG.mouse.justPressed()) {
-				// RETURN
-				if (FlxCollision.pixelPerfectCheck(cursor, replaypic))
-					FlxG.switchState(new UnivChooser());
-
 				// NIVEAU 1
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
 					FlxG.level = 1;

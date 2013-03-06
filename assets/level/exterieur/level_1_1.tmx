@@ -42,6 +42,9 @@
  <tileset firstgid="20" name="plateforme_shootemup" tilewidth="80" tileheight="40">
   <image source="../../gfx/gameplay/troika.png" width="120" height="40"/>
  </tileset>
+ <tileset firstgid="21" name="alien_normal" tilewidth="80" tileheight="120">
+  <image source="../../gfx/gameplay/alien_normal.png" width="80" height="120"/>
+ </tileset>
  <objectgroup color="#ff2718" name="Objs" width="600" height="20" opacity="0.9">
   <object name="pique" type="Piques" x="3840" y="280" width="40" height="40"/>
   <object name="pique" type="Piques" x="3880" y="280" width="40" height="40"/>

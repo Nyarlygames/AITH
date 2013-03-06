@@ -16,19 +16,31 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'02/03/2013'</value>
+      <value>'06/03/2013'</value>
+    </define>
+    <define append="true">
+      <name>CONFIG::air</name>
+      <value>false</value>
+    </define>
+    <define append="true">
+      <name>CONFIG::mobile</name>
+      <value>false</value>
+    </define>
+    <define append="true">
+      <name>CONFIG::desktop</name>
+      <value>false</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>D:\GitHub\AITH\src</path-element>
-      <path-element>D:\GitHub\AITH\lib\flixel</path-element>
-      <path-element>D:\GitHub\AITH\lib\tmx</path-element>
-      <path-element>D:\GitHub\AITH\lib\glueit1.06</path-element>
-      <path-element>E:\Softwares\FlashDevelop\Library\AS3\classes</path-element>
+      <path-element>C:\Documents and Settings\Marie\Mes documents\GitHub\AITH\src</path-element>
+      <path-element>C:\Documents and Settings\Marie\Mes documents\GitHub\AITH\lib\flixel</path-element>
+      <path-element>C:\Documents and Settings\Marie\Mes documents\GitHub\AITH\lib\tmx</path-element>
+      <path-element>C:\Documents and Settings\Marie\Mes documents\GitHub\AITH\lib\glueit1.06</path-element>
+      <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>D:\GitHub\AITH\src\AITH.AS</path-element>
+    <path-element>C:\Documents and Settings\Marie\Mes documents\GitHub\AITH\src\AITH.AS</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

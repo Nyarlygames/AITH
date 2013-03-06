@@ -34,21 +34,19 @@
   <image source="../../gfx/gameplay/ascenseur.png" width="120" height="40"/>
  </tileset>
  <tileset firstgid="17" name="sol_destructible" tilewidth="80" tileheight="40">
-  <image source="../../gfx/gameplay/destructible.png" width="120" height="40"/>
+  <image source="../../gfx/gameplay/destructible.png" width="200" height="40"/>
  </tileset>
- <tileset firstgid="18" name="boss_exterieur" tilewidth="400" tileheight="800">
+ <tileset firstgid="19" name="boss_exterieur" tilewidth="400" tileheight="800">
   <image source="../../gfx/gameplay/boss_exterieur.png" width="400" height="800"/>
  </tileset>
- <tileset firstgid="19" name="plateforme_shootemup" tilewidth="80" tileheight="40">
+ <tileset firstgid="20" name="plateforme_shootemup" tilewidth="80" tileheight="40">
   <image source="../../gfx/gameplay/troika.png" width="120" height="40"/>
  </tileset>
+ <tileset firstgid="21" name="alien_normal" tilewidth="80" tileheight="120">
+  <image source="../../gfx/gameplay/alien_normal.png" width="80" height="120"/>
+ </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
-  <object name="Alien" type="Alien" x="320" y="600" width="80" height="80">
-   <properties>
-    <property name="loot" value="10"/>
-   </properties>
-  </object>
-  <object name="Tube" type="Tube" x="320" y="680">
+  <object name="Tube" type="Tube" x="308" y="668" width="21" height="20">
    <properties>
     <property name="loot" value="10"/>
    </properties>
