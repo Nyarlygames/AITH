@@ -13,7 +13,7 @@ package
 	public class AlienTireur extends Alien
 	{
 		[Embed(source = '../assets/gfx/gameplay/alien_tireur.png')] protected var ImgAlienTir:Class;
-		[Embed(source = '../assets/gfx/gameplay/tir.png')] public var ImgShoot:Class;
+		[Embed(source = '../assets/gfx/gameplay/tir_alien.png')] public var ImgShoot:Class;
 		public var rate:int = 1500;							// CADENCE DE TIR
 		public var maxtir:int = 200;						// MAXIMUM DE TIR
 		public var speed:int = 300;							// VITESSE DE TIR
