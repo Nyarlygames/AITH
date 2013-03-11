@@ -28,14 +28,7 @@ package
 			public var init_speed:int = 250;                // VITESSE DE BASE (max vitesse)
 			
 			public var speedup:int = 100;                   // ACCELERATION EN X
-			public var speeddown:int = 300;                 // DECELERATION EN X
-			
-			public var speedYup:int = 500;					// ACCELERATION EN Y
-			public var speedYdown:int = 500;				// DECELERATION EN Y
-			
-			public var speed_triggers_fall:int = 10000;		// Vitesse de tombée avec espace
-			
-			public var minVelocity:int = 50;                // VITESSE MIN
+			public var speeddown:int = 300;                 // DECELERATION EN X	
 			
 			public var mingravity:int = 800;                 // GRAVITE MIN
 			public var maxgravity:int = 3000;               // GRAVITY MAX
@@ -66,7 +59,14 @@ package
 			public var test_gravity:int = 2050;
 			public var test_descente:int = 275;
 			public var maxgravity_test:int = 2000;
+			public var maxspeed_test:int = 200;
 			public var debug_var :int = 0;
+			public var speedYup:int = 500;					// ACCELERATION EN Y
+			public var speedYdown:int = 500;				// DECELERATION EN Y
+			public var speed_triggers_fall:int = 10000;		// Vitesse de tombée avec espace
+			public var minVelocity:int = 50;                // VITESSE MIN
+			public var acceleration_speed:int = 50;                // VITESSE MIN
+			public var acceleration_gravity:int = 500;             // VITESSE MIN
 		   
 			public function Player(xPos:int, yPos:int)
 			{
@@ -74,7 +74,8 @@ package
 					maxVelocity.y = maxgravity_test;
 					maxVelocity.x = init_speed;
 					facing = RIGHT;
-					acceleration.y = mingravity;
+					acceleration.y = acceleration_gravity;
+					acceleration.x = acceleration_speed;
 					gravity = mingravity;
 					velocity.x = init_speed;
 					cur_velocity = new FlxPoint(init_speed, mingravity);
@@ -115,26 +116,20 @@ package
 									acceleration.y += test_gravity * FlxG.elapsed;
 								}
 							}
+							// Si il appuie sur espace, on touche pas a la vitesse, seulement la vitesse max en x et y!
 							if (FlxG.keys.pressed("SPACE") && (velocity.x <= maxVelocity.x) && (velocity.x > minVelocity))
 							{
-								velocity.x -= speeddown * FlxG.elapsed;
-								velocity.y += speed_triggers_fall * FlxG.elapsed;
-								//trace ("velocity.x : " + velocity.x); 
-								trace ("CHECK"); 
-								//trace ("velocity.y : " + velocity.y);
+								trace("space", acceleration.x, acceleration.x);
+								maxVelocity.x -= speeddown * FlxG.elapsed;
+								maxVelocity.y += speed_triggers_fall * FlxG.elapsed;
 							}
-							// Si il ne touche a rien, on lui ajoute de la vitesse.
+							// Si il ne touche a rien, on reinit la vitesse max et laisse l'accélération faire le boulot !
 							else if (!FlxG.keys.any() && (velocity.x > 30))
 							{
-								velocity.x += speedup * FlxG.elapsed;
-								velocity.y += speedYdown * FlxG.elapsed;
+								trace("rien", acceleration.x, acceleration.x);
+								maxVelocity.x = maxspeed_test;
+								maxVelocity.y = mingravity;
 							}
-							if (FlxG.keys.pressed("L"))
-							{
-								speedYdown -= 1000;
-								trace ("+100");
-							}
-							
 					}
 			}
 		   
@@ -144,19 +139,21 @@ package
 					// TILE COURANTE DE COLLISION
 					var current_tile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1);
 					// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
-					if ((current_tile == 1) || (current_tile == 4))
+					if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
 					{
+						trace(acceleration.y, accumulateur);
 						accumulateur += palier_accumulateur * FlxG.elapsed;
 					}
 						   
 					// DERNIERE TILE DU TREMPLIN
 					if ((current_tile == 4) && (jumping == false)) 
 					{
+						trace(acceleration.y, accumulateur, "test");
 						acceleration.y += accumulateur;
 						jumping = true;
 					}                          
 				   
-					/* // SORTIT DU TREMPLIN
+					/* // SORTIE DU TREMPLIN
 					else if ((lasttile == 4) && (current_tile == 0)) {
 							acceleration.y += accumulateur;
 							jumping = true;
@@ -197,9 +194,15 @@ package
 			public function die_motherfucker():void {
 					x = checkpoint.x;
 					y = checkpoint.y;
+					// Reset vitesse, utile seulement ici !
 					velocity.x = init_speed;
 					velocity.y = mingravity;
 					gravity = mingravity;
+					acceleration.x = acceleration_speed;
+					acceleration.y = acceleration_gravity;
+					maxVelocity.x = init_speed;
+					maxVelocity.y = mingravity;
+					
 			}
 		}
  
