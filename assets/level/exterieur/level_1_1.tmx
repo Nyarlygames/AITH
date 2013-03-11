@@ -46,16 +46,11 @@
   <image source="../../gfx/gameplay/alien_normal.png" width="80" height="160"/>
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="600" height="20" opacity="0.9">
-  <object name="pique" type="Piques" x="3840" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="3880" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="3920" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="3960" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="4000" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="4080" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="4120" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="4040" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="4200" y="280" width="40" height="40"/>
-  <object name="pique" type="Piques" x="4160" y="280" width="40" height="40"/>
+  <object name="pique" type="Piques" x="4200" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
   <object name="check" type="Checkpoints" x="3200" y="600" width="40" height="80"/>
   <object name="check" type="Checkpoints" x="1600" y="760" width="40" height="80"/>
   <object name="Sol_Destructible" type="Des_sol" x="4360" y="520" width="200" height="40"/>
@@ -114,10 +109,105 @@
   <object name="tube" type="Tube" x="9120" y="560" width="40" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="9080" y="120" width="80" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="9200" y="120" width="80" height="40"/>
+  <object name="pique" type="Piques" x="4160" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="4120" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="4080" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="3960" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="4040" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="4000" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="3920" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="3840" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="3880" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="3800" y="600" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="3760" y="600" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="2400" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="2440" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="2320" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="2360" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="960" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="1000" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="1040" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="pique" type="Piques" x="1080" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Tile" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt3Ytq4zAQQFG7S/f/P3kJbIka9JgZjTSSdQ+Ibkni2HKK7jqhva63u3PgTTJXr69/hOPU+fV8vf01DAAAPNBV/lp91Vrj6Suf156lryTPceq5AQDIce3KzjJvo/rqKedkRl/V7lN6nqfMLwBgHvpKxzJX2r7q2aedRfdVug+z7X7uAAC/cQ1LxzpfI/vqKTxfb7W+ugv3AQDAE43V1tNVaV9JhsWIbXrqnTst6/UrAAC0amsVfZX3+R5f7vg92qt3XmvXxj5vizB7Xk7pq1N+DgFgZaU1i+tXZZrj36WvZrdExLyc0lcAgHitNctrvVutwazvy2mPP6Kr0mPU9NWOjaWxa1/lfiYBAGtrXb8q3cdzRLB8rlx7LNFzY+mrUV0xoj1P6SsAwH6ka9joxpKul57tob1+NWsOVugrS1vcH//2OPZRc1NSm4PWayT9/q7cr7W93ONGHjMAwF9EM2ibwqtDetenFeZCo7evpPui6dSd+6rVoen3d2Nbte3lHpc7ZnoLANbl1TfeTRHVdquNHrP6SvK6qd3WOvbV+0rTSZbtAQD2E90PJ/TVd+U26XtElt9b1dpOb19pz6n28dbnKm2j9/NX3n2lmSsAwF6i22Pk2rrC+Lrefz8wNySd83ndydvK10zu5OvT+sqC/gKAPczujdK1lFX2Y/bQrtE/c3WinvP98oS+AgDsIaJrSs0QvR87jJP7KkfaVi/S7tH2mebczRq5/0cAAObxbJba54xG9JXk+Z7YV14jleuR6/8cl2jX+x6lx0vb6sV6XelnW9HnXjNy+wwAmMerrVqfM/LuK+nzPa2vPDut1SRfV31dtqz30hZK1W6f0Vetx6846CsAiLXCZ44i9oG+mjt/Uec41WqR3DWq2m27DQDAPP8ABcQdPg==
+   eJzt3ItKxDAQQNFW0f//ZClYjCWPmWSSSZN7IKjsq5st5NqWPY4/Z+OQ+E6M1Ujm6vqZmo/nkM7valr3t5B0rlfeLwEAPnp11W3HdYy+qjdi32ud910/GwCAXM9jV5eV+6pm3nr11Spr/ui2j8177HVWmV8AwDj0lU7NXGn7qmWb3sy7r8JtGO3tnx0A4L+ex7Doq7rjV7uyaqtLbm7PxH0AALDUq7FW6oeWrhrRV5+F4a117rRqj18BAKCVW6voq7jnOb7Y+7dor5aWuJSazbu1Rs/LLn1Vu78AAOyk1iyOX6Vp3v/MffVsrZE85mWXvgIA+CutWVbr3X176lzVyP+5W96T9v17dNVN01dvbSyNt/ZVbB8EAMwttWbFfu81PNRsn3WLzdZX4TlDaz3ac9e+AgDMT7qG9W4s6Xpp1R6la79jnTFqDjz7qqUttC3aut/1kJuD0j4S/n1m7ld6vtjjer5nAIA9j2bQNoVVh4T3q2mMGeZCo7WvJNty3ybt1Df3VWkfCf8+C8+Ve77Y42Lvmd4CgHlZ9Y11U3i0zIyjxYi+OjK3t+5Tpfv2UNNXtccDex1HBAD48+6HHfrqK3Ob9BxRzXcpSJ+vtq+0n6n28bWvlXoOSb+M7CvNXAEA3sW7PXqurTOMjyPeKvewWKdbzfjdo7cz+LlaX9WgvwDgHUb3Ru77GWbYDutxr63aY0el83Y7avm8Lyv0ldau+woAeBvdNdJzUV7b8YbBmvlH2lYXafdo+0w6RjV9+P/KjMckAWAHls2Su86oR19JXm+1vrJcg0OxHjl+5zhFu963SD1e2lYXaV+lXsP7s9c2+HObAQDjWLXVdZ2R5DyfVV9JX2+1vrLstFKT3NeOpdSs99IWCuVuH9FXpcfPOOgrAPA18pxF7nqj0dtRe+3TKkMzPxbz5/H5Po/RlVok1t0rNTkAYJwfFbEfAA==
   </data>
  </layer>
  <layer name="Background" width="600" height="20">
