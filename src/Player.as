@@ -12,6 +12,7 @@ package
 	import org.flixel.FlxEmitter;
 	import org.flixel.FlxParticle;
 	import org.flixel.FlxSound;
+	import org.flixel.plugin.photonstorm.FlxWeapon;
 	
 	/**
 	 * Joueur (jimi)
@@ -31,10 +32,11 @@ package
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse4.mp3")] public var Sfx_Vitesse4:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse5.mp3")] public var Sfx_Vitesse5:Class;
 		
-		[Embed(source = '../assets/gfx/gameplay/tir_boss.png')] public var ImgShoot:Class;
+		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
 		public var rate:int = 1000;							// CADENCE DE TIR
 		public var maxtir:int = 500;						// MAXIMUM DE TIR
-		public var speed:int = 50;							// VITESSE DE TIR
+		public var speed:int = 200;							// VITESSE DE TIR
+		public var damage:int = 1;							// DEGATS TIRS
 		public var shoot:FlxWeapon;
 		
 		public var vitesse0:FlxSound = new FlxSound();
@@ -114,6 +116,14 @@ package
 			emitter.start(false, 0.4, 0.05, 0);
 			FlxG.state.add(emitter);
 			
+			
+			shoot = new FlxWeapon("shoot", this, "x", "y");
+			shoot.makeImageBullet(maxtir, ImgShoot, frameWidth, frameHeight/2);
+			shoot.setFireRate(rate);
+			shoot.setBulletSpeed(speed);
+			shoot.setBulletBounds(new FlxRect(0, 0, 800, 800));
+			FlxG.state.add(shoot.group);
+			
 			g = new FlxSprite(FlxG.width / 2, 0, ImgG);
 			g.scrollFactor.x = g.scrollFactor.y = 0;
 			g.scale.x = 0.1;
@@ -146,8 +156,10 @@ package
 				
 				// PHASE SHOOT'EM UP
 				if (stup == true) {
-				
-					health = 100;	
+					shoot.fireFromAngle(FlxWeapon.BULLET_RIGHT);
+					health = 100;
+					if (FlxG.boss1 != null)
+						FlxG.collide(shoot.group, FlxG.boss1, hit_boss);
 				}
 				
 				if (FlxG.keys.pressed("SPACE"))
@@ -356,6 +368,13 @@ package
 			vitesse4.volume = 0;
 			vitesse5.volume = 1;
 			cur_sound = 5;
+		}
+		
+		
+		// GESTION Collision alien
+		public function hit_boss(obj1:FlxObject, obj2:FlxObject):void {
+			obj1.kill();
+			FlxG.boss1.health -= damage;
 		}
 	}
 

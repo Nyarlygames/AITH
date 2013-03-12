@@ -158,6 +158,8 @@ package org.flixel
 		static public var univ:int = 0;
 		static public var tilemap:FlxTilemapExt = null;
 		static public var player:Player = null;
+		static public var boss1:Boss_dino = null;
+		static public var boss2:Boss_dino = null;
 		static public var map:Map = null;
 		
 		/**

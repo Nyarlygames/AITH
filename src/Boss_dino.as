@@ -35,6 +35,7 @@ package
 			shoot.makeImageBullet(maxtir, ImgShoot, -50, frameHeight/2);
 			shoot.setFireRate(rate);
 			shoot.setBulletSpeed(speed);
+			FlxG.boss1 = this;
 			FlxG.state.add(this);
 			FlxG.state.add(shoot.group);
 			FlxG.state.add(pv);
@@ -44,8 +45,10 @@ package
 			shoot.fireFromAngle(FlxWeapon.BULLET_LEFT);
 
 			// TOUCHE JOUEUR
-			/*if (FlxG.overlap(shoot.group, FlxG.player))
-				FlxG.player.die_motherfucker();*/
+			if (FlxG.collide(shoot.group, FlxG.player)) {
+				FlxG.player.die_motherfucker();
+				FlxG.map.reload_map();
+			}
 		}
 	}
 

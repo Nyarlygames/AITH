@@ -53,6 +53,7 @@ package
         [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
 		public var background:Background;
 		public var largeur:int = 30000;														// LARGEUR DE LA MAP
+		public var mapfile:Class = null;
 		
 		/**
 		 * FORMAT TXT
@@ -64,6 +65,7 @@ package
 		
 		public function Map(map:Class) 
 		{
+			mapfile = map;
 			// PARCOURS LE .TXT
 			var fileContent:String = new map();
 			var lignes:Array = fileContent.split('\n'); 
@@ -74,7 +76,6 @@ package
 				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
 				loader.load(new	URLRequest(lignes[2]));
 			}
-			trace(id);
 			FlxG.map = this;
 		}
 		
@@ -129,7 +130,6 @@ package
 						ascenceurs.add (new Ascenceur(object.x, object.y));
 						break;
 					case "Troika":
-						trace("test");
 						shootemup.add (new ShootemUp(object.x, object.y));
 						break;
 					case "Boss":
@@ -190,6 +190,38 @@ package
 			FlxG.worldBounds = new FlxRect(0, 0, largeur, 600 + offsety);
 			FlxG.camera.setBounds(0, 0, largeur, 600 + offsety);
 			FlxG.camera.follow(cam);
+		}
+		
+		// RECHARGE OBJETS POUR CHECKPOINTS
+		public function reload_map():void {
+			var fileContent:String = new mapfile();
+			var lignes:Array = fileContent.split('\n'); 
+			if (lignes != null) {
+				var loader:URLLoader = new URLLoader();
+				loader.addEventListener(Event.COMPLETE,onTmxReLoaded);
+				loader.load(new	URLRequest(lignes[2]));
+			}
+		}
+		
+		// RESET ASCENCEUR ET AUTRES CONNERIES A FAIRE
+		public function onTmxReLoaded(e:Event):void {
+			var xml:XML = new XML(e.target.data);
+			var tmx:TmxMap = new TmxMap(xml);
+			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
+			
+			shootemup.clear();
+			ascenceurs.clear();
+			
+			for each(var object:TmxObject in group.objects) {
+				switch(object.type) {
+					case "Ascenceur":
+						ascenceurs.add (new Ascenceur(object.x, object.y));
+						break;
+					case "Troika":
+						shootemup.add (new ShootemUp(object.x, object.y));
+						break;
+				}
+			}
 		}
 	}
 
