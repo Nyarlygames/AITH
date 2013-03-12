@@ -35,11 +35,21 @@ package
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
+        public var near:FlxTilemap = new FlxTilemap();										// NEAR
+        public var clouds:FlxTilemap = new FlxTilemap();									// NEAR
+        public var middle:FlxTilemap = new FlxTilemap();									// MIDDLE
+        public var far:FlxTilemap = new FlxTilemap();										// FAR
+        public var fond:FlxTilemap = new FlxTilemap();										// FOND
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
         [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/level/exterieur/background_exterieur_middle.png')] public var BgMiddle:Class;
+        [Embed(source = '../assets/level/exterieur/background_exterieur_near.png')] public var BgNear:Class;
+        [Embed(source = '../assets/level/exterieur/background_exterieur_far.png')] public var BgFar:Class;
+        [Embed(source = '../assets/level/exterieur/background_exterieur_clouds.png')] public var BgClouds:Class;
+        [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
         [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
 		public var background:Background;
 		public var largeur:int = 30000;														// LARGEUR DE LA MAP
@@ -64,6 +74,7 @@ package
 				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
 				loader.load(new	URLRequest(lignes[2]));
 			}
+			trace(id);
 			FlxG.map = this;
 		}
 		
@@ -72,28 +83,28 @@ package
 			
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
-			
-			// TEMPORAIRE EN ATTENDANT LE VRAI SOL
-			if ((id == 1) || (id == 3)){
-				background = new Background(id);
 				// RECUPERATION DES TILES CSV
-				var csv:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles'));
+				var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
+				var csv2:String = tmx.getLayer('Back_near').toCsv(tmx.getTileSet('background_exterieur_near'));
+				var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
+				var csv4:String = tmx.getLayer('Back_far').toCsv(tmx.getTileSet('background_exterieur_far'));
+				var csv5:String = tmx.getLayer('Back_middle').toCsv(tmx.getTileSet('background_exterieur_middle'));
+				var csv6:String = tmx.getLayer('Back_clouds').toCsv(tmx.getTileSet('background_exterieur_clouds'));
+				clouds.loadMap(csv6, BgClouds, 400, 400);
+				far.loadMap(csv4, BgFar, 320, 480);
+				fond.loadMap(csv3, BgFond, 40, 40);
+				near.loadMap(csv2, BgNear, 800, 720);
+				middle.loadMap(csv5, BgMiddle, 320, 560);
 				tile.loadMap(csv, MapTiles, 40, 40);
+				FlxG.state.add(clouds);
+				FlxG.state.add(far);
+				FlxG.state.add(fond);
+				FlxG.state.add(middle);
+				FlxG.state.add(near);
 				FlxG.state.add(tile);
 				FlxG.tilemap = tile;
-			}
-			else {
-				// RECUPERATION DES TILES CSV
-				var csv2:String = tmx.getLayer('Tile').toCsv(tmx.getTileSet('aith_tiles'));
-				tile.loadMap(csv2, MapTiles, 40, 40);
-				FlxG.state.add(tile);
-				FlxG.tilemap = tile;
-				background = new Background(id);
-			}
-			
-			
 			// PARSING DES OBJETS
-			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
+			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
 					case "Tube":
