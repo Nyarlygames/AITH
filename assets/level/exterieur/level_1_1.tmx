@@ -292,19 +292,15 @@
   </object>
   <object name="pique" type="Piques" x="1000" y="720" width="40" height="40">
    <properties>
-    <property name="orientation" value="bas"/>
+    <property name="orientation" value="gauche"/>
    </properties>
   </object>
   <object name="pique" type="Piques" x="1040" y="720" width="40" height="40">
    <properties>
-    <property name="orientation" value="bas"/>
+    <property name="orientation" value="droite"/>
    </properties>
   </object>
-  <object name="pique" type="Piques" x="1080" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="bas"/>
-   </properties>
-  </object>
+  <object name="pique" type="Piques" x="1080" y="720" width="40" height="40"/>
   <object name="poubelle" type="Poubelles" x="8320" y="680" width="80" height="80"/>
   <object name="Sol_Destructible" type="Des_sol" x="9360" y="480" width="200" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="8800" y="800" width="120" height="40"/>

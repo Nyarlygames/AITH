@@ -10,11 +10,23 @@ package
 	{
 		[Embed(source = '../assets/gfx/gameplay/piques.png')] protected var ImgPique:Class;
 		
-		public function Piques(xpos:int, ypos:int) 
+		public function Piques(xpos:int, ypos:int, dir:String) 
 		{
 			super(xpos, ypos, ImgPique);
 			y -= frameHeight;
 			immovable = true;
+			
+			switch (dir) {
+				case "bas":
+					angle = 180;
+					break;
+				case "gauche":
+					angle = -90;
+					break;
+				case "droite":
+					angle = 90;
+					break;
+			}
 		}
 		
 	}

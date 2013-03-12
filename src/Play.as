@@ -32,7 +32,7 @@ package
 		[Embed(source = "../assets/level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source = "../assets/level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
 		[Embed(source = "../assets/level/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
-		[Embed(source="../assets/sfx/levels/level_1_1.mp3")] public  var Sfx_Level1:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level1:Class;
 
 		public var player:Player;
 		public var map:Map;
@@ -40,7 +40,7 @@ package
 		public var sound:FlxSound;
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 1000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
-		
+		public var justloaded:Boolean = true;				// DEBUT MAP
 		
 		override public function create():void
 		{	
@@ -50,6 +50,11 @@ package
 					switch (FlxG.level) { 
 						case 1:
 							map = new Map(mapfile);
+							// SON ARRIERE PLAN
+							if (sound == null) {
+								sound = new FlxSound();
+								sound.loadEmbedded(Sfx_Level1, true, true);
+							}
 							break;
 						case 2:
 							map = new Map(mapfile2);
@@ -74,18 +79,17 @@ package
 					}
 					break;
 			}
-			// SON ARRIERE PLAN
-			if (sound == null) {
-				sound = new FlxSound();
-				sound.loadEmbedded(Sfx_Level1, true, true);
-				//sound.play();
-			}
 		}
 
 		override public function update():void {
 			// ON VERIFIE LE CHARGEMENT DE LA MAP
 			if (map.loaded) {
-				player = map.player;
+				if (justloaded == true) {
+					player = map.player;
+					if (sound != null)
+						sound.play();
+					justloaded = false;
+				}
 				super.update();
 				
 				// MENU PAUSE

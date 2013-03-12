@@ -23,6 +23,7 @@ package
 		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_vitesse.png')] protected var ImgV:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
+		//[Embed(source = "../assets/sfx/levels/2.mp3")] public var Sfx_Level1:Class;
 		public var g:FlxSprite;
 		public var v:FlxSprite;
 		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)

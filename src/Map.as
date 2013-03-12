@@ -141,7 +141,10 @@ package
 						triggers.add(new Trigger(object.x, object.y));
 						break;
 					case "Piques":
-						piques.add (new Piques(object.x, object.y));
+						if (object.custom != null)
+							piques.add (new Piques(object.x, object.y, object.custom["orientation"]));
+						else
+							piques.add (new Piques(object.x, object.y, "haut"));
 						break;
 					case "Poubelles":
 						DustbinBieber.add (new Poubelle(object.x, object.y));
