@@ -114,7 +114,10 @@ package
 					FlxG.switchState(new LevelChooser());
 				}
 			}
-			
+			if (FlxG.keys.justPressed("T")) {
+				FlxG.univ = -1;
+				FlxG.switchState(new Play());
+			}
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.univ = 1;
 					FlxG.switchState(new LevelChooser());

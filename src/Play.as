@@ -29,10 +29,19 @@ package
 	 */
 	public class Play extends FlxState 
 	{
+		[Embed(source = "../assets/level/map_test.txt", mimeType = "application/octet-stream")] public var maptest:Class;
 		[Embed(source = "../assets/level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source = "../assets/level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
 		[Embed(source = "../assets/level/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
+		[Embed(source = "../assets/level/map04.txt", mimeType = "application/octet-stream")] public var mapfile4:Class;
+		[Embed(source = "../assets/level/map05.txt", mimeType = "application/octet-stream")] public var mapfile5:Class;
+		[Embed(source = "../assets/level/map06.txt", mimeType = "application/octet-stream")] public var mapfile6:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level1:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level2:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level3:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level4:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level5:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level6:Class;
 
 		public var player:Player;
 		public var map:Map;
@@ -46,6 +55,14 @@ package
 		{	
 			switch (FlxG.univ) {
 				// UNIVERS 1
+				case -1:
+					map = new Map(maptest);
+					// SON ARRIERE PLAN
+					if (sound == null) {
+						sound = new FlxSound();
+						sound.loadEmbedded(Sfx_Level1, true, true);
+					}
+					break;
 				case 1:
 					switch (FlxG.level) { 
 						case 1:
@@ -58,9 +75,17 @@ package
 							break;
 						case 2:
 							map = new Map(mapfile2);
+							if (sound == null) {
+								sound = new FlxSound();
+								sound.loadEmbedded(Sfx_Level2, true, true);
+							}
 							break;
 						case 3:    
 							map = new Map(mapfile3);
+							if (sound == null) {
+								sound = new FlxSound();
+								sound.loadEmbedded(Sfx_Level3, true, true);
+							}
 							break;
 					}
 					break;
@@ -68,13 +93,25 @@ package
 				case 2:
 					switch (FlxG.level) { 
 						case 1:
-							map = new Map(mapfile);
+							map = new Map(mapfile4);
+							if (sound == null) {
+								sound = new FlxSound();
+								sound.loadEmbedded(Sfx_Level4, true, true);
+							}
 							break;
 						case 2:
-							map = new Map(mapfile2);
+							map = new Map(mapfile5);
+							if (sound == null) {
+								sound = new FlxSound();
+								sound.loadEmbedded(Sfx_Level5, true, true);
+							}
 							break;
 						case 3:
-							map = new Map(mapfile3);
+							map = new Map(mapfile6);
+							if (sound == null) {
+								sound = new FlxSound();
+								sound.loadEmbedded(Sfx_Level6, true, true);
+							}
 							break;
 					}
 					break;
@@ -178,12 +215,24 @@ package
 			if (result == PauseMenu.QUIT_GAME)
 			{
 				sound.destroy();
+				player.vitesse0.destroy();
+				player.vitesse1.destroy();
+				player.vitesse2.destroy();
+				player.vitesse3.destroy();
+				player.vitesse4.destroy();
+				player.vitesse5.destroy();
 				FlxG.switchState(new UnivChooser()); 
 			}
 			// REDEMARRE LE NIVEAU
 			else if (result == PauseMenu.RESTART)
 			{
 				sound.destroy();
+				player.vitesse0.destroy();
+				player.vitesse1.destroy();
+				player.vitesse2.destroy();
+				player.vitesse3.destroy();
+				player.vitesse4.destroy();
+				player.vitesse5.destroy();
 				FlxG.score = -map.id;
 				FlxG.resetState();
 			}

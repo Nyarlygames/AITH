@@ -11,6 +11,7 @@ package
 	import org.flixel.FlxTilemap;
 	import org.flixel.FlxEmitter;
 	import org.flixel.FlxParticle;
+	import org.flixel.FlxSound;
 	
 	/**
 	 * Joueur (jimi)
@@ -23,7 +24,18 @@ package
 		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_vitesse.png')] protected var ImgV:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
-		//[Embed(source = "../assets/sfx/levels/2.mp3")] public var Sfx_Level1:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse0.mp3")] public var Sfx_Vitesse0:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse4.mp3")] public var Sfx_Vitesse4:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse5.mp3")] public var Sfx_Vitesse5:Class;
+		public var vitesse0:FlxSound = new FlxSound();
+		public var vitesse1:FlxSound = new FlxSound();
+		public var vitesse2:FlxSound = new FlxSound();
+		public var vitesse3:FlxSound = new FlxSound();
+		public var vitesse4:FlxSound = new FlxSound();
+		public var vitesse5:FlxSound = new FlxSound();
 		public var g:FlxSprite;
 		public var v:FlxSprite;
 		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)
@@ -37,7 +49,10 @@ package
 		public var gravitydown:int = 1200;		// REDUCTION GRAVITE
 		public var cur_velocity:FlxPoint;		// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
 		public var gravity:int = 300;			// GRAVITE
-
+		
+		public var volumespeed:Number = 0.02;	// BAISSE SON MOTEUR
+		public var cur_sound:int = 5;
+		
 		public var floating:Boolean = false;	// LE JOUEUR FLOTTE?
 		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
 		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?
@@ -61,9 +76,24 @@ package
 			velocity.x = init_speed;
 			cur_velocity = new FlxPoint(init_speed, mingravity);
 			cur_angularspeed = angularspeed;
-			
-			
-			
+			vitesse0.loadEmbedded(Sfx_Vitesse0, true, true);
+			vitesse1.loadEmbedded(Sfx_Vitesse1, true, true);
+			vitesse2.loadEmbedded(Sfx_Vitesse2, true, true);
+			vitesse3.loadEmbedded(Sfx_Vitesse3, true, true);
+			vitesse4.loadEmbedded(Sfx_Vitesse4, true, true);
+			vitesse5.loadEmbedded(Sfx_Vitesse5, true, true);
+			vitesse0.volume = 0;
+			vitesse1.volume = 0;
+			vitesse2.volume = 0;
+			vitesse3.volume = 0;
+			vitesse4.volume = 0;
+			vitesse5.volume = 1;
+			vitesse5.play();
+			vitesse4.play();
+			vitesse3.play();
+			vitesse2.play();
+			vitesse1.play();
+			vitesse0.play();
 			emitter = new FlxEmitter(xPos, yPos, 5);
 			for(var i:int = 0; i < 10; i++) {
 				var p:FlxParticle = new FlxParticle();
@@ -105,11 +135,16 @@ package
 				velocity.y = 0;
 			}
 			else if (!pause) {
+				if (FlxG.keys.pressed("SPACE"))
+					handle_sound(0);
+				else if (!FlxG.keys.any())
+					handle_sound(1);
 				// SI ON APPUIE SUR HAUT
 				if (FlxG.keys.pressed("SPACE") && (gravity < maxgravity)) {
 					if (velocity.x > minspeed)
 						velocity.x -= speeddown * FlxG.elapsed;
 					gravity += gravityup * FlxG.elapsed;
+					handle_sound(0);
 				}
 				// SI ON APPUIE SUR RIEN
 				else if (!FlxG.keys.any() && (gravity > mingravity)) {
@@ -194,6 +229,107 @@ package
 			}
 		}
 		
+		// GESTION SON MOTEUR
+		public function handle_sound(upanddown:int):void {
+			trace("ETAT : ", upanddown, "SON :", cur_sound, "VITESSE0 :", vitesse0.volume, "VITESSE1 :", vitesse1.volume,
+										"VITESSE2 :", vitesse2.volume, "VITESSE3 :", vitesse3.volume, "VITESSE4 :", vitesse4.volume, 
+										"VITESSE5 :", vitesse5.volume);
+			// MONTEE
+			if (upanddown == 1) {
+				switch (cur_sound) {
+					case 0:
+						if (vitesse0.volume > 0) {
+							vitesse0.volume -= volumespeed;
+							vitesse1.volume += volumespeed;
+						}
+						else
+							cur_sound = 1;
+						break;
+					case 1:
+						if (vitesse1.volume > 0) {
+							vitesse1.volume -= volumespeed;
+							vitesse2.volume += volumespeed;
+						}
+						else
+							cur_sound = 2;
+						break;
+					case 2:
+						if (vitesse2.volume > 0) {
+							vitesse2.volume -= volumespeed;
+							vitesse3.volume += volumespeed;
+						}
+						else
+							cur_sound = 3;
+						break;
+					case 3:
+						if (vitesse3.volume > 0) {
+							vitesse3.volume -= volumespeed;
+							vitesse4.volume += volumespeed;
+						}
+						else
+							cur_sound = 4;
+						break;
+					case 4:
+						if (vitesse4.volume > 0) {
+							vitesse4.volume -= volumespeed;
+							vitesse5.volume += volumespeed;
+						}
+						else
+							cur_sound = 5;
+						break;
+					case 5:
+						break;
+				}
+			}
+			// DESCENTE
+			else {
+				switch (cur_sound) {
+					case 5:
+						if (vitesse5.volume > 0) {
+							vitesse5.volume -= volumespeed;
+							vitesse4.volume += volumespeed;
+						}
+						else
+							cur_sound = 4;
+						break;
+					case 4:
+						if (vitesse4.volume > 0) {
+							vitesse4.volume -= volumespeed;
+							vitesse3.volume += volumespeed;
+						}
+						else
+							cur_sound = 3;
+						break;
+					case 3:
+						if (vitesse3.volume > 0) {
+							vitesse3.volume -= volumespeed;
+							vitesse2.volume += volumespeed;
+						}
+						else
+							cur_sound = 2;
+						break;
+					case 2:
+						if (vitesse2.volume > 0) {
+							vitesse2.volume -= volumespeed;
+							vitesse1.volume += volumespeed;
+						}
+						else
+							cur_sound = 1;
+						break;
+					case 1:
+						if (vitesse1.volume > 0) {
+							vitesse1.volume -= volumespeed;
+							vitesse0.volume += volumespeed;
+						}
+						else
+							cur_sound = 0;
+						break;
+					case 0:
+						break;
+				}
+			}
+		}
+		
 		// MORT
 		public function die_motherfucker():void {
 			x = checkpoint.x;
@@ -201,6 +337,13 @@ package
 			velocity.x = init_speed;
 			velocity.y = mingravity;
 			gravity = mingravity;
+			vitesse0.volume = 0;
+			vitesse1.volume = 0;
+			vitesse2.volume = 0;
+			vitesse3.volume = 0;
+			vitesse4.volume = 0;
+			vitesse5.volume = 1;
+			cur_sound = 5;
 		}
 	}
 
