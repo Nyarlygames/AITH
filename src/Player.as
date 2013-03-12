@@ -30,6 +30,13 @@ package
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse4.mp3")] public var Sfx_Vitesse4:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse5.mp3")] public var Sfx_Vitesse5:Class;
+		
+		[Embed(source = '../assets/gfx/gameplay/tir_boss.png')] public var ImgShoot:Class;
+		public var rate:int = 1000;							// CADENCE DE TIR
+		public var maxtir:int = 500;						// MAXIMUM DE TIR
+		public var speed:int = 50;							// VITESSE DE TIR
+		public var shoot:FlxWeapon;
+		
 		public var vitesse0:FlxSound = new FlxSound();
 		public var vitesse1:FlxSound = new FlxSound();
 		public var vitesse2:FlxSound = new FlxSound();
@@ -56,6 +63,7 @@ package
 		public var floating:Boolean = false;	// LE JOUEUR FLOTTE?
 		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
 		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?
+		public var stup:Boolean = false;		// PHASE SHOOT'THEM UP?
 		public var set_old:Boolean = true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
 		public var lasttile:int = 0;			
 		public var angularspeed:int = 150;		// VITESSE DE ROTATION
@@ -135,6 +143,13 @@ package
 				velocity.y = 0;
 			}
 			else if (!pause) {
+				
+				// PHASE SHOOT'EM UP
+				if (stup == true) {
+				
+					health = 100;	
+				}
+				
 				if (FlxG.keys.pressed("SPACE"))
 					handle_sound(0);
 				else if (!FlxG.keys.any())
@@ -231,9 +246,6 @@ package
 		
 		// GESTION SON MOTEUR
 		public function handle_sound(upanddown:int):void {
-			trace("ETAT : ", upanddown, "SON :", cur_sound, "VITESSE0 :", vitesse0.volume, "VITESSE1 :", vitesse1.volume,
-										"VITESSE2 :", vitesse2.volume, "VITESSE3 :", vitesse3.volume, "VITESSE4 :", vitesse4.volume, 
-										"VITESSE5 :", vitesse5.volume);
 			// MONTEE
 			if (upanddown == 1) {
 				switch (cur_sound) {

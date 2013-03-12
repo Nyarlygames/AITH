@@ -18,6 +18,7 @@ package
 		public function ShootemUp(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgShootemUp);
+			y -= frameHeight;
 			immovable = true;
 		}
 		
@@ -36,6 +37,7 @@ package
 				FlxG.player.x = x;
 				FlxG.player.velocity.x = 0;
 				FlxG.player.velocity.y = 0;
+				FlxG.player.stup = true;
 				
 				// DEPLACEMENT BLOQUE
 				if (FlxG.player.gravity > 800) {

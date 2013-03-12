@@ -128,11 +128,12 @@ package
 					case "Ascenceur":
 						ascenceurs.add (new Ascenceur(object.x, object.y));
 						break;
-					case "ShootemUp":
+					case "Troika":
+						trace("test");
 						shootemup.add (new ShootemUp(object.x, object.y));
 						break;
 					case "Boss":
-						boss.add (new Boss(object.x, object.y));
+						boss.add (new Boss_dino(object.x, object.y));
 						break;
 					case "Checkpoints":
 						checkpoints.add (new Checkpoints(object.x, object.y));

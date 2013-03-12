@@ -14,4 +14,5 @@
  <objecttype name="Trigger" color="#f11616"/>
  <objecttype name="Soufflerie" color="#bea10e"/>
  <objecttype name="Soucoupe" color="#dc02e3"/>
+ <objecttype name="Troika" color="#515151"/>
 </objecttypes>
