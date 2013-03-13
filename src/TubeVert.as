@@ -24,7 +24,6 @@ package
 					loadGraphic(ImgGrosTube);
 					break;
 			}
-			y -= frameHeight;
 			loot = point;
 		}
 		

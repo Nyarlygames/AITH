@@ -15,4 +15,7 @@
  <objecttype name="Soufflerie" color="#bea10e"/>
  <objecttype name="Soucoupe" color="#dc02e3"/>
  <objecttype name="Troika" color="#515151"/>
+ <objecttype name="Boss" color="#0515a4"/>
+ <objecttype name="Tremplin80" color="#a44551"/>
+ <objecttype name="Tremplin120" color="#4ca44a"/>
 </objecttypes>

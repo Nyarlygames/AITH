@@ -16,7 +16,6 @@ package
 		public function Checkpoints(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgCheck);
-			y -= frameHeight;
 			immovable = true;
 		}
 		

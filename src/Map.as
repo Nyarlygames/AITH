@@ -27,6 +27,7 @@ package
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
 		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
 		public var shootemup:FlxGroup = new FlxGroup();										// SHOOTEMUP
+		public var tremplins:FlxGroup = new FlxGroup();										// TREMPLINS
 		public var boss:FlxGroup = new FlxGroup();											// VAGUES
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
@@ -51,6 +52,12 @@ package
         [Embed(source = '../assets/level/exterieur/background_exterieur_clouds.png')] public var BgClouds:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
         [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_80.png')] public var Tremplin80_rouge:Class;
+        [Embed(source = '../assets/gfx/gameplay/tremplin_jaune_80.png')] public var Tremplin80_jaune:Class;
+        [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_80.png')] public var Tremplin80_bleu:Class;
+        [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_120.png')] public var Tremplin120_rouge:Class;
+        [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_120.png')] public var Tremplin120_jaune:Class;
+        [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_120.png')] public var Tremplin120_bleu:Class;
 		public var background:Background;
 		public var largeur:int = 30000;														// LARGEUR DE LA MAP
 		public var mapfile:Class = null;
@@ -97,9 +104,9 @@ package
 				near.loadMap(csv2, BgNear, 800, 720);
 				middle.loadMap(csv5, BgMiddle, 320, 560);
 				tile.loadMap(csv, MapTiles, 40, 40);
+				FlxG.state.add(fond);
 				FlxG.state.add(clouds);
 				FlxG.state.add(far);
-				FlxG.state.add(fond);
 				FlxG.state.add(middle);
 				FlxG.state.add(near);
 				FlxG.state.add(tile);
@@ -164,10 +171,49 @@ package
 						ground.immovable = true;
 						destructible.add(ground);
 						break;
+					case "Tremplin80":
+						var tremplin80:FlxSprite = new FlxSprite(object.x, object.y);
+						if (object.custom != null) {
+							switch (object.custom["color"]) {
+								case "1":
+									tremplin80.loadGraphic(Tremplin80_bleu);
+									break;
+								case "2":
+									tremplin80.loadGraphic(Tremplin80_jaune);
+									break;
+								case "3":
+									tremplin80.loadGraphic(Tremplin80_rouge);
+									break;
+							}
+						}
+						tremplin80.immovable = true;
+						tremplin80.y -= tremplin80.frameHeight;
+						tremplins.add(tremplin80);
+						break;
+					case "Tremplin120":
+						var tremplin120:FlxSprite = new FlxSprite(object.x, object.y);
+						if (object.custom != null) {
+							switch (object.custom["color"]) {
+								case "1":
+									tremplin80.loadGraphic(Tremplin120_bleu);
+									break;
+								case "2":
+									tremplin80.loadGraphic(Tremplin120_jaune);
+									break;
+								case "3":
+									tremplin80.loadGraphic(Tremplin120_rouge);
+									break;
+							}
+						}
+						tremplin120.y -= tremplin120.frameHeight;
+						tremplin120.immovable = true;
+						tremplins.add(tremplin120);
+						break;
 				}
 			}
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
+			FlxG.state.add(tremplins);
 			FlxG.state.add(ascenceurs);
 			FlxG.state.add(triggers);
 			FlxG.state.add(piques);

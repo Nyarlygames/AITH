@@ -14,7 +14,6 @@ package
 		public function AlienNormal(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgAlienNormal);
-			y -= frameHeight
 		}
 		
 	}

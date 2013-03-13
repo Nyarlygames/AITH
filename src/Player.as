@@ -190,7 +190,6 @@ package
 				// Affichage vitesse/gravité
 				g.scale.x = gravity /1000;
 				v.scale.x = velocity.x / 100;
-				
 				// ROTATION JIMMY EN L'AIR
 				if (jumping && (angle < 0))
 					angle += 0.5;
@@ -232,7 +231,8 @@ package
 			else if ((!pause) && (jumping)) {
 				velocity.x = cur_velocity.x;
 			}
-			
+			if (mytile >= 5)
+				trace(mytile);
 			// ROTATION JIMMY TREMPLIN
 			if (((mytile == 1) || (mytile == 4))) {
 				angularVelocity = -angularspeed;
@@ -361,12 +361,14 @@ package
 			velocity.x = init_speed;
 			velocity.y = mingravity;
 			gravity = mingravity;
-			vitesse0.volume = 0;
-			vitesse1.volume = 0;
-			vitesse2.volume = 0;
-			vitesse3.volume = 0;
-			vitesse4.volume = 0;
-			vitesse5.volume = 1;
+			if ((vitesse0 != null) && (vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null) && (vitesse4 != null) && (vitesse5 != null)) {
+				vitesse0.volume = 0;
+				vitesse1.volume = 0;
+				vitesse2.volume = 0;
+				vitesse3.volume = 0;
+				vitesse4.volume = 0;
+				vitesse5.volume = 1;
+			}
 			cur_sound = 5;
 		}
 		

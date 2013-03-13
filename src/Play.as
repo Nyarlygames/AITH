@@ -50,6 +50,7 @@ package
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 1000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// DEBUT MAP
+		public var ui:UI = new UI();
 		
 		override public function create():void
 		{	
@@ -118,6 +119,7 @@ package
 			if (map.loaded) {
 				if (justloaded == true) {
 					player = map.player;
+					FlxG.state.add(ui);
 					if (sound != null)
 						sound.play();
 					justloaded = false;

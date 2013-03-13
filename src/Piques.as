@@ -13,7 +13,6 @@ package
 		public function Piques(xpos:int, ypos:int, dir:String) 
 		{
 			super(xpos, ypos, ImgPique);
-			y -= frameHeight;
 			immovable = true;
 			
 			switch (dir) {
