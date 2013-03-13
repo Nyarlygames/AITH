@@ -57,11 +57,6 @@ package
 				// UNIVERS 1
 				case -1:
 					map = new Map(maptest);
-					// SON ARRIERE PLAN
-					if (sound == null) {
-						sound = new FlxSound();
-						sound.loadEmbedded(Sfx_Level1, true, true);
-					}
 					break;
 				case 1:
 					switch (FlxG.level) { 
@@ -137,7 +132,14 @@ package
 				
 				// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
 				if (FlxG.keys.pressed("BACKSPACE")) {
-					sound.destroy();
+					if (sound != null)
+						sound.destroy();
+					player.vitesse0.destroy();
+					player.vitesse1.destroy();
+					player.vitesse2.destroy();
+					player.vitesse3.destroy();
+					player.vitesse4.destroy();
+					player.vitesse5.destroy();
 					FlxG.score = -map.id;
 					FlxG.resetState();
 				}
@@ -214,7 +216,8 @@ package
 			// RETOUR AU MENU
 			if (result == PauseMenu.QUIT_GAME)
 			{
-				sound.destroy();
+				if (sound != null)
+					sound.destroy();
 				player.vitesse0.destroy();
 				player.vitesse1.destroy();
 				player.vitesse2.destroy();
@@ -226,7 +229,8 @@ package
 			// REDEMARRE LE NIVEAU
 			else if (result == PauseMenu.RESTART)
 			{
-				sound.destroy();
+				if (sound != null)
+					sound.destroy();
 				player.vitesse0.destroy();
 				player.vitesse1.destroy();
 				player.vitesse2.destroy();
