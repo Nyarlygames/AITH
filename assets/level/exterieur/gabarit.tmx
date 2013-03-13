@@ -31,7 +31,7 @@
   <image source="../../gfx/gameplay/piques.png" width="40" height="40"/>
  </tileset>
  <tileset firstgid="28" name="ascenseur" tilewidth="120" tileheight="40">
-  <image source="../../gfx/gameplay/ascenseur.png" width="120" height="40"/>
+  <image source="../../gfx/gameplay/ascenceur.png" width="120" height="40"/>
  </tileset>
  <tileset firstgid="29" name="sol_destructible" tilewidth="80" tileheight="40">
   <image source="../../gfx/gameplay/destructible.png" width="200" height="40"/>
