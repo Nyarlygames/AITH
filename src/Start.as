@@ -38,7 +38,7 @@ package
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
-			cursor.addAnimation("souris", [0, 1, 2, 3], 4, true);
+			cursor.addAnimation("souris", [0, 1, 2, 3], 8, true);
 			cursor.play("souris");
 			add(cursor)
 			FlxG.mouse.hide();

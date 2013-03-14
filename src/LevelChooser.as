@@ -24,6 +24,12 @@ package
 		[Embed(source = '../assets/gfx/ui/vaiss_niv1.png')] protected var ImgLevel4:Class;
 		[Embed(source = '../assets/gfx/ui/vaiss_niv2.png')] protected var ImgLevel5:Class;
 		[Embed(source = '../assets/gfx/ui/vaiss_niv3.png')] protected var ImgLevel6:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv1_on.png')] protected var ImgLevel1On:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv2_on.png')] protected var ImgLevel2On:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv3_on.png')] protected var ImgLevel3On:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv1_on.png')] protected var ImgLevel4On:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv2_on.png')] protected var ImgLevel5On:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv3_on.png')] protected var ImgLevel6On:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
@@ -52,21 +58,32 @@ package
 			add(replaytext);			
 			
 			// LEVEL 1 IMAGE
-			level1 = new FlxSprite(50, FlxG.height /2, ImgLevel1);
-			add(level1);
-			
+			level1 = new FlxSprite(50, FlxG.height /2);
 			// LEVEL 2 IMAGE
-			level2 = new FlxSprite(300, FlxG.height /2, ImgLevel2);
-			add(level2);
-			
+			level2 = new FlxSprite(300, FlxG.height /2);
 			// LEVEL 3 IMAGE
-			level3 = new FlxSprite(550, FlxG.height /2, ImgLevel3);
+			level3 = new FlxSprite(550, FlxG.height / 2);
+			
+			if (FlxG.univ == 1) {
+				level1.loadGraphic(ImgLevel1);
+				level2.loadGraphic(ImgLevel2);
+				level3.loadGraphic(ImgLevel3);
+			}
+			else {
+				level1.loadGraphic(ImgLevel4);
+				level2.loadGraphic(ImgLevel5);
+				level3.loadGraphic(ImgLevel6);
+			}
+			
+			
+			add(level1);
+			add(level2);			
 			add(level3);
 			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
-			cursor.addAnimation("souris", [0, 1, 2, 3], 4, true);
+			cursor.addAnimation("souris", [0, 1, 2, 3], 8, true);
 			cursor.play("souris");
 			add(cursor)
 			FlxG.mouse.hide();
@@ -87,6 +104,46 @@ package
 			}
 			else
 				replaypic.loadGraphic(ImgReplay);
+				
+			if (FlxG.univ == 1) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
+					level1.loadGraphic(ImgLevel1On);
+				}
+				else
+					level1.loadGraphic(ImgLevel1);
+				
+				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
+					level2.loadGraphic(ImgLevel2On);
+				}
+				else
+					level2.loadGraphic(ImgLevel2);
+				
+				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
+					level3.loadGraphic(ImgLevel3On);
+				}
+				else
+					level3.loadGraphic(ImgLevel3);
+			}
+			else if (FlxG.univ == 2) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
+					level1.loadGraphic(ImgLevel4On);
+				}
+				else
+					level1.loadGraphic(ImgLevel4);
+				
+				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
+					level2.loadGraphic(ImgLevel5On);
+				}
+				else
+					level2.loadGraphic(ImgLevel5);
+				
+				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
+					level3.loadGraphic(ImgLevel6On);
+				}
+				else
+					level3.loadGraphic(ImgLevel6);
+			}
+			
 
 			// GESTION CLICS SOURIS
 			if (FlxG.mouse.justPressed()) {

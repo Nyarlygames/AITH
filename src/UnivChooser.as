@@ -20,6 +20,8 @@ package
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1.png')] protected var ImgUni1:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2.png')] protected var ImgUni2:Class;
+		[Embed(source = '../assets/gfx/ui/univ_1_on.png')] protected var ImgUni1On:Class;
+		[Embed(source = '../assets/gfx/ui/univ_2_on.png')] protected var ImgUni2On:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
@@ -55,7 +57,7 @@ package
 			uni2 = new FlxSprite(450, FlxG.height /2, ImgUni2);
 			add(uni2);
 			
-			//SCORE 1
+			/*//SCORE 1
 			var uni1text:FlxText = new FlxText(uni1.x + uni1.frameWidth/5, uni1.y + uni1.frameHeight /2, uni1.frameWidth, "0");
 			uni1text.setFormat("slick", 32, 0x044071);
 			add(uni1text);	
@@ -76,12 +78,12 @@ package
 			var uni2text2:FlxText = new FlxText(uni2.x, uni2.y + uni2.frameHeight *4/5, uni2.frameWidth *4/5, "13");
 			uni2text2.setFormat("slick", 32, 0x044071);
 			uni2text2.alignment = "right";
-			add(uni2text2);	
+			add(uni2text2);	*/
 			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
-			cursor.addAnimation("souris", [0, 1, 2, 3], 4, true);
+			cursor.addAnimation("souris", [0, 1, 2, 3], 8, true);
 			cursor.play("souris");
 			add(cursor)
 			FlxG.mouse.hide();
@@ -103,7 +105,19 @@ package
 			}
 			else
 				replaypic.loadGraphic(ImgReplay);
-
+			
+			if (FlxCollision.pixelPerfectCheck(cursor, uni1)) {
+				uni1.loadGraphic(ImgUni1On);
+			}
+			else
+				uni1.loadGraphic(ImgUni1);
+			
+			if (FlxCollision.pixelPerfectCheck(cursor, uni2)) {
+				uni2.loadGraphic(ImgUni2On);
+			}
+			else
+				uni2.loadGraphic(ImgUni2);
+				
 			// GESTION CLICS SOURIS
 			if (FlxG.mouse.justPressed()) {
 				//UNIVERS 1
