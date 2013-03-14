@@ -25,6 +25,7 @@ package
 		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_vitesse.png')] protected var ImgV:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
+		[Embed(source = '../assets/gfx/ui/jauge12.png')] protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
@@ -41,13 +42,14 @@ package
 		public var vitesse3:FlxSound = new FlxSound();
 		public var g:FlxSprite;
 		public var v:FlxSprite;
+		public var jauge:FlxSprite;
 		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)
 		public var speedup:int = 150;	  		// ACCELERATION
 		public var speeddown:int = 150;   		// DECELERATION
 		public var speedjumpdown:int = 110;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
 		public var minspeed:int = 50;			// VITESSE MIN
 		public var mingravity:int = 5;			// GRAVITE MIN
-		public var maxgravity:int = 5000;		// GRAVITY MAX
+		public var maxgravity:int = 1800;		// GRAVITY MAX
 		public var gravityup:int = 1200;		// AUGMENTATION GRAVITE
 		public var gravitydown:int = 1200;		// REDUCTION GRAVITE
 		public var cur_velocity:FlxPoint;		// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
@@ -108,6 +110,10 @@ package
 			shoot.setBulletBounds(new FlxRect(0, 0, 800, 800));
 			FlxG.state.add(shoot.group);
 			
+			
+			jauge = new FlxSprite(x, y - frameHeight - 50,/* + (frameWidth / 2), y - 50,*/ ImgJauge);
+			jauge.scrollFactor = new FlxPoint(0, 0);
+			FlxG.state.add(jauge);
 			g = new FlxSprite(FlxG.width / 2, 0, ImgG);
 			g.scrollFactor.x = g.scrollFactor.y = 0;
 			g.scale.x = 0.1;
@@ -117,6 +123,7 @@ package
 		
 		override public function update():void 
 		{
+			jauge.y = y - 300;
 			emitter.x = x;
 			emitter.y = y + frameHeight;
 			// SI PAUSE ON GARDE LES VALEURS DE VITESSE ET GRAVITE

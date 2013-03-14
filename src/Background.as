@@ -17,7 +17,7 @@ package
 		public var sol:FlxSprite;
 		 
 		[Embed(source = '../assets/gfx/levels/bg_lvl_1_1.png')] public var ImgBackground:Class;
-		[Embed(source = '../assets/gfx/levels/bg_lvl_1_2.png')] public var ImgBackground2:Class;
+		[Embed(source = '../assets/gfx/levels/bg_lvl_1_1.png')] public var ImgBackground2:Class;
 		[Embed(source = '../assets/gfx/levels/sol_lvl_1_1.png')] public var ImgSol:Class;
 		[Embed(source = '../assets/gfx/levels/sol_lvl_1_2.png')] public var ImgSol2:Class;
 		 
