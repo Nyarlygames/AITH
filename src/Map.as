@@ -52,6 +52,7 @@ package
         [Embed(source = '../assets/level/exterieur/background_exterieur_clouds.png')] public var BgClouds:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
         [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/misc/back_fail.png')] public var BgFail:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_80.png')] public var Tremplin80_rouge:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_jaune_80.png')] public var Tremplin80_jaune:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_80.png')] public var Tremplin80_bleu:Class;
@@ -91,6 +92,7 @@ package
 			
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
+			
 				// RECUPERATION DES TILES CSV
 				var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
 				var csv2:String = tmx.getLayer('Back_near').toCsv(tmx.getTileSet('background_exterieur_near'));
@@ -105,6 +107,18 @@ package
 				middle.loadMap(csv5, BgMiddle, 320, 560);
 				tile.loadMap(csv, MapTiles, 40, 40);
 				FlxG.state.add(fond);
+				var bgfail:FlxSprite = new FlxSprite(0, 0, BgFail);
+				FlxG.state.add(bgfail);
+				var bgfail2:FlxSprite = new FlxSprite(5000, 0, BgFail);
+				FlxG.state.add(bgfail2);
+				var bgfail3:FlxSprite = new FlxSprite(15000, 0, BgFail);
+				FlxG.state.add(bgfail3);
+				var bgfail4:FlxSprite = new FlxSprite(20000, 0, BgFail);
+				FlxG.state.add(bgfail4);
+				var bgfail5:FlxSprite = new FlxSprite(25000, 0, BgFail);
+				FlxG.state.add(bgfail5);
+				var bgfail6:FlxSprite = new FlxSprite(30000, 0, BgFail);
+				FlxG.state.add(bgfail6);
 				FlxG.state.add(clouds);
 				FlxG.state.add(far);
 				FlxG.state.add(middle);
