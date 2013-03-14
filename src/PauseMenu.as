@@ -28,6 +28,7 @@ package
 		public var restartPic:FlxSprite;
 		public var quitPic:FlxSprite;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgMenu:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgMenuOn:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
@@ -84,7 +85,10 @@ package
 			text.scrollFactor = new FlxPoint(0, 0);
 			
 			// CURSEUR SOURIS
-			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y, ImgCursor);
+			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
+			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
+			cursor.addAnimation("souris", [0, 1, 2, 3], 4, true);
+			cursor.play("souris");
 			FlxG.state.add(cursor)
 		}
 		

@@ -17,6 +17,7 @@ package
 		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgReplay:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgReplayOn:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/exte_niv1.png')] protected var ImgLevel1:Class;
 		[Embed(source = '../assets/gfx/ui/exte_niv2.png')] protected var ImgLevel2:Class;
 		[Embed(source = '../assets/gfx/ui/exte_niv3.png')] protected var ImgLevel3:Class;
@@ -63,7 +64,10 @@ package
 			add(level3);
 			
 			// CURSEUR SOURIS
-			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y, ImgCursor);
+			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
+			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
+			cursor.addAnimation("souris", [0, 1, 2, 3], 4, true);
+			cursor.play("souris");
 			add(cursor)
 			FlxG.mouse.hide();
 		}
