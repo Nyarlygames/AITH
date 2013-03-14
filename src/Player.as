@@ -212,7 +212,6 @@ package
 			else if ((!pause) && (jumping)) {
 				velocity.x = cur_velocity.x;
 			}
-			if (mytile >= 5)
 			// ROTATION JIMMY TREMPLIN
 			if (((mytile == 1) || (mytile == 4))) {
 				angularVelocity = -angularspeed;
