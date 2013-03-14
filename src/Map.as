@@ -226,7 +226,7 @@ package
 			// CHARGEMENT FINIT
 			loaded = true;
 			// AJOUT PLAYER ET CAM
-			player = new Player(50, 800 - 40);
+			player = new Player(50, 700 - 40);
 			FlxG.player = player;
 			cam = new Cam(player);
 			FlxG.state.add(player);
@@ -257,6 +257,10 @@ package
 			
 			shootemup.clear();
 			ascenceurs.clear();
+			/*item.clear();
+			ens.clear();
+			DustbinBieber.clear();
+			destructible.clear();*/
 			
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
@@ -266,6 +270,32 @@ package
 					case "Troika":
 						shootemup.add (new ShootemUp(object.x, object.y));
 						break;
+						case "Tube":
+						item.add (new TubeVert(object.x, object.y, 1,0));
+						break;
+				/*	case "GrosTube":
+						item.add (new TubeVert(object.x, object.y, 5,1));
+						break;
+					case "Alien":
+						ens.add (new AlienNormal(object.x, object.y));
+						break;
+					case "AlienVert":
+						ens.add (new AlienVert(object.x, object.y));
+						break;
+					case "AlienTireur":
+						ens.add (new AlienTireur(object.x, object.y));
+						break;
+					case "AlienHorizontal":
+						ens.add (new AlienHorizontal(object.x, object.y));
+						break;
+					case "Poubelles":
+						DustbinBieber.add (new Poubelle(object.x, object.y));
+						break;
+					case "Des_sol":
+						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
+						ground.immovable = true;
+						destructible.add(ground);
+						break;*/
 				}
 			}
 		}

@@ -136,23 +136,22 @@ package
 				if (FlxG.keys.pressed("BACKSPACE")) {
 					if (sound != null)
 						sound.destroy();
-					player.vitesse0.destroy();
 					player.vitesse1.destroy();
 					player.vitesse2.destroy();
 					player.vitesse3.destroy();
-					player.vitesse4.destroy();
-					player.vitesse5.destroy();
 					FlxG.score = -map.id;
 					FlxG.resetState();
 				}
-				if (!player.onScreen(FlxG.camera))
+				if (!player.onScreen(FlxG.camera)) {
 					player.die_motherfucker();
+				}
 				
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
-				if (FlxG.overlap(player, map.piques))
+				if (FlxG.overlap(player, map.piques)) {
 					player.die_motherfucker();
+				}
 				FlxG.collide(player, map.destructible, check_ground);
 				
 				// POUBELLE JOUEUR
@@ -220,12 +219,9 @@ package
 			{
 				if (sound != null)
 					sound.destroy();
-				player.vitesse0.destroy();
 				player.vitesse1.destroy();
 				player.vitesse2.destroy();
 				player.vitesse3.destroy();
-				player.vitesse4.destroy();
-				player.vitesse5.destroy();
 				FlxG.switchState(new UnivChooser()); 
 			}
 			// REDEMARRE LE NIVEAU
@@ -233,12 +229,9 @@ package
 			{
 				if (sound != null)
 					sound.destroy();
-				player.vitesse0.destroy();
 				player.vitesse1.destroy();
 				player.vitesse2.destroy();
 				player.vitesse3.destroy();
-				player.vitesse4.destroy();
-				player.vitesse5.destroy();
 				FlxG.score = -map.id;
 				FlxG.resetState();
 			}
