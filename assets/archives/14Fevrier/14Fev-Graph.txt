@@ -1,9 +1,0 @@
-- Background
-- 1 Caisse
-- 1 Alien
-- 1 fluide (fait a priori)
-- 1 Tremplin (souvenez vous qu'il faut un dans un carré et un penché)
-- 1 Plateforme
-40*40
-72dpi
-png
