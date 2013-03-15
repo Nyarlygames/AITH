@@ -25,7 +25,7 @@ package
 		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_vitesse.png')] protected var ImgV:Class;
 		[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
-		[Embed(source = '../assets/gfx/ui/jauge12.png')] protected var ImgJauge:Class;
+		[Embed(source = '../assets/gfx/ui/jauge.png')] protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
@@ -111,7 +111,10 @@ package
 			FlxG.state.add(shoot.group);
 			
 			
-			jauge = new FlxSprite(x, y - frameHeight - 50,/* + (frameWidth / 2), y - 50,*/ ImgJauge);
+			jauge = new FlxSprite(x, y - frameHeight - 40);
+			jauge.loadGraphic(ImgJauge, true, false, 120, 40);
+			jauge.addAnimation("jauge", [0, 1, 2, 3, 4,5,6,7,8,9,10,11], 12, true);
+			jauge.frame = 0;
 			jauge.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(jauge);
 			g = new FlxSprite(FlxG.width / 2, 0, ImgG);
@@ -123,9 +126,10 @@ package
 		
 		override public function update():void 
 		{
-			jauge.y = y - 300;
+			jauge.y = y - 240;
 			emitter.x = x;
 			emitter.y = y + frameHeight;
+			jauge.frame = gravity / 150;
 			// SI PAUSE ON GARDE LES VALEURS DE VITESSE ET GRAVITE
 			if ((pause) && (set_old == true)) {
 				cur_velocity.x = velocity.x;
