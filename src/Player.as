@@ -23,8 +23,6 @@ package
 		
 		[Embed(source = '../assets/gfx/gameplay/player.png')] protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
-		[Embed(source = '../assets/gfx/ui/jauge_vitesse.png')] protected var ImgV:Class;
-		[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
@@ -40,8 +38,6 @@ package
 		public var vitesse1:FlxSound = new FlxSound();
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
-		public var g:FlxSprite;
-		public var v:FlxSprite;
 		public var jauge:FlxSprite;
 		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)
 		public var speedup:int = 150;	  		// ACCELERATION
@@ -117,11 +113,6 @@ package
 			jauge.frame = 0;
 			jauge.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(jauge);
-			g = new FlxSprite(FlxG.width / 2, 0, ImgG);
-			g.scrollFactor.x = g.scrollFactor.y = 0;
-			g.scale.x = 0.1;
-			v = new FlxSprite(FlxG.width/2, 20, ImgV);
-			v.scrollFactor.x = v.scrollFactor.y = 0;
 		}
 		
 		override public function update():void 
@@ -179,9 +170,6 @@ package
 				cur_velocity.x = velocity.x;
 				cur_velocity.y = gravity;
 				
-				// Affichage vitesse/gravité
-				g.scale.x = gravity /1000;
-				v.scale.x = velocity.x / 100;
 				// ROTATION JIMMY EN L'AIR
 				if (jumping && (angle < 0))
 					angle += 0.5;

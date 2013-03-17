@@ -244,8 +244,6 @@ package
 			FlxG.player = player;
 			cam = new Cam(player);
 			FlxG.state.add(player);
-			//FlxG.state.add(player.g);
-			//FlxG.state.add(player.v);
 			FlxG.state.add(cam);
 			FlxG.worldBounds = new FlxRect(0, 0, largeur, 600 + offsety);
 			FlxG.camera.setBounds(0, 0, largeur, 600 + offsety);
