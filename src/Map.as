@@ -95,34 +95,11 @@ package
 			
 				// RECUPERATION DES TILES CSV
 				var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
-				var csv2:String = tmx.getLayer('Back_near').toCsv(tmx.getTileSet('background_exterieur_near'));
 				var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
-				var csv4:String = tmx.getLayer('Back_far').toCsv(tmx.getTileSet('background_exterieur_far'));
-				var csv5:String = tmx.getLayer('Back_middle').toCsv(tmx.getTileSet('background_exterieur_middle'));
-				var csv6:String = tmx.getLayer('Back_clouds').toCsv(tmx.getTileSet('background_exterieur_clouds'));
-				clouds.loadMap(csv6, BgClouds, 400, 400);
-				far.loadMap(csv4, BgFar, 320, 480);
+				// TODO CALQUES D'OBJETS
 				fond.loadMap(csv3, BgFond, 40, 40);
-				near.loadMap(csv2, BgNear, 800, 720);
-				middle.loadMap(csv5, BgMiddle, 320, 560);
 				tile.loadMap(csv, MapTiles, 40, 40);
 				FlxG.state.add(fond);
-				var bgfail:FlxSprite = new FlxSprite(0, 0, BgFail);
-				FlxG.state.add(bgfail);
-				var bgfail2:FlxSprite = new FlxSprite(5000, 0, BgFail);
-				FlxG.state.add(bgfail2);
-				var bgfail3:FlxSprite = new FlxSprite(15000, 0, BgFail);
-				FlxG.state.add(bgfail3);
-				var bgfail4:FlxSprite = new FlxSprite(20000, 0, BgFail);
-				FlxG.state.add(bgfail4);
-				var bgfail5:FlxSprite = new FlxSprite(25000, 0, BgFail);
-				FlxG.state.add(bgfail5);
-				var bgfail6:FlxSprite = new FlxSprite(30000, 0, BgFail);
-				FlxG.state.add(bgfail6);
-				FlxG.state.add(clouds);
-				FlxG.state.add(far);
-				FlxG.state.add(middle);
-				FlxG.state.add(near);
 				FlxG.state.add(tile);
 				FlxG.tilemap = tile;
 			// PARSING DES OBJETS

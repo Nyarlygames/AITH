@@ -32,7 +32,6 @@ package
 					FlxG.player.gravity = gravity + FlxG.player.y;
 					applied = false;
 				}
-
 		}
 		
 		public function getup(obj1:FlxObject, obj2:FlxObject):void {

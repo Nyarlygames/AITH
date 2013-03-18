@@ -56,8 +56,9 @@ package
 			//      ------------------------------------------------ CONSTANTES DE TEST ----------------
 			public var accumulateur:int = 0;
 			public var palier_accumulateur:int = -7000;
-			public var test_gravity:int = 2050;
-			public var test_descente:int = 275;
+			public var test_gravity:int = 400;
+			public var gravity_increment:int = 275;
+			public var gravity_decrement:int = 275;
 			public var maxgravity_test:int = 2000;
 			public var maxspeed_test:int = 200;
 			public var debug_var :int = 0;
@@ -106,7 +107,7 @@ package
 					emitter.y = y + frameHeight;
 					if (!pause) {
 							// JOUEUR ENTRAIN DE SAUTER
-							if ((jumping) || (floating)) 
+							/*if ((jumping) || (floating)) 
 							{
 								if (velocity.y > 0)  {
 									maxVelocity.y = test_descente;
@@ -115,22 +116,42 @@ package
 									maxVelocity.y = maxgravity_test;
 									acceleration.y += test_gravity * FlxG.elapsed;
 								}
-							}
+							}*/
+							/*
 							// Si il appuie sur espace, on touche pas a la vitesse, seulement la vitesse max en x et y!
 							if (FlxG.keys.pressed("SPACE") && (velocity.x <= maxVelocity.x) && (velocity.x > minVelocity))
 							{
-								trace("space", acceleration.x, acceleration.x);
 								maxVelocity.x -= speeddown * FlxG.elapsed;
 								maxVelocity.y += speed_triggers_fall * FlxG.elapsed;
 							}
 							// Si il ne touche a rien, on reinit la vitesse max et laisse l'accélération faire le boulot !
 							else if (!FlxG.keys.any() && (velocity.x > 30))
 							{
-								trace("rien", acceleration.x, acceleration.x);
 								maxVelocity.x = maxspeed_test;
 								maxVelocity.y = mingravity;
-							}
+							}*/
 					}
+					
+					if (angle < -50)
+					{
+						angularVelocity = 0;
+					}
+					
+					if (FlxG.keys.pressed("SPACE")) {
+						test_gravity += gravity_increment;
+					} else {
+						if (test_gravity > 400) {
+							test_gravity = 400;
+						} else {
+							test_gravity -= gravity_decrement;
+						}
+					}
+					acceleration.y += test_gravity * FlxG.elapsed;
+					
+					if (FlxG.collide(FlxG.map.tremplin_bas, this))
+						trace("test bas");
+					if (FlxG.collide(FlxG.map.tremplin_haut, this))
+						trace("test haut");
 			}
 		   
 			// GESTIONS DES COLLISIONS DE TILES
@@ -141,14 +162,12 @@ package
 					// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
 					if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
 					{
-						trace(acceleration.y, accumulateur);
 						accumulateur += palier_accumulateur * FlxG.elapsed;
 					}
 						   
 					// DERNIERE TILE DU TREMPLIN
 					if ((current_tile == 4) && (jumping == false)) 
 					{
-						trace(acceleration.y, accumulateur, "test");
 						acceleration.y += accumulateur;
 						jumping = true;
 					}                          
@@ -171,10 +190,6 @@ package
 					if (((current_tile == 1) || (current_tile == 4)))
 					{
 						angularVelocity = -angularspeed;
-					}
-					else if (angle < -50)
-					{
-						angularVelocity = 0;
 					}
 			}
 		   

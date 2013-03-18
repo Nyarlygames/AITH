@@ -29,6 +29,8 @@ package
 		public var shootemup:FlxGroup = new FlxGroup();										// SHOOTEMUP
 		public var boss:FlxGroup = new FlxGroup();											// VAGUES
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
+		public var tremplin_haut:FlxGroup = new FlxGroup();									// HAUT
+		public var tremplin_bas:FlxGroup = new FlxGroup();									// BAS
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
 		public var triggers:FlxGroup = new FlxGroup();										// TRIGGERS
 		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
@@ -96,6 +98,12 @@ package
 			var group:TmxObjectGroup = tmx.getObjectGroup('Objs');
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
+					case "tremplin":
+						if (object.custom != null)
+							tremplin_haut.add(new FlxSprite(object.x, object.y));
+						else
+							tremplin_bas.add(new FlxSprite(object.x, object.y));
+						break;
 					case "Tube":
 						item.add (new TubeVert(object.x, object.y, 1,0));
 						break;
@@ -154,6 +162,8 @@ package
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(ascenceurs);
+			FlxG.state.add(tremplin_bas);
+			FlxG.state.add(tremplin_haut);
 			FlxG.state.add(triggers);
 			FlxG.state.add(piques);
 			FlxG.state.add(DustbinBieber);
