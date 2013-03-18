@@ -25,10 +25,9 @@ package
 		}
 		
 		override public function update():void {
-			if ((player != null) && (player.pushing == true)) {
+			if ((player != null) ) {
 				// POUBELLE RIEN
 				if ((FlxG.tilemap.getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1)) == 0) {
-					x = player.x + player.push.frameWidth;
 					velocity.x = player.velocity.x;
 				}
 				//ARRET POUBELLE
@@ -44,14 +43,11 @@ package
 				if (FlxG.tilemap.getTile(Math.floor(x / 40), Math.round(y / 40) +2) == 0) {
 					y += frameHeight;
 					velocity.x = 0;
-					FlxG.player.velocity.x = FlxG.player.init_speed;
-					FlxG.player.pushing = false;
 				}
 			}	
 		}
 		
 		public function destruction():void {
-			FlxG.player.velocity.x = FlxG.player.init_speed;
 			kill();
 			destroy();
 			FlxG.state.remove(this);

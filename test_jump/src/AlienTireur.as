@@ -36,8 +36,6 @@ package
 			if (onScreen(FlxG.camera)) {
 				shoot.fireFromAngle(FlxWeapon.BULLET_LEFT);
 			}
-			if (FlxG.overlap(shoot.group, FlxG.player))
-				FlxG.player.die_motherfucker();
 		}
 	}
 }

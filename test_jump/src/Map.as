@@ -175,7 +175,7 @@ package
 			// CHARGEMENT FINIT
 			loaded = true;
 			// AJOUT PLAYER ET CAM
-			player = new Player(50, 800 - 40);
+			player = new Player(50, 700 - 40);
 			FlxG.player = player;
 			cam = new Cam(player);
 			FlxG.state.add(player);
