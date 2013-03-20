@@ -146,6 +146,12 @@ package
 					player.die_motherfucker();
 				}
 				
+				//DEV Respawn at checkpoint
+				if (FlxG.keys.pressed("R")) 
+				{
+					player.die_motherfucker();
+				}
+				
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);

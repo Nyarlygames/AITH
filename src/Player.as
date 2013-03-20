@@ -39,7 +39,7 @@ package
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
 		public var jauge:FlxSprite;
-		public var init_speed:int = 250;  		// VITESSE DE BASE (max vitesse)
+		public var init_speed:int = 360;  		// VITESSE DE BASE (max vitesse)
 		public var speedup:int = 150;	  		// ACCELERATION
 		public var speeddown:int = 150;   		// DECELERATION
 		public var speedjumpdown:int = 110;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
