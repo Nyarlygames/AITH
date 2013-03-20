@@ -13,7 +13,7 @@ package
 	{
 		[Embed(source = '../assets/gfx/gameplay/soucoupe.png')] protected var ImgSoucoupe:Class;
 		[Embed(source = '../assets/gfx/gameplay/halo_soucoupe.png')] protected var ImgHalo:Class;
-		public var gravity:int = 100;								// GRAVITY MODIFIER
+		public var gravity:int = 5;								// GRAVITY MODIFIER
 		public var applied:Boolean = false;
 		public var halo:FlxSprite;
 		
@@ -21,7 +21,7 @@ package
 		public function Soucoupe(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgSoucoupe);
-			halo = new FlxSprite(xpos, ypos + frameHeight, ImgHalo);
+			halo = new FlxSprite(xpos + (this.width*0.25), ypos + frameHeight, ImgHalo);
 			FlxG.state.add(halo);
 			immovable = true;
 		}

@@ -177,17 +177,26 @@ package
 		}
 		
 		// GESTION RECUP TUBE VERT
-		public function getTube(obj1:FlxObject, obj2:FlxObject):void {
-			obj2.kill();
-			obj2.destroy();
-			FlxG.score += (obj2 as TubeVert).loot;
-			FlxG.state.add(new Loot(player,(obj2 as TubeVert).loot));
+		public function getTube(obj1:FlxObject, tube:TubeVert):void {
+			if (tube.loot == 5)
+			{
+				tube.soundGrosTube.play();
+			}
+			if (tube.loot == 1)
+			{
+				tube.soundPetitTube.play();
+			}
+			tube.kill();
+			tube.destroy();
+			FlxG.score += tube.loot;
+			FlxG.state.add(new Loot(player,tube.loot));
 		}
 
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
-			if (obj2 != null){ 
+			if (obj2 != null)
+			{ 
 				player.velocity.y = player.cur_velocity.y;
 				player.velocity.x = player.cur_velocity.x;
 			}

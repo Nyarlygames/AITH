@@ -24,9 +24,9 @@ package
 		[Embed(source = '../assets/gfx/gameplay/player.png')] protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] protected var ImgJauge:Class;
-		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
-		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
-		[Embed(source = "../assets/sfx/gameplay/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
 		
 		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
 		public var rate:int = 1000;							// CADENCE DE TIR

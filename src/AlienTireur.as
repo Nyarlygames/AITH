@@ -34,7 +34,7 @@ package
 		
 		override public function update():void {
 			if (onScreen(FlxG.camera)) {
-				shoot.fireFromAngle(FlxWeapon.BULLET_LEFT);
+				shoot.fireFromAngle(FlxWeapon.BULLET_DOWN);
 			}
 			if (FlxG.overlap(shoot.group, FlxG.player))
 				FlxG.player.die_motherfucker();

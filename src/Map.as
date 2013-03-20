@@ -51,7 +51,7 @@ package
         [Embed(source = '../assets/level/exterieur/background_exterieur_far.png')] public var BgFar:Class;
         [Embed(source = '../assets/level/exterieur/background_exterieur_clouds.png')] public var BgClouds:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
-        [Embed(source = '../assets/gfx/gameplay/destructible.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/gameplay/sol_destructible.png')] public var ImgDesSol:Class;
         [Embed(source = '../assets/gfx/misc/back_fail.png')] public var BgFail:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_80.png')] public var Tremplin80_rouge:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_jaune_80.png')] public var Tremplin80_jaune:Class;
