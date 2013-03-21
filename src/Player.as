@@ -113,6 +113,9 @@ package
 			jauge.frame = 0;
 			jauge.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(jauge);
+			
+			width  -= (width  * 0,1);
+			height -= (height * 0,1);
 		}
 		
 		override public function update():void 
@@ -232,6 +235,15 @@ package
 				(push as Poubelle).player = this;
 				pushing = true;
 			}
+		}
+		//GESTION DESTRUCTION POUBELLE
+		public function dustbin_destroyed(obj1:FlxObject, poubelle:Poubelle) : void
+		{
+				if (gravity > 50)
+				{
+					trace ("lol");
+				}
+			
 		}
 		
 		// GESTION SON MOTEUR

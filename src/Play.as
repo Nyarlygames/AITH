@@ -162,6 +162,7 @@ package
 				
 				// POUBELLE JOUEUR
 				FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed);
+				FlxG.collide(player, map.DustbinBieber, player.dustbin_destroyed);
 				
 				
 				if (!FlxG.collide(player, map.tile, player.tiles_coll))
@@ -191,7 +192,6 @@ package
 			FlxG.score += tube.loot;
 			FlxG.state.add(new Loot(player,tube.loot));
 		}
-
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {

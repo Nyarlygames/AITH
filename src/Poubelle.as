@@ -47,6 +47,8 @@ package
 					FlxG.player.velocity.x = FlxG.player.init_speed;
 					FlxG.player.pushing = false;
 				}
+				
+		
 			}	
 		}
 		
