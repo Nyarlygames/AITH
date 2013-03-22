@@ -29,37 +29,28 @@ package
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
 		
 		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
-		public var rate:int = 1000;							// CADENCE DE TIR
-		public var maxtir:int = 500;						// MAXIMUM DE TIR
-		public var speed:int = 200;							// VITESSE DE TIR
-		public var damage:int = 1;							// DEGATS TIRS
-		public var shoot:FlxWeapon;
-		
-		public var vitesse1:FlxSound = new FlxSound();
+	public var vitesse1:FlxSound = new FlxSound();
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
 		public var jauge:FlxSprite;
-		public var init_speed:int 	 = 330;  	// VITESSE DE BASE (max vitesse)
-		public var speedup:int 		 = 150;	  	// ACCELERATION
-		public var speeddown:int 	 = 150;  	// DECELERATION
-		public var speedjumpdown:int = 110;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
-		public var minspeed:int 	 = 50;		// VITESSE MIN
-
-		public var mingravity:int 	 = 5;		// GRAVITE MIN
-		public var maxgravity:int 	 = 1800;	// GRAVITY MAX
-		public var gravityup:int 	 = 1200;	// AUGMENTATION GRAVITE
-		public var gravitydown:int	 = 1200;	// REDUCTION GRAVITE
-		public var cur_velocity:FlxPoint;		// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
-		public var gravity:int 		 = 300;		// GRAVITE
+		public var init_speed:int = 360;  		// VITESSE DE BASE (max vitesse)
+			public var mingravity:int = -250;               // GRAVITE MIN
+			public var maxgravity:int = 50000;              // GRAVITY MAX
+			public const const_gravity:int = 300;			public var accumulateur:int = 0;
+			public var palier_accumulateur:int = -100000;
+			public var gravity:int = 0;
+			public var gravity_increment:int = 35000;
+			public var gravity_decrement:int = 20000;
+			public var on_tremplin:Boolean = false;
+			public var on_ascenseur:Boolean = false;
+			public var acceleration_speed:int = 150;   
+			public var maxgravity_test:int = 2000;
 		
 		public var volumespeed:Number = 0.02;	// BAISSE SON MOTEUR
 		
-		public var floating:Boolean = false;	// LE JOUEUR FLOTTE?
 		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
 		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?
-		public var stup:Boolean = false;		// PHASE SHOOT'THEM UP?
 		public var set_old:Boolean = true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
-		public var lasttile:int = 0;			
 		public var angularspeed:int = 150;		// VITESSE DE ROTATION
 		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION0
 		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
@@ -70,14 +61,16 @@ package
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);
-			maxVelocity.y = maxgravity;
+					
+			maxVelocity.y = maxgravity_test;
 			maxVelocity.x = init_speed;
 			facing = RIGHT;
-			velocity.y = mingravity;
-			gravity = mingravity;
-			velocity.x = init_speed;
-			cur_velocity = new FlxPoint(init_speed, mingravity);
+			acceleration.x = acceleration_speed;
 			cur_angularspeed = angularspeed;
+			
+			width = 60;
+			height = 70;
+			offset.x = 10;
 			vitesse1.loadEmbedded(Sfx_Vitesse1, true, true);
 			vitesse2.loadEmbedded(Sfx_Vitesse2, true, true);
 			vitesse3.loadEmbedded(Sfx_Vitesse3, true, true);
@@ -99,24 +92,12 @@ package
 			emitter.start(false, 0.4, 0.05, 0);
 			FlxG.state.add(emitter);
 			
-			shoot = new FlxWeapon("shoot", this, "x", "y");
-			shoot.makeImageBullet(maxtir, ImgShoot, frameWidth, frameHeight/2);
-			shoot.setFireRate(rate);
-			shoot.setBulletSpeed(speed);
-			shoot.setBulletBounds(new FlxRect(0, 0, 800, 800));
-			FlxG.state.add(shoot.group);
-			
-			
 			jauge = new FlxSprite(x, y - frameHeight - 40);
 			jauge.loadGraphic(ImgJauge, true, false, 120, 40);
 			jauge.addAnimation("jauge", [0, 1, 2, 3, 4,5,6,7,8,9,10,11], 12, true);
 			jauge.frame = 0;
 			jauge.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(jauge);
-			
-			//Resize de la boite de collision
-			width  -= (width  * 0,1);
-			height -= (height * 0, 1);
 			
 			//Animations du joueur
 			this.loadGraphic(ImgPlayer, true, false, 80, 80);
@@ -132,95 +113,63 @@ package
 			emitter.x = x;
 			emitter.y = y + frameHeight;
 			jauge.frame = gravity / 150;
-			// SI PAUSE ON GARDE LES VALEURS DE VITESSE ET GRAVITE
-			if ((pause) && (set_old == true)) {
-				cur_velocity.x = velocity.x;
-				cur_velocity.y = velocity.y;
-				cur_angularspeed = angularspeed;
-				// ET ON BLOQUE JIMI
+			if (angle < -45)
+			{
 				angularVelocity = 0;
-				velocity.x = 0;
-				velocity.y = 0;
-				set_old = false;
 			}
-			else if (pause) {
-				// ET ON BLOQUE JIMI
-				angularVelocity = 0;
-				velocity.x = 0;
-				velocity.y = 0;
+			
+			if ((acceleration.y > mingravity && acceleration.y < maxgravity)){
+				if (FlxG.keys.pressed("SPACE")) {
+					if (gravity >= maxgravity) {
+						gravity = maxgravity;
+					} else {
+						gravity += gravity_increment * FlxG.elapsed;
+					}
+				} else if ((velocity.y > 0) || on_ascenseur){
+					if (gravity <= mingravity) {
+						gravity = mingravity;
+					} else {
+						gravity -= gravity_decrement * FlxG.elapsed;
+					}
+				}
 			}
-			else if (!pause) {
-				
-				// SI ON APPUIE SUR HAUT
-				if (FlxG.keys.pressed("SPACE") && (gravity < maxgravity)) {
-					if (velocity.x > minspeed)
-						velocity.x -= speeddown * FlxG.elapsed;
-					gravity += gravityup * FlxG.elapsed;
+			
+			acceleration.y = gravity * FlxG.elapsed + const_gravity;
+			
+			if (FlxG.overlap(FlxG.map.tremplin_bas, this)) {
+				on_tremplin = true;
+			}
+			if (on_tremplin == true) {
+				accumulateur += palier_accumulateur * FlxG.elapsed;
+				if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
+						on_tremplin = false;
+						acceleration.y += accumulateur;
 				}
-				// SI ON APPUIE SUR RIEN
-				else if (!FlxG.keys.any() && (gravity > mingravity)) {
-					velocity.x += speedup * FlxG.elapsed;
-					gravity -= gravitydown * FlxG.elapsed;
-				}
-				// RETOMBE AUTOMATIQUEMENT LORS D'UN SAUT
-				if ((jumping) || (floating)) {
-					velocity.y += (speedjumpdown * FlxG.elapsed) + (gravity * FlxG.elapsed);
-				}
-					
-				// SAUVEGARDE LqA VITESSE POUR LES COLLISIONS
-				cur_velocity.x = velocity.x;
-				cur_velocity.y = gravity;
-				
-				// ROTATION JIMMY EN L'AIR
-				if (jumping && (angle < 0))
-					angle += 0.5;
-				if (angle < -50)
-					angularVelocity = 0;
+			}
+			
+			if (velocity.y != 0) {
+				jumping = true;
+			} else {
+				jumping = false;
 			}
 		}
 		
 		// GESTIONS DES COLLISIONS DE TILES
 		public function tiles_coll(obj1:FlxObject, obj2:FlxObject):void {
+			// TILE COURANTE DE COLLISION
+			var current_tile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1); // prochaine 
+			var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +2);// en dessous
 			
-			// GET LA TILE COURANTE
-			var mytile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y/40) +2);
-			
-			// HAUT DU TREMPLIN
-			if ((mytile == 4) && (jumping == false)) {
-				lasttile = 4;
-				velocity.y = cur_velocity.y;
-				velocity.x = cur_velocity.x;
-			}
-			// SAUTE (élan)
-			else if ((lasttile == 4) && (mytile == 0)) {
-				velocity.y = -(cur_velocity.x);
-				jumping = true;
-				lasttile = 0;
-			}
-			// RETOUR AU SOL
-			else if ((jumping) && (lasttile == 0) && (mytile != 0)) {
-				jumping = false;
-				if (velocity.x == 0)
-					cur_velocity.x = minspeed;
-				velocity.x = maxVelocity.x;
-			}
-			// ROULE SUR LE SOL
-			else if ((!pause) && (!jumping)) {
-				velocity.x = cur_velocity.x;
-			}
-			// COLLISION EN L'AIR
-			else if ((!pause) && (jumping)) {
-				velocity.x = cur_velocity.x;
-			}
-			// ROTATION JIMMY TREMPLIN
-			if (((mytile == 1) || (mytile == 4))) {
+			// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
+			if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
+			{
 				angularVelocity = -angularspeed;
-				if (lasttile != 4)
-					lasttile = 1;
+				width = 60;
 			}
-			// ROTATION JIMMY SOL
-			else if ((mytile == 2) && (lasttile != 1)) {
+			else if (current_tile2 == 2 && jumping == false){
+				accumulateur = 0;
 				angle = 0;
+				gravity = mingravity;
 			}
 		}
 		
@@ -291,28 +240,18 @@ package
 		// MORT
 		public function die_motherfucker():void {
 			
-		
-			//trace("LOL RESET", checkpoint.x, checkpoint.y, x, y);
 			x = checkpoint.x;
 			y = checkpoint.y;
-			velocity.x = init_speed;
-			velocity.y = mingravity;
-			//trace("LOL RESET2", checkpoint.x, checkpoint.y, x, y);
+			velocity.y = 0;
+			accumulateur = 0;
+			angle = 0;
 			gravity = mingravity;
 			if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null)) {
 				vitesse1.volume = 0;
 				vitesse2.volume = 0;
 				vitesse3.volume = 1;
 			}
-			//trace("LOL RESET3", checkpoint.x, checkpoint.y,  x, y);
 			//FlxG.map.reload_map();
-		}
-		
-		
-		// GESTION Collision alien
-		public function hit_boss(obj1:FlxObject, obj2:FlxObject):void {
-			obj1.kill();
-			FlxG.boss1.health -= damage;
 		}
 	}
 

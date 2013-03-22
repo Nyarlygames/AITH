@@ -48,7 +48,7 @@ package
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
 		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 1000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 10000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// DEBUT MAP
 		public var ui:UI = new UI();
 		
@@ -165,11 +165,7 @@ package
 				FlxG.collide(player, map.DustbinBieber, player.dustbin_destroyed);
 				
 				
-				if (!FlxG.collide(player, map.tile, player.tiles_coll))
-					player.floating = true;
-				else {
-					player.floating = false;
-				}
+				FlxG.collide(player, map.tile, player.tiles_coll)
 				// UPDATE PAUSE SCREEN
 				if (player.pause) {
 					pause.inPause();
@@ -195,19 +191,13 @@ package
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
-			if (obj2 != null)
-			{ 
-				player.velocity.y = player.cur_velocity.y;
-				player.velocity.x = player.cur_velocity.x;
-				
-			}
 			if (player.gravity > dest_ground)
 				obj2.kill();
 		}
 		
 		// GESTION Collision alien
 		public function alien_coll(obj1:FlxObject, obj2:FlxObject):void {
-			var from:int = 1; // 0 => haut, 1 => partout ailleurs
+			/*var from:int = 1; // 0 => haut, 1 => partout ailleurs
 			if (player.y <= obj2.y)
 				from = 0;
 			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
@@ -223,7 +213,7 @@ package
 					{
 						(obj2 as AlienHorizontal).soundMort.play();
 					}
-					*/
+					
 					obj2.kill();
 					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
@@ -236,14 +226,14 @@ package
 					/*if (obj2 is AlienHorizontal)
 					{
 						(obj2 as AlienHorizontal).soundRebond.play();
-					}*/
+					}
 					player.velocity.y = - player.velocity.x * 9 / 10;
 				}
 				// MEURT
 				else {
 					player.die_motherfucker();
 				}
-			}
+			}*/
 		}
 
 		// FIN DU MENU PAUSE
@@ -272,9 +262,6 @@ package
 			}
 			// RETOUR AU JEU
 			else if (result == PauseMenu.RESUME_GAME) {
-				player.velocity.x = player.cur_velocity.x;
-				player.velocity.y = player.cur_velocity.y;
-				player.angularspeed = player.cur_angularspeed;
 				player.pause = false;
 				player.set_old = true;
 			}

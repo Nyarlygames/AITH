@@ -685,5 +685,41 @@
   <object name="tube" type="Tube" x="12120" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="12240" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="12360" y="680" width="40" height="40"/>
+  <object type="tremplin" x="680" y="720" width="40" height="40"/>
+  <object type="tremplin" x="800" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="2000" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="1880" y="720" width="40" height="40"/>
+  <object type="tremplin" x="3600" y="480" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="3480" y="560" width="40" height="40"/>
+  <object type="tremplin" x="5480" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="5360" y="720" width="40" height="40"/>
+  <object type="tremplin" x="8520" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="8400" y="720" width="40" height="40"/>
+  <object type="tremplin" x="10880" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="10760" y="720" width="40" height="40"/>
  </objectgroup>
 </map>

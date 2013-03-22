@@ -28,6 +28,8 @@ package
 		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
 		public var shootemup:FlxGroup = new FlxGroup();										// SHOOTEMUP
 		public var tremplins:FlxGroup = new FlxGroup();										// TREMPLINS
+		public var tremplin_haut:FlxGroup = new FlxGroup();									// HAUT
+		public var tremplin_bas:FlxGroup = new FlxGroup();									// BAS
 		public var boss:FlxGroup = new FlxGroup();											// VAGUES
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
@@ -106,6 +108,18 @@ package
 			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
+					case "tremplin":
+						if (object.custom != null) {
+							var tremp:FlxSprite = new FlxSprite(object.x, object.y);
+							tremp.visible = false;
+							tremplin_haut.add(tremp);
+						}
+						else {
+							var tremp_bas:FlxSprite = new FlxSprite(object.x, object.y);
+							tremp_bas.visible = false;
+							tremplin_bas.add(tremp_bas);
+						}
+						break;
 					case "Tube":
 						item.add (new TubeVert(object.x, object.y, 1,0));
 						break;

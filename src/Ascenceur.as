@@ -44,6 +44,7 @@ package
 			if ((FlxG.player != null) && (x <= FlxG.player.x) && (FlxG.overlap(FlxG.player, this)) && (unlock == false))
 			{
 				blocked = true;
+				FlxG.player.on_ascenseur = true;
 			}
 			FlxG.collide(FlxG.player, this, up_and_down);
 		}
@@ -58,7 +59,7 @@ package
 				FlxG.player.velocity.y = 0;
 				
 				// DEPLACEMENT BLOQUE
-				if (FlxG.player.gravity > 800) {
+				if (FlxG.player.gravity > 10000) {
 					y += speed * FlxG.elapsed;
 					loadGraphic(ImgAscenceurDown);
 					FlxG.player.y += speed * FlxG.elapsed;
