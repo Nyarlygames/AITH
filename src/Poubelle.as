@@ -4,6 +4,7 @@ package
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxTilemap;
+	import org.flixel.FlxSound;
 	import FlxTilemapExt;
 	import org.flixel.FlxG;
 	/**
@@ -12,7 +13,12 @@ package
 	 */
 	public class Poubelle extends FlxSprite
 	{
-		[Embed(source = '../assets/gfx/gameplay/dustbin_bieber_visible.png')] protected var ImgDustbinBieber:Class;
+		[Embed(source = '../assets/gfx/gameplay/dustbin_bieber_visible.png')]	protected var ImgDustbinBieber:Class;
+		[Embed(source = "../assets/sfx/gameplay/Poubelle_Collision.mp3")] 	public var sfxPushed:Class;
+		[Embed(source = "../assets/sfx/gameplay/Poubelle_Destruction.mp3")]		public var sfxPushing:Class;
+		
+		public var soundPushing:FlxSound = new FlxSound();
+		public var soundPushed:FlxSound = new FlxSound();
 		public var poids:int = 500;									// Gravité (vitesse?) requise pour la déplacer
 		public var vitesse:int = 250;								// Vitesse produite sur le joueur (?) NYI
 		public var cur_tile:int = 0;								// Type tile courante
@@ -21,6 +27,8 @@ package
 		public function Poubelle(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgDustbinBieber);
+			soundPushing.loadEmbedded(sfxPushing);
+			soundPushed.loadEmbedded(sfxPushed);
 			immovable = true;
 		}
 		

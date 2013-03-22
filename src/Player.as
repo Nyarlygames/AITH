@@ -21,9 +21,9 @@ package
 	public class Player extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/gameplay/player.png')] protected var ImgPlayer:Class;
-		[Embed(source = '../assets/gfx/misc/particle.png')] protected var ImgParticle:Class;
-		[Embed(source = '../assets/gfx/ui/jauge.png')] protected var ImgJauge:Class;
+		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
+		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
+		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
@@ -39,17 +39,18 @@ package
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
 		public var jauge:FlxSprite;
-		public var init_speed:int = 360;  		// VITESSE DE BASE (max vitesse)
-		public var speedup:int = 150;	  		// ACCELERATION
-		public var speeddown:int = 150;   		// DECELERATION
+		public var init_speed:int 	 = 360;  	// VITESSE DE BASE (max vitesse)
+		public var speedup:int 		 = 150;	  	// ACCELERATION
+		public var speeddown:int 	 = 150;  	// DECELERATION
 		public var speedjumpdown:int = 110;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
-		public var minspeed:int = 50;			// VITESSE MIN
-		public var mingravity:int = 5;			// GRAVITE MIN
-		public var maxgravity:int = 1800;		// GRAVITY MAX
-		public var gravityup:int = 1200;		// AUGMENTATION GRAVITE
-		public var gravitydown:int = 1200;		// REDUCTION GRAVITE
+		public var minspeed:int 	 = 50;		// VITESSE MIN
+
+		public var mingravity:int 	 = 5;		// GRAVITE MIN
+		public var maxgravity:int 	 = 1800;	// GRAVITY MAX
+		public var gravityup:int 	 = 1200;	// AUGMENTATION GRAVITE
+		public var gravitydown:int	 = 1200;	// REDUCTION GRAVITE
 		public var cur_velocity:FlxPoint;		// STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
-		public var gravity:int = 300;			// GRAVITE
+		public var gravity:int 		 = 300;		// GRAVITE
 		
 		public var volumespeed:Number = 0.02;	// BAISSE SON MOTEUR
 		
@@ -114,12 +115,20 @@ package
 			jauge.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(jauge);
 			
+			//Resize de la boite de collision
 			width  -= (width  * 0,1);
-			height -= (height * 0,1);
+			height -= (height * 0, 1);
+			
+			//Animations du joueur
+			this.loadGraphic(ImgPlayer, true, false, 80, 80);
+			this.addAnimation("slowSpeed",  [0,1], 5, true);
+			this.addAnimation("midSpeed", 	[4,5], 5, true);
+			this.addAnimation("fastSpeed",  [8,9,10], 5, true);
 		}
 		
 		override public function update():void 
 		{
+			play ("midSpeed");
 			jauge.y = y - 240;
 			emitter.x = x;
 			emitter.y = y + frameHeight;
@@ -143,16 +152,6 @@ package
 			}
 			else if (!pause) {
 				
-				// PHASE SHOOT'EM UP
-				if (stup == true) {
-					shoot.fireFromAngle(FlxWeapon.BULLET_RIGHT);
-					health = 100;
-					if (FlxG.boss1 != null)
-						FlxG.collide(shoot.group, FlxG.boss1, hit_boss);
-				}
-				else
-					handle_sound();
-				
 				// SI ON APPUIE SUR HAUT
 				if (FlxG.keys.pressed("SPACE") && (gravity < maxgravity)) {
 					if (velocity.x > minspeed)
@@ -169,7 +168,7 @@ package
 					velocity.y += (speedjumpdown * FlxG.elapsed) + (gravity * FlxG.elapsed);
 				}
 					
-				// SAUVEGUARDE LA VITESSE POUR LES COLLISIONS
+				// SAUVEGARDE LqA VITESSE POUR LES COLLISIONS
 				cur_velocity.x = velocity.x;
 				cur_velocity.y = gravity;
 				
@@ -228,7 +227,9 @@ package
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
 		public function dustbin_pushed(obj1:FlxObject, obj2:FlxObject):void {
-			if ((pushing != true) && (push == null)){
+			if ((pushing != true) && (push == null)) {
+				
+				(obj2 as Poubelle).soundPushed.play();
 				obj2.x = x + (obj2 as Poubelle).frameWidth;
 				obj2.velocity.x = velocity.x = init_speed;
 				push = (obj2 as Poubelle);
@@ -239,35 +240,50 @@ package
 		//GESTION DESTRUCTION POUBELLE
 		public function dustbin_destroyed(obj1:FlxObject, poubelle:Poubelle) : void
 		{
-				if (gravity > 50)
+				if (/* condition de destruction  */ 1 == 1)
 				{
-					trace ("lol");
+					// (obj2 as AlienNormal).soundPushed.play();
+					//trace ("lol");
+					// Poubelle
 				}
 			
 		}
 		
 		// GESTION SON MOTEUR
 		public function handle_sound():void {
-			if (FlxG.keys.pressed("SPACE")) {
-				if (velocity.x > 180) {
+			if (FlxG.keys.pressed("SPACE")) 
+			{
+				if (velocity.x > 180) 
+				{
+					play("fastSpeed", true);
 					vitesse3.volume -= (212.5 * FlxG.elapsed) / 100;
 					vitesse2.volume += (212.5 * FlxG.elapsed) / 100;
 				}
-				else if (velocity.x > 120) {
+				else if (velocity.x > 120) 
+				{
 					vitesse2.volume -= (250 * FlxG.elapsed) / 100;
 					vitesse1.volume += (250 * FlxG.elapsed) / 100;
+					play("midSpeed", true);
 				}
-				else if (velocity.x > 50) {
+				else if (velocity.x > 50) 
+				{
+					play("slowSpeed", true);
 				}
 			}
 			else if (!FlxG.keys.any())
-				if (velocity.x < 120) {
+				if (velocity.x < 120) 
+				{
+					play("slowSpeed", true);
 				}
-				else if (velocity.x < 180) {
+				else if (velocity.x < 180) 
+				{
+					play("midSpeed", true);
 					vitesse2.volume += (250 * FlxG.elapsed) / 100;
 					vitesse1.volume -= (250 * FlxG.elapsed) / 100;
 				}
-				else if (velocity.x < 252) {
+				else if (velocity.x < 252) 
+				{
+					play("fastSpeed", true);
 					vitesse3.volume += (212.5 * FlxG.elapsed) / 100;
 					vitesse2.volume -= (212.5 * FlxG.elapsed) / 100;
 				}

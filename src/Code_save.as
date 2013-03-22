@@ -33,6 +33,31 @@
 		//player.jumping == true;
 	}*/
 	
+	
+/*
+ * // PHASE SHOOT'EM UP
+				if (stup == true) {
+					shoot.fireFromAngle(FlxWeapon.BULLET_RIGHT);
+					health = 100;
+					if (FlxG.boss1 != null)
+						FlxG.collide(shoot.group, FlxG.boss1, hit_boss);
+				}
+				else
+					handle_sound();
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+/*
 
 // TEST DESTRUCTION SOL DESTRUCTIBLE (version par petits bouts)
 	/*for each(var object:TmxObject in map.destructible.members) {

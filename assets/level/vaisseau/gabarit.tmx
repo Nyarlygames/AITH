@@ -34,7 +34,7 @@
   <image source="../../gfx/gameplay/ascenceur.png" width="120" height="40"/>
  </tileset>
  <tileset firstgid="29" name="sol_destructible" tilewidth="80" tileheight="40">
-  <image source="../../gfx/gameplay/destructible.png" width="200" height="40"/>
+  <image source="../../gfx/gameplay/sol_destructible.png" width="200" height="40"/>
  </tileset>
  <tileset firstgid="31" name="boss_exterieur" tilewidth="400" tileheight="800">
   <image source="../../gfx/gameplay/boss_exterieur.png" width="400" height="400"/>

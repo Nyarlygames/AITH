@@ -38,7 +38,7 @@
  <objectgroup name="Back_near" width="400" height="20"/>
  <layer name="Sol" width="400" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="400" height="20" opacity="0.9">
@@ -49,9 +49,9 @@
   </object>
   <object name="soucoupe" type="Soucoupe" x="1080" y="200" width="80" height="40"/>
   <object name="alien_im" type="Alien" x="1560" y="400" width="80" height="120"/>
-  <object name="alien_im" type="Alien" x="1800" y="560" width="80" height="120"/>
-  <object name="alien_im" type="Alien" x="2160" y="560" width="80" height="120"/>
-  <object name="alien_im" type="Alien" x="1320" y="400" width="80" height="120"/>
+  <object name="alien_im" type="Alien" x="1800" y="520" width="80" height="120"/>
+  <object name="alien_im" type="Alien" x="2160" y="520" width="80" height="120"/>
+  <object name="alien_im" type="Alien" x="1320" y="360" width="80" height="120"/>
   <object name="grosTube" type="GrosTube" x="2520" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="2440" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="2680" y="440" width="40" height="40"/>
@@ -340,87 +340,87 @@
   </object>
   <object name="soucoupe" type="Soucoupe" x="6160" y="240" width="80" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="6320" y="160" width="80" height="40"/>
-  <object name="GPique" type="Piques" x="1880" y="280" width="40" height="40">
-   <properties>
-    <property name="orientation" value="gauche"/>
-   </properties>
-  </object>
   <object name="GPique" type="Piques" x="1880" y="240" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="1840" y="200" width="40" height="40">
-   <properties>
-    <property name="orientation" value="bas"/>
-   </properties>
-  </object>
-  <object name="BPique" type="Piques" x="1800" y="200" width="40" height="40">
-   <properties>
-    <property name="orientation" value="bas"/>
-   </properties>
-  </object>
-  <object name="GPique" type="Piques" x="1760" y="160" width="40" height="40">
+  <object name="GPique" type="Piques" x="1880" y="200" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="1960" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="1840" y="160" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="1920" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="1800" y="160" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2040" y="320" width="40" height="40">
+  <object name="GPique" type="Piques" x="1760" y="120" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="1960" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2000" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="1920" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2160" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2040" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2120" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2000" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2080" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2160" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2200" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2120" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2360" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2080" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2280" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2200" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2320" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2360" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="2240" y="320" width="40" height="40">
+  <object name="BPique" type="Piques" x="2280" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="2320" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="2240" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>

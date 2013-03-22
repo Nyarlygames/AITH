@@ -872,5 +872,10 @@
     <property name="orientation" value="haut"/>
    </properties>
   </object>
+  <object name="HPique" type="Piques" x="3520" y="320" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

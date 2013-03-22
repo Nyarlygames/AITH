@@ -13,7 +13,7 @@ package
 		[Embed(source = '../assets/gfx/gameplay/ascenceur.png')] protected var ImgAscenceur:Class;
 		[Embed(source = '../assets/gfx/gameplay/ascenceur_down.png')] protected var ImgAscenceurDown:Class;
 		[Embed(source = '../assets/gfx/gameplay/ascenceur_up.png')] protected var ImgAscenceurUp:Class;
-		public var speed:int = 100;						// VITESSE DEPLACEMENT ASCENCEUR
+		public var speed:int = 125;						// VITESSE DEPLACEMENT ASCENCEUR
 		public var blocked:Boolean = false;				// JOUEUR BLOQUE?
 		public var unlock:Boolean = false;				// JOUEUR BLOQUE?
 		

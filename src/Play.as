@@ -199,6 +199,7 @@ package
 			{ 
 				player.velocity.y = player.cur_velocity.y;
 				player.velocity.x = player.cur_velocity.x;
+				
 			}
 			if (player.gravity > dest_ground)
 				obj2.kill();
@@ -211,12 +212,31 @@ package
 				from = 0;
 			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
 				// TUE L'alien
-				if ((player.gravity > alienkill) && (from == 0)) {
+				if ((player.gravity > alienkill) && (from == 0))
+				{
+					/*
+					if (obj2 is AlienNormal)
+					{
+						(obj2 as AlienNormal).soundMort.play();
+					}
+					if (obj2 is AlienHorizontal)
+					{
+						(obj2 as AlienHorizontal).soundMort.play();
+					}
+					*/
 					obj2.kill();
 					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
 				// REBONDS
 				else if (from == 0) {
+					if (obj2 is AlienNormal)
+					{
+						(obj2 as AlienNormal).soundRebond.play();
+					}
+					/*if (obj2 is AlienHorizontal)
+					{
+						(obj2 as AlienHorizontal).soundRebond.play();
+					}*/
 					player.velocity.y = - player.velocity.x * 9 / 10;
 				}
 				// MEURT
