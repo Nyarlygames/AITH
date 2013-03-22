@@ -25,10 +25,12 @@ package
 			[Embed(source = '../assets/gfx/ui/jauge_gravite.png')] protected var ImgG:Class;
 			public var g:FlxSprite;
 			public var v:FlxSprite;
-			public var init_speed:int = 250;                // VITESSE DE BASE (max vitesse)é
+			public var init_speed:int = 360;                // VITESSE DE BASE (max vitesse)é
 			
-			public var mingravity:int = -1200;                 // GRAVITE MIN
-			public var maxgravity:int = 2000;               // GRAVITY MAX
+			public var mingravity:int = -250;               // GRAVITE MIN
+			public var maxgravity:int = 50000;              // GRAVITY MAX
+			public const const_gravity:int = 300;
+			public var elan:Boolean = true;
 
 			public var cur_velocity:FlxPoint;               // STOCKAGE VITESSE ET GRAVITE COURANTE (pour contrer les collide)
 			public var gravity:int = 300;                   // GRAVITE
@@ -41,13 +43,13 @@ package
 		   
 			//      ------------------------------------------------ CONSTANTES DE TEST ----------------
 			public var accumulateur:int = 0;
-			public var palier_accumulateur:int = -6800;
+			public var palier_accumulateur:int = -100000;
 			public var test_gravity:int = 0;
-			public var gravity_increment:int = 1200;
-			public var gravity_decrement:int = 700;
+			public var gravity_increment:int = 35000;
+			public var gravity_decrement:int = 1200;
 			public var maxgravity_test:int = 2000;
 			public var minVelocity:int = 50;                // VITESSE MIN
-			public var acceleration_speed:int = 50;                // VITESSE MIN
+			public var acceleration_speed:int = 150;          
 			public var speed:int = 50;
 			public var on_tremplin:Boolean = false;
 		   
@@ -60,10 +62,10 @@ package
 					acceleration.x = acceleration_speed;
 					cur_angularspeed = angularspeed;
 					
-					width = 75;
-					height = 75;
-					offset.x = 2.5;
-					offset.y = 2.5;
+					width = 60;
+					height = 70;
+					offset.x = 10;
+					offset.y = 10;
 			}
 		   
 			override public function update():void
@@ -75,44 +77,47 @@ package
 					
 					if (jumping && (acceleration.y > mingravity && acceleration.y < maxgravity)){
 						if (FlxG.keys.pressed("SPACE")) {
-							trace("WEIGHT UP");
-							if (test_gravity >= 2000) {
-								test_gravity = 2000;
+						//	trace("WEIGHT UP");
+							if (test_gravity >= maxgravity) {
+								test_gravity = maxgravity;
 							} else {
 								test_gravity += gravity_increment * FlxG.elapsed;
 							}
 						} else if (velocity.y > 0) {
-							trace("WEIGHT DOWN");
-							if (test_gravity <= -200) {
-								test_gravity = -200;
+						//	trace("WEIGHT DOWN");
+							if (test_gravity <= mingravity) {
+								test_gravity = mingravity;
 							} else {
 								test_gravity -= gravity_decrement * FlxG.elapsed;
 							}
 						}
-						test_gravity += 250 * FlxG.elapsed;
 						
 						//Gravity
-						
-						//acceleration.y = 200 * FlxG.elapsed;
-						trace("GRAVITY : " + test_gravity);
+						//trace("DRAG ", drag.y, " GRAVITY : " + test_gravity * FlxG.elapsed);
 					}
 					
-					acceleration.y = test_gravity * FlxG.elapsed;
-					trace("ACCELERATION : " + acceleration.y);
+					acceleration.y = test_gravity * FlxG.elapsed + const_gravity;
+					//trace("ACCELERATION : " + acceleration.y);
 					
 					if (FlxG.overlap(FlxG.map.tremplin_bas, this)) {
 						on_tremplin = true;
-						trace("bas");
+					//	trace("bas");
 					}
 					if (on_tremplin == true) {
 						accumulateur += palier_accumulateur * FlxG.elapsed;
 						if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
-								trace("haut");
+							//	trace("haut");
 								on_tremplin = false;
 								acceleration.y += accumulateur;
 						}
 					}
-						
+					
+					/* TODO
+					 * SI JUMP MINGRAVITY = -1000
+					 * SINON MINGRAVITY = -CONST
+					 * ACCELERATION = GRAVITY + CONST
+					 */
+					
 					if (velocity.y != 0) {
 						jumping = true;
 					} else {
@@ -126,18 +131,18 @@ package
 				var current_tile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1); // prochaine 
 				var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +2);// en dessous
 				// RAZ DE L'ACCUMULATEUR AU RETOUR AU SOL
-				if (jumping && (current_tile2 == 2 || current_tile2 == 3)){
-					accumulateur = 0;
-					angle = 0;
-				}
+
+				trace(current_tile, current_tile2, jumping);
 					// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
 					if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
 					{
 						angularVelocity = -angularspeed;
 						width = 60;
 					}
-						   
-
+					else if (current_tile2 == 2 && jumping == false){
+						accumulateur = 0;
+						angle = 0;
+					}
 			}
 		}
  

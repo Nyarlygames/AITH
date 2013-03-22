@@ -24,12 +24,12 @@
  <tileset firstgid="63" name="tileset_tremplin_120" tilewidth="120" tileheight="120">
   <image source="../../gfx/gameplay/tileset_tremplin_120.png" width="360" height="120"/>
  </tileset>
- <layer name="Back_fond" width="420" height="20">
+ <layer name="Back_fond" width="420" height="20" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzwEJAEEQA7H1c/79vYaHQilkIALm3d0DgJ/StX8A2JSu/QPApnTtHwA2pWv/ALApXfsHgE3p2j8AbErX/gFgU7r2DwCb0rV/ANiUrv0DwKZ07R8ANqVr/wCwKV37B4BN6do/AGxK1/4BYFO69g8Am9K1fwDYlK79A8CmdO0fADal+wDN2EAM
   </data>
  </layer>
- <objectgroup name="Back_clouds" width="420" height="20">
+ <objectgroup name="Back_clouds" width="420" height="20" visible="0">
   <object gid="49" x="280" y="320"/>
   <object gid="46" x="760" y="320"/>
   <object gid="48" x="1440" y="400"/>
@@ -54,7 +54,7 @@
   <object gid="45" x="11800" y="320"/>
   <object gid="50" x="12960" y="280"/>
  </objectgroup>
- <objectgroup name="Back_far" width="420" height="20">
+ <objectgroup name="Back_far" width="420" height="20" visible="0">
   <object gid="40" x="320" y="760"/>
   <object gid="38" x="640" y="760"/>
   <object gid="41" x="1440" y="760"/>
@@ -96,7 +96,7 @@
   <object gid="40" x="1240" y="760"/>
   <object gid="41" x="40" y="760"/>
  </objectgroup>
- <objectgroup name="Back_middle" width="420" height="20">
+ <objectgroup name="Back_middle" width="420" height="20" visible="0">
   <object gid="25" x="80" y="760"/>
   <object gid="22" x="440" y="760"/>
   <object gid="24" x="1000" y="760"/>
@@ -125,7 +125,7 @@
   <object gid="24" x="12400" y="760"/>
   <object gid="20" x="12760" y="760"/>
  </objectgroup>
- <objectgroup name="Back_near" width="420" height="20">
+ <objectgroup name="Back_near" width="420" height="20" visible="0">
   <object gid="35" x="80" y="760"/>
   <object gid="35" x="1480" y="760"/>
   <object gid="36" x="2920" y="760"/>
@@ -134,7 +134,7 @@
  </objectgroup>
  <layer name="Sol" width="420" height="20">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="420" height="20" opacity="0.9">
@@ -685,5 +685,41 @@
   <object name="tube" type="Tube" x="12120" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="12240" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="12360" y="680" width="40" height="40"/>
+  <object type="tremplin" x="680" y="720" width="40" height="40"/>
+  <object type="tremplin" x="800" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="1880" y="720" width="40" height="40"/>
+  <object type="tremplin" x="2000" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="3480" y="560" width="40" height="40"/>
+  <object type="tremplin" x="3600" y="480" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="5360" y="720" width="40" height="40"/>
+  <object type="tremplin" x="5480" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="8400" y="720" width="40" height="40"/>
+  <object type="tremplin" x="8520" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="10760" y="720" width="40" height="40"/>
+  <object type="tremplin" x="10880" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
