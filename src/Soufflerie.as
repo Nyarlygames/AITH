@@ -2,6 +2,7 @@ package
 {
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
+	import org.flixel.FlxSound;
 	import org.flixel.plugin.photonstorm.FlxVelocity;
 	
 	/**
@@ -11,6 +12,12 @@ package
 	public class Soufflerie extends FlxSprite 
 	{
 		[Embed(source = '../assets/gfx/gameplay/soufflerie.png')] protected var ImgSoufflerie:Class;
+		[Embed(source = "../assets/sfx/gameplay/Soufflerie_idle.mp3")] 		public var SfxIdle:Class;
+		[Embed(source = "../assets/sfx/gameplay/Soufflerie_in.mp3")] 		public var SfxIn:Class;
+		
+		public var soundIdle:FlxSound 		= new FlxSound();
+		public var soundIn:FlxSound 		= new FlxSound();
+		
 		public var gravity:int = 100;								// GRAVITY MODIFIER
 		public var applied:Boolean = false;
 		public var boost:int = 200;
@@ -18,6 +25,8 @@ package
 		public function Soufflerie(xpos:int, ypos:int, orient:int) 
 		{
 			super(xpos, ypos, ImgSoufflerie);
+			soundIdle.loadEmbedded(SfxIn);
+			soundIn.loadEmbedded(SfxIn);
 			immovable = true;
 			angle = orient;
 			if ((angle == 90) || (angle == -90))
@@ -26,10 +35,16 @@ package
 	
 		override public function update():void {
 			
+			if (onScreen(FlxG.camera))
+			{
+				soundIdle.play();
+			}
+			
 			// HORIZONTAUX _
 			if (onScreen(FlxG.camera) && (angle == 90) || (angle == -90)) {
 				// ENTRE DANS L'ATTRACTION
 				if ((FlxG.player.x + FlxG.player.frameWidth >= x) && (FlxG.player.x < x + frameWidth) && (applied == false)) {
+					soundIn.play();
 					FlxG.player.gravity = gravity  - FlxG.player.y;
 					applied = true;
 					if (angle == -90)

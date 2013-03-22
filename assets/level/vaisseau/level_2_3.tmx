@@ -38,7 +38,7 @@
  <objectgroup name="Back_near" width="400" height="20"/>
  <layer name="Sol" width="400" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJzt2+0KgjAYBtAsgn51/5cbQT9k6PZOtH1wDrwgDNwc5CPbut0AAAAAAAAAAAAAAAAAANjyKNSIZnoWAI5bfhX1umogGaUclmFAj2rfr6NZCpVqkR8Ao5o9Q2rID2AG/1zHqPlGL42v1/WWyDjlBwCpb1a8N2pNfgCQ6jk/rB8C9Et+AK3cO79fjWfDvq+Um9NIfpx1lqBmfmc7vxDZS8u17123VDrHV9ozjOwnMq+ZsqNl31cqPVdNfkTPEBwZxyxq36kj1xnzstcWud/R/jlf9P9aasxa/37Stq38aD1epXLVIgPZ9wG7wQaW
+   eJzt21ELgyAUBtC1MdjT/v/PHYM9hFR6Q2fKOXBhEKQZ+Q2z2w0AAAAAAAAAAAAAAAAAgC2PTI1opmsB4LzlV6VerTpyIJfDMgy4ouj8OpolU6ke+QEwqtkzJEJ+ADP45zpG5D96rn9XXW8p6af8ACD1zYr3Rq3JDwBSV84P64cwP8/5uOQH0EPJ+4Coe8VzRT07tt3S0ZiW5EetexwZ39n2L5S8Szs6vve7p9w+vtw7wxbzB+Oofd97ZkfPtlvKXVckP0r3EJzpxyyic+rIVWNc9o6VnO9s+9RX+r2WGrPWz096bCs/evdXqaPqkYHs+wDawQaX
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="400" height="20" opacity="0.9">
@@ -97,10 +97,11 @@
   <object name="trigger_ascenseur" type="Trigger" x="5360" y="360" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="5320" y="360" width="40" height="40"/>
   <object name="check" type="Checkpoints" x="2800" y="680" width="40" height="80"/>
-  <object name="check" type="Checkpoints" x="960" y="680" width="40" height="80"/>
   <object name="soufflerie" type="Soufflerie" x="7040" y="560" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="7200" y="560" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="7360" y="560" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="7520" y="560" width="80" height="40"/>
+  <object name="alien_tireur" type="AlienTireur" x="600" y="480" width="80" height="40"/>
+  <object name="check" type="Checkpoints" x="1040" y="560" width="40" height="200"/>
  </objectgroup>
 </map>

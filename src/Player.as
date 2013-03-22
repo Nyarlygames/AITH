@@ -39,7 +39,7 @@ package
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
 		public var jauge:FlxSprite;
-		public var init_speed:int 	 = 360;  	// VITESSE DE BASE (max vitesse)
+		public var init_speed:int 	 = 330;  	// VITESSE DE BASE (max vitesse)
 		public var speedup:int 		 = 150;	  	// ACCELERATION
 		public var speeddown:int 	 = 150;  	// DECELERATION
 		public var speedjumpdown:int = 110;		// DESCENTE AUTOMATIQUYE DURANT LE SAUT
@@ -98,7 +98,6 @@ package
 			emitter.setXSpeed(-10, -2);
 			emitter.start(false, 0.4, 0.05, 0);
 			FlxG.state.add(emitter);
-			
 			
 			shoot = new FlxWeapon("shoot", this, "x", "y");
 			shoot.makeImageBullet(maxtir, ImgShoot, frameWidth, frameHeight/2);
@@ -291,6 +290,8 @@ package
 		
 		// MORT
 		public function die_motherfucker():void {
+			
+		
 			//trace("LOL RESET", checkpoint.x, checkpoint.y, x, y);
 			x = checkpoint.x;
 			y = checkpoint.y;
