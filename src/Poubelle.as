@@ -41,29 +41,17 @@ package
 					x = player.x + player.push.frameWidth;
 					velocity.x = player.velocity.x;
 				}
-				//ARRET POUBELLE
-				else {
-					velocity.x = 0;
-					player.velocity.x = 0;
-					if (player.gravity > 500) {
-						destruction();
-					}
-				}
 				
 				// POUBELLE VIDE
 				if (FlxG.tilemap.getTile(Math.floor(x / 40), Math.round(y / 40) +2) == 0) {
 					y += frameHeight;
 					velocity.x = 0;
-					FlxG.player.velocity.x = FlxG.player.init_speed;
 					FlxG.player.pushing = false;
 				}
-				
-		
 			}	
 		}
 		
 		public function destruction():void {
-			FlxG.player.velocity.x = FlxG.player.init_speed;
 			kill();
 			destroy();
 			FlxG.state.remove(this);
