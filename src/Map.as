@@ -30,6 +30,7 @@ package
 		public var tremplins:FlxGroup = new FlxGroup();										// TREMPLINS
 		public var tremplin_haut:FlxGroup = new FlxGroup();									// HAUT
 		public var tremplin_bas:FlxGroup = new FlxGroup();									// BAS
+		public var batiments_near:FlxGroup = new FlxGroup();								// BG NEAR
 		public var boss:FlxGroup = new FlxGroup();											// VAGUES
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
@@ -38,11 +39,7 @@ package
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
-        public var near:FlxTilemap = new FlxTilemap();										// NEAR
-        public var clouds:FlxTilemap = new FlxTilemap();									// NEAR
-        public var middle:FlxTilemap = new FlxTilemap();									// MIDDLE
-        public var far:FlxTilemap = new FlxTilemap();										// FAR
-        public var fond:FlxTilemap = new FlxTilemap();										// FOND
+        public var fond:FlxTilemap = new FlxTilemap();								// FOND
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
@@ -54,6 +51,11 @@ package
         [Embed(source = '../assets/level/exterieur/background_exterieur_clouds.png')] public var BgClouds:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
         [Embed(source = '../assets/gfx/gameplay/sol_destructible.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/levels/bat1.png')] public var ImgNear1:Class;
+        [Embed(source = '../assets/gfx/levels/bat2.png')] public var ImgNear2:Class;
+        [Embed(source = '../assets/gfx/levels/bat3.png')] public var ImgNear3:Class;
+        [Embed(source = '../assets/gfx/levels/bat4.png')] public var ImgNear4:Class;
+        [Embed(source = '../assets/gfx/levels/bat5.png')] public var ImgNear5:Class;
         [Embed(source = '../assets/gfx/misc/back_fail.png')] public var BgFail:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_80.png')] public var Tremplin80_rouge:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_jaune_80.png')] public var Tremplin80_jaune:Class;
@@ -61,7 +63,6 @@ package
         [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_120.png')] public var Tremplin120_rouge:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_120.png')] public var Tremplin120_jaune:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_120.png')] public var Tremplin120_bleu:Class;
-		public var background:Background;
 		public var largeur:int = 30000;														// LARGEUR DE LA MAP
 		public var mapfile:Class = null;
 		
@@ -95,15 +96,43 @@ package
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
 			
-				// RECUPERATION DES TILES CSV
-				var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
-				var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
-				// TODO CALQUES D'OBJETS
-				fond.loadMap(csv3, BgFond, 40, 40);
-				tile.loadMap(csv, MapTiles, 40, 40);
-				FlxG.state.add(fond);
-				FlxG.state.add(tile);
-				FlxG.tilemap = tile;
+			// RECUPERATION DES TILES CSV
+			var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
+			var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
+			// TODO CALQUES D'OBJETS
+			fond.loadMap(csv3, BgFond, 40, 40);
+			tile.loadMap(csv, MapTiles, 40, 40);
+			FlxG.state.add(fond);
+				
+			
+			var group_near:TmxObjectGroup = tmx.getObjectGroup('Back_near');
+			for each(var object_near:TmxObject in group_near.objects) {
+				var bat_near:FlxSprite = new FlxSprite(object_near.x, object_near.y);
+				trace(object_near.gid);
+				switch(object_near.gid) {
+					case 32 :
+						bat_near.loadGraphic(ImgNear1);
+						break;
+					case 33 :
+						bat_near.loadGraphic(ImgNear2);
+						break;
+					case 34 :
+						bat_near.loadGraphic(ImgNear3);
+						break;
+					case 35 :
+						bat_near.loadGraphic(ImgNear4);
+						break;
+					case 36 :
+						bat_near.loadGraphic(ImgNear5);
+						break;
+				}
+				bat_near.y -= bat_near.frameHeight
+				batiments_near.add(bat_near);
+			}
+			FlxG.state.add(batiments_near);
+			FlxG.state.add(tile);
+			FlxG.tilemap = tile;
+			
 			// PARSING DES OBJETS
 			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
 			for each(var object:TmxObject in group.objects) {

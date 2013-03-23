@@ -25,7 +25,7 @@ package
 			soundActivate.loadEmbedded(SfxActivate);
 			soundRevives.loadEmbedded(SfxRevives);
 			immovable = true;
-			
+			y -= frameHeight /2 ;
 			this.loadGraphic(ImgCheck, true, false, 80, 200);
 			this.addAnimation("default",  [0], 30, true);
 			this.addAnimation("validation",  [0,1,2,3], 30, true);

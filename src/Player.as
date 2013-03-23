@@ -27,9 +27,8 @@ package
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
-		
 		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
-	public var vitesse1:FlxSound = new FlxSound();
+		public var vitesse1:FlxSound = new FlxSound();
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
 		public var jauge:FlxSprite;
