@@ -537,5 +537,41 @@
     <property name="orientation" value="haut"/>
    </properties>
   </object>
+  <object type="tremplin" x="760" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="640" y="720" width="40" height="40"/>
+  <object type="tremplin" x="2760" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="2640" y="720" width="40" height="40"/>
+  <object type="tremplin" x="5000" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="4880" y="720" width="40" height="40"/>
+  <object type="tremplin" x="6080" y="560" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="5960" y="640" width="40" height="40"/>
+  <object type="tremplin" x="8200" y="560" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="8080" y="640" width="40" height="40"/>
+  <object type="tremplin" x="9280" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="9160" y="720" width="40" height="40"/>
  </objectgroup>
 </map>

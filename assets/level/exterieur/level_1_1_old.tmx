@@ -4,13 +4,13 @@
   <image source="../../gfx/misc/aith_tiles.png" width="240" height="120"/>
  </tileset>
  <tileset firstgid="19" name="background_exterieur_middle" tilewidth="320" tileheight="560">
-  <image source="background_exterieur_middle.png" width="2000" height="560"/>
+  <image source="background_exterieur_middle.png" width="2000" height="1300"/>
  </tileset>
- <tileset firstgid="25" name="background_exterieur_near" tilewidth="800" tileheight="720">
-  <image source="background_exterieur_near.png" width="2000" height="2000"/>
+ <tileset firstgid="31" name="background_exterieur_near" tilewidth="800" tileheight="720">
+  <image source="background_exterieur_near.png" width="1600" height="2160"/>
  </tileset>
- <tileset firstgid="29" name="background_exterieur_far" tilewidth="320" tileheight="480">
-  <image source="background_exterieur_far.png" width="1280" height="480"/>
+ <tileset firstgid="37" name="background_exterieur_far" tilewidth="320" tileheight="480">
+  <image source="background_exterieur_far.png" width="1600" height="480"/>
  </tileset>
  <layer name="Back_fond" width="600" height="20">
   <data encoding="csv">
@@ -319,5 +319,29 @@
   <object name="pique" type="Piques" x="8400" y="480" width="40" height="40"/>
   <object name="pique" type="Piques" x="8520" y="480" width="40" height="40"/>
   <object name="pique" type="Piques" x="8560" y="480" width="40" height="40"/>
+  <object type="tremplin" x="680" y="720" width="40" height="40"/>
+  <object type="tremplin" x="800" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="1920" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="1800" y="720" width="40" height="40"/>
+  <object type="tremplin" x="3600" y="480" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="3480" y="560" width="40" height="40"/>
+  <object type="tremplin" x="5480" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="5360" y="720" width="40" height="40"/>
  </objectgroup>
 </map>
