@@ -48,7 +48,12 @@ package
 					velocity.x = 0;
 					FlxG.player.pushing = false;
 				}
-			}	
+				
+				/* TODO 
+				 * Destruction
+				 * Collide venant haut
+				 */
+			}
 		}
 		
 		public function destruction():void {

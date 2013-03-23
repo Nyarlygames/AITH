@@ -181,7 +181,6 @@ package
 				pushing = true;
 			}
 		}
-		}
 		
 		// GESTION SON MOTEUR
 		public function handle_sound():void {
