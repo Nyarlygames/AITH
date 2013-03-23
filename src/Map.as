@@ -108,7 +108,6 @@ package
 			var group_near:TmxObjectGroup = tmx.getObjectGroup('Back_near');
 			for each(var object_near:TmxObject in group_near.objects) {
 				var bat_near:FlxSprite = new FlxSprite(object_near.x, object_near.y);
-				trace(object_near.gid);
 				switch(object_near.gid) {
 					case 32 :
 						bat_near.loadGraphic(ImgNear1);
@@ -198,7 +197,7 @@ package
 						if (object.custom != null)
 							souffleries.add (new Soufflerie(object.x, object.y, object.custom["angle"]));
 						else
-							souffleries.add (new Soufflerie(object.x, object.y, 90));
+							souffleries.add (new Soufflerie(object.x, object.y, 0));
 						break;
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
