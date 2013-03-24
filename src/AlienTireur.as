@@ -48,15 +48,7 @@ package
 		
 		override public function update():void 
 		{
-			shoot.fireFromAngle(90);
-			shoot.fire();
-			play("default");
-			if (onScreen(FlxG.camera)) 
-			{
-				shoot.fireFromAngle(FlxWeapon.BULLET_DOWN);
-			}
-			if (FlxG.overlap(shoot.group, FlxG.player))
-				FlxG.player.die_motherfucker();
+			//play("default");
 		}
 	}
 }

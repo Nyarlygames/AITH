@@ -19,7 +19,7 @@ package
 		
 		//public var soundIdle:FlxSound 		= new FlxSound();
 		public var soundIn:FlxSound 		= new FlxSound();
-		public var gravityup:int = 250;								// GRAVITY MODIFIER
+		public var gravity:int = 5;								// GRAVITY MODIFIER
 		public var applied:Boolean = false;
 		public var halo:FlxSprite;
 		
@@ -28,7 +28,7 @@ package
 		{
 			super(xpos, ypos, ImgSoucoupe);
 			soundIn.loadEmbedded(SfxIn);
-			halo = new FlxSprite(xpos + 20, ypos + frameHeight, ImgHalo);
+			halo = new FlxSprite(xpos + (this.width*0.25), ypos + frameHeight, ImgHalo);
 			FlxG.state.add(halo);
 			immovable = true;
 		}
@@ -37,6 +37,8 @@ package
 			if (FlxG.player != null)
 				if (!FlxG.overlap(FlxG.player, halo, getup) && (applied == true)) 
 				{
+					soundIn.play();
+					FlxG.player.gravity = gravity + FlxG.player.y;
 					applied = false;
 				}
 
@@ -45,11 +47,7 @@ package
 		public function getup(obj1:FlxObject, obj2:FlxObject):void {
 			// HORIZONTAUX _
 			if (applied == false) {
-				soundIn.play();
-				FlxG.player.velocity.y = -gravityup;
-				/* TODO 
-				 * Gravityup en fonction de la position du joueur comparé à la soucoupe
-				 */
+				FlxG.player.gravity = gravity - FlxG.player.y;
 				applied = true;
 			}
 		}

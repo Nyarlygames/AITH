@@ -26,9 +26,13 @@ package
 			tube_count.scrollFactor = new FlxPoint(0, 0);
 		}
 		
-		override public function update():void {
-		//	if ((tube_count != null) && (tube_count.text != null))
-		//		tube_count.text = ""+FlxG.score;
+		override public function update():void 
+		{
+			/*
+			 * Créer si possible un tween qui dynamise la prise de tube
+				if ((tube_count != null) && (tube_count.text != null))
+					tube_count.text = ""+FlxG.score;
+			*/
 		}
 		
 	}

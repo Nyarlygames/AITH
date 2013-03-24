@@ -6,6 +6,8 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxSubState;
 	import flash.system.System;
+	import com.greensock.*;
+	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	 
 	/**
@@ -14,28 +16,31 @@ package
 	 */
 	public class LevelChooser extends FlxState
 	{
-		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgReplay:Class;
-		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgReplayOn:Class;
-		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
-		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
-		[Embed(source = '../assets/gfx/ui/exte_niv1.png')] protected var ImgLevel1:Class;
-		[Embed(source = '../assets/gfx/ui/exte_niv2.png')] protected var ImgLevel2:Class;
-		[Embed(source = '../assets/gfx/ui/exte_niv3.png')] protected var ImgLevel3:Class;
-		[Embed(source = '../assets/gfx/ui/vaiss_niv1.png')] protected var ImgLevel4:Class;
-		[Embed(source = '../assets/gfx/ui/vaiss_niv2.png')] protected var ImgLevel5:Class;
-		[Embed(source = '../assets/gfx/ui/vaiss_niv3.png')] protected var ImgLevel6:Class;
-		[Embed(source = '../assets/gfx/ui/exte_niv1_on.png')] protected var ImgLevel1On:Class;
-		[Embed(source = '../assets/gfx/ui/exte_niv2_on.png')] protected var ImgLevel2On:Class;
-		[Embed(source = '../assets/gfx/ui/exte_niv3_on.png')] protected var ImgLevel3On:Class;
-		[Embed(source = '../assets/gfx/ui/vaiss_niv1_on.png')] protected var ImgLevel4On:Class;
-		[Embed(source = '../assets/gfx/ui/vaiss_niv2_on.png')] protected var ImgLevel5On:Class;
-		[Embed(source = '../assets/gfx/ui/vaiss_niv3_on.png')] protected var ImgLevel6On:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu.png')] 		protected var ImgReplay:Class;
+		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] 	protected var ImgReplayOn:Class;
+		[Embed(source = '../assets/gfx/ui/background-default.png')] 	protected var ImgBackDefault:Class;
+		[Embed(source = '../assets/gfx/ui/cursor.png')] 		protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/cursor_anim.png')]	protected var ImgCursorAnim:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv1.png')] 		protected var ImgLevel1:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv2.png')] 		protected var ImgLevel2:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv3.png')] 		protected var ImgLevel3:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv1.png')] 	protected var ImgLevel4:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv2.png')] 	protected var ImgLevel5:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv3.png')] 	protected var ImgLevel6:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv1_on.png')] 	protected var ImgLevel1On:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv2_on.png')]	protected var ImgLevel2On:Class;
+		[Embed(source = '../assets/gfx/ui/exte_niv3_on.png')] 	protected var ImgLevel3On:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv1_on.png')]	protected var ImgLevel4On:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv2_on.png')] 	protected var ImgLevel5On:Class;
+		[Embed(source = '../assets/gfx/ui/vaiss_niv3_on.png')] 	protected var ImgLevel6On:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
+		
 		public var replaypic:FlxSprite;
 		public var cursor:FlxSprite;
 		public var level1:FlxSprite;
+		public var backDefault:FlxSprite;
 		public var level2:FlxSprite;
 		public var level3:FlxSprite;
 		
@@ -47,6 +52,12 @@ package
 			var title:FlxText = new FlxText(50, 50, FlxG.height*2 / 3, "Choisir un niveau");
 			title.setFormat("onedalism", 50, 0x044071);
 			add(title);
+			
+			//Back
+			backDefault = new FlxSprite(490, 245, ImgBackDefault);
+			backDefault.x = 0;
+			backDefault.y = 0;
+			add (backDefault);
 			
 			// REPLAY
 			replaypic = new FlxSprite(FlxG.width, 50, ImgReplay);

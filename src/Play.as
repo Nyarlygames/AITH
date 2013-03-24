@@ -29,6 +29,8 @@ package
 	 */
 	public class Play extends FlxState 
 	{
+		
+		// LA MUSIQUE ET LE SON MOTEUR SONT DESACTIVFES POUR PAUL.
 		[Embed(source = "../assets/level/map_test.txt", mimeType = "application/octet-stream")] public var maptest:Class;
 		[Embed(source = "../assets/level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source = "../assets/level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
@@ -54,6 +56,7 @@ package
 		
 		override public function create():void
 		{	
+
 			switch (FlxG.univ) {
 				// UNIVERS 1
 				case -1:
@@ -114,14 +117,15 @@ package
 			}
 		}
 
-		override public function update():void {
+		override public function update():void
+		{
 			// ON VERIFIE LE CHARGEMENT DE LA MAP
 			if (map.loaded) {
 				if (justloaded == true) {
 					player = map.player;
 					FlxG.state.add(ui);
 					if (sound != null)
-						sound.play();
+						//sound.play();
 					justloaded = false;
 				}
 				super.update();
@@ -161,7 +165,9 @@ package
 				FlxG.collide(player, map.destructible, check_ground);
 				
 				// POUBELLE JOUEUR
-				FlxG.overlap(player, map.DustbinBieber, player.dustbin);				
+				FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed);
+				FlxG.collide(player, map.DustbinBieber, player.dustbin_destroyed);
+				
 				
 				FlxG.collide(player, map.tile, player.tiles_coll)
 				// UPDATE PAUSE SCREEN

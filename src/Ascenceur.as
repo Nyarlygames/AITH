@@ -53,25 +53,34 @@ package
 		// GESTIONS DU DEPLACEMENT SUR ASCENCEUR
 		public function up_and_down(obj1:FlxObject, obj2:FlxObject):void {
 			if (blocked == true) {
-				trace ("ascenseur activé ?");
 				FlxG.player.x = x;
 				FlxG.player.velocity.x = 0;
 				FlxG.player.velocity.y = 0;
 				
 				// DEPLACEMENT BLOQUE
-				if (FlxG.player.gravity > 10000) {
+				if (FlxG.keys.pressed("SPACE")) 
+				{
+					soundActivation.kill();
+					soundMoves.revive();
+					soundMoves.play();
 					y += speed * FlxG.elapsed;
 					loadGraphic(ImgAscenceurDown);
 					FlxG.player.y += speed * FlxG.elapsed;
 				}
-				else {
+				else 
+				{
+					soundActivation.revive();
+					soundActivation.play();
+					soundMoves.kill();
 					y -= speed * FlxG.elapsed;
 					loadGraphic(ImgAscenceurUp);
 					FlxG.player.y -= speed * FlxG.elapsed;
 				}
 				// GESTIONS COLLISIONS TRIGGERS/ASCENCEURS
-				for each (var item:Trigger in FlxG.map.triggers.members) {
-					if ((item != null) && (item.x == this.x + 80) && (item.y == Math.round(this.y))) {
+				for each (var item:Trigger in FlxG.map.triggers.members) 
+				{
+					if ((item != null) && (item.x == this.x + 80) && (item.y == Math.round(this.y))) 
+					{
 						unlock = true;
 						y = item.y;
 						delock(item);
@@ -81,7 +90,9 @@ package
 		}
 		
 		// DEBLOQUE ASCENCEUR
-		public function delock(trig:Trigger):void {
+		public function delock(trig:Trigger):void 
+		{
+			soundEnd.play();
 			blocked = false;
 			FlxG.player.velocity.x = FlxG.player.init_speed;
 		}

@@ -20,30 +20,32 @@ package
 	 */
 	public class Player extends FlxSprite 
 	{
-		
+		// LA MUSIQUE ET LE SON MOTEUR SONT DESACTIVFES POUR PAUL.
 		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
+		
 		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
+		
 		public var vitesse1:FlxSound = new FlxSound();
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
 		public var jauge:FlxSprite;
 		public var init_speed:int = 360;  		// VITESSE DE BASE (max vitesse)
-			public var mingravity:int = -250;               // GRAVITE MIN
-			public var maxgravity:int = 50000;              // GRAVITY MAX
-			public const const_gravity:int = 300;			public var accumulateur:int = 0;
-			public var palier_accumulateur:int = -100000;
-			public var gravity:int = 0;
-			public var gravity_increment:int = 35000;
-			public var gravity_decrement:int = 20000;
-			public var on_tremplin:Boolean = false;
-			public var on_ascenseur:Boolean = false;
-			public var acceleration_speed:int = 150;   
-			public var maxgravity_test:int = 2000;
+		public var mingravity:int = -250;               // GRAVITE MIN
+		public var maxgravity:int = 50000;              // GRAVITY MAX
+		public const const_gravity:int = 300;			public var accumulateur:int = 0;
+		public var palier_accumulateur:int = -100000;
+		public var gravity:int = 0;
+		public var gravity_increment:int = 35000;
+		public var gravity_decrement:int = 20000;
+		public var on_tremplin:Boolean = false;
+		public var on_ascenseur:Boolean = false;
+		public var acceleration_speed:int = 150;   
+		public var maxgravity_test:int = 2000;
 		
 		public var volumespeed:Number = 0.02;	// BAISSE SON MOTEUR
 		
@@ -76,9 +78,9 @@ package
 			vitesse1.volume = 0;
 			vitesse2.volume = 0;
 			vitesse3.volume = 1;
-			vitesse3.play();
-			vitesse2.play();
-			vitesse1.play();
+			//vitesse3.play();
+			//vitesse2.play();
+			//vitesse1.play();
 			emitter = new FlxEmitter(xPos, yPos, 5);
 			for(var i:int = 0; i < 10; i++) {
 				var p:FlxParticle = new FlxParticle();
@@ -173,17 +175,32 @@ package
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
-		public function dustbin(obj1:FlxObject, obj2:FlxObject):void {
+		public function dustbin_pushed(obj1:FlxObject, obj2:FlxObject):void {
 			if ((pushing != true) && (push == null)) {
+				
 				(obj2 as Poubelle).soundPushed.play();
+				obj2.x = x + (obj2 as Poubelle).frameWidth;
+				obj2.velocity.x = velocity.x = init_speed;
 				push = (obj2 as Poubelle);
 				(push as Poubelle).player = this;
 				pushing = true;
 			}
 		}
+		//GESTION DESTRUCTION POUBELLE
+		public function dustbin_destroyed(obj1:FlxObject, poubelle:Poubelle) : void
+		{
+				if (/* condition de destruction  */ 1 == 1)
+				{
+					// (obj2 as AlienNormal).soundPushed.play();
+					//trace ("lol");
+					// Poubelle
+				}
+			
+		}
 		
 		// GESTION SON MOTEUR
 		public function handle_sound():void {
+			
 			if (FlxG.keys.pressed("SPACE")) 
 			{
 				if (velocity.x > 180) 
