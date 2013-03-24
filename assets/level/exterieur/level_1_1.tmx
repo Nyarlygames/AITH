@@ -134,7 +134,7 @@
  </objectgroup>
  <layer name="Sol" width="420" height="20">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="420" height="20" opacity="0.9">
@@ -169,14 +169,14 @@
   <object name="tube" type="Tube" x="7080" y="680" width="40" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="7360" y="760" width="120" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7760" y="760" width="40" height="40"/>
-  <object name="trigger_ascenseur" type="Trigger" x="7400" y="520" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="7400" y="560" width="40" height="40"/>
   <object name="tube" type="Tube" x="7760" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="7520" y="480" width="40" height="40"/>
   <object name="check" type="Checkpoints" x="7200" y="680" width="40" height="80"/>
   <object name="check" type="Checkpoints" x="5240" y="680" width="40" height="80"/>
-  <object name="trigger_ascenseur" type="Trigger" x="7360" y="520" width="40" height="40"/>
-  <object name="trigger_ascenseur" type="Trigger" x="7440" y="520" width="40" height="40"/>
-  <object name="trigger_ascenseur" type="Trigger" x="7320" y="520" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="7360" y="560" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="7440" y="560" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="7320" y="560" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7800" y="760" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7720" y="760" width="40" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="7720" y="560" width="120" height="40"/>
