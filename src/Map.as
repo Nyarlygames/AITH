@@ -1,6 +1,7 @@
 package  
 {
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxTilemap;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
@@ -40,6 +41,8 @@ package
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
         public var fond:FlxTilemap = new FlxTilemap();										// FOND
 		public var batiments_near:FlxGroup = new FlxGroup();								// BG NEAR
+		public var batiments_middle:FlxGroup = new FlxGroup();								// BG FAR
+		public var batiments_far:FlxGroup = new FlxGroup();								// BG MIDDLE
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
@@ -52,6 +55,30 @@ package
         [Embed(source = '../assets/gfx/levels/bat3.png')] public var ImgNear3:Class;
         [Embed(source = '../assets/gfx/levels/bat4.png')] public var ImgNear4:Class;
         [Embed(source = '../assets/gfx/levels/bat5.png')] public var ImgNear5:Class;
+        [Embed(source = '../assets/gfx/levels/bat6.png')] public var ImgNear6:Class;
+        [Embed(source = '../assets/gfx/levels/bat7.png')] public var ImgNear7:Class;
+        [Embed(source = '../assets/gfx/levels/bat8.png')] public var ImgNear8:Class;
+        [Embed(source = '../assets/gfx/levels/bat9.png')] public var ImgNear9:Class;
+        [Embed(source = '../assets/gfx/levels/bat10.png')] public var ImgNear10:Class;
+        [Embed(source = '../assets/gfx/levels/batfond1.png')] public var ImgMiddle1:Class;
+        [Embed(source = '../assets/gfx/levels/batfond2.png')] public var ImgMiddle2:Class;
+        [Embed(source = '../assets/gfx/levels/batfond3.png')] public var ImgMiddle3:Class;
+        [Embed(source = '../assets/gfx/levels/batfond4.png')] public var ImgMiddle4:Class;
+        [Embed(source = '../assets/gfx/levels/batfond5.png')] public var ImgMiddle5:Class;
+        [Embed(source = '../assets/gfx/levels/batfond6.png')] public var ImgMiddle6:Class;
+        [Embed(source = '../assets/gfx/levels/batfond7.png')] public var ImgMiddle7:Class;
+        [Embed(source = '../assets/gfx/levels/batfond8.png')] public var ImgMiddle8:Class;
+        [Embed(source = '../assets/gfx/levels/batfond9.png')] public var ImgMiddle9:Class;
+        [Embed(source = '../assets/gfx/levels/batfond10.png')] public var ImgMiddle10:Class;
+        [Embed(source = '../assets/gfx/levels/batfond11.png')] public var ImgMiddle11:Class;
+        [Embed(source = '../assets/gfx/levels/batfond12.png')] public var ImgMiddle12:Class;
+        [Embed(source = '../assets/gfx/levels/batfond13.png')] public var ImgMiddle13:Class;
+        [Embed(source = '../assets/gfx/levels/batfondfond1.png')] public var ImgFar1:Class;
+        [Embed(source = '../assets/gfx/levels/batfondfond2.png')] public var ImgFar2:Class;
+        [Embed(source = '../assets/gfx/levels/batfondfond3.png')] public var ImgFar3:Class;
+        [Embed(source = '../assets/gfx/levels/batfondfond4.png')] public var ImgFar4:Class;
+        [Embed(source = '../assets/gfx/levels/batfondfond5.png')] public var ImgFar5:Class;
+        [Embed(source = '../assets/gfx/levels/batfondfond6.png')] public var ImgFar6:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_rouge_80.png')] public var Tremplin80_rouge:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_jaune_80.png')] public var Tremplin80_jaune:Class;
         [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_80.png')] public var Tremplin80_bleu:Class;
@@ -98,6 +125,64 @@ package
 			tile.loadMap(csv, MapTiles, 40, 40);
 			FlxG.state.add(fond);
 			
+			/* FAR */
+			var group_far:TmxObjectGroup = tmx.getObjectGroup('Back_far');
+			for each(var object_far:TmxObject in group_far.objects) {
+				var bat_far:FlxSprite = new FlxSprite(object_far.x, object_far.y);
+				switch(object_far.gid) {
+					case 38 :
+						bat_far.loadGraphic(ImgFar1);
+						break;
+					case 39 :
+						bat_far.loadGraphic(ImgFar2);
+						break;
+					case 40 :
+						bat_far.loadGraphic(ImgFar3);
+						break;
+					case 41 :
+						bat_far.loadGraphic(ImgFar4);
+						break;
+					case 42 :
+						bat_far.loadGraphic(ImgFar5);
+						break;
+				}
+				bat_far.y -= bat_far.frameHeight
+				bat_far.scrollFactor = new FlxPoint(0.1, 0.1);
+				batiments_far.add(bat_far);
+			}
+			FlxG.state.add(batiments_far);
+			
+			/* MIDDLE */
+			var group_middle:TmxObjectGroup = tmx.getObjectGroup('Back_middle');
+			for each(var object_middle:TmxObject in group_middle.objects) {
+				var bat_middle:FlxSprite = new FlxSprite(object_middle.x, object_middle.y);
+				switch(object_middle.gid) {
+					case 20 :
+						bat_middle.loadGraphic(ImgMiddle1);
+						break;
+					case 21 :
+						bat_middle.loadGraphic(ImgMiddle2);
+						break;
+					case 22 :
+						bat_middle.loadGraphic(ImgMiddle3);
+						break;
+					case 23 :
+						bat_middle.loadGraphic(ImgMiddle4);
+						break;
+					case 24 :
+						bat_middle.loadGraphic(ImgMiddle5);
+						break;
+					case 25 :
+						bat_middle.loadGraphic(ImgMiddle6);
+						break;
+				}
+				bat_middle.y -= bat_middle.frameHeight
+				bat_middle.scrollFactor = new FlxPoint(0.5, 0.5);
+				batiments_middle.add(bat_middle);
+			}
+			FlxG.state.add(batiments_middle);
+			
+			/* NEAR */
 			var group_near:TmxObjectGroup = tmx.getObjectGroup('Back_near');
 			for each(var object_near:TmxObject in group_near.objects) {
 				var bat_near:FlxSprite = new FlxSprite(object_near.x, object_near.y);
@@ -119,9 +204,11 @@ package
 						break;
 				}
 				bat_near.y -= bat_near.frameHeight
+				bat_near.scrollFactor = new FlxPoint(1, 1);
 				batiments_near.add(bat_near);
 			}
 			FlxG.state.add(batiments_near);
+			
 			FlxG.state.add(tile);
 			FlxG.tilemap = tile;
 			

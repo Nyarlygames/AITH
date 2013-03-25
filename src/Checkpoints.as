@@ -36,7 +36,7 @@ package
 		override public function update():void {
 			if ((FlxG.player != null) && (FlxG.player.x >= x) && (validated == false)) {
 				FlxG.player.checkpoint.x = x; 
-				FlxG.player.checkpoint.y = y;
+				FlxG.player.checkpoint.y = y + frameHeight - FlxG.player.frameHeight;
 				play("valide");
 				validated = true;
 				soundActivate.play();
