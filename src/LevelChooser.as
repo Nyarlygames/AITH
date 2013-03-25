@@ -16,9 +16,10 @@ package
 	 */
 	public class LevelChooser extends FlxState
 	{
-		[Embed(source = '../assets/gfx/ui/btn_menu.png')] 		protected var ImgReplay:Class;
-		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] 	protected var ImgReplayOn:Class;
-		[Embed(source = '../assets/gfx/ui/background-default.png')] 	protected var ImgBackDefault:Class;
+		[Embed(source = '../assets/gfx/ui/background-default.png')] protected var ImgBackDefault:Class;
+		[Embed(source = '../assets/gfx/ui/choix-tiles.png')] 	 	protected var ImgChoixTexte:Class;
+		[Embed(source = '../assets/gfx/ui/backChxLvl.png')] 	protected var ImgFondLevel:Class;
+		[Embed(source = '../assets/gfx/ui/tile-tubes.png')] 	protected var ImgTubes:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] 		protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')]	protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/exte_niv1.png')] 		protected var ImgLevel1:Class;
@@ -38,9 +39,14 @@ package
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
 		
 		public var replaypic:FlxSprite;
+		public var texteUnivers:FlxSprite;
+		public var backLevel1:FlxSprite;
+		public var backLevel2:FlxSprite;
+		public var backLevel3:FlxSprite;
+		public var backDefault:FlxSprite;
+		public var retour:FlxSprite;
 		public var cursor:FlxSprite;
 		public var level1:FlxSprite;
-		public var backDefault:FlxSprite;
 		public var level2:FlxSprite;
 		public var level3:FlxSprite;
 		
@@ -48,31 +54,60 @@ package
 		{
 			
 			FlxG.bgColor = 0xaa519CCA;
-			// TEXTE EXPLICATIF
-			var title:FlxText = new FlxText(50, 50, FlxG.height*2 / 3, "Choisir un niveau");
-			title.setFormat("onedalism", 50, 0x044071);
-			add(title);
 			
-			//Back
-			backDefault = new FlxSprite(490, 245, ImgBackDefault);
-			backDefault.x = 0;
-			backDefault.y = 0;
-			add (backDefault);
+			/*	Back par défaut */
+				backDefault = new FlxSprite(490, 245, ImgBackDefault);
+				backDefault.x = 0;
+				backDefault.y = 0;
+				add (backDefault);
+			/*	Back par défaut */
+		
+			/*	Texte choix de l'univers */
+				texteUnivers = new FlxSprite(482, 84, ImgChoixTexte);
+				texteUnivers.loadGraphic(ImgChoixTexte, true, false, 482, 84);
+				texteUnivers.addAnimation("univers", [0], 10, true);
+				texteUnivers.addAnimation("niveaux", [1], 10, true);
+				texteUnivers.x = 20;
+				texteUnivers.y = 20;
+				add (texteUnivers);
+				texteUnivers.play("niveaux");
+			/*	Retour en arrière */
 			
-			// REPLAY
-			replaypic = new FlxSprite(FlxG.width, 50, ImgReplay);
-			replaypic.x -= replaypic.frameWidth +50;
-			add(replaypic);
-			var replaytext:FlxText = new FlxText(replaypic.x, replaypic.y +18, replaypic.frameWidth, "Retour");
-			replaytext.setFormat("philly", 32, 0x044071);
-			replaytext.alignment = "center";
-			add(replaytext);			
+			/*	Back level 1 */
+				backLevel1 = new FlxSprite(206, 206, ImgFondLevel);
+				backLevel1.x = 58;
+				backLevel1.y = 312;
+				add (backLevel1);
+			/*	Back level 1 */
 			
-			// LEVEL 1 IMAGE
+			/*	Back level 2 */
+				backLevel2 = new FlxSprite(206, 206, ImgFondLevel);
+				backLevel2.x = 315;
+				backLevel2.y = 312;
+				add (backLevel2);
+			/*	Back level 2 */
+			
+			/*	Back level 3 */
+				backLevel3 = new FlxSprite(206, 206, ImgFondLevel);
+				backLevel3.x = 565;
+				backLevel3.y = 312;
+				add (backLevel3);
+			/*	Back level 3 */
+			
+			/*	Retour en arrière */
+				retour = new FlxSprite(50, 194, ImgTubes);
+				retour.loadGraphic(ImgTubes, true, false, 194, 50);
+				retour.addAnimation("off", [0], 10, true);
+				retour.addAnimation("on", [1], 10, true);
+				retour.x = 576;
+				retour.y = 38;
+				add (retour);
+				retour.play("off");
+			/*	Retour en arrière */			
+			
+			/*	Images des niveaux */
 			level1 = new FlxSprite(50, FlxG.height /2);
-			// LEVEL 2 IMAGE
 			level2 = new FlxSprite(300, FlxG.height /2);
-			// LEVEL 3 IMAGE
 			level3 = new FlxSprite(550, FlxG.height / 2);
 			
 			if (FlxG.univ == 1) {
@@ -106,15 +141,17 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
-			
-			// RETURN
-			if (FlxCollision.pixelPerfectCheck(cursor, replaypic)) {
-				replaypic.loadGraphic(ImgReplayOn);
+		
+			if (FlxG.overlap(cursor, retour))
+			{
+				retour.play("on");
 				if (FlxG.mouse.justPressed())
-					FlxG.switchState(new UnivChooser());
+				{ FlxG.switchState(new Start());  }
 			}
 			else
-				replaypic.loadGraphic(ImgReplay);
+			{
+				retour.play("off");
+			}
 				
 			if (FlxG.univ == 1) {
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {

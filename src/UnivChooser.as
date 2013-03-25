@@ -45,11 +45,11 @@ package
 			
 			FlxG.bgColor = 0xaa519CCA;
 			
-			//Back par défaut
-			backDefault = new FlxSprite(490, 245, ImgBackDefault);
-			backDefault.x = 0;
-			backDefault.y = 0;
-			add (backDefault);
+			/*	Back par défaut */
+				backDefault = new FlxSprite(490, 245, ImgBackDefault);
+				backDefault.x = 0;
+				backDefault.y = 0;
+				add (backDefault);
 			
 			/*	Setup Univers 1 */
 				backUnivers = new FlxSprite(562/2, 287, ImgBackUnivers);

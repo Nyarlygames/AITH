@@ -24,6 +24,8 @@ package
 			super(xpos, ypos);
 			soundPetitTube.loadEmbedded(SfxPetitTube);
 			soundGrosTube.loadEmbedded(SfxGrosTube);
+			soundGrosTube.volume = 0.1;
+			soundPetitTube.volume = 0.1;
 			switch (id) {
 				case 0:
 					loadGraphic(ImgTube);

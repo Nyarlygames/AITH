@@ -24,45 +24,51 @@ package
 		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
+		[Embed(source = "../assets/sfx/gameplay/CheckPoint_Revive.mp3")] public var sfxRevive:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
 		
 		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
 		
+		public var soundRevive:FlxSound = new FlxSound();
 		public var vitesse1:FlxSound = new FlxSound();
 		public var vitesse2:FlxSound = new FlxSound();
 		public var vitesse3:FlxSound = new FlxSound();
+		
 		public var jauge:FlxSprite;
-		public var init_speed:int = 360;  		// VITESSE DE BASE (max vitesse)
-		public var mingravity:int = -250;               // GRAVITE MIN
-		public var maxgravity:int = 50000;              // GRAVITY MAX
-		public const const_gravity:int = 300;			public var accumulateur:int = 0;
-		public var palier_accumulateur:int = -100000;
-		public var gravity:int = 0;
-		public var gravity_increment:int = 35000;
-		public var gravity_decrement:int = 20000;
-		public var on_tremplin:Boolean = false;
-		public var on_ascenseur:Boolean = false;
-		public var acceleration_speed:int = 150;   
-		public var maxgravity_test:int = 2000;
+		public var init_speed:int 				= 360;  		// VITESSE DE BASE (max vitesse)
+		public var mingravity:int 				= -250;         // GRAVITE MIN
+		public var maxgravity:int 				= 50000;        // GRAVITY MAX
+		public const const_gravity:int			= 300;			
+		public var accumulateur:int 			= 0;
+		public var palier_accumulateur:int 		= -100000;
+		public var gravity:int 					= 0;
+		public var gravity_increment:int 		= 35000;
+		public var gravity_decrement:int 		= 20000;
+		public var on_tremplin:Boolean 			= false;
+		public var on_ascenseur:Boolean 		= false;
+		public var acceleration_speed:int		= 150;   
+		public var maxgravity_test:int 			= 2000;
 		
-		public var volumespeed:Number = 0.02;	// BAISSE SON MOTEUR
+		public var volumespeed:Number			= 0.02;		// BAISSE SON MOTEUR
 		
-		public var jumping:Boolean = false;		// LE JOUEUR SAUTE?
-		public var pause:Boolean = false;		// LE JEU EST EN PAUSE?
-		public var set_old:Boolean = true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
-		public var angularspeed:int = 150;		// VITESSE DE ROTATION
-		public var cur_angularspeed:int = 150;	// VITESSE DE ROTATION0
-		public var pushing:Boolean = false;		// ENTRAIN DE POUSSER UNE POUBELLE?
-		public var push:Poubelle = null;		// POUBELLE POUSSEE
-		public var emitter:FlxEmitter;			// MOTEUR
-		public var checkpoint:FlxPoint = new FlxPoint(50, 700 - 40);
+		public var jumping:Boolean 				= false;	// LE JOUEUR SAUTE?
+		public var pause:Boolean 				= false;	// LE JEU EST EN PAUSE?
+		public var set_old:Boolean 				= true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
+		public var angularspeed:int 			= 150;		// VITESSE DE ROTATION
+		public var cur_angularspeed:int 		= 150;		// VITESSE DE ROTATION0
+		public var pushing:Boolean 				= false;	// ENTRAIN DE POUSSER UNE POUBELLE?
+		public var push:Poubelle				= null;		// POUBELLE POUSSEE
+		public var emitter:FlxEmitter;						// MOTEUR
+		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
 		
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);
-					
+			
+			soundRevive.loadEmbedded(sfxRevive);
+			
 			maxVelocity.y = maxgravity_test;
 			maxVelocity.x = init_speed;
 			facing = RIGHT;
@@ -230,6 +236,7 @@ package
 		// MORT
 		public function die_motherfucker():void {
 			
+			soundRevive.play();
 			x = checkpoint.x;
 			y = checkpoint.y;
 			velocity.y = 0;

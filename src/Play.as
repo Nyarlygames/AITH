@@ -38,12 +38,20 @@ package
 		[Embed(source = "../assets/level/map04.txt", mimeType = "application/octet-stream")] public var mapfile4:Class;
 		[Embed(source = "../assets/level/map05.txt", mimeType = "application/octet-stream")] public var mapfile5:Class;
 		[Embed(source = "../assets/level/map06.txt", mimeType = "application/octet-stream")] public var mapfile6:Class;
+		
+		[Embed(source = "../assets/sfx/gameplay/SolDestructible_EnDestruction.mp3")] public var SfxCrepite:Class;
+		[Embed(source = "../assets/sfx/gameplay/SolDestructible_Destruction.mp3")] public var SfxDestrSol:Class;
+		
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level1:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level2:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level3:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level4:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level5:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level6:Class;
+		
+		
+		public var soundCrepite:FlxSound = new FlxSound();
+		public var soundDestrSol:FlxSound = new FlxSound();
 
 		public var player:Player;
 		public var map:Map;
@@ -57,6 +65,9 @@ package
 		override public function create():void
 		{	
 
+			soundCrepite.loadEmbedded(SfxCrepite);
+			soundDestrSol.loadEmbedded(SfxDestrSol);
+			
 			switch (FlxG.univ) {
 				// UNIVERS 1
 				case -1:
@@ -192,9 +203,16 @@ package
 		}
 		
 		// GESTION SOL DESTRUCTIBLE
-		public function check_ground(obj1:FlxObject, obj2:FlxObject):void {
+		public function check_ground(obj1:FlxObject, obj2:FlxObject):void 
+		{
+			soundCrepite.volume = 0.5;
+			soundCrepite.play();
 			if (player.gravity > dest_ground)
+			{
+				soundDestrSol.volume = 0.5;
+				soundDestrSol.play();
 				obj2.kill();
+			}
 		}
 		
 		// GESTION Collision alien
