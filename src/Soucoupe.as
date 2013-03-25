@@ -19,7 +19,7 @@ package
 		
 		//public var soundIdle:FlxSound 		= new FlxSound();
 		public var soundIn:FlxSound 		= new FlxSound();
-		public var gravityup:int = 250;								// GRAVITY MODIFIER
+		public var gravityup:int = 300;								// GRAVITY MODIFIER
 		public var applied:Boolean = false;
 		public var halo:FlxSprite;
 		
