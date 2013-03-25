@@ -36,9 +36,6 @@ package
 		
 		override public function update():void {
 			
-			/*
-			 * Movable & collide
-			 * */
 			if ((player != null) && (player.pushing == true)) {
 				// POUBELLE RIEN
 				if ((FlxG.tilemap.getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1)) == 0) {
@@ -57,6 +54,7 @@ package
 				/* TODO 
 				 * Destruction
 				 * Collide venant haut
+			 * Movable & collide
 				 */
 		
 			}	

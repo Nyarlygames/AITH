@@ -23,6 +23,7 @@ package
 	{
 		
 		public var ens:FlxGroup = new FlxGroup();											// ALIENS
+		public var tourelles:FlxGroup = new FlxGroup();											// TOURELLES
 		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
@@ -240,9 +241,12 @@ package
 					case "AlienVert":
 						ens.add (new AlienVert(object.x, object.y));
 						break;
-					case "AlienTireur":
-						ens.add (new AlienTireur(object.x, object.y));
+					case "Tourelle":
+						tourelles.add (new Tourelle(object.x, object.y));
 						break;
+					/*case "AlienTireur":
+						ens.add (new AlienTireur(object.x, object.y));
+						break;*/
 					case "AlienHorizontal":
 						ens.add (new AlienHorizontal(object.x, object.y));
 						break;
@@ -335,6 +339,7 @@ package
 			FlxG.state.add(souffleries);
 			FlxG.state.add(soucoupes);
 			FlxG.state.add(ens);
+			FlxG.state.add(tourelles);
 			FlxG.state.add(checkpoints);
 			// CHARGEMENT FINIT
 			loaded = true;

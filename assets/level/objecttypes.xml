@@ -19,4 +19,5 @@
  <objecttype name="Tremplin80" color="#a44551"/>
  <objecttype name="Tremplin120" color="#4ca44a"/>
  <objecttype name="tremplin" color="#a0a0a4"/>
+ <objecttype name="Tourelle" color="#2f2927"/>
 </objecttypes>

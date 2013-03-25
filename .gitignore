@@ -44,6 +44,9 @@ local.properties
 [Dd]ebug/
 [Rr]elease/
 bin/
+obj/
+*.old
+*.xml
 *.swf
 *_i.c
 *_p.c

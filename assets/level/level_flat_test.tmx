@@ -20,13 +20,13 @@
  </tileset>
  <layer name="Sol" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1ssKgCAQBVCpffX/X9tKaDGCwTBSnAN3Jej1sbA1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyLOtLgAA8CP+VgAA8/biHEFmumT3jXo8U30uVfvquV7MNRo/E9f6YjLezux9rd5rFADGbkJYBXI=
+   eJzt1kEKgCAQBVCpfXX/07ZylzjFwJC8B38lqJ9xYWsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQZ6u+AADAQvytAADi9sUS7XVMUt3ja2a9eq4Xe43Wz8Sz/piMtxOdV3XXpwAwdgOObgVB
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="600" height="20" opacity="0.9">
-  <object type="Poubelles" x="2120" y="680" width="80" height="80"/>
-  <object type="Soucoupe" x="2960" y="520" width="80" height="40"/>
-  <object type="Soufflerie" x="1320" y="760" width="80" height="40"/>
+  <object type="Poubelles" x="2880" y="680" width="80" height="80"/>
+  <object type="Soucoupe" x="3720" y="520" width="80" height="40"/>
+  <object type="Soufflerie" x="2080" y="760" width="80" height="40"/>
   <object type="tremplin" x="320" y="720" width="40" height="40"/>
   <object type="tremplin" x="440" y="640" width="40" height="40">
    <properties>
@@ -34,6 +34,7 @@
    </properties>
   </object>
   <object type="Alien" x="760" y="520" width="80" height="80"/>
+  <object type="Tourelle" x="1280" y="560" width="80" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">
