@@ -217,21 +217,21 @@ package
 		
 		// GESTION Collision alien
 		public function alien_coll(obj1:FlxObject, obj2:FlxObject):void {
-			/*var from:int = 1; // 0 => haut, 1 => partout ailleurs
+			var from:int = 1; // 0 => haut, 1 => partout ailleurs
 			if (player.y <= obj2.y)
 				from = 0;
 			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
 				// TUE L'alien
 				if ((player.gravity > alienkill) && (from == 0))
 				{
-					/*
+					
 					if (obj2 is AlienNormal)
 					{
-						(obj2 as AlienNormal).soundMort.play();
+						//(obj2 as AlienNormal).soundMort.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
-						(obj2 as AlienHorizontal).soundMort.play();
+						//(obj2 as AlienHorizontal).soundMort.play();
 					}
 					
 					obj2.kill();
@@ -241,19 +241,19 @@ package
 				else if (from == 0) {
 					if (obj2 is AlienNormal)
 					{
-						(obj2 as AlienNormal).soundRebond.play();
+						//(obj2 as AlienNormal).soundRebond.play();
 					}
-					/*if (obj2 is AlienHorizontal)
+					if (obj2 is AlienHorizontal)
 					{
-						(obj2 as AlienHorizontal).soundRebond.play();
+						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
-					player.velocity.y = - player.velocity.x * 9 / 10;
+					player.velocity.y = - 250;
 				}
 				// MEURT
 				else {
 					player.die_motherfucker();
 				}
-			}*/
+			}
 		}
 
 		// FIN DU MENU PAUSE
