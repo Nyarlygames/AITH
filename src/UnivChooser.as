@@ -4,6 +4,7 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
+	import org.flixel.FlxSound;
 	import org.flixel.FlxSubState;
 	import flash.system.System;
 	import com.greensock.*;
@@ -26,6 +27,10 @@ package
 		[Embed(source = '../assets/gfx/ui/univ_2.png')] 				protected var ImgUni2:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1_on.png')]				protected var ImgUni1On:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2_on.png')] 				protected var ImgUni2On:Class;
+		
+		[Embed(source = '../assets/sfx/gameplay/AlienTireur_Rebond.mp3')] protected var sfxChoose:Class;
+		[Embed(source = '../assets/sfx/gameplay/AlienTireur_Tir1.mp3')] protected var sfxUniverse:Class;
+		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] 	 protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")]	 protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
@@ -40,10 +45,15 @@ package
 		public var uni2:FlxSprite;
 		public var uni3:FlxSprite;
 		
+		public var soundChoose:FlxSound = new FlxSound();
+		public var soundUniverse:FlxSound = new FlxSound();
+		
 		override public function create():void
 		{
-			
 			FlxG.bgColor = 0xaa519CCA;
+			
+			soundChoose.loadEmbedded(sfxChoose);
+			soundUniverse.loadEmbedded(sfxUniverse);
 			
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
@@ -99,6 +109,13 @@ package
 				texteUnivers.play("univers");
 			/*	Retour en arrière */
 			
+			
+			// Débloque l'univers 2
+			if ( Player.scoreStars > Player.starsNeed)
+			{
+				this.unlockUniv2(Player.univUnlock);
+			}
+			
 			/*
 			SCORE 1
 			var uni1text:FlxText = new FlxText(uni1.x + uni1.frameWidth/5, uni1.y + uni1.frameHeight /2, uni1.frameWidth, "0");
@@ -147,7 +164,8 @@ package
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new Start());  }
+				{ FlxG.switchState(new Start()); soundChoose.play();
+				}
 			}
 			else
 			{
@@ -170,12 +188,14 @@ package
 			if (FlxCollision.pixelPerfectCheck(cursor, uni1) && FlxG.mouse.justPressed()) 
 				{
 					FlxG.univ = 1;
+					soundUniverse.play();
 					// Does not work, dunno why :'(
 					TweenMax.to(uni1, 15, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : FlxG.switchState(new LevelChooser())}  );
 				}
 			if (FlxCollision.pixelPerfectCheck(cursor, uni2) && FlxG.mouse.justPressed()) 
 				{
 					FlxG.univ = 2;
+					soundUniverse.play();
 					// Does not work, dunno why :'(
 					TweenMax.to(uni2, 3, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : FlxG.switchState(new LevelChooser())}  );
 				}
@@ -187,16 +207,27 @@ package
 			}
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.univ = 1;
+					soundUniverse.play();
 					FlxG.switchState(new LevelChooser());
 			}
 			
 			if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
 					FlxG.univ = 2;
+					soundUniverse.play();
 					FlxG.switchState(new LevelChooser());
+			}
+			
+			if (FlxG.keys.justPressed("FOUR") || FlxG.keys.justPressed("NUMPADFOUR")) {
+					FlxG.switchState(new ScoreScreen());
 			}
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);
 			}
+		}
+		
+		public function unlockUniv2( validation : Boolean):void
+		{
+			
 		}
 	}
 }

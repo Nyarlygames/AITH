@@ -65,6 +65,10 @@ package
 		public var emitter:FlxEmitter;						// MOTEUR
 		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
 		
+		public static var univUnlock:Boolean;
+		public static var scoreStars:int	 =  0;
+		public static var starsNeed:int	 	 =  9;
+		
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);

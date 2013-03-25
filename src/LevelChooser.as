@@ -146,7 +146,7 @@ package
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new Start());  }
+				{ FlxG.switchState(new UnivChooser());  }
 			}
 			else
 			{

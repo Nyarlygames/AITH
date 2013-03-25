@@ -1,6 +1,7 @@
 package  
 {
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxSound;
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
@@ -13,7 +14,9 @@ package
 	{
 		
 		[Embed(source = '../assets/gfx/gameplay/petit_tube.png')] protected var ImgTube:Class;
+		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
+		
 		public var tube_count:FlxText;
 		
 		public function UI() 

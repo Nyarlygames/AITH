@@ -93,6 +93,9 @@ package
 		// DEBLOQUE ASCENCEUR
 		public function delock(trig:Trigger):void 
 		{
+			soundMoves.stop();
+			soundActivation.stop();
+			soundChangeWay.stop();
 			soundEnd.play();
 			blocked = false;
 			FlxG.player.velocity.x = FlxG.player.init_speed;
