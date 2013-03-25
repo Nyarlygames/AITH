@@ -175,28 +175,16 @@ package
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
-		public function dustbin_pushed(obj1:FlxObject, obj2:FlxObject):void {
+		public function dustbin(obj1:FlxObject, obj2:FlxObject):void {
 			if ((pushing != true) && (push == null)) {
 				
 				(obj2 as Poubelle).soundPushed.play();
-				obj2.x = x + (obj2 as Poubelle).frameWidth;
-				obj2.velocity.x = velocity.x = init_speed;
 				push = (obj2 as Poubelle);
 				(push as Poubelle).player = this;
 				pushing = true;
 			}
 		}
-		//GESTION DESTRUCTION POUBELLE
-		public function dustbin_destroyed(obj1:FlxObject, poubelle:Poubelle) : void
-		{
-				if (/* condition de destruction  */ 1 == 1)
-				{
-					// (obj2 as AlienNormal).soundPushed.play();
-					//trace ("lol");
-					// Poubelle
-				}
-			
-		}
+
 		
 		// GESTION SON MOTEUR
 		public function handle_sound():void {

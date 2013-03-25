@@ -165,9 +165,7 @@ package
 				FlxG.collide(player, map.destructible, check_ground);
 				
 				// POUBELLE JOUEUR
-				FlxG.collide(player, map.DustbinBieber, player.dustbin_pushed);
-				FlxG.collide(player, map.DustbinBieber, player.dustbin_destroyed);
-				
+				FlxG.overlap(player, map.DustbinBieber, player.dustbin);
 				
 				FlxG.collide(player, map.tile, player.tiles_coll)
 				// UPDATE PAUSE SCREEN
