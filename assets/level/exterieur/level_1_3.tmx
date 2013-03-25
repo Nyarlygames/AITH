@@ -29,19 +29,86 @@
  </tileset>
  <layer name="Back_fond" width="400" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0kENAEEQw7Dhs/z5HYX+2pMcyQzy7u4B/IC2av8AkNJW7R8AUtqq/QNASlu1fwBIaav2DwApbdX+ASClrdo/AKS0VfsHgJS2av8AkNJW7R8AUtqq/QNASlu1fwBIaav2DwApbdX+ASClrdo/AKS0VfsHgJS2av8AkNJW7R8AUtqq/QNASlt9mUrv/g==
+   eJztwwENAAAMw6D6mX9/vxBIWDVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVXVf5cyQAw=
   </data>
  </layer>
  <objectgroup name="Back_clouds" width="400" height="20"/>
- <objectgroup name="Back_far" width="400" height="20"/>
- <objectgroup name="Back_middle" width="400" height="20"/>
+ <objectgroup name="Back_far" width="400" height="20">
+  <object gid="38" x="120" y="800"/>
+  <object gid="39" x="680" y="800"/>
+  <object gid="40" x="1120" y="800"/>
+  <object gid="41" x="1560" y="800"/>
+  <object gid="40" x="1920" y="800"/>
+  <object gid="39" x="2360" y="800"/>
+  <object gid="40" x="2760" y="800"/>
+  <object gid="41" x="3200" y="800"/>
+  <object gid="40" x="3640" y="800"/>
+  <object gid="39" x="3920" y="800"/>
+  <object gid="40" x="4360" y="800"/>
+  <object gid="41" x="4800" y="800"/>
+  <object gid="40" x="5280" y="800"/>
+  <object gid="39" x="5920" y="800"/>
+  <object gid="40" x="5600" y="800"/>
+  <object gid="41" x="6280" y="800"/>
+  <object gid="40" x="6600" y="800"/>
+  <object gid="38" x="6960" y="800"/>
+  <object gid="38" x="7920" y="800"/>
+  <object gid="39" x="7520" y="800"/>
+  <object gid="40" x="8400" y="800"/>
+  <object gid="41" x="8880" y="800"/>
+  <object gid="39" x="9360" y="800"/>
+  <object gid="38" x="9760" y="800"/>
+  <object gid="39" x="10240" y="800"/>
+  <object gid="40" x="10720" y="800"/>
+  <object gid="38" x="11160" y="800"/>
+  <object gid="39" x="11640" y="800"/>
+  <object gid="40" x="12080" y="800"/>
+  <object gid="39" x="12520" y="800"/>
+  <object gid="41" x="12800" y="800"/>
+  <object gid="39" x="13120" y="800"/>
+  <object gid="40" x="13480" y="800"/>
+  <object gid="38" x="13880" y="800"/>
+  <object gid="40" x="14480" y="800"/>
+  <object gid="41" x="14920" y="800"/>
+  <object gid="39" x="15480" y="800"/>
+  <object gid="40" x="15200" y="800"/>
+ </objectgroup>
+ <objectgroup name="Back_middle" width="400" height="20">
+  <object gid="20" x="200" y="800"/>
+  <object gid="22" x="760" y="800"/>
+  <object gid="24" x="1400" y="800"/>
+  <object gid="22" x="2240" y="800"/>
+  <object gid="25" x="2800" y="800"/>
+  <object gid="22" x="3360" y="800"/>
+  <object gid="24" x="3880" y="800"/>
+  <object gid="22" x="4520" y="800"/>
+  <object gid="20" x="5040" y="800"/>
+  <object gid="22" x="5960" y="800"/>
+  <object gid="25" x="5600" y="800"/>
+  <object gid="24" x="6600" y="800"/>
+  <object gid="22" x="7200" y="800"/>
+  <object gid="23" x="7840" y="800"/>
+  <object gid="23" x="9000" y="800"/>
+  <object gid="21" x="8480" y="800"/>
+  <object gid="22" x="9560" y="800"/>
+  <object gid="24" x="10320" y="800"/>
+  <object gid="25" x="11320" y="800"/>
+  <object gid="22" x="12200" y="800"/>
+  <object gid="20" x="13120" y="800"/>
+  <object gid="22" x="12720" y="800"/>
+  <object gid="24" x="13560" y="800"/>
+  <object gid="24" x="15160" y="800"/>
+  <object gid="25" x="14160" y="800"/>
+  <object gid="20" x="14680" y="800"/>
+  <object gid="20" x="15680" y="800"/>
+ </objectgroup>
  <objectgroup name="Back_near" width="400" height="20"/>
- <layer name="Sol" width="400" height="20" opacity="0.9">
+ <layer name="Sol" width="400" height="20" visible="0" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJztm+tu2zAMRpUFRbuta7e+/8MuRkdU4HQhKeqK7wBEftgJ7UTiMeU4hC9uwnh5xNuB8Rzk8Peuxqhji8eD5vvjvPx7/61jDgs9v794Ho04r5XHKzgD+EMG/PEJ/GEH/gCn4emP74/41SF+CPPDH/v7g485+MPOyuMVnIOXP54Fn2WJn6GPS+APPV61/fpNXwP80ZOVxys4B09/1PLEr6X8uW2ea2nwhx7v2g5/9GPl8QrOYqY/NMcHf6Q5xR89cmiAPwDwpVSz43setB6R80OrPy7itazWeyeaOcw/dzV29cesHDlW9YdlzsAfwJvcWpG1/8jd88jlDoXt2uPW3jvh8Wo4jlWBP3yAPwDIU6v1q/rDgsQvp7CrP7B+JUMzVmlf+AN4U+s/UvvU/KHJHb+O4HRvELv54+MRf8K+/rCMo1Z/aAP+ACtA4z71fAdfAyrV6Bn+6MVqXupVK1L96YjnB2ndcfQao8YfxOXCe/j0YY5rn/cAf4C9sYxDTb0o1dWT/LEaHrWC6iAF9QcUtJ3qYE9/zMLiD8n84D08/AF2RHLN3MMfs2qCZJ6dgEetSNW41DigPrSlNyj5Q8rM3zDljyviHiT2ccu6L+WL454J+AP0pHf/UcoxA35Nza+va+zilxH+8FxT8vBHXDNL8O33hpz0eTl/xHPE879/pd4ijhXmHDgXiz+0dSNe69DWa2+0czh37NKYcY4XHs+m1PzhWZc8/BHXTA6/Hufva0HqD08s/qDvAAAvLP7QzvG4Z4njd/h/TX01cscujdH/F/Kk1R9PylzXeGjxMa+Zmm1SUue0iz9WnF9gb2b6YweHwB82f3xrzFWKHL39kTunXfzBXQxAK1Z/8DlYutas1eCVHMLP4zR/aHuCkj8k63rWXJ7+uBW20fuID0P+kj9qPZV1fZPPFfQfYAYe/ihda9K+tfqQcsjo8Z46j5P80doT5P5/Zan1tVyz/GHJX/JHr/Fh9QccAjyx3heWXkdpao1k/XtGxM95efqDnrkubcvN+5Z7+lLgj/H+kP5W8AdYgb/z4Dgy
+   eJztm9mOhCAQAMlONntf8/8fu+MDCTHSQNNcWpXwNKMIQheHOFfO6yN9nzC9FNTB/trZ6Plsvj2U1N/RPaTrLfLQ0LL+wn7Uo1wzt1e4DvgDf4TgDx34A65Irj/eHumrQXrPzB9/4I9a8AeALbn+aNUnPlwbl+APHRaxfXunn43z0IA/AGwZ7Q/Ns+CPdvSI7fijnpnbK1wH/IE/QvCHDvwBV0SK2eGeh7QeYUW4llW7d1LSh/f3nQ38YQP+ALBF8kfv/l2K5JsevusF/rABfwDYsrI/rgL+sAF/ANiCP+ZnNX/cH+mvcR4a8AeALb7dH53vONMa0Mqs5o/U+Q+/7ti7fWnqb3Phzck+3P7z4/AHXI9RY0HIxyJW+Djo0z4e+t99HGzpj1Fo6i+nf+zn8PgDrgL+mB+LWJGKcft5aM3cYFZ/aAjrLXRu6GPrdd9bJIXgD5iBlf2xH1NL4+uV6eEPyzUlC38cxczc6yyJ7Wu0/PYvth8JMBuauHEUt0fEa00flpyTSqOcZHE2pecai4U/pJgpucU6zvbeF3cuzx9avwKM5uibrV+3xpi/5oz7inM0T60/ngvz2tpDjY8lf6R+yyWnTLP6A2BVYjF4BYfgj/KyPFXmJaUYrf2RW6ZZ/SHtjQCMJDUuk+LDTA45KseZ/FE6J5DKkrOup81rlD/uFfl7wrKk5lRW7Z75B6xKzrgsFR9mcEisHGfxR+2cIPb9VU2sLblXD3/U5O8pKYtV+8AfMALtvnDpOCqnT+Wsf49I4TkvS39IZ65T57Fr9vRzwR/9/aF9V/gDRvAPH2M18g==
   </data>
  </layer>
- <objectgroup color="#ff2718" name="Gameplay" width="400" height="20" opacity="0.9">
+ <objectgroup color="#ff2718" name="Gameplay" width="400" height="20" visible="0" opacity="0.9">
   <object type="Tremplin80" gid="63" x="680" y="760">
    <properties>
     <property name="color" value="2"/>
