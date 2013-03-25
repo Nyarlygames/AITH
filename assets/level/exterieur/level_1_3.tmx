@@ -94,7 +94,7 @@
   <object gid="24" x="10320" y="800"/>
   <object gid="25" x="11320" y="800"/>
   <object gid="22" x="12200" y="800"/>
-  <object gid="20" x="13120" y="800"/>
+  <object gid="20" x="13160" y="800"/>
   <object gid="22" x="12720" y="800"/>
   <object gid="24" x="13560" y="800"/>
   <object gid="24" x="15160" y="800"/>
@@ -103,12 +103,12 @@
   <object gid="20" x="15680" y="800"/>
  </objectgroup>
  <objectgroup name="Back_near" width="400" height="20"/>
- <layer name="Sol" width="400" height="20" visible="0" opacity="0.9">
+ <layer name="Sol" width="400" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJztm9mOhCAQAMlONntf8/8fu+MDCTHSQNNcWpXwNKMIQheHOFfO6yN9nzC9FNTB/trZ6Plsvj2U1N/RPaTrLfLQ0LL+wn7Uo1wzt1e4DvgDf4TgDx34A65Irj/eHumrQXrPzB9/4I9a8AeALbn+aNUnPlwbl+APHRaxfXunn43z0IA/AGwZ7Q/Ns+CPdvSI7fijnpnbK1wH/IE/QvCHDvwBV0SK2eGeh7QeYUW4llW7d1LSh/f3nQ38YQP+ALBF8kfv/l2K5JsevusF/rABfwDYsrI/rgL+sAF/ANiCP+ZnNX/cH+mvcR4a8AeALb7dH53vONMa0Mqs5o/U+Q+/7ti7fWnqb3Phzck+3P7z4/AHXI9RY0HIxyJW+Djo0z4e+t99HGzpj1Fo6i+nf+zn8PgDrgL+mB+LWJGKcft5aM3cYFZ/aAjrLXRu6GPrdd9bJIXgD5iBlf2xH1NL4+uV6eEPyzUlC38cxczc6yyJ7Wu0/PYvth8JMBuauHEUt0fEa00flpyTSqOcZHE2pecai4U/pJgpucU6zvbeF3cuzx9avwKM5uibrV+3xpi/5oz7inM0T60/ngvz2tpDjY8lf6R+yyWnTLP6A2BVYjF4BYfgj/KyPFXmJaUYrf2RW6ZZ/SHtjQCMJDUuk+LDTA45KseZ/FE6J5DKkrOup81rlD/uFfl7wrKk5lRW7Z75B6xKzrgsFR9mcEisHGfxR+2cIPb9VU2sLblXD3/U5O8pKYtV+8AfMALtvnDpOCqnT+Wsf49I4TkvS39IZ65T57Fr9vRzwR/9/aF9V/gDRvAPH2M18g==
+   eJztm+tuwyAMRtGqafdb3/9h12pCQxEYsI0N5DuSfzUJhYAPkCSEfp5v8blhPHW0wfHc2bD8b7E/9LRf7hrU+RplcBjZfuk4sqjXzP3VirTNgQ/wB/yRAn/wgD/sgT/8afXHyy0+BsRrY/nwB/whBf7YC/jDn1Z/jBoTb2GMS+APHhq5/X5P3weXwQH+2Av4wx9vf3D+C/wxDovcDn/Imbm/WgF/+AN/wB8p8AcP+MMe+MMfKmenzzyo/Qgt0r0s6bOTnjF8vO5swB86wB97AX/4Q/nDenz3QvnGwndWwB86wB97AX/4s7I/zgL8oQP8sRea/rje4kfhOmcD/pif1fxRG4vwhxz4Q9cftXfOQZ54D3Lfd+y0B7Qyq/mjNhbjvqN1/+K0392Fl0D78H7MV4A/rIE//PGaC4J2NHJFzIMxjvkw/h7z4Eh/eMFpv5bxcVzDr+KP0r6DZhk1LploPS51tpTaN0sgD/wxPxrjuJbjjutQyVia1R8c0nZLnZv6WHvfN5crj3l1F39Q5YP5Wdkfxzk1Nb9eGQt/aO4pafiDmovWztOk9Fxj5Lt/tby+E2ep565w8kYub3vka84YppxTCy8naXybYrnHouEPKpdQbtHOP9bPxUOAP8De5N7Z+g5rzPkl37ivuEaLSP3x2FnWvT9IfEzlktpvrTw0HAN/jOUs9QT/lHLwCg6BP/rr0pJnqbKoKDHaH611gj/kUG29Uz3BH7W5JpUfZnJIrt/u5I/eNQFVl5Z9PW5ZXv64CsqPpHWpramoft/j4J38Uat3rp7c/WXNADx61/SzOqRUj138IV0TlN6/kuTanmtZ+ENSfqSnLqX+0XuvVvUHd1zNGGdEy7213N8yplr2vz0ifWdc0x/UN9e177Elz/RbgT/s/cG9V6XrS/u+d05eKc7IL49eQiY=
   </data>
  </layer>
- <objectgroup color="#ff2718" name="Gameplay" width="400" height="20" visible="0" opacity="0.9">
+ <objectgroup color="#ff2718" name="Gameplay" width="400" height="20" opacity="0.9">
   <object type="Tremplin80" gid="63" x="680" y="760">
    <properties>
     <property name="color" value="2"/>
@@ -327,7 +327,7 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object name="soucoupe" type="Soucoupe" x="6960" y="240" width="80" height="40"/>
+  <object name="soucoupe" type="Soucoupe" x="7000" y="240" width="80" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="7440" y="240" width="80" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="7680" y="240" width="80" height="40"/>
   <object name="GPique" type="Piques" x="7960" y="440" width="40" height="40">
@@ -640,5 +640,96 @@
    </properties>
   </object>
   <object type="tremplin" x="9160" y="720" width="40" height="40"/>
+  <object type="Tremplin80" gid="63" x="4920" y="760">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object type="Tremplin80" gid="63" x="6000" y="680">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object type="Tremplin80" gid="63" x="10480" y="760">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object name="alien_tireur" type="AlienTireur" x="10960" y="440" width="80" height="40"/>
+  <object name="soucoupe" type="Soucoupe" x="11240" y="440" width="80" height="40"/>
+  <object name="GPique" type="Piques" x="11480" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Tremplin80" gid="63" x="11720" y="720">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object name="Sol_Destructible" type="Des_sol" x="12240" y="440" width="200" height="40"/>
+  <object type="Tremplin80" gid="63" x="12920" y="680">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="13360" y="440" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="13360" y="320" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="13360" y="360" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="13360" y="400" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="13000" y="640" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="13040" y="640" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="13080" y="640" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="13120" y="640" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object type="tremplin" x="10560" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="10440" y="720" width="40" height="40"/>
+  <object type="tremplin" x="11800" y="600" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="11680" y="680" width="40" height="40"/>
+  <object type="tremplin" x="13000" y="560" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="12880" y="640" width="40" height="40"/>
  </objectgroup>
 </map>

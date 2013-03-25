@@ -113,7 +113,7 @@
  </objectgroup>
  <layer name="Sol" width="450" height="20" opacity="0.79">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="450" height="20" opacity="0.9">
@@ -917,5 +917,62 @@
   <object name="grosTube" type="GrosTube" x="12200" y="480" width="40" height="40"/>
   <object name="tube" type="Tube" x="12840" y="280" width="40" height="40"/>
   <object name="tube" type="Tube" x="12560" y="360" width="40" height="40"/>
+  <object name="soucoupe" type="Soucoupe" x="16480" y="480" width="80" height="40"/>
+  <object name="soucoupe" type="Soucoupe" x="16720" y="400" width="80" height="40"/>
+  <object name="GPique" type="Piques" x="17080" y="480" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="17080" y="520" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="17080" y="440" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16600" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16560" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16640" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16840" y="680" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16720" y="680" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16760" y="680" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16680" y="680" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="16800" y="680" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
