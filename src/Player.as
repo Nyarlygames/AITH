@@ -37,12 +37,15 @@ package
 		public var vitesse3:FlxSound = new FlxSound();
 		
 		public var jauge:FlxSprite;
-		public var init_speed:int 				= 360;  		// VITESSE DE BASE (max vitesse)
+		public var init_speed:int 				= 330;  		// VITESSE DE BASE (max vitesse)
 		public var mingravity:int 				= -250;         // GRAVITE MIN
 		public var maxgravity:int 				= 50000;        // GRAVITY MAX
+		public var minspeed:int 				= 70;
+		public var speeddown:int				= 250;
 		public const const_gravity:int			= 300;			
 		public var accumulateur:int 			= 0;
-		public var palier_accumulateur:int 		= -100000;
+		public var palier_accumulateur:int 		= -85000;
+		public var max_palier:int 				= -110000;
 		public var gravity:int 					= 0;
 		public var gravity_increment:int 		= 35000;
 		public var gravity_decrement:int 		= 20000;
@@ -57,7 +60,6 @@ package
 		public var pause:Boolean 				= false;	// LE JEU EST EN PAUSE?
 		public var set_old:Boolean 				= true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
 		public var angularspeed:int 			= 150;		// VITESSE DE ROTATION
-		public var cur_angularspeed:int 		= 150;		// VITESSE DE ROTATION0
 		public var pushing:Boolean 				= false;	// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle				= null;		// POUBELLE POUSSEE
 		public var emitter:FlxEmitter;						// MOTEUR
@@ -68,16 +70,12 @@ package
 			super(xPos, yPos, ImgPlayer);
 			
 			soundRevive.loadEmbedded(sfxRevive);
-			
+			palier_accumulateur = max_palier;
 			maxVelocity.y = maxgravity_test;
 			maxVelocity.x = init_speed;
 			facing = RIGHT;
 			acceleration.x = acceleration_speed;
-			cur_angularspeed = angularspeed;
-			
-			width = 60;
-			height = 70;
-			offset.x = 10;
+			velocity.x = init_speed;
 			vitesse1.loadEmbedded(Sfx_Vitesse1, true, true);
 			vitesse2.loadEmbedded(Sfx_Vitesse2, true, true);
 			vitesse3.loadEmbedded(Sfx_Vitesse3, true, true);
@@ -109,16 +107,25 @@ package
 			//Animations du joueur
 			this.loadGraphic(ImgPlayer, true, false, 80, 80);
 			this.addAnimation("slowSpeed",  [0,1], 5, true);
-			this.addAnimation("midSpeed", 	[4,5], 5, true);
-			this.addAnimation("fastSpeed",  [8,9,10], 5, true);
+			this.addAnimation("midSpeed", 	[4,5], 15, true);
+			this.addAnimation("fastSpeed",  [8,9,10], 30, true);
+			width = 60;
+			height = 60;
+			offset.y = 20;
 		}
 		
 		override public function update():void 
 		{
 			play ("midSpeed");
-			jauge.y = y - 240;
-			emitter.x = x;
-			emitter.y = y + frameHeight;
+			jauge.y = y - 270;
+			if (angle == 0) {
+				emitter.y = y + frameHeight - 35;
+				emitter.x = x - 10;
+			}
+			else {
+				emitter.x = x +20;
+				emitter.y = y + frameHeight;
+			}
 			jauge.frame = gravity / 150;
 			if (angle < -45)
 			{
@@ -138,6 +145,16 @@ package
 					} else {
 						gravity -= gravity_decrement * FlxG.elapsed;
 					}
+				}
+			}
+			if (FlxG.keys.pressed("SPACE") && (velocity.x > minspeed)) {
+				velocity.x -= speeddown * FlxG.elapsed;
+				if (palier_accumulateur + 1000 <= -10000)
+					palier_accumulateur += 1000;
+			}
+			else if (!FlxG.keys.any()) {
+				if ((palier_accumulateur - 1000) >= max_palier) {
+					palier_accumulateur -= 1000;
 				}
 			}
 			
@@ -165,13 +182,12 @@ package
 		public function tiles_coll(obj1:FlxObject, obj2:FlxObject):void {
 			// TILE COURANTE DE COLLISION
 			var current_tile:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +2, Math.round(y / 40) +1); // prochaine 
-			var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +2);// en dessous
+			var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +1);// en dessous
 			
 			// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
 			if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
 			{
 				angularVelocity = -angularspeed;
-				width = 60;
 			}
 			else if (current_tile2 == 2 && jumping == false){
 				accumulateur = 0;
@@ -241,6 +257,8 @@ package
 			y = checkpoint.y;
 			velocity.y = 0;
 			accumulateur = 0;
+			velocity.x = init_speed;
+			palier_accumulateur = max_palier;
 			angle = 0;
 			gravity = mingravity;
 			if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null)) {
