@@ -43,6 +43,8 @@ local.properties
 # Build results
 [Dd]ebug/
 [Rr]elease/
+bin/
+*.swf
 *_i.c
 *_p.c
 *.ilk

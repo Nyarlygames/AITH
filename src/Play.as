@@ -57,7 +57,7 @@ package
 		public var map:Map;
 		public var pause:PauseMenu = new PauseMenu();
 		public var sound:FlxSound;
-		public var alienkill:int = 800;						// GRAVITE MINIMALE POUR TUER UN ALIEN
+		public var alienkill:int = 33000;						// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 10000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// DEBUT MAP
 		public var ui:UI = new UI();
@@ -222,6 +222,7 @@ package
 				from = 0;
 			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
 				// TUE L'alien
+				trace(from);
 				if ((player.gravity > alienkill) && (from == 0))
 				{
 					
@@ -247,6 +248,7 @@ package
 					{
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
+					trace("here");
 					player.velocity.y = - 250;
 				}
 				// MEURT
