@@ -45,6 +45,7 @@ package
 			{
 				blocked = true;
 				FlxG.player.on_ascenseur = true;
+				FlxG.player.angle = 0;
 			}
 			FlxG.collide(FlxG.player, this, up_and_down);
 		}
@@ -53,7 +54,7 @@ package
 		// GESTIONS DU DEPLACEMENT SUR ASCENCEUR
 		public function up_and_down(obj1:FlxObject, obj2:FlxObject):void {
 			if (blocked == true) {
-				FlxG.player.x = x;
+				FlxG.player.x = x + FlxG.player.offset.x;
 				FlxG.player.velocity.x = 0;
 				FlxG.player.velocity.y = 0;
 				

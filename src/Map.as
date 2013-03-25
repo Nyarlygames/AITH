@@ -110,7 +110,6 @@ package
 				loader.load(new	URLRequest(lignes[2]));
 			}
 			FlxG.map = this;
-			trace ("GROS PROUTTT");
 		}
 		
 		// PARCOURS LE TMX
