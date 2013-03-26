@@ -52,6 +52,8 @@ package
 		{
 			FlxG.bgColor = 0xaa519CCA;
 			
+			new UI();
+			
 			soundChoose.loadEmbedded(sfxChoose);
 			soundUniverse.loadEmbedded(sfxUniverse);
 			
@@ -98,16 +100,11 @@ package
 				retour.play("off");
 			/*	Retour en arrière */
 			
-			/*	Texte choix de l'univers */
-				texteUnivers = new FlxSprite(482, 84, ImgChoixTexte);
-				texteUnivers.loadGraphic(ImgChoixTexte, true, false, 482, 84);
-				texteUnivers.addAnimation("univers", [0], 10, true);
-				texteUnivers.addAnimation("niveaux", [1], 10, true);
-				texteUnivers.x = 36;
-				texteUnivers.y = 29;
-				add (texteUnivers);
-				texteUnivers.play("univers");
-			/*	Retour en arrière */
+			/*	Texte Univers */
+				var txtUnivers : FlxSprite = UI.choixTiles;
+				add (txtUnivers);
+				txtUnivers.x = 30; txtUnivers.y = 30; txtUnivers.play("univers");
+			/*	Texte Univers */
 			
 			
 			// Débloque l'univers 2

@@ -53,16 +53,11 @@ package
 				add (backDefault);
 			/*	Back par défaut */
 		
-			/*	Texte choix de l'univers */
-				texteUnivers = new FlxSprite(482, 84, ImgChoixTexte);
-				texteUnivers.loadGraphic(ImgChoixTexte, true, false, 482, 84);
-				texteUnivers.addAnimation("univers", [0], 10, true);
-				texteUnivers.addAnimation("niveaux", [1], 10, true);
-				texteUnivers.x = 20;
-				texteUnivers.y = 20;
-				add (texteUnivers);
-				texteUnivers.play("niveaux");
-			/*	Texte Fin du niveau */
+			/*	Texte Score */
+				var txtScore : FlxSprite = UI.choixTiles;
+				add (txtScore);
+				txtScore.x = 30; txtScore.y = 30; txtScore.play("score");
+			/*	Texte Score */
 			
 			
 			/*	Retour au menu */
@@ -102,7 +97,7 @@ package
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new Start());
+				{ FlxG.switchState(new UnivChooser());
 				
 				}
 			}

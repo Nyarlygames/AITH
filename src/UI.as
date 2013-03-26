@@ -14,10 +14,12 @@ package
 	{
 		
 		[Embed(source = '../assets/gfx/gameplay/petit_tube.png')] protected var ImgTube:Class;
+		[Embed(source = '../assets/gfx/ui/choix-tiles.png')] 	 	protected var ImgChoixTexte:Class;
 		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		
 		public var tube_count:FlxText;
+		public static var choixTiles:FlxSprite
 		
 		public function UI() 
 		{
@@ -27,6 +29,14 @@ package
 			tube_count.setFormat("onedalism", 22, 0x044071);
 			FlxG.state.add(tube_count);
 			tube_count.scrollFactor = new FlxPoint(0, 0);
+			
+			/*	Texte des menus */
+			choixTiles = new FlxSprite(447, 50, ImgChoixTexte);
+			choixTiles.loadGraphic(ImgChoixTexte, true, false, 447, 50);
+			choixTiles.addAnimation("univers", [0], 10, true);
+			choixTiles.addAnimation("niveaux", [1], 10, true);
+			choixTiles.addAnimation("score", [2], 10, true);
+			/*	Texte des menus */
 		}
 		
 		override public function update():void 

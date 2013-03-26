@@ -94,29 +94,31 @@ package
 			//vitesse1.play();
 			
 			// Classic particles
-			emitter = new FlxEmitter(xPos, yPos, 5);
+			emitter = new FlxEmitter(xPos, yPos, 10);
 			for(var i:int = 0; i < 10; i++) {
 				steamPart = new FlxParticle();
 				steamPart.loadGraphic(ImgParticle);
+				steamPart.alpha = 0.4;
 				emitter.add(steamPart);
 			}
 			emitter.y += frameHeight;
-			emitter.gravity = 10;
+			emitter.gravity = -200;
 			emitter.setXSpeed(-10, -2);
-			emitter.start(false, 0.4, 0.05, 0);
+			emitter.start(false, 0.8, 0.05, 0);
 			FlxG.state.add(emitter);
 			
 			// Particle using alien grav
-			emitterAlien = new FlxEmitter(xPos, yPos, 5);
-			for(var i:int = 0; i < 10; i++) {
+			emitterAlien = new FlxEmitter(xPos, yPos, 10);
+			for(var g:int = 0; g < 10; g++) {
 				steamPart = new FlxParticle();
 				steamPart.loadGraphic(ImgParticleAlien);
+				steamPart.alpha = 0.4;
 				emitterAlien.add(steamPart);
 			}
 			emitterAlien.y += frameHeight;
-			emitterAlien.gravity = 10;
-			emitterAlien.setXSpeed(-10, -2);
-			emitterAlien.start(false, 0.4, 0.05, 0);
+			emitterAlien.gravity = -200;
+			emitterAlien.setXSpeed( -10, -2);
+			emitterAlien.start(false, 0.8,0.05, 0);
 			FlxG.state.add(emitterAlien);
 			
 			//emitter.kill();
@@ -145,15 +147,15 @@ package
 			jauge.y = y - 270;
 			if (angle == 0) {
 				emitter.y = y + frameHeight - 35;
-				emitter.x = x - 10;
+				emitter.x = x ;
 				emitterAlien.y = y + frameHeight - 35;
-				emitterAlien.x = x - 10;
+				emitterAlien.x = x;
 			}
 			else {
-				emitter.x = x +20;
-				emitter.y = y + frameHeight;
-				emitterAlien.x = x +20;
-				emitterAlien.y = y + frameHeight;
+				emitter.x = x + 20;
+				emitter.y = y + frameHeight - 30;
+				emitterAlien.x = x + 20;
+				emitterAlien.y = y + frameHeight - 30;
 			}
 			jauge.frame = gravity / 150;
 			if (angle < -45)
@@ -292,8 +294,16 @@ package
 			}
 		}
 		
-		// MORT
-		public function die_motherfucker():void {
+		public function stopPlayer():void // ARRETE LE DEPLACEMENT DU JOUEUR
+		{
+			palier_accumulateur = 0;
+			maxVelocity.y = 0;
+			maxVelocity.x = 0;
+			acceleration.x = 0;
+			velocity.x = 0;
+		}
+		
+		public function die_motherfucker():void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
 			
 			soundRevive.play();
 			x = checkpoint.x;

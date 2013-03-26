@@ -55,6 +55,8 @@ package
 			
 			FlxG.bgColor = 0xaa519CCA;
 			
+			new UI();
+			
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
@@ -62,16 +64,11 @@ package
 				add (backDefault);
 			/*	Back par défaut */
 		
-			/*	Texte choix de l'univers */
-				texteUnivers = new FlxSprite(482, 84, ImgChoixTexte);
-				texteUnivers.loadGraphic(ImgChoixTexte, true, false, 482, 84);
-				texteUnivers.addAnimation("univers", [0], 10, true);
-				texteUnivers.addAnimation("niveaux", [1], 10, true);
-				texteUnivers.x = 20;
-				texteUnivers.y = 20;
-				add (texteUnivers);
-				texteUnivers.play("niveaux");
-			/*	Retour en arrière */
+			/*	Texte Niveaux */
+				var txtNiveaux : FlxSprite = UI.choixTiles;
+				add (txtNiveaux);
+				txtNiveaux.x = 30; txtNiveaux.y = 30; txtNiveaux.play("niveaux");
+			/*	Texte Univers */
 			
 			/*	Back level 1 */
 				backLevel1 = new FlxSprite(206, 206, ImgFondLevel);

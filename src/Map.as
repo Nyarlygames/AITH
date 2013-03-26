@@ -35,7 +35,8 @@ package
 		public var boss:FlxGroup = new FlxGroup();											// VAGUES
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
-		public var triggers:FlxGroup = new FlxGroup();										// TRIGGERS
+		public var triggers:FlxGroup = new FlxGroup();										// FIN DE NIVEAU
+		public var fin:FlxGroup = new FlxGroup();										// TRIGGERS
 		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
@@ -279,6 +280,9 @@ package
 						break;
 					case "Soucoupe":
 						soucoupes.add (new Soucoupe(object.x, object.y));
+						break;
+					case "FinNiveau":
+						fin.add (new FinNiveau(object.x, object.y));
 						break;
 					case "Soufflerie":
 						if (object.custom != null)

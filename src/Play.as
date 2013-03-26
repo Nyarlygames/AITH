@@ -9,6 +9,7 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxTilemap;
+	import org.flixel.FlxTimer;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	import org.flixel.plugin.photonstorm.FlxVelocity;
 	import org.flixel.FlxPoint;
@@ -56,6 +57,7 @@ package
 		public var player:Player;
 		public var map:Map;
 		public var pause:PauseMenu = new PauseMenu();
+		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;						// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 10000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
@@ -178,6 +180,9 @@ package
 				// POUBELLE JOUEUR
 				FlxG.overlap(player, map.DustbinBieber, player.dustbin);
 				
+				// Fin JOUEUR
+				FlxG.overlap(player, map.fin, endLevel);
+				
 				FlxG.collide(player, map.tile, player.tiles_coll)
 				// UPDATE PAUSE SCREEN
 				if (player.pause) {
@@ -215,14 +220,28 @@ package
 			}
 		}
 		
+		// GESTION FIN DE NIVEAU
+		public function endLevel(player:Player, end:FlxObject):void 
+		{
+			// play ending animations and sounds.
+				player.stopPlayer();
+				
+				var t : FlxTimer = new FlxTimer();
+				t.start(2, 1,goScore) ;
+			// Then go to Score Screens
+			function goScore():void
+			{
+				var stateScore : ScoreScreen = new ScoreScreen();
+				FlxG.switchState(stateScore);
+			}
+		}
+		
 		// GESTION Collision alien
 		public function alien_coll(obj1:FlxObject, obj2:FlxObject):void {
 			var from:int = 1; // 0 => haut, 1 => partout ailleurs
 			if (player.y <= obj2.y)
 				from = 0;
 			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
-				// TUE L'alien
-				trace(from);
 				if ((player.gravity > alienkill) && (from == 0))
 				{
 					
