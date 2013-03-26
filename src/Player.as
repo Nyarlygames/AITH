@@ -23,6 +23,7 @@ package
 		// LA MUSIQUE ET LE SON MOTEUR SONT DESACTIVFES POUR PAUL.
 		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
+		[Embed(source = '../assets/gfx/misc/alienPart.png')] 			 protected var ImgParticleAlien:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/CheckPoint_Revive.mp3")] public var sfxRevive:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
@@ -62,8 +63,10 @@ package
 		public var angularspeed:int 			= 150;		// VITESSE DE ROTATION
 		public var pushing:Boolean 				= false;	// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle				= null;		// POUBELLE POUSSEE
-		public var emitter:FlxEmitter;						// MOTEUR
+		public var emitter:FlxEmitter;			
+		public var emitterAlien:FlxEmitter;						// MOTEUR			// MOTEUR
 		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
+		public var steamPart:FlxParticle;
 		
 		public static var univUnlock:Boolean;
 		public static var scoreStars:int	 =  0;
@@ -89,17 +92,35 @@ package
 			//vitesse3.play();
 			//vitesse2.play();
 			//vitesse1.play();
+			
+			// Classic particles
 			emitter = new FlxEmitter(xPos, yPos, 5);
 			for(var i:int = 0; i < 10; i++) {
-				var p:FlxParticle = new FlxParticle();
-				p.loadGraphic(ImgParticle);
-				emitter.add(p);
+				steamPart = new FlxParticle();
+				steamPart.loadGraphic(ImgParticle);
+				emitter.add(steamPart);
 			}
 			emitter.y += frameHeight;
 			emitter.gravity = 10;
 			emitter.setXSpeed(-10, -2);
 			emitter.start(false, 0.4, 0.05, 0);
 			FlxG.state.add(emitter);
+			
+			// Particle using alien grav
+			emitterAlien = new FlxEmitter(xPos, yPos, 5);
+			for(var i:int = 0; i < 10; i++) {
+				steamPart = new FlxParticle();
+				steamPart.loadGraphic(ImgParticleAlien);
+				emitterAlien.add(steamPart);
+			}
+			emitterAlien.y += frameHeight;
+			emitterAlien.gravity = 10;
+			emitterAlien.setXSpeed(-10, -2);
+			emitterAlien.start(false, 0.4, 0.05, 0);
+			FlxG.state.add(emitterAlien);
+			
+			//emitter.kill();
+			//emitterAlien.kill();
 			
 			jauge = new FlxSprite(x, y - frameHeight - 40);
 			jauge.loadGraphic(ImgJauge, true, false, 120, 40);
@@ -125,16 +146,32 @@ package
 			if (angle == 0) {
 				emitter.y = y + frameHeight - 35;
 				emitter.x = x - 10;
+				emitterAlien.y = y + frameHeight - 35;
+				emitterAlien.x = x - 10;
 			}
 			else {
 				emitter.x = x +20;
 				emitter.y = y + frameHeight;
+				emitterAlien.x = x +20;
+				emitterAlien.y = y + frameHeight;
 			}
 			jauge.frame = gravity / 150;
 			if (angle < -45)
 			{
 				angularVelocity = 0;
 			}
+			
+			if (FlxG.keys.pressed("SPACE"))
+			{
+				emitterAlien.on = true;
+				emitter.on = false;
+			}
+			else if (!FlxG.keys.any())
+			{
+				emitterAlien.on = false;
+				emitter.on = true;
+			}
+			
 			
 			if ((acceleration.y > mingravity && acceleration.y < maxgravity)){
 				if (FlxG.keys.pressed("SPACE")) {
@@ -235,6 +272,7 @@ package
 				}
 			}
 			else if (!FlxG.keys.any())
+			{
 				if (velocity.x < 120) 
 				{
 					play("slowSpeed", true);
@@ -251,6 +289,7 @@ package
 					vitesse3.volume += (212.5 * FlxG.elapsed) / 100;
 					vitesse2.volume -= (212.5 * FlxG.elapsed) / 100;
 				}
+			}
 		}
 		
 		// MORT

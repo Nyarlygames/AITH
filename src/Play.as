@@ -242,11 +242,11 @@ package
 				else if (from == 0) {
 					if (obj2 is AlienNormal)
 					{
-						//(obj2 as AlienNormal).soundRebond.play();
+						(obj2 as AlienNormal).soundRebond.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
-						//(obj2 as AlienHorizontal).soundRebond.play();
+						(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					trace("here");
 					player.velocity.y = - 250;
