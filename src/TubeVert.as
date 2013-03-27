@@ -10,8 +10,7 @@ package
 	public class TubeVert extends FlxSprite 
 	{
 		
-		[Embed(source = '../assets/gfx/gameplay/petit_tube.png')] protected var ImgTube:Class;
-		[Embed(source = '../assets/gfx/gameplay/gros_tube.png')] protected var ImgGrosTube:Class;
+		[Embed(source = '../assets/gfx/gameplay/picktube-tiles.png')] protected var ImgTubes:Class;
 		[Embed(source = "../assets/sfx/gameplay/PetitTube_Pick.mp3")] public var SfxPetitTube:Class;
 		[Embed(source = "../assets/sfx/gameplay/GrosTube_Pick.mp3")] public var SfxGrosTube:Class;
 		
@@ -24,14 +23,18 @@ package
 			super(xpos, ypos);
 			soundPetitTube.loadEmbedded(SfxPetitTube);
 			soundGrosTube.loadEmbedded(SfxGrosTube);
-			soundGrosTube.volume = 0.1;
-			soundPetitTube.volume = 0.1;
+			soundGrosTube.volume = 1;
+			soundPetitTube.volume = 1;
+			
+			this.loadGraphic(ImgTubes, true, false, 60, 60);
+			this.addAnimation("petit",  [0,1,2,3], 10, true);
+			this.addAnimation("gros",  [4,5,6,7], 10, true);
 			switch (id) {
 				case 0:
-					loadGraphic(ImgTube);
+					play("petit");
 					break;
 				case 1:
-					loadGraphic(ImgGrosTube);
+					play("gros");
 					break;
 			}
 			loot = point;

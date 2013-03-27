@@ -31,7 +31,6 @@ package
 	public class Play extends FlxState 
 	{
 		
-		// LA MUSIQUE ET LE SON MOTEUR SONT DESACTIVFES POUR PAUL.
 		[Embed(source = "../assets/level/map_test.txt", mimeType = "application/octet-stream")] public var maptest:Class;
 		[Embed(source = "../assets/level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source = "../assets/level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
@@ -69,7 +68,6 @@ package
 
 			soundCrepite.loadEmbedded(SfxCrepite);
 			soundDestrSol.loadEmbedded(SfxDestrSol);
-			
 			switch (FlxG.univ) {
 				// UNIVERS 1
 				case -1:
@@ -128,6 +126,7 @@ package
 					}
 					break;
 			}
+			
 		}
 
 		override public function update():void
@@ -138,7 +137,7 @@ package
 					player = map.player;
 					FlxG.state.add(ui);
 					if (sound != null)
-						//sound.play();
+						sound.play();
 					justloaded = false;
 				}
 				super.update();

@@ -20,7 +20,6 @@ package
 	 */
 	public class Player extends FlxSprite 
 	{
-		// LA MUSIQUE ET LE SON MOTEUR SONT DESACTIVFES POUR PAUL.
 		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/misc/alienPart.png')] 			 protected var ImgParticleAlien:Class;
@@ -76,6 +75,7 @@ package
 		{
 			super(xPos, yPos, ImgPlayer);
 			
+			
 			soundRevive.loadEmbedded(sfxRevive);
 			palier_accumulateur = max_palier;
 			maxVelocity.y = maxgravity_test;
@@ -89,13 +89,14 @@ package
 			vitesse1.volume = 0;
 			vitesse2.volume = 0;
 			vitesse3.volume = 1;
-			//vitesse3.play();
-			//vitesse2.play();
-			//vitesse1.play();
+			vitesse3.play();
+			vitesse2.play();
+			vitesse1.play();
 			
 			// Classic particles
 			emitter = new FlxEmitter(xPos, yPos, 10);
-			for(var i:int = 0; i < 10; i++) {
+			for (var i:int = 0; i < 10; i++) 
+			{
 				steamPart = new FlxParticle();
 				steamPart.loadGraphic(ImgParticle);
 				steamPart.alpha = 0.4;

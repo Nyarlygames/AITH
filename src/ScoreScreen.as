@@ -46,6 +46,8 @@ package
 			
 			FlxG.bgColor = 0xaa519CCA;
 			
+			FlxG.pauseSounds();
+			
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
