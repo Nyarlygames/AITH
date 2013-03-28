@@ -38,7 +38,7 @@ package
 		public var vitesse3:FlxSound = new FlxSound();
 		
 		public var jauge:FlxSprite;
-		public var init_speed:int 				= 330;  		// VITESSE DE BASE (max vitesse)
+		public var init_speed:int 				= 350;  		// VITESSE DE BASE (max vitesse)
 		public var mingravity:int 				= -250;         // GRAVITE MIN
 		public var maxgravity:int 				= 50000;        // GRAVITY MAX
 		public var minspeed:int 				= 70;

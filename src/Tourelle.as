@@ -34,7 +34,7 @@ package
 			flammes.loadGraphic(ImgFlamme, true, false, 40, 80);
 			flammes.addAnimation("flammes",  [0, 1, 2, 3, 4], 5, false);
 			loadGraphic(ImgTourelle, true, false, 80, 40);
-			addAnimation("default",  [0, 1, 2], 10, true);
+			addAnimation("default",  [0, 1, 2], 10, true);!
 			timer.start(3, 0, activate_burst);
 			
 			/* Pré-écriture de l'anim de flamme, à réutiliser.

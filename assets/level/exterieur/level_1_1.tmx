@@ -75,7 +75,7 @@
   <object gid="48" x="6880" y="760"/>
   <object gid="50" x="8120" y="760"/>
   <object gid="47" x="8480" y="760"/>
-  <object gid="48" x="8280" y="760"/>
+  <object gid="48" x="8200" y="760"/>
   <object gid="49" x="9440" y="760"/>
   <object gid="47" x="9680" y="760"/>
   <object gid="47" x="10440" y="760"/>
@@ -157,19 +157,19 @@
   <object gid="43" x="7560" y="760"/>
   <object gid="38" x="3760" y="760"/>
  </objectgroup>
- <layer name="Sol" width="420" height="20" visible="0">
+ <layer name="Sol" width="420" height="20">
   <data encoding="base64" compression="zlib">
-   eJztnEluwzAMRY120Skd73/YJkANOKoGkpIokv4P4CpRYtMUnzwk26bL8zU+knhS3gaLpDnJBZdcrinBOR7pd1g+ltx8WN4XL0hq8Kx5l8zVaKENfJQHPpoPfKQPfERntQsshDbwUR74aD7wkT7wEZ23a7z/xevWztP+3kvHWGpQPhM+igN8NB/4SB/4SEYrb7Uc9YyVfiZ8FAvKGoULfHRPLh8vW3kdaHlfvAAfyYCPdICP9ICP7qHU3nPlNcBnpo+s9LQZ5K6/HddOl0ljS8BHoBctH/Wex2kBH+lz7I3UoPbLtIdF8tGRvSZ7zmt6azmqj3L1KfE1aKPhI0/AR8Aj8BGIAHx0D3wEPLKv4SXr9p6xR+Aj0At8dA98BIAM+Aj0Uquh9LmyM1w/pVwrho8A+A98NJdHQninVkPotXk0ffSz0eqwVIut8d+NcaXXAUiBj0Av8BEfTR9x5rhkfGn7R91TAOchqo/OuDZ7qLzGWSNz8zbimVoOpX3xdKyP1/Rm9+teH7Wepbbgm7QmWudstfdEvIbhhag+GvX8oRdqLroR6T9sSv3RQl+8kfPlSlf2+sgD1N9LU85LI+XFG9F99LWt7Qmcc5KZ8bnF8ZF1rP0W+4w+Os770jyAj+wR3Uere4JGbmcEfCTHSu3VtsfKPB3FyP8LipQXb3j0Ueva1I0ZPYHyvSmrvSKN0vqSG9RzUkluraLhI06+vPtIOt+lPgLr8OYj6jwc3ROk/XK1V1YHJeet3FKfxbDyPMNsH3Fr0bOPeuY7fOQPLR9ZuF8yas3PidU+WB0jck6997Xi+O5xhOKjmduSepkzx1flT6tGrNQLohwafekX7n1jRw==
+   eJztnOtqwzAMRsP2Y92tu7z/wy6BBVxjO7Ic65bvgGDQek0UWce5tMsiy22NexYvwttgkTwnpeillGtK9ByP/DMsH8vefFjeFy9wavCqeefM1WghDXxUBj6aD3wkD3xER9sFFkIa+KgMfDQf+Ege+IjO+xqf//G21PPzmryvFK2xe7TGc/8nfBQH+Gg+8JE88BGPVt6O8nOUc05+ub0EPvIJZY3SC3z0SCkf+VozXQda3hcvwEc84CMZ4CM54KNHKLV3a7wG+oGPeOTX7tJ100fn2HzddTS+BHw0n981ntf4Ufr82Uj5aPQ8Tgr4SJ60N1KD0y8js9UktxZHxub/J6KPSvWpVX97jqP2HQkfeQI+8o92/9IAProG8BF8BB/54l75OzLbGp67Zh8ZmwIfzWc/V4t6fQA+egQ+AoAHfARGadVQ6zsMUf1MuVYMH8VC6h4x7kXDR6DNyDOjV0XSR3sPowRnfK03Ru+dKVLX5HHtHz4CbeCjfiR91DPHOeNr2x/9OnWKlCei5zSqj660Ntt5arzWs0buzVvrWdsZ86a2L56OdZqz2b1l1EdHz1Jb6I15TRyds1HfQ62r6J6QIqqPop/X5rRctBHpN2xq/dFKLyj5UtOVoz7yAPX70pTz0ry+rNTVFYjuo+9Ftyf0nJPMjK8ljo+sY+m72LXtsTJPzyLfx3Te1+YBatwe0X2k3RMkcjsjMFf5WKm91vZYmadngd8LioFHHx1dm9qY0RMon5uj7RVu1NaXvUE9J+Xk1iozfcTJk3cfcec7fOQPbz6izsezewK3X2p7RTsoOT/KLfVZDCvPM8zyEbcGPftoZL7DR/6Q8pGF+yVnrfl7QtsH2nFGzqn3vjSO7x4pFB/N3Jbcyz1zXCt/UjVipV4Q9ZDoS38lymNr
   </data>
  </layer>
- <objectgroup color="#ff2718" name="Gameplay" width="420" height="20" visible="0" opacity="0.9">
+ <objectgroup color="#ff2718" name="Gameplay" width="420" height="20" opacity="0.9">
   <object name="pique" type="Piques" x="4200" y="200" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
    </properties>
   </object>
   <object name="check" type="Checkpoints" x="3280" y="400" width="40" height="200"/>
-  <object name="check" type="Checkpoints" x="1680" y="560" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="1560" y="560" width="40" height="200"/>
   <object name="Sol_Destructible" type="Des_sol" x="4360" y="520" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="4560" y="520" width="200" height="40"/>
   <object name="tube" type="Tube" x="3920" y="440" width="40" height="40"/>
@@ -189,16 +189,16 @@
   <object name="Sol_Destructible" type="Des_sol" x="6160" y="520" width="200" height="40"/>
   <object name="alien_im" type="Alien" x="6440" y="520" width="80" height="160"/>
   <object name="alien_im" type="Alien" x="6720" y="520" width="80" height="160"/>
-  <object name="tube" type="Tube" x="7000" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="6960" y="680" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="6600" y="440" width="40" height="40"/>
-  <object name="tube" type="Tube" x="7080" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="7040" y="680" width="40" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="7360" y="760" width="120" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7760" y="760" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7400" y="560" width="40" height="40"/>
   <object name="tube" type="Tube" x="7760" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="7520" y="480" width="40" height="40"/>
-  <object name="check" type="Checkpoints" x="7200" y="560" width="40" height="200"/>
-  <object name="check" type="Checkpoints" x="5200" y="560" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="7120" y="560" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="5120" y="560" width="40" height="200"/>
   <object name="trigger_ascenseur" type="Trigger" x="7360" y="560" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7440" y="560" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="7320" y="560" width="40" height="40"/>
@@ -242,11 +242,6 @@
    </properties>
   </object>
   <object name="pique" type="Piques" x="2320" y="720" width="40" height="40"/>
-  <object name="pique" type="Piques" x="1040" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
   <object name="Sol_Destructible" type="Des_sol" x="9360" y="440" width="200" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="8800" y="760" width="120" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="8800" y="440" width="40" height="40"/>
@@ -255,7 +250,7 @@
   <object name="Sol_Destructible" type="Des_sol" x="9920" y="440" width="200" height="40"/>
   <object name="grosTube" type="GrosTube" x="10080" y="560" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="9720" y="360" width="40" height="40"/>
-  <object name="check" type="Checkpoints" x="10600" y="560" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="10520" y="560" width="40" height="200"/>
   <object name="Sol_Destructible" type="Des_sol" x="11400" y="520" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="11760" y="520" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="12160" y="520" width="200" height="40"/>
@@ -284,7 +279,7 @@
     <property name="color" value="3"/>
    </properties>
   </object>
-  <object type="Tremplin80" gid="69" x="8440" y="760">
+  <object type="Tremplin80" gid="69" x="8360" y="760">
    <properties>
     <property name="color" value="1"/>
    </properties>
@@ -294,8 +289,8 @@
     <property name="color" value="2"/>
    </properties>
   </object>
-  <object name="check" type="Checkpoints" x="12840" y="560" width="40" height="200"/>
-  <object name="alien_im" type="Alien" x="8680" y="400" width="80" height="120"/>
+  <object name="check" type="Checkpoints" x="12720" y="560" width="40" height="200"/>
+  <object name="alien_im" type="Alien" x="8600" y="400" width="80" height="120"/>
   <object name="tube" type="Tube" x="10200" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10280" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10360" y="680" width="40" height="40"/>
@@ -328,21 +323,6 @@
    </properties>
   </object>
   <object name="pique" type="Piques" x="11560" y="560" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="pique" type="Piques" x="1080" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="pique" type="Piques" x="1000" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="pique" type="Piques" x="960" y="720" width="40" height="40">
    <properties>
     <property name="orientation" value="haut"/>
    </properties>
@@ -389,7 +369,7 @@
   <object name="pique" type="Piques" x="5560" y="720" width="40" height="40"/>
   <object name="pique" type="Piques" x="5520" y="720" width="40" height="40"/>
   <object name="pique" type="Piques" x="5480" y="720" width="40" height="40"/>
-  <object name="soucoupe" type="Soucoupe" x="13080" y="440" width="80" height="40"/>
+  <object name="soucoupe" type="Soucoupe" x="13120" y="440" width="80" height="40"/>
   <object name="BPique" type="Piques" x="7720" y="200" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
@@ -464,31 +444,6 @@
   <object name="BPique" type="Piques" x="11200" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
-   </properties>
-  </object>
-  <object name="HPique" type="Piques" x="13280" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="HPique" type="Piques" x="13320" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="HPique" type="Piques" x="13360" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="HPique" type="Piques" x="13440" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
-   </properties>
-  </object>
-  <object name="HPique" type="Piques" x="13400" y="720" width="40" height="40">
-   <properties>
-    <property name="orientation" value="haut"/>
    </properties>
   </object>
   <object name="GPique" type="Piques" x="4720" y="480" width="40" height="40">
@@ -578,7 +533,7 @@
   </object>
   <object name="tube" type="Tube" x="1160" y="400" width="40" height="40"/>
   <object name="tube" type="Tube" x="1440" y="680" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="13360" y="600" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="13360" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="11280" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="11440" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="11520" y="440" width="40" height="40"/>
@@ -655,12 +610,12 @@
    </properties>
   </object>
   <object type="tremplin" x="5360" y="720" width="40" height="40"/>
-  <object type="tremplin" x="8520" y="640" width="40" height="40">
+  <object type="tremplin" x="8440" y="640" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
    </properties>
   </object>
-  <object type="tremplin" x="8400" y="720" width="40" height="40"/>
+  <object type="tremplin" x="8320" y="720" width="40" height="40"/>
   <object type="tremplin" x="10880" y="640" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
@@ -674,12 +629,113 @@
   <object name="Tourelle" type="Tourelle" x="15040" y="360" width="80" height="40"/>
   <object name="FinDuNiveau" type="FinNiveau" x="15400" y="520" width="120" height="240"/>
   <object name="tube" type="Tube" x="9840" y="360" width="40" height="40"/>
-  <object name="Tourelle" type="Tourelle" x="12200" y="240" width="80" height="40"/>
+  <object name="Tourelle" type="Tourelle" x="12040" y="320" width="80" height="40"/>
   <object name="tube" type="Tube" x="13520" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13640" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13920" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13800" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="14240" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="14120" y="680" width="40" height="40"/>
+  <object name="GPique" type="Piques" x="2480" y="360" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="2480" y="280" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="2480" y="320" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="2480" y="240" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="tube" type="Tube" x="13200" y="680" width="40" height="40"/>
+  <object name="GPique" type="Piques" x="13480" y="480" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="13480" y="440" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="13480" y="400" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="13520" y="520" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="13560" y="520" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="13600" y="520" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="12440" y="480" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="12440" y="440" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="12440" y="400" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="1080" y="720" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="1080" y="640" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="1080" y="680" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="1080" y="600" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="1080" y="560" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="1080" y="520" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
+  <object name="GPique" type="Piques" x="12440" y="520" width="40" height="40">
+   <properties>
+    <property name="orientation" value="gauche"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

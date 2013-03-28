@@ -62,19 +62,7 @@ package
 				backDefault.x = 0;
 				backDefault.y = 0; 
 				add (backDefault);
-			
-			/*	Setup Univers 1 */
-				backUnivers = new FlxSprite(562/2, 287, ImgBackUnivers);
-				backUnivers.loadGraphic(ImgBackUnivers, true, false, 562/2, 287);
-				backUnivers.addAnimation("alien", [0], 10, true);
-				backUnivers.addAnimation("quartier", [1], 10, true);
-				add (backUnivers);
-				backUnivers.play("quartier");	
-				uni1 = new FlxSprite(124, 260, ImgUni1);
-				add(uni1);
-				backUnivers.x = 125; backUnivers.y = 200; backUnivers.angle = 10;
-				uni1.x = 145; uni1.y = 220;  uni1.angle = 10;
-			/*	Setup Univers 1 */
+			/*	Back par défaut */
 
 			/*	Setup Univers 2 */
 				backUnivers2 = new FlxSprite(562/2, 287, ImgBackUnivers);
@@ -88,6 +76,19 @@ package
 				backUnivers2.x = 420; backUnivers2.y = 200; backUnivers2.angle = -5;
 				uni2.x = 435; uni2.y = 215; uni2.angle = -5;
 			/*	Setup Univers 2 */
+				
+			/*	Setup Univers 1 */
+				backUnivers = new FlxSprite(562/2, 287, ImgBackUnivers);
+				backUnivers.loadGraphic(ImgBackUnivers, true, false, 562/2, 287);
+				backUnivers.addAnimation("alien", [0], 10, true);
+				backUnivers.addAnimation("quartier", [1], 10, true);
+				add (backUnivers);
+				backUnivers.play("quartier");	
+				uni1 = new FlxSprite(124, 260, ImgUni1);
+				add(uni1);
+				backUnivers.x = 125; backUnivers.y = 200; backUnivers.angle = 10;
+				uni1.x = 145; uni1.y = 220;  uni1.angle = 10;
+			/*	Setup Univers 1 */
 			
 			/*	Retour en arrière */
 				retour = new FlxSprite(50, 194, ImgTubes);
