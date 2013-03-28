@@ -131,7 +131,7 @@ package
 			jauge.addAnimation("jauge", [0, 1, 2, 3, 4,5,6,7,8,9,10,11], 12, true);
 			jauge.frame = 0;
 			jauge.scrollFactor = new FlxPoint(0, 0);
-			FlxG.state.add(jauge);
+			//FlxG.state.add(jauge);
 			
 			//Animations du joueur
 			this.loadGraphic(ImgPlayer, true, false, 80, 80);
