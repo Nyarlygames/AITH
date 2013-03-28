@@ -224,7 +224,7 @@ package
 				jumping = false;
 			}
 			
-			if (velocity.x < minspeed)
+			if (velocity.x < (minspeed - 5))
 				velocity.x = init_speed;
 		}
 		
