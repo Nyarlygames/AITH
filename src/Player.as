@@ -21,6 +21,7 @@ package
 	public class Player extends FlxSprite 
 	{
 		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
+		[Embed(source = '../assets/gfx/gameplay/Jimi_mort.png')]	 	 protected var ImgMort:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/misc/alienPart.png')] 			 protected var ImgParticleAlien:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
@@ -243,11 +244,14 @@ package
 		// GESTIONS DES COLLISIONS DE POUBELLES
 		public function dustbin(obj1:FlxObject, obj2:FlxObject):void {
 			if ((pushing != true) && (push == null)) {
-				
+				velocity.x = 110;
 				(obj2 as Poubelle).soundPushed.play();
 				push = (obj2 as Poubelle);
 				(push as Poubelle).player = this;
 				pushing = true;
+			}
+			else if (obj2.y > obj1.y) {	
+				obj1.y = obj2.y - frameHeight + offset.y;
 			}
 		}
 
@@ -304,15 +308,19 @@ package
 			velocity.x = 0;
 		}
 		
-		public function die_motherfucker():void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-			
-			soundRevive.play();
-			x = checkpoint.x;
-			y = checkpoint.y;
+		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
+
 			velocity.y = 0;
 			accumulateur = 0;
-			velocity.x = init_speed;
+			soundRevive.play();
+			x = checkpoint.x;
+			if (where == 1) {
+				y = checkpoint.y - 10;
+			}
+			else
+				y = checkpoint.y;
 			palier_accumulateur = max_palier;
+			velocity.x = init_speed;
 			angle = 0;
 			gravity = mingravity;
 			if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null)) {
@@ -320,7 +328,7 @@ package
 				vitesse2.volume = 0;
 				vitesse3.volume = 1;
 			}
-			//FlxG.map.reload_map();
+			FlxG.map.reload_map();
 		}
 	}
 

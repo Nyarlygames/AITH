@@ -159,20 +159,20 @@ package
 					FlxG.resetState();
 				}
 				if (!player.onScreen(FlxG.camera)) {
-					player.die_motherfucker();
+					player.die_motherfucker(1);
 				}
 				
 				//DEV Respawn at checkpoint
 				if (FlxG.keys.pressed("R")) 
 				{
-					player.die_motherfucker();
+					player.die_motherfucker(0);
 				}
 				
 				// COLLISIONS
 				FlxG.overlap(player, map.ens, alien_coll);
 				FlxG.overlap(player, map.item, getTube);
 				if (FlxG.overlap(player, map.piques)) {
-					player.die_motherfucker();
+					player.die_motherfucker(0);
 				}
 				FlxG.collide(player, map.destructible, check_ground);
 				
@@ -264,14 +264,14 @@ package
 					}
 					if (obj2 is AlienHorizontal)
 					{
-						(obj2 as AlienHorizontal).soundRebond.play();
+				//		(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					trace("here");
 					player.velocity.y = - 250;
 				}
 				// MEURT
 				else {
-					player.die_motherfucker();
+					player.die_motherfucker(0);
 				}
 			}
 		}

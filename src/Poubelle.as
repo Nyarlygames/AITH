@@ -56,8 +56,7 @@ package
 				 * Collide venant haut
 			 * Movable & collide
 				 */
-		
-			}	
+			}
 		}
 		
 		public function destruction():void {

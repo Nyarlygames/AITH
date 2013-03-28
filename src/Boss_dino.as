@@ -46,7 +46,6 @@ package
 
 			// TOUCHE JOUEUR
 			if (FlxG.collide(shoot.group, FlxG.player)) {
-				FlxG.player.die_motherfucker();
 				FlxG.map.reload_map();
 			}
 		}

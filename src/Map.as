@@ -135,19 +135,16 @@ package
 			for each(var object_far:TmxObject in group_far.objects) {
 				var bat_far:FlxSprite = new FlxSprite(object_far.x, object_far.y);
 				switch(object_far.gid) {
-					case 38 :
-						bat_far.loadGraphic(ImgFar1);
-						break;
-					case 39 :
+					case 47 :
 						bat_far.loadGraphic(ImgFar2);
 						break;
-					case 40 :
+					case 48 :
 						bat_far.loadGraphic(ImgFar3);
 						break;
-					case 41 :
+					case 49 :
 						bat_far.loadGraphic(ImgFar4);
 						break;
-					case 42 :
+					case 50 :
 						bat_far.loadGraphic(ImgFar5);
 						break;
 				}
@@ -163,22 +160,55 @@ package
 				var bat_middle:FlxSprite = new FlxSprite(object_middle.x, object_middle.y);
 				switch(object_middle.gid) {
 					case 20 :
-						bat_middle.loadGraphic(ImgMiddle1);
-						break;
-					case 21 :
 						bat_middle.loadGraphic(ImgMiddle2);
 						break;
-					case 22 :
+					case 21 :
 						bat_middle.loadGraphic(ImgMiddle3);
 						break;
-					case 23 :
+					case 22 :
 						bat_middle.loadGraphic(ImgMiddle4);
 						break;
-					case 24 :
+					case 23 :
 						bat_middle.loadGraphic(ImgMiddle5);
 						break;
-					case 25 :
+					case 24 :
 						bat_middle.loadGraphic(ImgMiddle6);
+						break;
+					case 25 :
+						bat_middle.loadGraphic(ImgMiddle7);
+						break;
+					case 26 :
+						bat_middle.loadGraphic(ImgMiddle8);
+						break;
+					case 27 :
+						bat_middle.loadGraphic(ImgMiddle9);
+						break;
+					case 28 :
+						bat_middle.loadGraphic(ImgMiddle10);
+						break;
+					case 29 :
+						bat_middle.loadGraphic(ImgMiddle11);
+						break;
+					case 30 :
+						bat_middle.loadGraphic(ImgMiddle12);
+						break;
+					case 31 :
+						bat_middle.loadGraphic(ImgMiddle13);
+						break;
+					case 32 :
+						bat_middle.loadGraphic(ImgMiddle14);
+						break;
+					case 33 :
+						bat_middle.loadGraphic(ImgMiddle15);
+						break;
+					case 34 :
+						bat_middle.loadGraphic(ImgMiddle16);
+						break;
+					case 35 :
+						bat_middle.loadGraphic(ImgMiddle17);
+						break;
+					case 36 :
+						bat_middle.loadGraphic(ImgMiddle18);
 						break;
 				}
 				bat_middle.y -= bat_middle.frameHeight
@@ -192,20 +222,29 @@ package
 			for each(var object_near:TmxObject in group_near.objects) {
 				var bat_near:FlxSprite = new FlxSprite(object_near.x, object_near.y);
 				switch(object_near.gid) {
-					case 32 :
-						bat_near.loadGraphic(ImgNear1);
-						break;
-					case 33 :
+					case 38 :
 						bat_near.loadGraphic(ImgNear2);
 						break;
-					case 34 :
+					case 39 :
 						bat_near.loadGraphic(ImgNear3);
 						break;
-					case 35 :
+					case 40 :
 						bat_near.loadGraphic(ImgNear4);
 						break;
-					case 36 :
+					case 41 :
 						bat_near.loadGraphic(ImgNear5);
+						break;
+					case 42 :
+						bat_near.loadGraphic(ImgNear6);
+						break;
+					case 43 :
+						bat_near.loadGraphic(ImgNear7);
+						break;
+					case 44 :
+						bat_near.loadGraphic(ImgNear8);
+						break;
+					case 45 :
+						bat_near.loadGraphic(ImgNear9);
 						break;
 				}
 				bat_near.y -= bat_near.frameHeight
@@ -378,26 +417,22 @@ package
 			var tmx:TmxMap = new TmxMap(xml);
 			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
 			
-			shootemup.clear();
 			ascenceurs.clear();
-			/*item.clear();
+			item.clear();
 			ens.clear();
 			DustbinBieber.clear();
-			destructible.clear();*/
+			destructible.clear();
+			tourelles.clear();
 			
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
 					case "Ascenceur":
 						ascenceurs.add (new Ascenceur(object.x, object.y));
 						break;
-					case "Troika":
-						shootemup.add (new ShootemUp(object.x, object.y));
-						break;
-						case "Tube":
-						item.add (new TubeVert(object.x, object.y, 1,0));
-						break;
-				/*	case "GrosTube":
-						item.add (new TubeVert(object.x, object.y, 5,1));
+					case "Des_sol":
+						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
+						ground.immovable = true;
+						destructible.add(ground);
 						break;
 					case "Alien":
 						ens.add (new AlienNormal(object.x, object.y));
@@ -405,20 +440,21 @@ package
 					case "AlienVert":
 						ens.add (new AlienVert(object.x, object.y));
 						break;
-					case "AlienTireur":
-						ens.add (new AlienTireur(object.x, object.y));
-						break;
 					case "AlienHorizontal":
 						ens.add (new AlienHorizontal(object.x, object.y));
 						break;
 					case "Poubelles":
 						DustbinBieber.add (new Poubelle(object.x, object.y));
 						break;
-					case "Des_sol":
-						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
-						ground.immovable = true;
-						destructible.add(ground);
-						break;*/
+					case "Tourelle":
+						tourelles.add (new Tourelle(object.x, object.y));
+						break;						
+					case "Tube":
+						item.add (new TubeVert(object.x, object.y, 1,0));
+						break;
+					case "GrosTube":
+						item.add (new TubeVert(object.x, object.y, 5,1));
+						break;
 				}
 			}
 		}

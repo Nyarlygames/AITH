@@ -12,6 +12,7 @@ package
 	{
 		
 		[Embed(source = '../assets/gfx/gameplay/alien_horizontal.png')] protected var ImgAlienHor:Class;
+		[Embed(source = '../assets/gfx/gameplay/idle_alien_mobile.png')] protected var ImgIdle:Class;
 		//[Embed(source = "../assets/sfx/gameplay/AlienImmobile_Rebond.mp3")] public var SfxRebond:Class;
 		//[Embed(source = "../assets/sfx/gameplay/AlienImmobile_Mort.mp3")] public var SfxMort:Class;
 		
@@ -27,10 +28,14 @@ package
 			//soundMort.loadEmbedded(SfxMort);
 			
 			//Animations du joueur
-			this.loadGraphic(ImgAlienHor, true, false, 80, 80);
+		/*	this.loadGraphic(ImgAlienHor, true, false, 80, 80);
 			this.addAnimation("bounce",  [0,1], 5, true);
 			this.addAnimation("idle", 	[4,5], 5, true);
-			this.addAnimation("die",  [8,9,10], 5, true);
+			this.addAnimation("die",  [8,9,10], 5, true);*/
+			
+			loadGraphic(ImgIdle, true, false, 120, 80);
+			addAnimation("idle", [3, 2, 1, 0], 10, true);
+			play("idle");
 		}
 		
 		override public function update():void {
