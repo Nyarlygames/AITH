@@ -4,6 +4,8 @@ package
 	import org.flixel.FlxText;
 	import org.flixel.FlxTimer;
 	import org.flixel.FlxG;
+	import com.greensock.TweenMax;
+	import com.greensock.easing.Elastic
 	import org.flixel.FlxPoint;
 	
 	/**
@@ -31,18 +33,12 @@ package
 				loadGraphic(ImgGrosTube);
 			else
 				loadGraphic(ImgTube);
-			timer.start(1, 1, goaway);
 			scrollFactor = new FlxPoint(0, 0);
+			TweenMax.to(this, 2, { x: 20 ,alpha : 0, y : 10 , ease:Elastic.easeOut, onComplete : kill }  );
 		}
 		
-		override public function update():void {
-			y = player.y - 200 - frameHeight - up;
-			up += 100 * FlxG.elapsed;
-		}
-		
-		public function goaway(timeur:FlxTimer):void {
-			FlxG.state.remove(this);
-			destroy();
+		override public function update():void 
+		{
 		}
 	}
 

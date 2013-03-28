@@ -60,7 +60,7 @@ package
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
-				backDefault.y = 0;
+				backDefault.y = 0; 
 				add (backDefault);
 			
 			/*	Setup Univers 1 */
@@ -68,12 +68,12 @@ package
 				backUnivers.loadGraphic(ImgBackUnivers, true, false, 562/2, 287);
 				backUnivers.addAnimation("alien", [0], 10, true);
 				backUnivers.addAnimation("quartier", [1], 10, true);
-				backUnivers.x = 112;
-				backUnivers.y = 249;
 				add (backUnivers);
 				backUnivers.play("quartier");	
 				uni1 = new FlxSprite(124, 260, ImgUni1);
 				add(uni1);
+				backUnivers.x = 125; backUnivers.y = 200; backUnivers.angle = 10;
+				uni1.x = 145; uni1.y = 220;  uni1.angle = 10;
 			/*	Setup Univers 1 */
 
 			/*	Setup Univers 2 */
@@ -81,12 +81,12 @@ package
 				backUnivers2.loadGraphic(ImgBackUnivers, true, false, 562/2, 287);
 				backUnivers2.addAnimation("alien", [0], 10, true);
 				backUnivers2.addAnimation("quartier", [1], 10, true);
-				backUnivers2.x = 447;
-				backUnivers2.y = 249;
 				add (backUnivers2);
 				backUnivers2.play("alien");
 				uni2 = new FlxSprite(459, 260, ImgUni2);
 				add(uni2);
+				backUnivers2.x = 420; backUnivers2.y = 200; backUnivers2.angle = -5;
+				uni2.x = 435; uni2.y = 215; uni2.angle = -5;
 			/*	Setup Univers 2 */
 			
 			/*	Retour en arrière */
@@ -94,8 +94,7 @@ package
 				retour.loadGraphic(ImgTubes, true, false, 194, 50);
 				retour.addAnimation("off", [0], 10, true);
 				retour.addAnimation("on", [1], 10, true);
-				retour.x = 576;
-				retour.y = 38;
+				retour.x = 576; retour.y = 38;
 				add (retour);
 				retour.play("off");
 			/*	Retour en arrière */
@@ -169,17 +168,36 @@ package
 				retour.play("off");
 			}
 			
-			if (FlxCollision.pixelPerfectCheck(cursor, uni1)) {
+			if (FlxCollision.pixelPerfectCheck(cursor, uni1)) 
+			{
 				uni1.loadGraphic(ImgUni1On);
+				TweenMax.to(uni1.scale, 0.5, { y:1.1,x:1.1, ease:Linear.easeOut } );
+				TweenMax.to(uni1, 0.5, { x:140, angle:0 , ease:Linear.easeOut } );
+				TweenMax.to(backUnivers.scale, 0.5, { y:1.1,x:1.1, ease:Linear.easeOut } );
+				TweenMax.to(backUnivers, 0.5, { angle:0, ease:Linear.easeOut } );
 			}
 			else
+			{
+				TweenMax.to(uni1, 0.5, { x: 145, y:220, angle:10, ease:Linear.easeOut } );
+				TweenMax.to(uni1.scale, 0.5, { y:1,x:1, ease:Linear.easeOut } );
+				TweenMax.to(backUnivers.scale, 0.5, { y:1,x:1, ease:Linear.easeOut } );
+				TweenMax.to(backUnivers, 0.5, { angle:10, ease:Linear.easeOut } );
 				uni1.loadGraphic(ImgUni1);
+				
+			}
 			
-			if (FlxCollision.pixelPerfectCheck(cursor, uni2)) {
+			if (FlxCollision.pixelPerfectCheck(cursor, uni2))
+			{
+				TweenMax.to(uni2.scale, 0.5, { y:1.2,x:1.2, ease:Bounce.easeOut } );
+				TweenMax.to(backUnivers2.scale, 0.5, { y:1.2,x:1.2, ease:Bounce.easeOut } );
 				uni2.loadGraphic(ImgUni2On);
 			}
 			else
+			{
+				TweenMax.to(uni2.scale, 0.5, { y:1,x:1, ease:Bounce.easeOut } );
+				TweenMax.to(backUnivers2.scale, 0.5, { y:1,x:1, ease:Linear.easeOut } );
 				uni2.loadGraphic(ImgUni2);
+			}
 				
 			//Choix de l'univers à la souris
 			if (FlxCollision.pixelPerfectCheck(cursor, uni1) && FlxG.mouse.justPressed()) 
