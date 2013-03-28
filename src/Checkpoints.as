@@ -37,10 +37,12 @@ package
 			if ((FlxG.player != null) && (FlxG.player.x >= x) && (validated == false)) {
 				FlxG.player.checkpoint.x = x; 
 				FlxG.player.checkpoint.y = y + frameHeight - FlxG.player.frameHeight;
+				FlxG.player.checkscore = 0;
 				play("valide");
 				validated = true;
 				soundActivate.play();
-			}}
+			}	
+		}
 	}
 
 }

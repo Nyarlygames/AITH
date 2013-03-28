@@ -36,7 +36,6 @@ package
 		override public function update():void 
 		{
 		}
-		
 	}
 
 }

@@ -411,6 +411,10 @@ package
 			}
 		}
 		
+		/* TODO
+		 * SAUVEGUARDE DES GROUPES AU CHARGEMENT POUR EVITER DE RECHARGER
+		 */
+		
 		// RESET ASCENCEUR ET AUTRES CONNERIES A FAIRE
 		public function onTmxReLoaded(e:Event):void {
 			var xml:XML = new XML(e.target.data);

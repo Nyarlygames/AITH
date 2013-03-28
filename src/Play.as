@@ -134,7 +134,6 @@ package
 					}
 					break;
 			}
-			
 		}
 
 		override public function update():void
@@ -191,7 +190,9 @@ package
 				// Fin JOUEUR
 				FlxG.overlap(player, map.fin, endLevel);
 				
-				FlxG.collide(player, map.tile, player.tiles_coll)
+				if (!FlxG.collide(player, map.tile, player.tiles_coll)) {
+					player.accumulateur = 0;
+				}
 				// UPDATE PAUSE SCREEN
 				if (player.pause) {
 					pause.inPause();
@@ -220,6 +221,7 @@ package
 		{
 			soundCrepite.volume = 0.5;
 			soundCrepite.play();
+			player.angle = 0;
 			if (player.gravity > dest_ground)
 			{
 				soundDestrSol.volume = 0.5;
@@ -284,9 +286,8 @@ package
 					}
 					if (obj2 is AlienHorizontal)
 					{
-				//		(obj2 as AlienHorizontal).soundRebond.play();
+						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
-					trace("here");
 					player.velocity.y = - 250;
 				}
 				// MEURT

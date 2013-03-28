@@ -46,7 +46,7 @@ package
 		public const const_gravity:int			= 300;			
 		public var accumulateur:int 			= 0;
 		public var palier_accumulateur:int 		= -85000;
-		public var max_palier:int 				= -110000;
+		public var max_palier:int 				= -100000;
 		public var gravity:int 					= 0;
 		public var gravity_increment:int 		= 35000;
 		public var gravity_decrement:int 		= 20000;
@@ -54,7 +54,7 @@ package
 		public var on_ascenseur:Boolean 		= false;
 		public var acceleration_speed:int		= 150;   
 		public var maxgravity_test:int 			= 2000;
-		
+		public var checkscore:int				= 0;		// SCORE DEPUIS LE DERNIER CHECKPOINT
 		public var volumespeed:Number			= 0.02;		// BAISSE SON MOTEUR
 		
 		public var jumping:Boolean 				= false;	// LE JOUEUR SAUTE?
@@ -75,7 +75,7 @@ package
 		public function Player(xPos:int, yPos:int) 
 		{
 			super(xPos, yPos, ImgPlayer);
-			
+			FlxG.score = 0;
 			
 			soundRevive.loadEmbedded(sfxRevive);
 			palier_accumulateur = max_palier;
@@ -131,14 +131,14 @@ package
 			jauge.addAnimation("jauge", [0, 1, 2, 3, 4,5,6,7,8,9,10,11], 12, true);
 			jauge.frame = 0;
 			jauge.scrollFactor = new FlxPoint(0, 0);
-			//FlxG.state.add(jauge);
+			FlxG.state.add(jauge);
 			
 			//Animations du joueur
 			this.loadGraphic(ImgPlayer, true, false, 80, 80);
 			this.addAnimation("slowSpeed",  [0,1], 5, true);
 			this.addAnimation("midSpeed", 	[4,5], 15, true);
 			this.addAnimation("fastSpeed",  [8,9,10], 30, true);
-			width = 60;
+			width = 80;
 			height = 60;
 			offset.y = 20;
 		}
@@ -147,6 +147,8 @@ package
 		{
 			play ("midSpeed");
 			jauge.y = y - 270;
+			jauge.frame = (palier_accumulateur + 10000) / 7500 + 12;
+			
 			if (angle == 0) {
 				emitter.y = y + frameHeight - 35;
 				emitter.x = x ;
@@ -159,7 +161,6 @@ package
 				emitterAlien.x = x + 20;
 				emitterAlien.y = y + frameHeight - 30;
 			}
-			jauge.frame = gravity / 150;
 			if (angle < -45)
 			{
 				angularVelocity = 0;
@@ -175,7 +176,6 @@ package
 				emitterAlien.on = false;
 				emitter.on = true;
 			}
-			
 			
 			if ((acceleration.y > mingravity && acceleration.y < maxgravity)){
 				if (FlxG.keys.pressed("SPACE")) {
@@ -213,6 +213,8 @@ package
 				if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
 						on_tremplin = false;
 						acceleration.y += accumulateur;
+						offset.y = 20;
+						width = 80;
 				}
 			}
 			
@@ -221,6 +223,9 @@ package
 			} else {
 				jumping = false;
 			}
+			
+			if (velocity.x < minspeed)
+				velocity.x = init_speed;
 		}
 		
 		// GESTIONS DES COLLISIONS DE TILES
@@ -233,10 +238,15 @@ package
 			if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
 			{
 				angularVelocity = -angularspeed;
+				offset.y = 20;
+				width = 60;
+				/* TODO
+				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
+				 */
 			}
 			else if (current_tile2 == 2 && jumping == false){
-				accumulateur = 0;
 				angle = 0;
+				accumulateur = 0;
 				gravity = mingravity;
 			}
 		}
@@ -320,6 +330,8 @@ package
 			else
 				y = checkpoint.y;
 			palier_accumulateur = max_palier;
+			FlxG.score -= checkscore;
+			checkscore = 0;
 			velocity.x = init_speed;
 			angle = 0;
 			gravity = mingravity;

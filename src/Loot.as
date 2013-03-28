@@ -29,6 +29,7 @@ package
 			super(50, player.y - 200);
 			y -= frameHeight;
 			loot = value;
+			player.checkscore += loot;
 			if (loot == 5)
 				loadGraphic(ImgGrosTube);
 			else
