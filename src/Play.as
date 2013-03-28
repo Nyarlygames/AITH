@@ -23,6 +23,7 @@ package
 	import org.flixel.system.FlxTile;
 	import net.pixelpracht.tmx.TmxObject;
 	import net.pixelpracht.tmx.TmxObjectGroup;
+	import org.flixel.FlxText;
 	
 	/**
 	 * Niveau
@@ -49,22 +50,29 @@ package
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level5:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level6:Class;
 		
+		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
+		
 		
 		public var soundCrepite:FlxSound = new FlxSound();
 		public var soundDestrSol:FlxSound = new FlxSound();
 
+		public var tube_count:FlxText;
 		public var player:Player;
 		public var map:Map;
 		public var pause:PauseMenu = new PauseMenu();
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
-		public var alienkill:int = 33000;						// GRAVITE MINIMALE POUR TUER UN ALIEN
+		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 10000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// DEBUT MAP
 		public var ui:UI = new UI();
 		
 		override public function create():void
-		{	
+		{				
+			tube_count = new FlxText(70, 0, 200, "0");
+			tube_count.y += tube_count.frameHeight - 3;
+			tube_count.setFormat("onedalism", 22, 0x000000);
+			tube_count.scrollFactor = new FlxPoint(0, 0);
 
 			soundCrepite.loadEmbedded(SfxCrepite);
 			soundDestrSol.loadEmbedded(SfxDestrSol);
@@ -136,12 +144,13 @@ package
 				if (justloaded == true) {
 					player = map.player;
 					FlxG.state.add(ui);
+					FlxG.state.add(tube_count);
 					if (sound != null)
 						sound.play();
 					justloaded = false;
 				}
 				super.update();
-				
+				tube_count.text = ""+FlxG.score;
 				// MENU PAUSE
 				if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
 					player.pause = true;
