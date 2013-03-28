@@ -5,6 +5,7 @@ package
 	import org.flixel.FlxG;
 	import org.flixel.FlxSound;
 	import org.flixel.plugin.photonstorm.FlxVelocity;
+	import org.flixel.plugin.photonstorm.FlxCollision;
 	
 	/**
 	 * Soucoupe
@@ -34,12 +35,21 @@ package
 		}
 	
 		override public function update():void {
-			if (FlxG.player != null)
+			if (FlxG.player != null) {
+				FlxG.overlap(this, FlxG.player, soucoupes);
 				if (!FlxG.overlap(FlxG.player, halo, getup) && (applied == true)) 
 				{
 					applied = false;
 				}
-
+			}
+		}
+		
+		// Soucoupes
+		public function soucoupes(obj1:FlxSprite, obj2:FlxSprite):void 
+		{
+			if (FlxCollision.pixelPerfectCheck(obj1, obj2)) {
+				FlxG.player.die_motherfucker(0);
+			}
 		}
 		
 		public function getup(obj1:FlxObject, obj2:FlxObject):void {

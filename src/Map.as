@@ -426,6 +426,8 @@ package
 			ens.clear();
 			DustbinBieber.clear();
 			destructible.clear();
+			/* TODO 
+			 * reset flammes*/
 			tourelles.clear();
 			
 			for each(var object:TmxObject in group.objects) {

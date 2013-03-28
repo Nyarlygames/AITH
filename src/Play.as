@@ -187,6 +187,9 @@ package
 				// POUBELLE JOUEUR
 				FlxG.overlap(player, map.DustbinBieber, player.dustbin);
 				
+				// TOURELLE
+				FlxG.overlap(map.tourelles, player, tourelle);
+				
 				// Fin JOUEUR
 				FlxG.overlap(player, map.fin, endLevel);
 				
@@ -228,6 +231,12 @@ package
 				soundDestrSol.play();
 				obj2.kill();
 			}
+		}
+		
+		// TOURELLES
+		public function tourelle(obj1:FlxSprite, obj2:FlxSprite):void 
+		{
+			player.die_motherfucker(0);
 		}
 		
 		// GESTION FIN DE NIVEAU

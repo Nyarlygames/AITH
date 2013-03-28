@@ -35,7 +35,8 @@
   </object>
   <object type="Alien" x="1087" y="644" width="80" height="80"/>
   <object type="Tourelle" x="1280" y="560" width="80" height="40"/>
-  <object type="Soucoupe" x="642" y="636" width="80" height="40"/>
+  <object type="Soucoupe" x="960" y="640" width="80" height="40"/>
+  <object type="Tourelle" x="600" y="600" width="80" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">

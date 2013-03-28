@@ -4,6 +4,8 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxG;
+	import org.flixel.FlxObject;
+	import org.flixel.plugin.photonstorm.FlxCollision;
 	import org.flixel.FlxTimer;
 	
 	/**
@@ -48,7 +50,8 @@ package
 		
 		override public function update():void 
 		{
-
+			if (FlxCollision.pixelPerfectCheck(FlxG.player, flammes))
+				FlxG.player.die_motherfucker(0);
 		}
 		
 		public function activate_burst(timer:FlxTimer):void{
