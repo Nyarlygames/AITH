@@ -224,7 +224,18 @@ package
 		{
 			// play ending animations and sounds.
 				player.stopPlayer();
-				
+				if (sound != null) {
+					sound.stop();
+					sound.destroy();
+				}			
+				if ((player.vitesse1 != null) && (player.vitesse2 != null) && (player.vitesse3 != null)) {
+					player.vitesse1.stop();
+					player.vitesse1.destroy();
+					player.vitesse2.stop();
+					player.vitesse2.destroy();
+					player.vitesse3.stop();
+					player.vitesse3.destroy();
+				}
 				var t : FlxTimer = new FlxTimer();
 				t.start(2, 1,goScore) ;
 			// Then go to Score Screens
