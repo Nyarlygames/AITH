@@ -14,7 +14,7 @@ package
 	public class Soucoupe extends FlxSprite 
 	{
 		[Embed(source = '../assets/gfx/gameplay/soucoupe.png')] protected var ImgSoucoupe:Class;
-		[Embed(source = '../assets/gfx/gameplay/halo_soucoupe.png')] protected var ImgHalo:Class;
+		[Embed(source = '../assets/gfx/gameplay/halo_soucoupe_anim_aspiration.png')] protected var ImgHalo:Class;
 		//[Embed(source = "../assets/sfx/gameplay/Soucoupe_in.mp3")] 		public var SfxIdle:Class;
 		[Embed(source = "../assets/sfx/gameplay/Soucoupe_in.mp3")] 		public var SfxIn:Class;
 		
@@ -29,7 +29,9 @@ package
 		{
 			super(xpos, ypos, ImgSoucoupe);
 			soundIn.loadEmbedded(SfxIn);
-			halo = new FlxSprite(xpos + 20, ypos + frameHeight, ImgHalo);
+			halo = new FlxSprite(xpos + 20, ypos + frameHeight);
+			halo.loadGraphic(ImgHalo, true, false, 80, 160);
+			halo.addAnimation("aspire", [0, 1, 2, 3], 10, true);
 			FlxG.state.add(halo);
 			immovable = true;
 		}
@@ -53,6 +55,7 @@ package
 		}
 		
 		public function getup(obj1:FlxObject, obj2:FlxObject):void {
+			halo.play("aspire");
 			// HORIZONTAUX _
 			if (applied == false) {
 				soundIn.play();

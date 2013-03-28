@@ -36,15 +36,16 @@ package
 		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
 		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
 		public var triggers:FlxGroup = new FlxGroup();										// FIN DE NIVEAU
-		public var fin:FlxGroup = new FlxGroup();										// TRIGGERS
+		public var fin:FlxGroup = new FlxGroup();											// TRIGGERS
 		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
         public var fond:FlxTilemap = new FlxTilemap();										// FOND
 		public var batiments_near:FlxGroup = new FlxGroup();								// BG NEAR
+		public var clouds:FlxGroup = new FlxGroup();										// BG NEAR
 		public var batiments_middle:FlxGroup = new FlxGroup();								// BG FAR
-		public var batiments_far:FlxGroup = new FlxGroup();								// BG MIDDLE
+		public var batiments_far:FlxGroup = new FlxGroup();									// BG MIDDLE
 		public var loaded:Boolean = false;													// MAP CHARGEE?
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
@@ -252,6 +253,8 @@ package
 				batiments_near.add(bat_near);
 			}
 			FlxG.state.add(batiments_near);
+			/* TODO
+			 * Ajout nuages*/
 			
 			FlxG.state.add(tile);
 			FlxG.tilemap = tile;
@@ -287,9 +290,6 @@ package
 					case "Tourelle":
 						tourelles.add (new Tourelle(object.x, object.y));
 						break;
-					/*case "AlienTireur":
-						ens.add (new AlienTireur(object.x, object.y));
-						break;*/
 					case "AlienHorizontal":
 						ens.add (new AlienHorizontal(object.x, object.y));
 						break;
@@ -427,7 +427,8 @@ package
 			DustbinBieber.clear();
 			destructible.clear();
 			/* TODO 
-			 * reset flammes*/
+			 * reset flammes
+			 * & reset halo soucoupes*/
 			tourelles.clear();
 			
 			for each(var object:TmxObject in group.objects) {
