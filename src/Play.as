@@ -63,7 +63,7 @@ package
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 10000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 2000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// DEBUT MAP
 		public var ui:UI = new UI();
 		

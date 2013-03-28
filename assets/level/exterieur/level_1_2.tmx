@@ -149,7 +149,7 @@
  </objectgroup>
  <layer name="Sol" width="450" height="20" opacity="0.69">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="450" height="20" opacity="0.9">
@@ -354,7 +354,7 @@
   <object name="tube" type="Tube" x="9120" y="400" width="40" height="40"/>
   <object name="tube" type="Tube" x="9280" y="400" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="9400" y="520" width="40" height="40"/>
-  <object type="Tremplin80" gid="70" x="10440" y="680">
+  <object type="Tremplin80" gid="70" x="10400" y="680">
    <properties>
     <property name="color" value="2"/>
    </properties>
@@ -364,9 +364,9 @@
     <property name="color" value="2"/>
    </properties>
   </object>
-  <object name="Sol_Destructible" type="Des_sol" x="11680" y="360" width="200" height="40"/>
+  <object name="Sol_Destructible" type="Des_sol" x="11760" y="360" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="11960" y="360" width="200" height="40"/>
-  <object name="Sol_Destructible" type="Des_sol" x="11840" y="560" width="200" height="40"/>
+  <object name="Sol_Destructible" type="Des_sol" x="11680" y="560" width="200" height="40"/>
   <object type="Tremplin80" gid="70" x="12360" y="560">
    <properties>
     <property name="color" value="2"/>
@@ -658,7 +658,7 @@
   <object name="grosTube" type="GrosTube" x="16080" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="15960" y="480" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="10920" y="440" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="10160" y="560" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="10120" y="560" width="40" height="40"/>
   <object name="tube" type="Tube" x="11320" y="280" width="40" height="40"/>
   <object name="tube" type="Tube" x="14000" y="320" width="40" height="40"/>
   <object name="GPique" type="Piques" x="1040" y="520" width="40" height="40">
@@ -736,7 +736,7 @@
     <property name="orientation" value="haut"/>
    </properties>
   </object>
-  <object name="tube" type="Tube" x="10280" y="600" width="40" height="40"/>
+  <object name="tube" type="Tube" x="10240" y="600" width="40" height="40"/>
   <object name="tube" type="Tube" x="10720" y="400" width="40" height="40"/>
   <object name="HPique" type="Piques" x="8920" y="640" width="40" height="40">
    <properties>
@@ -767,12 +767,12 @@
    </properties>
   </object>
   <object type="tremplin" x="8720" y="640" width="40" height="40"/>
-  <object type="tremplin" x="10520" y="560" width="40" height="40">
+  <object type="tremplin" x="10480" y="560" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
    </properties>
   </object>
-  <object type="tremplin" x="10400" y="640" width="40" height="40"/>
+  <object type="tremplin" x="10360" y="640" width="40" height="40"/>
   <object type="tremplin" x="11160" y="400" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
@@ -817,7 +817,7 @@
   <object name="tube" type="Tube" x="9560" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="11600" y="280" width="40" height="40"/>
   <object name="tube" type="Tube" x="11680" y="280" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="11800" y="480" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="12040" y="480" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="12200" y="480" width="40" height="40"/>
   <object name="tube" type="Tube" x="12760" y="280" width="40" height="40"/>
   <object name="tube" type="Tube" x="12480" y="360" width="40" height="40"/>
@@ -878,7 +878,6 @@
     <property name="orientation" value="haut"/>
    </properties>
   </object>
-  <object name="Tourelle" type="Tourelle" x="4480" y="520" width="80" height="40"/>
   <object name="FinDuNiveau" type="FinNiveau" x="17520" y="520" width="120" height="240"/>
   <object name="tube" type="Tube" x="1480" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="1400" y="360" width="40" height="40"/>
@@ -992,5 +991,7 @@
   <object name="tube" type="Tube" x="10600" y="480" width="40" height="40"/>
   <object name="tube" type="Tube" x="12560" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="12880" y="280" width="40" height="40"/>
+  <object name="tube" type="Tube" x="12120" y="480" width="40" height="40"/>
+  <object name="tube" type="Tube" x="11960" y="480" width="40" height="40"/>
  </objectgroup>
 </map>

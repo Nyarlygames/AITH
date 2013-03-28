@@ -135,10 +135,10 @@ package
 
 		override public function update():void
 		{
-			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
-			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
-		
+			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
+			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
+			
 			if (FlxG.overlap(cursor, retour))
 			{
 				retour.play("on");
@@ -153,21 +153,40 @@ package
 			if (FlxG.univ == 1) {
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
 					level1.loadGraphic(ImgLevel1On);
+					TweenMax.to(level1.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel1.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
+				{
 					level1.loadGraphic(ImgLevel1);
+					TweenMax.to(level1.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel1.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
+				}
 				
-				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level2)) 
+				{
+					TweenMax.to(level2.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel2.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					level2.loadGraphic(ImgLevel2On);
 				}
 				else
+				{
+					TweenMax.to(level2.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel2.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
 					level2.loadGraphic(ImgLevel2);
+				}
 				
 				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
+					TweenMax.to(level3.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel3.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					level3.loadGraphic(ImgLevel3On);
 				}
 				else
+				{
+					TweenMax.to(level3.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel3.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
 					level3.loadGraphic(ImgLevel3);
+				}
 			}
 			else if (FlxG.univ == 2) {
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
