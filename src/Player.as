@@ -319,7 +319,6 @@ package
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-
 			velocity.y = 0;
 			accumulateur = 0;
 			soundRevive.play();
@@ -339,6 +338,21 @@ package
 				vitesse1.volume = 0;
 				vitesse2.volume = 0;
 				vitesse3.volume = 1;
+			}
+			emitter.clear();
+			emitterAlien.clear();
+			for (var i:int = 0; i < 10; i++) 
+			{
+				steamPart = new FlxParticle();
+				steamPart.loadGraphic(ImgParticle);
+				steamPart.alpha = 0.4;
+				emitter.add(steamPart);
+			}
+			for(var g:int = 0; g < 10; g++) {
+				steamPart = new FlxParticle();
+				steamPart.loadGraphic(ImgParticleAlien);
+				steamPart.alpha = 0.4;
+				emitterAlien.add(steamPart);
 			}
 			FlxG.map.reload_map();
 		}
