@@ -17,10 +17,12 @@ package
 		public var loot:int = 0;
 		public var soundPetitTube:FlxSound = new FlxSound();
 		public var soundGrosTube:FlxSound = new FlxSound();
+		public var type:int;
 		
 		public function TubeVert(xpos:int, ypos:int, point:int, id:int) 
 		{
 			super(xpos, ypos);
+			type = id;
 			soundPetitTube.loadEmbedded(SfxPetitTube);
 			soundGrosTube.loadEmbedded(SfxGrosTube);
 			soundGrosTube.volume = 1;

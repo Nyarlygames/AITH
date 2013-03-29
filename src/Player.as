@@ -249,6 +249,8 @@ package
 				accumulateur = 0;
 				gravity = mingravity;
 			}
+			else if (current_tile2 == 2)
+				trace ("JUMP : ", jumping);
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES

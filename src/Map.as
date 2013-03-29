@@ -23,7 +23,7 @@ package
 	{
 		
 		public var ens:FlxGroup = new FlxGroup();											// ALIENS
-		public var tourelles:FlxGroup = new FlxGroup();											// TOURELLES
+		public var tourelles:FlxGroup = new FlxGroup();										// TOURELLES
 		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
 		public var piques:FlxGroup = new FlxGroup();										// PIQUES
 		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
@@ -50,6 +50,14 @@ package
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
+
+		
+		public var ens_save:FlxGroup = new FlxGroup();											// ALIENS
+		public var tourelles_save:FlxGroup = new FlxGroup();									// TOURELLES
+		public var item_save:FlxGroup = new FlxGroup();											// TUBES VERTS
+		public var destructible_save:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
+		public var ascenceurs_save:FlxGroup = new FlxGroup();									// ASCENCEURS
+		public var DustbinBieber_save:FlxGroup = new FlxGroup();								// POUBELLES
         [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
         [Embed(source = '../assets/gfx/gameplay/sol_destructible.png')] public var ImgDesSol:Class;
@@ -277,24 +285,31 @@ package
 						break;
 					case "Tube":
 						item.add (new TubeVert(object.x, object.y, 1,0));
+						item_save.add (new TubeVert(object.x, object.y, 1,0));
 						break;
 					case "GrosTube":
 						item.add (new TubeVert(object.x, object.y, 5,1));
+						item_save.add (new TubeVert(object.x, object.y, 5,1));
 						break;
 					case "Alien":
 						ens.add (new AlienNormal(object.x, object.y));
+						ens_save.add (new AlienNormal(object.x, object.y));
 						break;
 					case "AlienVert":
 						ens.add (new AlienVert(object.x, object.y));
+						ens_save.add (new AlienVert(object.x, object.y));
 						break;
 					case "Tourelle":
 						tourelles.add (new Tourelle(object.x, object.y));
+						tourelles_save.add (new Tourelle(object.x, object.y));
 						break;
 					case "AlienHorizontal":
 						ens.add (new AlienHorizontal(object.x, object.y));
+						ens_save.add (new AlienHorizontal(object.x, object.y));
 						break;
 					case "Ascenceur":
 						ascenceurs.add (new Ascenceur(object.x, object.y));
+						ascenceurs_save.add (new Ascenceur(object.x, object.y));
 						break;
 					case "Troika":
 						shootemup.add (new ShootemUp(object.x, object.y));
@@ -316,6 +331,7 @@ package
 						break;
 					case "Poubelles":
 						DustbinBieber.add (new Poubelle(object.x, object.y));
+						DustbinBieber_save.add (new Poubelle(object.x, object.y));
 						break;
 					case "Soucoupe":
 						soucoupes.add (new Soucoupe(object.x, object.y));
@@ -332,7 +348,10 @@ package
 					case "Des_sol":
 						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
 						ground.immovable = true;
+						var ground_save:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
+						ground_save.immovable = true;
 						destructible.add(ground);
+						destructible_save.add(ground_save);
 						break;
 					case "Tremplin80":
 						var tremplin80:FlxSprite = new FlxSprite(object.x, object.y);
@@ -402,67 +421,42 @@ package
 		
 		// RECHARGE OBJETS POUR CHECKPOINTS
 		public function reload_map():void {
-			var fileContent:String = new mapfile();
-			var lignes:Array = fileContent.split('\n'); 
-			if (lignes != null) {
-				var loader:URLLoader = new URLLoader();
-				loader.addEventListener(Event.COMPLETE,onTmxReLoaded);
-				loader.load(new	URLRequest(lignes[2]));
-			}
-		}
-		
-		/* TODO
-		 * SAUVEGUARDE DES GROUPES AU CHARGEMENT POUR EVITER DE RECHARGER
-		 */
-		
-		// RESET ASCENCEUR ET AUTRES CONNERIES A FAIRE
-		public function onTmxReLoaded(e:Event):void {
-			var xml:XML = new XML(e.target.data);
-			var tmx:TmxMap = new TmxMap(xml);
-			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
-			
-			ascenceurs.clear();
-			item.clear();
 			ens.clear();
-			DustbinBieber.clear();
-			destructible.clear();
-			/* TODO 
-			 * reset flammes
-			 * & reset halo soucoupes*/
-			tourelles.clear();
-			
-			for each(var object:TmxObject in group.objects) {
-				switch(object.type) {
-					case "Ascenceur":
-						ascenceurs.add (new Ascenceur(object.x, object.y));
-						break;
-					case "Des_sol":
-						var ground:FlxSprite = new FlxSprite(object.x, object.y, ImgDesSol);
-						ground.immovable = true;
-						destructible.add(ground);
-						break;
-					case "Alien":
-						ens.add (new AlienNormal(object.x, object.y));
-						break;
-					case "AlienVert":
-						ens.add (new AlienVert(object.x, object.y));
-						break;
-					case "AlienHorizontal":
-						ens.add (new AlienHorizontal(object.x, object.y));
-						break;
-					case "Poubelles":
-						DustbinBieber.add (new Poubelle(object.x, object.y));
-						break;
-					case "Tourelle":
-						tourelles.add (new Tourelle(object.x, object.y));
-						break;						
-					case "Tube":
-						item.add (new TubeVert(object.x, object.y, 1,0));
-						break;
-					case "GrosTube":
-						item.add (new TubeVert(object.x, object.y, 5,1));
-						break;
+			for each (var en:FlxSprite in ens_save.members) {
+				if (en is AlienHorizontal) {
+					var new_enh:AlienHorizontal = new AlienHorizontal(en.x, en.y);
+					ens.add(new_enh);
 				}
+				if (en is AlienNormal) {
+					var new_enn:AlienNormal = new AlienNormal(en.x, en.y);
+					ens.add(new_enn);
+				}
+			}
+			ascenceurs.clear();
+			for each (var asc:Ascenceur in ascenceurs_save.members) {
+				var new_asc:Ascenceur = new Ascenceur(asc.x, asc.y);
+				ascenceurs.add(new_asc);
+			}
+			item.clear();
+			for each (var itm:TubeVert in item_save.members) {
+				var new_item:TubeVert = new TubeVert(itm.x, itm.y, itm.loot, itm.type);
+				item.add(new_item);
+			}
+			DustbinBieber.clear();
+			for each (var dust:Poubelle in DustbinBieber_save.members) {
+				var new_dust:Poubelle = new Poubelle(dust.x, dust.y);
+				DustbinBieber.add(new_dust);
+			}
+			destructible.clear();
+			for each (var dest:FlxSprite in destructible_save.members) {
+				var new_dest:FlxSprite = new FlxSprite(dest.x, dest.y, ImgDesSol);
+				new_dest.immovable = true;
+				destructible.add(new_dest);
+			}
+			tourelles.clear();
+			for each (var tour:FlxSprite in tourelles_save.members) {
+				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
+				tourelles.add(new_tour);
 			}
 		}
 	}
