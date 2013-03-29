@@ -13,6 +13,7 @@ package
 	import org.flixel.FlxParticle;
 	import org.flixel.FlxSound;
 	import org.flixel.plugin.photonstorm.FlxWeapon;
+	import org.flixel.FlxSubState;
 	
 	/**
 	 * Joueur (jimi)
@@ -56,21 +57,28 @@ package
 		public var maxgravity_test:int 			= 2000;
 		public var checkscore:int				= 0;		// SCORE DEPUIS LE DERNIER CHECKPOINT
 		public var volumespeed:Number			= 0.02;		// BAISSE SON MOTEUR
+		public var from:int						= 0;		// WHERE DID HE DIE
 		
 		public var jumping:Boolean 				= false;	// LE JOUEUR SAUTE?
 		public var pause:Boolean 				= false;	// LE JEU EST EN PAUSE?
+		public var dead:Boolean 				= false;	// JIMI EST MORT ? OMGWTF!
 		public var set_old:Boolean 				= true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
+		public var old_acceleration:FlxPoint	= new FlxPoint(0, 0);	// OLD ACCELERATION
+		public var old_velocity:FlxPoint		= new FlxPoint(0, 0);	// OLD VELOCITY
+		public var old_accu:FlxPoint			= new FlxPoint(0, 0);	// OLD ACCUMULATEUR
+		public var old_gravity:int				= 1;					// OLD GRAVITY
 		public var angularspeed:int 			= 150;		// VITESSE DE ROTATION
 		public var pushing:Boolean 				= false;	// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle				= null;		// POUBELLE POUSSEE
 		public var emitter:FlxEmitter;			
-		public var emitterAlien:FlxEmitter;						// MOTEUR			// MOTEUR
+		public var emitterAlien:FlxEmitter;		// MOTEUR
 		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
 		public var steamPart:FlxParticle;
 		
 		public static var univUnlock:Boolean;
 		public static var scoreStars:int	 =  0;
 		public static var starsNeed:int	 	 =  9;
+		public var death:DeathScreen;
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -145,87 +153,89 @@ package
 		
 		override public function update():void 
 		{
-			play ("midSpeed");
-			jauge.y = y - 270;
-			jauge.frame = (palier_accumulateur + 10000) / 7500 + 12;
-			
-			if (angle == 0) {
-				emitter.y = y + frameHeight - 35;
-				emitter.x = x ;
-				emitterAlien.y = y + frameHeight - 35;
-				emitterAlien.x = x;
-			}
-			else {
-				emitter.x = x + 20;
-				emitter.y = y + frameHeight - 30;
-				emitterAlien.x = x + 20;
-				emitterAlien.y = y + frameHeight - 30;
-			}
-			if (angle < -45)
-			{
-				angularVelocity = 0;
-			}
-			
-			if (FlxG.keys.pressed("SPACE"))
-			{
-				emitterAlien.on = true;
-				emitter.on = false;
-			}
-			else if (!FlxG.keys.any())
-			{
-				emitterAlien.on = false;
-				emitter.on = true;
-			}
-			
-			if ((acceleration.y > mingravity && acceleration.y < maxgravity)){
-				if (FlxG.keys.pressed("SPACE")) {
-					if (gravity >= maxgravity) {
-						gravity = maxgravity;
-					} else {
-						gravity += gravity_increment * FlxG.elapsed;
+			if ((!pause) && (!dead)) {
+				play ("midSpeed");
+				jauge.y = y - 270;
+				jauge.frame = (palier_accumulateur + 10000) / 7500 + 12;
+				
+				if (angle == 0) {
+					emitter.y = y + frameHeight - 35;
+					emitter.x = x ;
+					emitterAlien.y = y + frameHeight - 35;
+					emitterAlien.x = x;
+				}
+				else {
+					emitter.x = x + 20;
+					emitter.y = y + frameHeight - 30;
+					emitterAlien.x = x + 20;
+					emitterAlien.y = y + frameHeight - 30;
+				}
+				if (angle < -45)
+				{
+					angularVelocity = 0;
+				}
+				
+				if (FlxG.keys.pressed("SPACE"))
+				{
+					emitterAlien.on = true;
+					emitter.on = false;
+				}
+				else if (!FlxG.keys.any())
+				{
+					emitterAlien.on = false;
+					emitter.on = true;
+				}
+				
+				if ((acceleration.y > mingravity && acceleration.y < maxgravity)){
+					if (FlxG.keys.pressed("SPACE")) {
+						if (gravity >= maxgravity) {
+							gravity = maxgravity;
+						} else {
+							gravity += gravity_increment * FlxG.elapsed;
+						}
+					} else if ((velocity.y > 0) || on_ascenseur){
+						if (gravity <= mingravity) {
+							gravity = mingravity;
+						} else {
+							gravity -= gravity_decrement * FlxG.elapsed;
+						}
 					}
-				} else if ((velocity.y > 0) || on_ascenseur){
-					if (gravity <= mingravity) {
-						gravity = mingravity;
-					} else {
-						gravity -= gravity_decrement * FlxG.elapsed;
+				}
+				if (FlxG.keys.pressed("SPACE") && (velocity.x > minspeed)) {
+					velocity.x -= speeddown * FlxG.elapsed;
+					if (palier_accumulateur + 1000 <= -10000)
+						palier_accumulateur += 1000;
+				}
+				else if (!FlxG.keys.any()) {
+					if ((palier_accumulateur - 1000) >= max_palier) {
+						palier_accumulateur -= 1000;
 					}
 				}
-			}
-			if (FlxG.keys.pressed("SPACE") && (velocity.x > minspeed)) {
-				velocity.x -= speeddown * FlxG.elapsed;
-				if (palier_accumulateur + 1000 <= -10000)
-					palier_accumulateur += 1000;
-			}
-			else if (!FlxG.keys.any()) {
-				if ((palier_accumulateur - 1000) >= max_palier) {
-					palier_accumulateur -= 1000;
+				
+				acceleration.y = gravity * FlxG.elapsed + const_gravity;
+				
+				if (FlxG.overlap(FlxG.map.tremplin_bas, this)) {
+					on_tremplin = true;
 				}
-			}
-			
-			acceleration.y = gravity * FlxG.elapsed + const_gravity;
-			
-			if (FlxG.overlap(FlxG.map.tremplin_bas, this)) {
-				on_tremplin = true;
-			}
-			if (on_tremplin == true) {
-				accumulateur += palier_accumulateur * FlxG.elapsed;
-				if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
-						on_tremplin = false;
-						acceleration.y += accumulateur;
-						offset.y = 20;
-						width = 80;
+				if (on_tremplin == true) {
+					accumulateur += palier_accumulateur * FlxG.elapsed;
+					if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
+							on_tremplin = false;
+							acceleration.y += accumulateur;
+							offset.y = 20;
+							width = 80;
+					}
 				}
+				
+				if (velocity.y != 0) {
+					jumping = true;
+				} else {
+					jumping = false;
+				}
+				
+				if (velocity.x < (minspeed - 5))
+					velocity.x = init_speed;
 			}
-			
-			if (velocity.y != 0) {
-				jumping = true;
-			} else {
-				jumping = false;
-			}
-			
-			if (velocity.x < (minspeed - 5))
-				velocity.x = init_speed;
 		}
 		
 		// GESTIONS DES COLLISIONS DE TILES
@@ -313,50 +323,82 @@ package
 		
 		public function stopPlayer():void // ARRETE LE DEPLACEMENT DU JOUEUR
 		{
-			palier_accumulateur = 0;
-			maxVelocity.y = 0;
-			maxVelocity.x = 0;
-			acceleration.x = 0;
+			//maxVelocity.y = 0;
+			//maxVelocity.x = 0;
+			old_gravity = gravity;
+			old_accu.x = accumulateur;
+			old_accu.y = palier_accumulateur;
+			old_acceleration.x = acceleration.x;
+			old_acceleration.y = acceleration.y;
+			old_velocity.x = velocity.x;
+			old_velocity.y = velocity.y;
+			trace("PAUSE : ", velocity.x, velocity.y, acceleration.x, acceleration.y);
 			velocity.x = 0;
+			velocity.y = 0;
+			acceleration.x = 0;
+			acceleration.y = 0;
+			trace("PAUSE2 : ", velocity.x, velocity.y, acceleration.x, acceleration.y);
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-			velocity.y = 0;
-			accumulateur = 0;
-			soundRevive.play();
-			x = checkpoint.x;
-			if (where == 1) {
-				y = checkpoint.y - 10;
+			dead = true;
+			stopPlayer();
+			from = where;
+			death = new DeathScreen();
+			FlxG.state.setSubState(death, onDeathClosed);
+		}
+		
+				// FIN DU MONDE
+		public function onDeathClosed(state:FlxSubState, result:String):void
+		{
+			// RETRY
+			if (result == DeathScreen.RETRY) {
+				accumulateur = 0;
+				soundRevive.play();
+				x = checkpoint.x;
+				if (from == 1) {
+					y = checkpoint.y - 10;
+				}
+				else
+					y = checkpoint.y;
+				palier_accumulateur = max_palier;
+				FlxG.score -= checkscore;
+				checkscore = 0;
+				velocity.x = init_speed;
+				angle = 0;
+				gravity = mingravity;
+				if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null)) {
+					vitesse1.volume = 0;
+					vitesse2.volume = 0;
+					vitesse3.volume = 1;
+				}
+				emitter.clear();
+				emitterAlien.clear();
+				for (var i:int = 0; i < 10; i++) 
+				{
+					steamPart = new FlxParticle();
+					steamPart.loadGraphic(ImgParticle);
+					steamPart.alpha = 0.4;
+					emitter.add(steamPart);
+				}
+				for(var g:int = 0; g < 10; g++) {
+					steamPart = new FlxParticle();
+					steamPart.loadGraphic(ImgParticleAlien);
+					steamPart.alpha = 0.4;
+					emitterAlien.add(steamPart);
+				}
+				FlxG.map.reload_map();
+				pause = false;
 			}
-			else
-				y = checkpoint.y;
-			palier_accumulateur = max_palier;
-			FlxG.score -= checkscore;
-			checkscore = 0;
-			velocity.x = init_speed;
-			angle = 0;
-			gravity = mingravity;
-			if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null)) {
-				vitesse1.volume = 0;
-				vitesse2.volume = 0;
-				vitesse3.volume = 1;
+			// RETOUR MENU
+			else if (result == DeathScreen.QUIT_GAME) {
+				if ((FlxG.state as Play).sound != null)
+					(FlxG.state as Play).sound.destroy();
+				vitesse1.destroy();
+				vitesse2.destroy();
+				vitesse3.destroy();
+				FlxG.switchState(new UnivChooser());
 			}
-			emitter.clear();
-			emitterAlien.clear();
-			for (var i:int = 0; i < 10; i++) 
-			{
-				steamPart = new FlxParticle();
-				steamPart.loadGraphic(ImgParticle);
-				steamPart.alpha = 0.4;
-				emitter.add(steamPart);
-			}
-			for(var g:int = 0; g < 10; g++) {
-				steamPart = new FlxParticle();
-				steamPart.loadGraphic(ImgParticleAlien);
-				steamPart.alpha = 0.4;
-				emitterAlien.add(steamPart);
-			}
-			FlxG.map.reload_map();
 		}
 	}
 

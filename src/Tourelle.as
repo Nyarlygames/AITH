@@ -15,7 +15,7 @@ package
 	public class Tourelle extends FlxSprite
 	{
 		[Embed(source = '../assets/gfx/gameplay/overboard_tourelle.png')] protected var ImgTourelle:Class;
-		[Embed(source = '../assets/gfx/gameplay/flamme_tourelle.png')] protected var ImgFlamme:Class;
+		[Embed(source = '../assets/gfx/gameplay/flamme.png')] protected var ImgFlamme:Class;
 		public var rate:int = 1500;							// CADENCE DE TIR
 		public var maxtir:int = 200;						// MAXIMUM DE TIR
 		public var speed:int = 300;							// VITESSE DE TIR
@@ -33,8 +33,8 @@ package
 			super(xpos, ypos, ImgTourelle);
 			
 			flammes = new FlxSprite(x + 20, y + frameHeight);
-			flammes.loadGraphic(ImgFlamme, true, false, 40, 80);
-			flammes.addAnimation("flammes",  [0, 1, 2, 3, 4], 5, false);
+			flammes.loadGraphic(ImgFlamme, true, false, 40, 160);
+			flammes.addAnimation("flammes",  [0, 1, 2, 3, 4, 2, 3, 4, 3, 2 ,1, 0], 10, false);
 			loadGraphic(ImgTourelle, true, false, 80, 40);
 			addAnimation("default",  [0, 1, 2], 10, true);!
 			timer.start(3, 0, activate_burst);
@@ -50,8 +50,9 @@ package
 		
 		override public function update():void 
 		{
-			if (FlxCollision.pixelPerfectCheck(FlxG.player, flammes))
+			if (FlxCollision.pixelPerfectCheck(FlxG.player, flammes)) {
 				FlxG.player.die_motherfucker(0);
+			}
 		}
 		
 		public function activate_burst(timer:FlxTimer):void{

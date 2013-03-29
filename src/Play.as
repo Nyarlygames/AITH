@@ -148,57 +148,64 @@ package
 						sound.play();
 					justloaded = false;
 				}
-				super.update();
-				tube_count.text = ""+FlxG.score;
-				// MENU PAUSE
-				if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
-					player.pause = true;
-					this.setSubState(pause, onMenuClosed);
-				}
-				
-				// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
-				if (FlxG.keys.pressed("BACKSPACE")) {
-					if (sound != null)
-						sound.destroy();
-					player.vitesse1.destroy();
-					player.vitesse2.destroy();
-					player.vitesse3.destroy();
-					FlxG.score = -map.id;
-					FlxG.resetState();
-				}
-				if (!player.onScreen(FlxG.camera)) {
-					player.die_motherfucker(1);
-				}
-				
-				//DEV Respawn at checkpoint
-				if (FlxG.keys.pressed("R")) 
-				{
-					player.die_motherfucker(0);
-				}
-				
-				// COLLISIONS
-				FlxG.overlap(player, map.ens, alien_coll);
-				FlxG.overlap(player, map.item, getTube);
-				if (FlxG.overlap(player, map.piques)) {
-					player.die_motherfucker(0);
-				}
-				FlxG.collide(player, map.destructible, check_ground);
-				
-				// POUBELLE JOUEUR
-				FlxG.overlap(player, map.DustbinBieber, player.dustbin);
-				
-				// TOURELLE
-				FlxG.overlap(map.tourelles, player, tourelle);
-				
-				// Fin JOUEUR
-				FlxG.overlap(player, map.fin, endLevel);
-				
-				if (!FlxG.collide(player, map.tile, player.tiles_coll)) {
-					player.accumulateur = 0;
+				super.update(); 
+				if ((!FlxG.player.pause) && (!FlxG.player.dead)) {
+					tube_count.text = ""+FlxG.score;
+					// MENU PAUSE
+					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
+						player.pause = true;
+						player.stopPlayer();
+						this.setSubState(pause, onMenuClosed);
+					}
+					
+					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
+					if (FlxG.keys.pressed("BACKSPACE")) {
+						if (sound != null)
+							sound.destroy();
+						player.vitesse1.destroy();
+						player.vitesse2.destroy();
+						player.vitesse3.destroy();
+						FlxG.score = -map.id;
+						FlxG.resetState();
+					}
+					if (!player.onScreen(FlxG.camera)) {
+						player.die_motherfucker(1);
+					}
+					
+					//DEV Respawn at checkpoint
+					if (FlxG.keys.pressed("R")) 
+					{
+						player.die_motherfucker(0);
+					}
+					
+					// COLLISIONS
+					FlxG.overlap(player, map.ens, alien_coll);
+					FlxG.overlap(player, map.item, getTube);
+					if (FlxG.overlap(player, map.piques)) {
+						player.die_motherfucker(0);
+					}
+					FlxG.collide(player, map.destructible, check_ground);
+					
+					// POUBELLE JOUEUR
+					FlxG.overlap(player, map.DustbinBieber, player.dustbin);
+					
+					// TOURELLE
+					FlxG.overlap(map.tourelles, player, tourelle);
+					
+					// Fin JOUEUR
+					FlxG.overlap(player, map.fin, endLevel);
+					
+					if (!FlxG.collide(player, map.tile, player.tiles_coll)) {
+						player.accumulateur = 0;
+					}
 				}
 				// UPDATE PAUSE SCREEN
 				if (player.pause) {
 					pause.inPause();
+				}
+				// UPDATE PAUSE SCREEN
+				if (player.dead) {
+					player.death.inPause();
 				}
 			}
 		}
@@ -332,6 +339,12 @@ package
 			}
 			// RETOUR AU JEU
 			else if (result == PauseMenu.RESUME_GAME) {
+				player.acceleration = player.old_acceleration;
+				player.gravity = player.old_gravity;
+				player.accumulateur = player.old_accu.x;
+				player.palier_accumulateur = player.old_accu.y;
+				player.velocity = player.old_velocity;
+				trace("RESUME : ", player.velocity.x, player.velocity.y, player.acceleration.x, player.acceleration.y);
 				player.pause = false;
 				player.set_old = true;
 			}

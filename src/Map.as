@@ -21,7 +21,6 @@ package
 	 */
 	public class Map 
 	{
-		
 		public var ens:FlxGroup = new FlxGroup();											// ALIENS
 		public var tourelles:FlxGroup = new FlxGroup();										// TOURELLES
 		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
@@ -409,7 +408,7 @@ package
 			// CHARGEMENT FINIT
 			loaded = true;
 			// AJOUT PLAYER ET CAM
-			player = new Player(50, 700 - 40);
+			player = new Player(50, 610);
 			FlxG.player = player;
 			cam = new Cam(player);
 			FlxG.state.add(player);

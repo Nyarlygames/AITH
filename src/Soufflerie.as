@@ -62,12 +62,9 @@ package
 				{
 					applied = false;
 				}
-				
 				/* TODO 
 				 * Gerer les différents angles de soufflerie
 				 */
-				
-				 
 		}
 		
 		public function getup(obj1:FlxObject, obj2:FlxObject):void {
