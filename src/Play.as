@@ -151,12 +151,30 @@ package
 				}
 				super.update(); 
 				if ((!FlxG.player.pause) && (!FlxG.player.dead)) {
-					tube_count.text = ""+FlxG.score;
+					tube_count.text = "" + FlxG.score;
+					
 					// MENU PAUSE
-					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) {
+					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) 
+					{
 						player.pause = true;
 						player.stopPlayer();
 						this.setSubState(pause, onMenuClosed);
+					}
+						
+					if (!player.onScreen(FlxG.camera)) {
+						player.die_motherfucker(1);
+					}
+					
+					//DEV Respawn at checkpoint
+					if (FlxG.keys.pressed("R")) 
+					{
+						player.die_motherfucker(0);
+					}
+					
+					// DEV : PASSE AU MENU DE SCORING
+					if ((FlxG.keys.justPressed("S"))) 
+					{
+						FlxG.switchState(new ScoreScreen());
 					}
 					
 					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
@@ -169,15 +187,7 @@ package
 						FlxG.score = -map.id;
 						FlxG.resetState();
 					}
-					if (!player.onScreen(FlxG.camera)) {
-						player.die_motherfucker(1);
-					}
 					
-					//DEV Respawn at checkpoint
-					if (FlxG.keys.pressed("R")) 
-					{
-						player.die_motherfucker(0);
-					}
 					
 					// COLLISIONS
 					FlxG.overlap(player, map.ens, alien_coll);

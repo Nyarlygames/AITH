@@ -4,6 +4,7 @@ package
 	import org.flixel.FlxState;
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
+	import org.flixel.FlxSave;
 	import org.flixel.FlxSubState;
 	import flash.system.System;
 	import com.greensock.*;
@@ -19,6 +20,7 @@ package
 		[Embed(source = '../assets/gfx/ui/background-default.png')] protected var ImgBackDefault:Class;
 		[Embed(source = '../assets/gfx/ui/choix-tiles.png')] 	 	protected var ImgChoixTexte:Class;
 		[Embed(source = '../assets/gfx/ui/backChxLvl.png')] 		protected var ImgFondLevel:Class;
+		[Embed(source = '../assets/gfx/ui/objectifs.png')] 			protected var ImgObjectif:Class;
 		[Embed(source = '../assets/gfx/ui/tile-tubes.png')] 		protected var ImgTubes:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] 			protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')]		protected var ImgCursorAnim:Class;
@@ -31,15 +33,27 @@ package
 		
 		public var finTexte:FlxSprite;
 		public var texteUnivers:FlxSprite;
+		
 		public var backLevel1:FlxSprite;
 		public var backLevel2:FlxSprite;
 		public var backLevel3:FlxSprite;
+		
+		public var Objectif1:FlxSprite;
+		public var Objectif2:FlxSprite;
+		public var Objectif3:FlxSprite;
+		
 		public var backDefault:FlxSprite;
 		public var retour:FlxSprite;
 		public var cursor:FlxSprite;
 		public var level1:FlxSprite;
 		public var level2:FlxSprite;
 		public var level3:FlxSprite;
+		
+		public var save:FlxSave;
+		
+		static var checkObjectif1:Boolean;
+		static var checkObjectif2:Boolean;
+		static var checkObjectif3:Boolean;
 		
 		override public function create():void
 		{
@@ -54,12 +68,39 @@ package
 				backDefault.y = 0;
 				add (backDefault);
 			/*	Back par défaut */
-		
+			
 			/*	Texte Score */
 				var txtScore : FlxSprite = UI.choixTiles;
 				add (txtScore);
 				txtScore.x = 30; txtScore.y = 30; txtScore.play("score");
 			/*	Texte Score */
+		
+			/*	Tete alien 1 */
+				Objectif1 = new FlxSprite(132, 232, ImgObjectif);
+				Objectif1.loadGraphic(ImgObjectif, true, false, 120, 165);
+				Objectif1.addAnimation("on", [0], 1, true);
+				Objectif1.addAnimation("off", [1], 1, true);
+				Objectif1.play("off");
+				add (Objectif1);
+			/*	Tete alien 1 */
+		
+			/*	Tete alien 2 */
+				Objectif2 = new FlxSprite(338, 232, ImgObjectif);
+				Objectif2.loadGraphic(ImgObjectif, true, false, 120, 165);
+				Objectif2.addAnimation("on", [0], 1, true);
+				Objectif2.addAnimation("off", [1], 1, true);
+				Objectif2.play("off");
+				add (Objectif2);
+			/*	Tete alien 2 */
+		
+			/*	Tete alien 3 */
+				Objectif3 = new FlxSprite(542, 232, ImgObjectif);
+				Objectif3.loadGraphic(ImgObjectif, true, false, 120, 165);
+				Objectif3.addAnimation("on", [0], 1, true);
+				Objectif3.addAnimation("off", [1], 1, true);
+				Objectif3.play("off");
+				add (Objectif3);
+			/*	Tete alien 2 */
 			
 			
 			/*	Retour au menu */
@@ -107,6 +148,12 @@ package
 			{
 				retour.play("off");
 			}
+			
+			// SI obj 1 = VALIDE, ALORS ANIM + AUGMENTATION DU SCORE DU JOUEUR
+			
+			
+			
+			// etc
 		}
 	}
 }

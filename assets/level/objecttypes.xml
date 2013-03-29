@@ -21,4 +21,6 @@
  <objecttype name="tremplin" color="#a0a0a4"/>
  <objecttype name="Tourelle" color="#2f2927"/>
  <objecttype name="FinNiveau" color="#a4299a"/>
+ <objecttype name="Ground" color="#ff7c1e"/>
+ <objecttype name="Backflip" color="#96a478"/>
 </objecttypes>
