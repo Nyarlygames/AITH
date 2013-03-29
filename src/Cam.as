@@ -28,11 +28,6 @@ package
 		{
 			// CAM SUIT LE JOUEUR
 			x = player.x + 350;
-			
-			// DEPASSEMENT VERTICAL
-			if (player.y - player.frameHeight/2 <= 500)
-				y = player.y + 260;
-			else y = 500;
 		}
 		
 		

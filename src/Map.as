@@ -457,6 +457,7 @@ package
 				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
 				tourelles.add(new_tour);
 			}
+			FlxG.player.dead = false;
 		}
 	}
 

@@ -51,9 +51,9 @@ package
 		
 		public var save:FlxSave;
 		
-		static var checkObjectif1:Boolean;
-		static var checkObjectif2:Boolean;
-		static var checkObjectif3:Boolean;
+		public static var checkObjectif1:Boolean;
+		public static var checkObjectif2:Boolean;
+		public static var checkObjectif3:Boolean;
 		
 		override public function create():void
 		{

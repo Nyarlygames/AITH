@@ -152,15 +152,14 @@ package
 				super.update(); 
 				if ((!FlxG.player.pause) && (!FlxG.player.dead)) {
 					tube_count.text = "" + FlxG.score;
-					
 					// MENU PAUSE
-					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P"))) 
+					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P")))
 					{
 						player.pause = true;
 						player.stopPlayer();
 						this.setSubState(pause, onMenuClosed);
 					}
-						
+					
 					if (!player.onScreen(FlxG.camera)) {
 						player.die_motherfucker(1);
 					}
@@ -168,15 +167,13 @@ package
 					//DEV Respawn at checkpoint
 					if (FlxG.keys.pressed("R")) 
 					{
-						player.die_motherfucker(0);
+						player.die_motherfucker(4);
 					}
-					
 					// DEV : PASSE AU MENU DE SCORING
 					if ((FlxG.keys.justPressed("S"))) 
 					{
 						FlxG.switchState(new ScoreScreen());
 					}
-					
 					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
 					if (FlxG.keys.pressed("BACKSPACE")) {
 						if (sound != null)
@@ -187,7 +184,6 @@ package
 						FlxG.score = -map.id;
 						FlxG.resetState();
 					}
-					
 					
 					// COLLISIONS
 					FlxG.overlap(player, map.ens, alien_coll);
@@ -262,21 +258,21 @@ package
 				case 180:
 					// "bas"
 					if (obj1.y > obj2.y)
-						player.die_motherfucker(0);
+						player.die_motherfucker(2);
 					break;
 				case -90:
 					if (obj1.x < obj2.x)
-						player.die_motherfucker(0);
+						player.die_motherfucker(2);
 					//"gauche"
 					break;
 				case 90:
 					if (obj1.x > obj2.x)
-						player.die_motherfucker(0);
+						player.die_motherfucker(2);
 					// "droite"
 					break;
 				case 0:
 					if (obj1.y < obj2.y)
-						player.die_motherfucker(0);
+						player.die_motherfucker(2);
 					// "haut"
 					break;
 			}
@@ -344,7 +340,7 @@ package
 				}
 				// MEURT
 				else {
-					player.die_motherfucker(0);
+					player.die_motherfucker(3);
 				}
 			}
 		}
@@ -375,7 +371,6 @@ package
 			}
 			// RETOUR AU JEU
 			else if (result == PauseMenu.RESUME_GAME) {
-				trace("BEFORE RESUME : ", player.old_velocity.x, player.old_velocity.y, player.old_acceleration.x, player.old_acceleration.y, player.old_accu.y, player.old_accu.x);
 				player.acceleration.x = player.old_acceleration.y;
 				player.acceleration.x = player.old_acceleration.y;
 				player.gravity = player.old_gravity;
@@ -384,7 +379,7 @@ package
 				player.velocity.y = player.old_velocity.y;
 				player.velocity.x = player.old_velocity.x;
 				player.angle = player.old_angle;
-				trace("RESUME : ", player.velocity.x, player.velocity.y, player.acceleration.x, player.acceleration.y, player.palier_accumulateur, player.accumulateur);
+				player.angularVelocity = - player.angularspeed;
 				player.pause = false;
 			}
 		}

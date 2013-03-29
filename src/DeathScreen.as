@@ -18,7 +18,8 @@ package
 	{
 		public static const QUIT_GAME:String = "DeathScreen::quit_game";
 		public static const RETRY:String = "DeathScreen::retry";
-	/*	public var text:FlxText;
+		public static const RESTART:String = "DeathScreen::restart";
+		public var text:FlxText;
 		public var restartText:FlxText;
 		public var resumeText:FlxText;
 		public var quitText:FlxText;
@@ -30,17 +31,18 @@ package
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgMenu:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgMenuOn:Class;
-		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;*/
+		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		
 		public function DeathScreen()
 		{
 			super(true, 0x33FF00FF, true);
 			trace("dead");
+			FlxG.mouse.hide();
 		}
 		
 		public override function create():void
 		{			
-		/*	// RESUME			
+			// RESUME			
 			resumePic = new FlxSprite(0, FlxG.height *3/15, ImgMenu);
 			resumePic.x = (FlxG.width / 2) - (resumePic.frameWidth / 2);
 			FlxG.state.add(resumePic);
@@ -79,7 +81,7 @@ package
 			
 			
 			// PAUSE
-			text = new FlxText(0, FlxG.height /15, FlxG.width, "PAUSE");
+			text = new FlxText(0, FlxG.height /15, FlxG.width, "MORT");
 			text.setFormat("philly", 60, 0x00FF8000, TextAlign.CENTER, 0xFFCCCCCC);
 			FlxG.state.add(text);
 			text.scrollFactor = new FlxPoint(0, 0);
@@ -89,15 +91,12 @@ package
 			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
 			cursor.addAnimation("souris", [0, 1, 2, 3], 8, true);
 			cursor.play("souris");
-			FlxG.state.add(cursor)*/
+			FlxG.state.add(cursor)
 		}
 		
 		// UPDATE DU MENU PAUSE
 		public function inPause():void {
-			if (FlxG.keys.justPressed("SPACE")) {
-				FlxG.resetState();
-			}
-			/*// GESTION CLICS SOURIS				
+			// GESTION CLICS SOURIS				
 				//RESTART
 				if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) {
 					restartPic.loadGraphic(ImgMenuOn);
@@ -111,7 +110,7 @@ package
 				if (FlxCollision.pixelPerfectCheck(cursor, resumePic)) {
 					resumePic.loadGraphic(ImgMenuOn);
 					if (FlxG.mouse.justPressed())
-					resume();
+					retry();
 				}
 				else
 					resumePic.loadGraphic(ImgMenu);
@@ -125,27 +124,33 @@ package
 				else
 					quitPic.loadGraphic(ImgMenu);
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
-			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	*/
+			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	
 		}
 		
 		// REPRENDRE
 		private function retry():void
 		{
-			/*quitPic.visible = false;
-			resumePic.visible = false;
-			restartPic.visible = false;
-			quitText.visible = false;
-			resumeText.visible = false;
-			restartText.visible = false;
-			cursor.visible = false;
-			text.visible = false;
-			this.close(RESUME_GAME);*/
+			cursor.kill();
+			restartPic.kill();
+			restartText.kill();
+			resumePic.kill();
+			resumeText.kill();
+			quitPic.kill();
+			quitText.kill();
+			text.kill();
+			this.close(RETRY);
+		}
+		
+		// RECOMMENCER
+		private function restart():void
+		{
+			this.close(RESTART);
 		}
 		
 		// RETOUR AU MENU
 		private function tryQuit():void
 		{
-			//this.close(QUIT_GAME);
+			this.close(QUIT_GAME);
 		}
 	}
 }

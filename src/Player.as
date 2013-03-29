@@ -67,6 +67,7 @@ package
 		public var old_accu:FlxPoint			= new FlxPoint(0, 0);	// OLD ACCUMULATEUR
 		public var old_gravity:int				= 0;					// OLD GRAVITY
 		public var old_angle:int				= 0;					// OLD ANGLE
+		public var old_angularspeed:int			= 0;				// OLD ANGLE
 		public var angularspeed:int 			= 150;		// VITESSE DE ROTATION
 		public var pushing:Boolean 				= false;	// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle				= null;		// POUBELLE POUSSEE
@@ -74,6 +75,7 @@ package
 		public var emitterAlien:FlxEmitter;		// MOTEUR
 		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
 		public var steamPart:FlxParticle;
+		
 		public var death:DeathScreen;
 		
 		public function Player(xPos:int, yPos:int) 
@@ -256,7 +258,7 @@ package
 				gravity = mingravity;
 			}
 			else if (current_tile2 == 2)
-				trace ("JUMP : ", jumping);
+				trace ("JUMP : ", jumping, velocity.y);
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
@@ -327,6 +329,7 @@ package
 			old_velocity.x = velocity.x;
 			old_velocity.y = velocity.y;
 			old_angle = angle;
+			old_angularspeed = angularVelocity;
 			velocity.x = 0;
 			velocity.y = 0;
 			acceleration.x = 0;
@@ -338,11 +341,13 @@ package
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-			dead = true;
-			stopPlayer();
-			from = where;
-			death = new DeathScreen();
-			FlxG.state.setSubState(death, onDeathClosed);
+			if (death == null) {
+				dead = true;
+				stopPlayer();
+				from = where;
+				death = new DeathScreen();
+				FlxG.state.setSubState(death, onDeathClosed);
+			}
 		}
 		
 				// FIN DU MONDE
@@ -358,6 +363,7 @@ package
 				}
 				else
 					y = checkpoint.y;
+				FlxG.map.cam.x = x + 350;
 				palier_accumulateur = max_palier;
 				FlxG.score -= checkscore;
 				checkscore = 0;
@@ -385,7 +391,9 @@ package
 					emitterAlien.add(steamPart);
 				}
 				FlxG.map.reload_map();
-				pause = false;
+				death.kill();
+				death.destroy();
+				death = null;
 			}
 			// RETOUR MENU
 			else if (result == DeathScreen.QUIT_GAME) {
@@ -395,6 +403,15 @@ package
 				vitesse2.destroy();
 				vitesse3.destroy();
 				FlxG.switchState(new UnivChooser());
+			}
+			else if (result == DeathScreen.RESTART) {
+				if ((FlxG.state as Play).sound != null)
+					(FlxG.state as Play).sound.destroy();
+				vitesse1.destroy();
+				vitesse2.destroy();
+				vitesse3.destroy();
+				FlxG.score = -(FlxG.state as Play).map.id;
+				FlxG.resetState();
 			}
 		}
 	}
