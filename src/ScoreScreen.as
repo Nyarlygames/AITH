@@ -148,7 +148,6 @@ package
 			{
 				retour.play("off");
 			}
-			
 			// SI obj 1 = VALIDE, ALORS ANIM + AUGMENTATION DU SCORE DU JOUEUR
 			
 			

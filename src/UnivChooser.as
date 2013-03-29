@@ -108,10 +108,10 @@ package
 			
 			
 			// Débloque l'univers 2
-			if ( Player.scoreStars > Player.starsNeed)
-			{
-				this.unlockUniv2(Player.univUnlock);
-			}
+			//if ( Player.scoreStars > Player.starsNeed)
+			//{
+				//this.unlockUniv2(Player.univUnlock);
+			//}
 			
 			/*
 			SCORE 1
