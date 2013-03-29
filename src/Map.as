@@ -60,6 +60,22 @@ package
         [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
         [Embed(source = '../assets/gfx/gameplay/sol_destructible.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_01.png')] public var ImgCloud1:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_02.png')] public var ImgCloud2:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_03.png')] public var ImgCloud3:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_04.png')] public var ImgCloud4:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_05.png')] public var ImgCloud5:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_06.png')] public var ImgCloud6:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_07.png')] public var ImgCloud7:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_08.png')] public var ImgCloud8:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_09.png')] public var ImgCloud9:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud10:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud11:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud12:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud13:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud14:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud15:Class;
+        [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_10.png')] public var ImgCloud16:Class;
         [Embed(source = '../assets/gfx/levels/background_exterieur_near_01.png')] public var ImgNear1:Class;
         [Embed(source = '../assets/gfx/levels/background_exterieur_near_02.png')] public var ImgNear2:Class;
         [Embed(source = '../assets/gfx/levels/background_exterieur_near_03.png')] public var ImgNear3:Class;
@@ -137,6 +153,63 @@ package
 			fond.loadMap(csv3, BgFond, 40, 40);
 			tile.loadMap(csv, MapTiles, 40, 40);
 			FlxG.state.add(fond);
+			
+			/* Clouds */
+			var group_clouds:TmxObjectGroup = tmx.getObjectGroup('Back_clouds');
+			for each(var object_cloud:TmxObject in group_clouds.objects) {
+				var bat_cloud:FlxSprite = new FlxSprite(object_cloud.x, object_cloud.y);
+				switch(object_cloud.gid) {
+					case 54 :
+						bat_cloud.loadGraphic(ImgCloud2);
+						break;
+					case 55 :
+						bat_cloud.loadGraphic(ImgCloud3);
+						break;
+					case 56 :
+						bat_cloud.loadGraphic(ImgCloud4);
+						break;
+					case 57 :
+						bat_cloud.loadGraphic(ImgCloud5);
+						break;
+					case 58 :
+						bat_cloud.loadGraphic(ImgCloud6);
+						break;
+					case 59 :
+						bat_cloud.loadGraphic(ImgCloud7);
+						break;
+					case 60 :
+						bat_cloud.loadGraphic(ImgCloud8);
+						break;
+					case 61 :
+						bat_cloud.loadGraphic(ImgCloud9);
+						break;
+					case 62 :
+						bat_cloud.loadGraphic(ImgCloud10);
+						break;
+					case 63 :
+						bat_cloud.loadGraphic(ImgCloud11);
+						break;
+					case 64 :
+						bat_cloud.loadGraphic(ImgCloud12);
+						break;
+					case 65 :
+						bat_cloud.loadGraphic(ImgCloud13);
+						break;
+					case 66 :
+						bat_cloud.loadGraphic(ImgCloud14);
+						break;
+					case 67 :
+						bat_cloud.loadGraphic(ImgCloud15);
+						break;
+					case 68 :
+						bat_cloud.loadGraphic(ImgCloud16);
+						break;
+				}
+				bat_cloud.y -= bat_cloud.frameHeight
+				bat_cloud.scrollFactor = new FlxPoint(1, 1);
+				clouds.add(bat_cloud);
+			}
+			FlxG.state.add(clouds);
 			
 			/* FAR */
 			var group_far:TmxObjectGroup = tmx.getObjectGroup('Back_far');
@@ -260,8 +333,6 @@ package
 				batiments_near.add(bat_near);
 			}
 			FlxG.state.add(batiments_near);
-			/* TODO
-			 * Ajout nuages*/
 			
 			FlxG.state.add(tile);
 			FlxG.tilemap = tile;
