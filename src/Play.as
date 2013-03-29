@@ -142,8 +142,9 @@ package
 			if (map.loaded) {
 				if (justloaded == true) {
 					player = map.player;
-					FlxG.state.add(ui);
 					FlxG.state.add(tube_count);
+					ui = new UI();
+					FlxG.state.add(ui);
 					if (sound != null)
 						sound.play();
 					justloaded = false;

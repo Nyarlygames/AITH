@@ -30,8 +30,9 @@ package
 			super(xpos, ypos, ImgSoucoupe);
 			soundIn.loadEmbedded(SfxIn);
 			halo = new FlxSprite(xpos + 20, ypos + frameHeight);
-			halo.loadGraphic(ImgHalo, true, false, 80, 160);
+			halo.loadGraphic(ImgHalo, true, false, 80, 260);
 			halo.addAnimation("aspire", [0, 1, 2, 3], 10, true);
+			halo.addAnimation("default", [0], 10, true);
 			FlxG.state.add(halo);
 			immovable = true;
 		}
@@ -42,6 +43,7 @@ package
 				if (!FlxG.overlap(FlxG.player, halo, getup) && (applied == true)) 
 				{
 					applied = false;
+					halo.play("default");
 				}
 			}
 		}
