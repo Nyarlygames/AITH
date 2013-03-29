@@ -14,7 +14,6 @@ package
 		{
 			super(xpos, ypos, ImgPique);
 			immovable = true;
-			
 			switch (dir) {
 				case "bas":
 					angle = 180;

@@ -62,11 +62,11 @@ package
 		public var jumping:Boolean 				= false;	// LE JOUEUR SAUTE?
 		public var pause:Boolean 				= false;	// LE JEU EST EN PAUSE?
 		public var dead:Boolean 				= false;	// JIMI EST MORT ? OMGWTF!
-		public var set_old:Boolean 				= true;		// LES VALEURS DE VITESSE/GRAVITE ONT ETE STOCKEES AU DEBUT DE LA PAUSE?
 		public var old_acceleration:FlxPoint	= new FlxPoint(0, 0);	// OLD ACCELERATION
 		public var old_velocity:FlxPoint		= new FlxPoint(0, 0);	// OLD VELOCITY
 		public var old_accu:FlxPoint			= new FlxPoint(0, 0);	// OLD ACCUMULATEUR
-		public var old_gravity:int				= 1;					// OLD GRAVITY
+		public var old_gravity:int				= 0;					// OLD GRAVITY
+		public var old_angle:int				= 0;					// OLD ANGLE
 		public var angularspeed:int 			= 150;		// VITESSE DE ROTATION
 		public var pushing:Boolean 				= false;	// ENTRAIN DE POUSSER UNE POUBELLE?
 		public var push:Poubelle				= null;		// POUBELLE POUSSEE
@@ -323,8 +323,6 @@ package
 		
 		public function stopPlayer():void // ARRETE LE DEPLACEMENT DU JOUEUR
 		{
-			//maxVelocity.y = 0;
-			//maxVelocity.x = 0;
 			old_gravity = gravity;
 			old_accu.x = accumulateur;
 			old_accu.y = palier_accumulateur;
@@ -332,12 +330,15 @@ package
 			old_acceleration.y = acceleration.y;
 			old_velocity.x = velocity.x;
 			old_velocity.y = velocity.y;
-			trace("PAUSE : ", velocity.x, velocity.y, acceleration.x, acceleration.y);
+			old_angle = angle;
 			velocity.x = 0;
 			velocity.y = 0;
 			acceleration.x = 0;
 			acceleration.y = 0;
-			trace("PAUSE2 : ", velocity.x, velocity.y, acceleration.x, acceleration.y);
+			gravity = 0;
+			palier_accumulateur = 0;
+			accumulateur = 0;
+
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE

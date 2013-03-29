@@ -182,9 +182,7 @@ package
 					// COLLISIONS
 					FlxG.overlap(player, map.ens, alien_coll);
 					FlxG.overlap(player, map.item, getTube);
-					if (FlxG.overlap(player, map.piques)) {
-						player.die_motherfucker(0);
-					}
+					FlxG.overlap(player, map.piques, die_piques);
 					FlxG.collide(player, map.destructible, check_ground);
 					
 					// POUBELLE JOUEUR
@@ -245,6 +243,33 @@ package
 		public function tourelle(obj1:FlxSprite, obj2:FlxSprite):void 
 		{
 			player.die_motherfucker(0);
+		}
+		
+		// PIQUES
+		public function die_piques(obj1:FlxSprite, obj2:FlxSprite):void 
+		{
+			switch ((obj2 as Piques).angle){
+				case 180:
+					// "bas"
+					if (obj1.y > obj2.y)
+						player.die_motherfucker(0);
+					break;
+				case -90:
+					if (obj1.x < obj2.x)
+						player.die_motherfucker(0);
+					//"gauche"
+					break;
+				case 90:
+					if (obj1.x > obj2.x)
+						player.die_motherfucker(0);
+					// "droite"
+					break;
+				case 0:
+					if (obj1.y < obj2.y)
+						player.die_motherfucker(0);
+					// "haut"
+					break;
+			}
 		}
 		
 		// GESTION FIN DE NIVEAU
@@ -340,14 +365,17 @@ package
 			}
 			// RETOUR AU JEU
 			else if (result == PauseMenu.RESUME_GAME) {
-				player.acceleration = player.old_acceleration;
+				trace("BEFORE RESUME : ", player.old_velocity.x, player.old_velocity.y, player.old_acceleration.x, player.old_acceleration.y, player.old_accu.y, player.old_accu.x);
+				player.acceleration.x = player.old_acceleration.y;
+				player.acceleration.x = player.old_acceleration.y;
 				player.gravity = player.old_gravity;
 				player.accumulateur = player.old_accu.x;
 				player.palier_accumulateur = player.old_accu.y;
-				player.velocity = player.old_velocity;
-				trace("RESUME : ", player.velocity.x, player.velocity.y, player.acceleration.x, player.acceleration.y);
+				player.velocity.y = player.old_velocity.y;
+				player.velocity.x = player.old_velocity.x;
+				player.angle = player.old_angle;
+				trace("RESUME : ", player.velocity.x, player.velocity.y, player.acceleration.x, player.acceleration.y, player.palier_accumulateur, player.accumulateur);
 				player.pause = false;
-				player.set_old = true;
 			}
 		}
 	}

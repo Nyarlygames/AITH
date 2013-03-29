@@ -94,6 +94,9 @@ package
 		
 		// UPDATE DU MENU PAUSE
 		public function inPause():void {
+			if (FlxG.keys.justPressed("SPACE")) {
+				FlxG.resetState();
+			}
 			/*// GESTION CLICS SOURIS				
 				//RESTART
 				if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) {
