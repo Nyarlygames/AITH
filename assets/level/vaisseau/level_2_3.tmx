@@ -140,13 +140,21 @@
   <object name="trigger_ascenseur" type="Trigger" x="2120" y="280" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="2040" y="280" width="40" height="40"/>
   <object type="FinNiveau" x="1960" y="560" width="120" height="160"/>
-  <object name="endBackflip" type="endBackflip" x="1160" y="80" width="320" height="680"/>
-  <object name="Backflip" type="backflip" x="840" y="80" width="320" height="680"/>
   <object type="tremplin" x="800" y="640" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
    </properties>
   </object>
   <object type="tremplin" x="680" y="720" width="40" height="40"/>
+  <object name="soufflerie" type="Soufflerie" x="1640" y="640" width="40" height="80">
+   <properties>
+    <property name="angle" value="-90"/>
+   </properties>
+  </object>
+  <object name="soufflerie" type="Soufflerie" x="1040" y="280" width="80" height="40">
+   <properties>
+    <property name="angle" value="180"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

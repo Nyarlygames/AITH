@@ -241,6 +241,10 @@ package
 			}			
 			if (FlxG.keys.justPressed("FOUR") || FlxG.keys.justPressed("NUMPADFOUR")) {
 					FlxG.switchState(new ScoreScreen());
+			}		
+			if (FlxG.keys.justPressed("C")) {
+					FlxG.usersave.univUnlock = true;
+					trace (FlxG.usersave.univUnlock);
 			}
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);
