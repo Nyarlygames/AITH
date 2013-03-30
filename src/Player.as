@@ -356,7 +356,6 @@ package
 				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
 				emitter.kill();
-			if (death == null) {
 				trace("DEAD FROM : ",where);
 				dead = true;
 				stopPlayer();
