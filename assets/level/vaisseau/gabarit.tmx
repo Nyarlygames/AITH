@@ -62,7 +62,7 @@
   <object name="soucoupe" type="Soucoupe" x="318" y="522" width="80" height="40"/>
   <object name="Hsoufflerie" type="Soufflerie" x="600" y="680" width="80" height="40">
    <properties>
-    <property name="Angle" value="0"/>
+    <property name="angle" value="0"/>
    </properties>
   </object>
   <object name="trigger_ascenseur" type="Trigger" x="240" y="600" width="40" height="40"/>
@@ -96,17 +96,17 @@
   </object>
   <object name="Gsoufflerie" type="Soufflerie" x="480" y="640" width="40" height="80">
    <properties>
-    <property name="Angle" value="-90"/>
+    <property name="angle" value="-90"/>
    </properties>
   </object>
   <object name="Dsoufflerie" type="Soufflerie" x="520" y="720" width="40" height="80">
    <properties>
-    <property name="Angle" value="90"/>
+    <property name="angle" value="90"/>
    </properties>
   </object>
   <object name="Bsoufflerie" type="Soufflerie" x="600" y="760" width="80" height="40">
    <properties>
-    <property name="Angle" value="90"/>
+    <property name="angle" value="180"/>
    </properties>
   </object>
  </objectgroup>
