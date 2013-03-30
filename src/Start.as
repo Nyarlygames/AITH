@@ -104,6 +104,9 @@ package
 				cursor.play("souris");
 				add(cursor)
 				FlxG.mouse.hide();
+				
+			if (FlxG.usersave == null)
+				FlxG.usersave = new UserSave();
 			
 			//Tweens
 			var twLogo : TweenMax = TweenMax.to(logo.scale, 1, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : twCred}  );
@@ -121,7 +124,7 @@ package
 			super.update();
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
-			
+				
 			//Défilement automatique de jimi
 			if (jimi.x > 900)
 			{

@@ -176,6 +176,12 @@ package
 					{
 						FlxG.switchState(new ScoreScreen());
 					}
+					// DEV : PASSE AU MENU DE SCORING
+					if ((FlxG.keys.justPressed("L"))) 
+					{
+						var loot:TubeVert = new TubeVert(0, 0, 5, 1);
+						getTube(player, loot);
+					}
 					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
 					if (FlxG.keys.pressed("BACKSPACE")) {
 						if (sound != null)

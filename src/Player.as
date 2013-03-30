@@ -234,7 +234,6 @@ package
 				}
 				
 				if (velocity.x <= (minspeed - speeddown * FlxG.elapsed)) {
-					trace(velocity.x);
 					velocity.x = init_speed;
 				}
 				if (acceleration.x != acceleration_speed)
