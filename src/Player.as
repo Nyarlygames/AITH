@@ -218,10 +218,10 @@ package
 				if (on_tremplin == true) {
 					accumulateur += palier_accumulateur * FlxG.elapsed;
 					if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
-							on_tremplin = false;
-							acceleration.y += accumulateur;
-							offset.y = 20;
-							width = 80;
+						on_tremplin = false;
+						acceleration.y += accumulateur;
+						offset.y = 20;
+						width = 80;
 					}
 				}
 				
@@ -247,19 +247,24 @@ package
 			var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +1);// en dessous
 			
 			// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
-			if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
+			if (((current_tile == 1) || (current_tile == 4)))
 			{
 				angularVelocity = -angularspeed;
 				offset.y = 20;
 				width = 60;
+				on_tremplin = true;
 				/* TODO
 				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
 				 */
 			}
-			else if ( jumping == false){
-				angle = 0;
+			else if (jumping == false) {
+				if (on_tremplin == false)
+					angle = 0;
 				accumulateur = 0;
 				gravity = mingravity;
+			}
+			else {
+				// WHAT'S THERE ?
 			}
 		}
 		
