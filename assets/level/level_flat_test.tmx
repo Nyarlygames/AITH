@@ -20,7 +20,7 @@
  </tileset>
  <layer name="Sol" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKgCAQBVCpfXX/07ZylzjFwJC8B38lqJ9xYWsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQZ6u+AADAQvytAADi9sUS7XVMUt3ja2a9eq4Xe43Wz8Sz/piMtxOdV3XXpwAwdgOObgVB
+   eJzt1ssKgCAQBVAp2lb//7Wu2iVOMiDJOXBX4uOiC0sBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPNvgvCP1FAAAa/C3AgCI2xdLtNfZyeweo+n1enJ/WKs1fiXu9cdkvJ3ofc3u+hYA2ip1MQVL
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="600" height="20" opacity="0.9">
@@ -40,9 +40,15 @@
   <object type="Alien" x="1720" y="320" width="80" height="80"/>
   <object type="AlienHorizontal" x="1880" y="600" width="80" height="80"/>
   <object type="Piques" x="1920" y="600" width="40" height="40"/>
-  <object type="Tourelle" x="680" y="520" width="80" height="40"/>
-  <object type="Tourelle" x="920" y="520" width="80" height="40"/>
-  <object type="Tourelle" x="1160" y="520" width="80" height="40"/>
+  <object type="Tourelle" x="1520" y="80" width="80" height="40"/>
+  <object type="Tourelle" x="1760" y="80" width="80" height="40"/>
+  <object type="Tourelle" x="2000" y="80" width="80" height="40"/>
+  <object type="tremplin" x="1000" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="tremplin" x="880" y="720" width="40" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">
@@ -52,4 +58,5 @@
  </layer>
  <objectgroup name="Back_middle" width="600" height="20"/>
  <objectgroup name="Back_far" width="600" height="20"/>
+ <objectgroup name="Back_clouds" width="600" height="20"/>
 </map>

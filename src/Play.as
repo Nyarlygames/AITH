@@ -188,7 +188,7 @@ package
 					// COLLISIONS
 					FlxG.overlap(player, map.ens, alien_coll);
 					FlxG.overlap(player, map.item, getTube);
-					FlxG.overlap(player, map.piques, die_piques);
+					FlxG.collide(player, map.piques, die_piques);
 					FlxG.collide(player, map.destructible, check_ground);
 					
 					// POUBELLE JOUEUR

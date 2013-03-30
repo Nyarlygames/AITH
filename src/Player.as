@@ -220,10 +220,10 @@ package
 				if (on_tremplin == true) {
 					accumulateur += palier_accumulateur * FlxG.elapsed;
 					if (FlxG.overlap(FlxG.map.tremplin_haut, this)) {
-							on_tremplin = false;
-							acceleration.y += accumulateur;
-							offset.y = 20;
-							width = 80;
+						on_tremplin = false;
+						acceleration.y += accumulateur;
+						offset.y = 20;
+						width = 80;
 					}
 				}
 				
@@ -233,8 +233,12 @@ package
 					jumping = false;
 				}
 				
-				if (velocity.x < (minspeed - 5))
+				if (velocity.x <= (minspeed - 5))
 					velocity.x = init_speed;
+				if (acceleration.x != acceleration_speed)
+					acceleration.x = acceleration_speed;
+					
+				
 			}
 		}
 		
@@ -245,22 +249,25 @@ package
 			var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +1);// en dessous
 			
 			// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
-			if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
+			if (((current_tile == 1) || (current_tile == 4)))
 			{
 				angularVelocity = -angularspeed;
 				offset.y = 20;
 				width = 60;
+				on_tremplin = true;
 				/* TODO
 				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
 				 */
 			}
-			else if (current_tile2 == 2 && jumping == false){
-				angle = 0;
+			else if (jumping == false) {
+				if (on_tremplin == false)
+					angle = 0;
 				accumulateur = 0;
 				gravity = mingravity;
 			}
-			else if (current_tile2 == 2)
-				trace ("JUMP : ", jumping, velocity.y);
+			else {
+				// WHAT'S THERE ?
+			}
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
@@ -339,15 +346,21 @@ package
 			gravity = 0;
 			palier_accumulateur = 0;
 			accumulateur = 0;
+			angularVelocity = 0;
 
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
+<<<<<<< HEAD
 			if (death == null) 
 			{
 				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
 				emitter.kill();
+=======
+			if (death == null) {
+				trace("DEAD FROM : ",where);
+>>>>>>> d194e2c431aee2111e73c832d856b9b06d1f6915
 				dead = true;
 				stopPlayer();
 				from = where;
