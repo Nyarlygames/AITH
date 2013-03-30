@@ -23,6 +23,7 @@ package
 		[Embed(source = '../assets/gfx/ui/tile-tubes.png')] 		protected var ImgTubes:Class;
 		[Embed(source = '../assets/gfx/ui/logo-tile.png')]		 	protected var ImgLogoTile:Class;
 		[Embed(source = '../assets/gfx/ui/etoile.png')] 			protected var ImgStars:Class;
+		[Embed(source = '../assets/gfx/ui/play-arrow.png')] 		protected var ImgArrowPlay:Class;
 		[Embed(source = '../assets/gfx/ui/jimi_roule_rapide.png')] 	protected var ImgRunningJimi:Class;
 		[Embed(source = '../assets/gfx/ui/background-default.png')] protected var ImgBackDefault:Class;
 		[Embed(source = '../assets/gfx/ui/borne-credits.png')] 		protected var ImgCredits:Class;
@@ -35,6 +36,7 @@ package
 		public var retour:FlxSprite;
 		public var logo:FlxSprite;
 		public var cursor:FlxSprite;
+		public var arrowPlay:FlxSprite;
 		public var credits:FlxSprite;
 		public var authors:FlxSprite;
 		public var jimi:FlxSprite;
@@ -51,11 +53,11 @@ package
 			add (backDefault);
 			
 			// LOGO
-			logo = new FlxSprite(490,245, ImgLogoTile);
+			logo = new FlxSprite(191,85, ImgLogoTile);
 			logo.loadGraphic(ImgLogoTile, true, false, 1684/4, 399);
 			logo.addAnimation("contour", [1,2,3], 1, true);
 			logo.addAnimation("normal", [0], 5, true);
-			logo.scale.x = 0.5; logo.scale.y = 0.5; logo.x = 191; logo.y = 85;
+			logo.scale.x = 0.5; logo.scale.y = 0.5;
 			timer.start(10, 1);
 			add(logo);
 			
@@ -89,6 +91,12 @@ package
 				retour.play("off");
 			/*	Retour en arrière */
 			
+			/*	Fleche pour jouer */
+				arrowPlay = new FlxSprite(399, 17, ImgArrowPlay);
+				arrowPlay.alpha = 0;
+				add (arrowPlay);
+			/*	Fleche pour jouer */
+			
 			// CURSEUR SOURIS
 				cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 				cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
@@ -102,6 +110,7 @@ package
 			function twCred() : void
 			{
 				TweenMax.to(credits, 0.8, { y:400, ease:Cubic.easeIn } );
+				TweenMax.to(arrowPlay, 5, { alpha:1, ease:Elastic.easeIn}  );
 			}
 			
 			
@@ -143,6 +152,7 @@ package
 			}
 			if (FlxCollision.pixelPerfectCheck(cursor, credits))
 			{
+				TweenMax.to(credits, 1, { alpha:0.4, ease:Linear.easeOut } );
 				if (FlxG.mouse.justPressed()) 
 				{
 					TweenMax.to(authors, 0.9, { y:300, ease:Linear.easeOut } );
@@ -151,6 +161,10 @@ package
 					TweenMax.to(credits, 0.4, { alpha:0, ease:Linear.easeOut } );
 					TweenMax.to(jimi, 0.4, { alpha:0, ease:Linear.easeOut } );
 				}
+			}
+			else
+			{
+				TweenMax.to(credits, 1, { alpha:1, ease:Linear.easeOut } );
 			}
 			
 			if (FlxG.keys.pressed("SPACE")) 

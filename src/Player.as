@@ -370,6 +370,8 @@ package
 		{
 			// RETRY
 			if (result == DeathScreen.RETRY) {
+				TweenMax.to(this, 1, { alpha:1, ease:Linear.easeOut }  );
+				TweenMax.to(jauge, 1, { alpha:1, ease:Linear.easeOut }  );
 				accumulateur = 0;
 				soundRevive.play();
 				x = checkpoint.x;
