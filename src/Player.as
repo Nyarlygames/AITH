@@ -231,8 +231,12 @@ package
 					jumping = false;
 				}
 				
-				if (velocity.x < (minspeed - 5))
+				if (velocity.x <= (minspeed - 5))
 					velocity.x = init_speed;
+				if (acceleration.x != acceleration_speed)
+					acceleration.x = acceleration_speed;
+					
+				
 			}
 		}
 		
@@ -252,13 +256,12 @@ package
 				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
 				 */
 			}
-			else if (current_tile2 == 2 && jumping == false){
+			else if ( jumping == false){
 				angle = 0;
 				accumulateur = 0;
 				gravity = mingravity;
 			}
-			else if (current_tile2 == 2)
-				trace ("JUMP : ", jumping, velocity.y);
+			else if ((current_tile2 != 1) && (current_tile2 != 0))
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
@@ -337,11 +340,13 @@ package
 			gravity = 0;
 			palier_accumulateur = 0;
 			accumulateur = 0;
+			angularVelocity = 0;
 
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
 			if (death == null) {
+				trace("DEAD FROM : ",where);
 				dead = true;
 				stopPlayer();
 				from = where;

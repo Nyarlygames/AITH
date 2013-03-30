@@ -24,6 +24,10 @@ package
 				case "droite":
 					angle = 90;
 					break;
+				case "haut":
+					y += 5;
+					height = frameHeight - 5;
+					offset.y = 5;
 			}
 		}
 		

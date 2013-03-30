@@ -42,7 +42,7 @@ package
         public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
         public var fond:FlxTilemap = new FlxTilemap();										// FOND
 		public var batiments_near:FlxGroup = new FlxGroup();								// BG NEAR
-		public var clouds:FlxGroup = new FlxGroup();										// BG NEAR
+		public var clouds:FlxGroup = new FlxGroup();										// CLOUDS
 		public var batiments_middle:FlxGroup = new FlxGroup();								// BG FAR
 		public var batiments_far:FlxGroup = new FlxGroup();									// BG MIDDLE
 		public var loaded:Boolean = false;													// MAP CHARGEE?
@@ -52,6 +52,7 @@ package
 
 		
 		public var ens_save:FlxGroup = new FlxGroup();											// ALIENS
+		public var grounds:FlxGroup = new FlxGroup();											// SOLS
 		public var tourelles_save:FlxGroup = new FlxGroup();									// TOURELLES
 		public var item_save:FlxGroup = new FlxGroup();											// TUBES VERTS
 		public var destructible_save:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
@@ -341,6 +342,15 @@ package
 			var group:TmxObjectGroup = tmx.getObjectGroup('Gameplay');
 			for each(var object:TmxObject in group.objects) {
 				switch(object.type) {
+					case "Ground":
+						var sol:FlxSprite = new FlxSprite(object.x, object.y);
+						//sol.visible = false;
+						sol.width = object.width;
+						sol.y += object.height - 10;
+						sol.height = object.height;
+						grounds.add(sol);
+						FlxG.state.add(grounds);
+						break;
 					case "tremplin":
 						if (object.custom != null) {
 							var tremp:FlxSprite = new FlxSprite(object.x, object.y);
