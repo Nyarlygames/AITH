@@ -151,61 +151,84 @@ package
 			}
 				
 			if (FlxG.univ == 1) {
-				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level1)) 
+				{
 					level1.loadGraphic(ImgLevel1On);
-					TweenMax.to(level1.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
-					TweenMax.to(backLevel1.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(level1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
 					level1.loadGraphic(ImgLevel1);
-					TweenMax.to(level1.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
-					TweenMax.to(backLevel1.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(level1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 				}
 				
 				if (FlxCollision.pixelPerfectCheck(cursor, level2)) 
 				{
-					TweenMax.to(level2.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
-					TweenMax.to(backLevel2.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					level2.loadGraphic(ImgLevel2On);
+					TweenMax.to(level2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
-					TweenMax.to(level2.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
-					TweenMax.to(backLevel2.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
 					level2.loadGraphic(ImgLevel2);
+					TweenMax.to(level2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 				}
 				
-				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
-					TweenMax.to(level3.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
-					TweenMax.to(backLevel3.scale, 0.1, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+				if (FlxCollision.pixelPerfectCheck(cursor, level3)) 
+				{
 					level3.loadGraphic(ImgLevel3On);
+					TweenMax.to(level3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
-					TweenMax.to(level3.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
-					TweenMax.to(backLevel3.scale, 0.3, { x:1,y:1, ease:Bounce.easeOut } );
 					level3.loadGraphic(ImgLevel3);
+					TweenMax.to(level3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 				}
 			}
 			else if (FlxG.univ == 2) {
-				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level1)) 
+				{
 					level1.loadGraphic(ImgLevel4On);
+					TweenMax.to(level1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
+				{
 					level1.loadGraphic(ImgLevel4);
+					TweenMax.to(level1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+				}
 				
-				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level2)) 
+				{
 					level2.loadGraphic(ImgLevel5On);
+					TweenMax.to(level2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
+				{
 					level2.loadGraphic(ImgLevel5);
+					TweenMax.to(level2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+				}
 				
-				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
+				if (FlxCollision.pixelPerfectCheck(cursor, level3)) 
+				{
 					level3.loadGraphic(ImgLevel6On);
+					TweenMax.to(level3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
+					TweenMax.to(backLevel3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
+				{
 					level3.loadGraphic(ImgLevel6);
+					TweenMax.to(level3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+					TweenMax.to(backLevel3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
+				}
 			}
 			
 
