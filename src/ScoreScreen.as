@@ -61,7 +61,7 @@ package
 			FlxG.bgColor = 0xaa519CCA;
 			
 			FlxG.pauseSounds();
-			
+			trace(FlxG.score, FlxG.player.deadscore);
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
@@ -135,6 +135,15 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
+			
+			/* VALIDATION OBJECTIF 1*/
+			Objectif1.play("on");
+			/* VALIDATION OBJECTIF SANS MORTS*/
+			if (FlxG.player.deadscore == 0)
+				Objectif2.play("on");
+			/* VALIDATION OBJECTIF 100 TUBES*/
+			if (FlxG.score >= 100)
+				Objectif3.play("on");
 		
 			if (FlxG.overlap(cursor, retour))
 			{
