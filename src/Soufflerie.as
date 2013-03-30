@@ -21,15 +21,19 @@ package
 		[Embed(source = "../assets/sfx/gameplay/Soufflerie_idle.mp3")] 		public var SfxIdle:Class;
 		[Embed(source = "../assets/sfx/gameplay/Soufflerie_in.mp3")] 		public var SfxIn:Class;
 		
-		public var soundIdle:FlxSound 		= new FlxSound();
-		public var soundIn:FlxSound 		= new FlxSound();
-		public var gravityup:int = 1000;								// GRAVITY MODIFIER
+		public var soundIdle:FlxSound 	= new FlxSound();
+		public var soundIn:FlxSound 	= new FlxSound();
+		public var gravityup:int 		= 1000;				// Puissance du souffle
 		public var emitter:FlxEmitter;						// MOTEUR
-		public var applied:Boolean = false;
-		public var boost:int = 200;
+		public var applied:Boolean		= false;
+		public var boost:int			= 200;
 		public var souffle:FlxSprite;
+		//   0 -> Haut
+		//   90 -> Droite
+		//   180 -> Bas
+		// - 90 -> Gauche
 		
-		public function Soufflerie(xpos:int, ypos:int, orient:int) 
+		public function Soufflerie(xpos:int, ypos:int, angle:int) 
 		{
 			super(xpos, ypos, ImgSoufflerie);
 			
@@ -37,7 +41,7 @@ package
 			soundIn.loadEmbedded(SfxIn);
 			
 			immovable = true;
-			angle = orient;
+			angle = angle;
 			
 			/*if ((angle == 90) || (angle == -90))
 				x += frameWidth / 2;*/
@@ -55,17 +59,58 @@ package
 			FlxG.state.add(souffle);
 			*/
 			
-			// Emitter à paramétrer encore :)
-			emitter = new FlxEmitter(this.x + frameWidth / 2, this.y, 20);
-			for (var i:int = 0; i < 20; i++) 
+			if (angle == 0)
 			{
-				var p:FlxParticle = new FlxParticle();
-				p.loadGraphic(ImgPartSouffle);
-				emitter.add(p);
+				this.angle = 0;
+				// Emitter
+				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y, 20);
+				for (var i:int = 0; i < 20; i++) 
+				{
+					var p:FlxParticle = new FlxParticle();
+					p.loadGraphic(ImgPartSouffle);
+					emitter.add(p);
+				}
+				emitter.gravity = -200;
+				emitter.setYSpeed( -5, -400);
+				emitter.start(false, 0.8, 0.1, 0);
 			}
-			emitter.gravity = -200;
-			emitter.setYSpeed( -5, -400);
-			emitter.start(false, 0.8,0.1, 0);
+			if (angle == 90)
+			{
+				this.angle = 0;
+			}
+			if (angle == 180)
+			{
+				// Emitter
+				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y + frameWidth, 20);
+				for (var i:int = 0; i < 20; i++) 
+				{
+					var p:FlxParticle = new FlxParticle();
+					p.loadGraphic(ImgPartSouffle);
+					emitter.add(p);
+				}
+				emitter.gravity = -200;
+				emitter.setYSpeed( 10, 400);
+				emitter.start(false, 0.8, 0.1, 0);
+			}
+			if (angle == -90)
+			{
+				this.angle = 180;
+				// Emitter
+				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y + frameWidth, 20);
+				for (var i:int = 0; i < 20; i++) 
+				{
+					var p:FlxParticle = new FlxParticle();
+					p.loadGraphic(ImgPartSouffle);
+					emitter.add(p);
+				}
+				emitter.gravity = -200;
+				emitter.setXSpeed( 10, 400);
+				emitter.start(false, 0.8, 0.1, 0);
+			}
+			
+			
+			
+			
 			FlxG.state.add(emitter);
 		}
 	
@@ -76,13 +121,24 @@ package
 				//soundIdle.play();
 			}
 			if (FlxG.player != null)
-				if (FlxG.overlap(FlxG.player, emitter)) 
+			{
+				if (FlxG.overlap(FlxG.player, emitter) && angle == 0 ) 
 				{
 					FlxG.player.velocity.y -= gravityup * FlxG.elapsed;
 				}
-				/* TODO 
-				 * Gerer les différents angles de soufflerie
-				 */
+				if (FlxG.overlap(FlxG.player, emitter) && angle == 90 ) 
+				{
+					FlxG.player.velocity.x -= gravityup * FlxG.elapsed;
+				}
+				if (FlxG.overlap(FlxG.player, emitter) && angle == 180 ) 
+				{
+					FlxG.player.velocity.y += gravityup * FlxG.elapsed;
+				}
+				if (FlxG.overlap(FlxG.player, emitter) && angle == -90 ) 
+				{
+					FlxG.player.velocity.y -= gravityup * FlxG.elapsed;
+				}
+			}
 		}
 	}
 

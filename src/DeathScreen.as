@@ -36,7 +36,6 @@ package
 		public function DeathScreen()
 		{
 			super(true, 0x33FF00FF, true);
-			trace("dead");
 			FlxG.mouse.hide();
 		}
 		

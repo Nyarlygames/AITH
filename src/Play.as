@@ -10,17 +10,20 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxTilemap;
 	import org.flixel.FlxTimer;
-	import org.flixel.plugin.photonstorm.FlxCollision;
-	import org.flixel.plugin.photonstorm.FlxVelocity;
+	import flash.events.Event;
+	import com.greensock.*;
+	import com.greensock.easing.*;
 	import org.flixel.FlxPoint;
-	import org.flixel.plugin.photonstorm.FlxControl;
-	import org.flixel.plugin.photonstorm.FlxControlHandler;
 	import org.flixel.FlxObject;
-	import org.flixel.plugin.photonstorm.FlxScrollZone;
 	import org.flixel.FlxCamera;
 	import org.flixel.FlxSubState;
-	import flash.events.Event;
 	import org.flixel.system.FlxTile;
+	import org.flixel.plugin.photonstorm.FlxSpecialFX;
+	import org.flixel.plugin.photonstorm.FlxScrollZone;
+	import org.flixel.plugin.photonstorm.FlxControl;
+	import org.flixel.plugin.photonstorm.FlxCollision;
+	import org.flixel.plugin.photonstorm.FlxVelocity;
+	import org.flixel.plugin.photonstorm.FlxControlHandler;
 	import net.pixelpracht.tmx.TmxObject;
 	import net.pixelpracht.tmx.TmxObjectGroup;
 	import org.flixel.FlxText;
@@ -39,16 +42,16 @@ package
 		[Embed(source = "../assets/level/map04.txt", mimeType = "application/octet-stream")] public var mapfile4:Class;
 		[Embed(source = "../assets/level/map05.txt", mimeType = "application/octet-stream")] public var mapfile5:Class;
 		[Embed(source = "../assets/level/map06.txt", mimeType = "application/octet-stream")] public var mapfile6:Class;
+		[Embed(source = '../assets/gfx/ui/backflip.png')] 	 		protected var ImgBackflip:Class;
 		
 		[Embed(source = "../assets/sfx/gameplay/SolDestructible_EnDestruction.mp3")] public var SfxCrepite:Class;
 		[Embed(source = "../assets/sfx/gameplay/SolDestructible_Destruction.mp3")] public var SfxDestrSol:Class;
-		
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level1:Class;
-		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level2:Class;
-		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level3:Class;
-		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level4:Class;
-		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level5:Class;
-		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level6:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level2:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level3:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level4:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level5:Class;
+		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level6:Class;
 		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		
@@ -63,17 +66,18 @@ package
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 2000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 6000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// MAP CHARGEE?
 		public var begin:Boolean = true;					// TUTORIAL DU DEBUT?
 		public var ui:UI = new UI();
+		public var backflip  : FlxSprite;
 		public var tuto:Tutorial;
 		
 		override public function create():void
 		{				
-			tube_count = new FlxText(70, 0, 200, "0");
-			tube_count.y += tube_count.frameHeight - 3;
-			tube_count.setFormat("onedalism", 22, 0x000000);
+			tube_count = new FlxText(75, 0, 200, "0");
+			tube_count.y += tube_count.frameHeight - 10;
+			tube_count.setFormat("onedalism", 28, 0x000000);
 			tube_count.scrollFactor = new FlxPoint(0, 0);
 
 			soundCrepite.loadEmbedded(SfxCrepite);
@@ -144,15 +148,16 @@ package
 			if (map.loaded) {
 				if (justloaded == true) {
 					player = map.player;
-					FlxG.state.add(tube_count);
 					ui = new UI();
 					FlxG.state.add(ui);
+					FlxG.state.add(tube_count);
 					if (sound != null)
 						sound.play();
 					justloaded = false;
 				}
 				super.update(); 
-				if ((!FlxG.player.pause) && (!FlxG.player.dead)) {
+				if ((!FlxG.player.pause) && (!FlxG.player.dead)) 
+				{
 					tube_count.text = "" + FlxG.score;
 					// MENU PAUSE
 					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P")))
@@ -176,6 +181,12 @@ package
 					{
 						FlxG.switchState(new ScoreScreen());
 					}
+					// DEV : PASSE AU MENU DE SCORING
+					if ((FlxG.keys.justPressed("L"))) 
+					{
+						var loot:TubeVert = new TubeVert(0, 0, 5, 1);
+						getTube(player, loot);
+					}
 					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
 					if (FlxG.keys.pressed("BACKSPACE")) {
 						if (sound != null)
@@ -191,7 +202,10 @@ package
 					FlxG.overlap(player, map.ens, alien_coll);
 					FlxG.overlap(player, map.item, getTube);
 					FlxG.collide(player, map.piques, die_piques);
+					FlxG.collide(player, map.piques, souffleColl);
 					FlxG.collide(player, map.destructible, check_ground);
+					FlxG.overlap(player, map.backflip, startBackflip);
+					FlxG.overlap(player, map.endBackflip, endBackflip);
 					
 					// POUBELLE JOUEUR
 					FlxG.overlap(player, map.DustbinBieber, player.dustbin);
@@ -225,6 +239,8 @@ package
 		
 		// GESTION RECUP TUBE VERT
 		public function getTube(obj1:FlxObject, tube:TubeVert):void {
+			
+			TweenMax.to(tube_count.scale, 0.5, { x:1.3,y:1.4, ease:Bounce.easeIn } );
 			if (tube.loot == 5)
 			{
 				tube.soundGrosTube.play();
@@ -238,6 +254,39 @@ package
 			FlxG.score += tube.loot;
 			FlxG.state.add(new Loot(player,tube.loot));
 		}
+		
+		// GESTION RECUP TUBE VERT
+		public function souffleColl(obj1:FlxObject, obj2:FlxObject):void 
+		{
+		
+		}
+		
+		// Commencement du backflip
+		public function startBackflip(obj1:FlxObject, obj2:FlxObject):void 
+		{
+			TweenMax.to(player, 3, { angle : -360, ease:Linear.easeNone, onComplete:testBackflip } );
+			backflip = new FlxSprite(0, 0, ImgBackflip);
+			add (backflip);
+			trace (backflip.alpha);
+		}
+		
+		// Commencement du backflip
+		public function testBackflip():void 
+		{
+			trace ("testgoesOK");
+			TweenMax.to(player, 1, { angle:0, ease:Linear.easeNone } );
+			TweenMax.to(player, 3, { alpha:1, ease:Cubic.easeInOut } );
+		}
+		
+		// Fin du backflip
+		public function endBackflip(obj1:FlxObject, obj2:FlxObject):void 
+		{
+			//TweenMax.to(player.scale, 3, { x : 1, y:1, ease:Linear.easeNone } );
+			//TweenMax.to(player, 2, { angle : 720, ease:Linear.easeNone } );
+			//trace (player.angle);
+		}
+		
+		
 		
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void 

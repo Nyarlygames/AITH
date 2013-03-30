@@ -21,31 +21,33 @@ package
 	 */
 	public class Map 
 	{
-		public var ens:FlxGroup = new FlxGroup();											// ALIENS
-		public var tourelles:FlxGroup = new FlxGroup();										// TOURELLES
-		public var item:FlxGroup = new FlxGroup();											// TUBES VERTS
-		public var piques:FlxGroup = new FlxGroup();										// PIQUES
-		public var destructible:FlxGroup = new FlxGroup();									// SOLS DESTRUCTIBLES
-		public var ascenceurs:FlxGroup = new FlxGroup();									// ASCENCEURS
-		public var shootemup:FlxGroup = new FlxGroup();										// SHOOTEMUP
-		public var tremplins:FlxGroup = new FlxGroup();										// TREMPLINS
-		public var tremplin_haut:FlxGroup = new FlxGroup();									// HAUT
-		public var tremplin_bas:FlxGroup = new FlxGroup();									// BAS
-		public var boss:FlxGroup = new FlxGroup();											// VAGUES
-		public var souffleries:FlxGroup = new FlxGroup();									// SOUFFLERIES
-		public var soucoupes:FlxGroup = new FlxGroup();										// SOUCOUPES
-		public var triggers:FlxGroup = new FlxGroup();										// FIN DE NIVEAU
-		public var fin:FlxGroup = new FlxGroup();											// TRIGGERS
-		public var checkpoints:FlxGroup = new FlxGroup();									// CHECKPOINTS
+		public var ens:FlxGroup				= new FlxGroup();								// ALIENS
+		public var tourelles:FlxGroup 		= new FlxGroup();								// TOURELLES
+		public var item:FlxGroup 			= new FlxGroup();								// TUBES VERTS
+		public var piques:FlxGroup 			= new FlxGroup();								// PIQUES
+		public var destructible:FlxGroup 	= new FlxGroup();								// SOLS DESTRUCTIBLES
+		public var ascenceurs:FlxGroup 		= new FlxGroup();								// ASCENCEURS
+		public var shootemup:FlxGroup 		= new FlxGroup();								// SHOOTEMUP
+		public var tremplins:FlxGroup 		= new FlxGroup();								// TREMPLINS
+		public var tremplin_haut:FlxGroup 	= new FlxGroup();								// HAUT
+		public var tremplin_bas:FlxGroup 	= new FlxGroup();								// BAS
+		public var backflip:FlxGroup 		= new FlxGroup();								// DEBUT BACKFLIP
+		public var endBackflip:FlxGroup 	= new FlxGroup();								// END BACKFLIP
+		public var boss:FlxGroup			= new FlxGroup();								// VAGUES
+		public var souffleries:FlxGroup 	= new FlxGroup();								// SOUFFLERIES
+		public var soucoupes:FlxGroup 		= new FlxGroup();								// SOUCOUPES
+		public var triggers:FlxGroup		= new FlxGroup();								// FIN DE NIVEAU
+		public var fin:FlxGroup 			= new FlxGroup();								// TRIGGERS
+		public var checkpoints:FlxGroup 	= new FlxGroup();								// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
-		public var DustbinBieber:FlxGroup = new FlxGroup();									// POUBELLES
-        public var tile:FlxTilemapExt = new FlxTilemapExt();								// TILES
-        public var fond:FlxTilemap = new FlxTilemap();										// FOND
-		public var batiments_near:FlxGroup = new FlxGroup();								// BG NEAR
-		public var clouds:FlxGroup = new FlxGroup();										// CLOUDS
-		public var batiments_middle:FlxGroup = new FlxGroup();								// BG FAR
-		public var batiments_far:FlxGroup = new FlxGroup();									// BG MIDDLE
-		public var loaded:Boolean = false;													// MAP CHARGEE?
+		public var DustbinBieber:FlxGroup 		= new FlxGroup();							// POUBELLES
+        public var tile:FlxTilemapExt 			= new FlxTilemapExt();						// TILES
+        public var fond:FlxTilemap 				= new FlxTilemap();							// FOND
+		public var batiments_near:FlxGroup		= new FlxGroup();							// BG NEAR
+		public var clouds:FlxGroup 				= new FlxGroup();							// CLOUDS
+		public var batiments_middle:FlxGroup	= new FlxGroup();							// BG FAR
+		public var batiments_far:FlxGroup 		= new FlxGroup();							// BG MIDDLE
+		public var loaded:Boolean 				= false;									// MAP CHARGEE?
 		public var finishedload:Boolean = false;											// CHARGEMENT FINIT (POUR TUTO)
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
@@ -418,6 +420,18 @@ package
 					case "Soucoupe":
 						soucoupes.add (new Soucoupe(object.x, object.y));
 						break;
+					case "backflip":
+						var startBF :FlxSprite = new FlxSprite(object.x, object.y);
+						startBF.width = object.width;
+						startBF.height = object.height;
+						backflip.add (startBF);
+						break;
+					case "endBackflip":
+						var endBF :FlxSprite = new FlxSprite(object.x, object.y);
+						endBF.width = object.width;
+						endBF.height = object.height;
+						endBackflip.add (endBF);
+						break;
 					case "FinNiveau":
 						fin.add (new FinNiveau(object.x, object.y));
 						break;
@@ -484,6 +498,8 @@ package
 			FlxG.state.add(DustbinBieber);
 			FlxG.state.add(shootemup);
 			FlxG.state.add(souffleries);
+			FlxG.state.add(backflip);
+			FlxG.state.add(endBackflip);
 			FlxG.state.add(soucoupes);
 			FlxG.state.add(ens);
 			FlxG.state.add(tourelles);

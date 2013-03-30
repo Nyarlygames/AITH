@@ -22,7 +22,7 @@
   <image source="../../gfx/gameplay/petit_tube.png" width="40" height="40"/>
  </tileset>
  <tileset firstgid="25" name="soufflerie" tilewidth="40" tileheight="80">
-  <image source="../../gfx/gameplay/soufflerie.png" width="80" height="40"/>
+  <image source="../../gfx/gameplay/soufflerie.png" width="320" height="40"/>
  </tileset>
  <tileset firstgid="25" name="soucoupe" tilewidth="80" tileheight="40">
   <image source="../../gfx/gameplay/soucoupe.png" width="120" height="60"/>
@@ -46,7 +46,7 @@
   <image source="../../gfx/gameplay/tileset_tremplin_80.png" width="240" height="80"/>
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
-  <object name="alien_im" type="Alien" x="40" y="160" width="80" height="120"/>
+  <object name="alien_im" type="Alien" x="41" y="155" width="80" height="120"/>
   <object name="mobil" type="AlienVert" x="280" y="0" width="80" height="120"/>
   <object name="alien_ronde" type="AlienVert" x="160" y="160" width="80" height="120"/>
   <object name="Sol_Destructible" type="Des_sol" x="40" y="80" width="200" height="40"/>
@@ -84,7 +84,7 @@
    </properties>
   </object>
   <object name="alien_tireur" type="AlienTireur" x="280" y="160" width="80" height="40"/>
-  <object name="Ground" type="Ground" x="277" y="242" width="40" height="40"/>
+  <object name="Ground" type="Ground" x="280" y="240" width="40" height="40"/>
  </objectgroup>
  <layer name="sol" width="125" height="20">
   <data encoding="csv">

@@ -161,6 +161,7 @@ package org.flixel
 		static public var boss1:Boss_dino = null;
 		static public var boss2:Boss_dino = null;
 		static public var map:Map = null;
+		static public var usersave:UserSave = null;
 		
 		/**
 		 * <code>FlxG.saves</code> is a generic bucket for storing

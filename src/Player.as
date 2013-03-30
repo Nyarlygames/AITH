@@ -234,7 +234,6 @@ package
 				}
 				
 				if (velocity.x <= (minspeed - speeddown * FlxG.elapsed)) {
-					trace(velocity.x);
 					velocity.x = init_speed;
 				}
 				if (acceleration.x != acceleration_speed)
@@ -368,7 +367,7 @@ package
 			}
 		}
 		
-				// FIN DU MONDE
+		// FIN DU MONDE
 		public function onDeathClosed(state:FlxSubState, result:String):void
 		{
 			// RETRY

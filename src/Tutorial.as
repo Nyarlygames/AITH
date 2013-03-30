@@ -3,6 +3,8 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	import org.flixel.plugin.photonstorm.FlxCollision;
+	import com.greensock.*;
+	import com.greensock.easing.*;
 	
 	/**
 	 * ...
@@ -26,6 +28,13 @@ package
 			btnPlay.x -= frameWidth / 2;
 			FlxG.state.add(btnPlay);
 			FlxG.state.add(this);
+			
+			this.btnPlay.scale.x = 0.8;
+			this.btnPlay.scale.y = 0.8;
+			
+			this.scale.x = 0.8;
+			this.scale.y = 0.8;
+			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
@@ -38,8 +47,22 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
 			
-			if (FlxCollision.pixelPerfectCheck(cursor, btnPlay) && FlxG.mouse.justPressed()) {
-				FlxG.map.loaded = true;
+			if (FlxCollision.pixelPerfectCheck(cursor, btnPlay))
+			{
+				TweenMax.to(btnPlay.scale, 0.3, { x:1,y:1 , ease:Linear.easeIn } );
+				TweenMax.to(this.scale, 0.3, { x:1,y:1 , ease:Linear.easeIn } );
+				if (FlxG.mouse.justPressed())
+				{
+					TweenMax.to(btnPlay, 1, { y : -100, alpha: 0, ease:Expo.easeIn } );
+					TweenMax.to(this, 1, {y : -100, alpha: 0, ease:Expo.easeIn } );
+					FlxG.map.loaded = true;
+					cursor.kill();
+				}
+			}
+			else
+			{
+				TweenMax.to(btnPlay.scale, 0.3, { x:0.8,y:0.8 , ease:Linear.easeIn } );
+				TweenMax.to(this.scale, 0.3, { x:0.8,y:0.8 , ease:Linear.easeIn } );
 			}
 		}
 		

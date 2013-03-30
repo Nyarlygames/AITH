@@ -852,6 +852,7 @@
    </properties>
   </object>
   <object type="tremplin" x="14040" y="640" width="40" height="40"/>
-  <object name="Backflip" type="Backflip" x="14200" y="400" width="120" height="160"/>
+  <object name="Backflip" type="Backflip" x="14200" y="0" width="40" height="680"/>
+  <object name="EndBackflip" type="EndBackflip" x="14920" y="0" width="40" height="680"/>
  </objectgroup>
 </map>

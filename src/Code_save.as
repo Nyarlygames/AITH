@@ -23,7 +23,6 @@
 // CHECK SI LE JOUEUR QUITTE UN TREMPLIN (je sais plus si ca marche ou si ca foire)
 	/*if (mytile == 0) {
 		if (player.isTouching(0x1000)) {
-			trace("JUMP");
 			player.velocity.y = -(player.velocity.x + player.velocity.y) / 2;
 			player.jumping == true;
 			//player.velocity.y = player.cur_velocity.y;
