@@ -351,19 +351,13 @@ package
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-<<<<<<< HEAD
 			if (death == null) 
 			{
 				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
 				emitter.kill();
-=======
 			if (death == null) {
 				trace("DEAD FROM : ",where);
-<<<<<<< HEAD
->>>>>>> d194e2c431aee2111e73c832d856b9b06d1f6915
-=======
->>>>>>> d194e2c431aee2111e73c832d856b9b06d1f6915
 				dead = true;
 				stopPlayer();
 				from = where;
