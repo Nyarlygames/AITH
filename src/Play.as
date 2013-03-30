@@ -66,7 +66,7 @@ package
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 6000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 6;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// MAP CHARGEE?
 		public var begin:Boolean = true;					// TUTORIAL DU DEBUT?
 		public var ui:UI = new UI();
@@ -294,12 +294,17 @@ package
 			soundCrepite.volume = 0.5;
 			soundCrepite.play();
 			player.angle = 0;
-			if (player.gravity > dest_ground)
+			if (player.jauge.frame > dest_ground)
 			{
+				(obj2 as Destructible_ground).play("destruction");
+				(obj2 as Destructible_ground).destruction = true;
 				soundDestrSol.volume = 0.5;
 				soundDestrSol.play();
-				obj2.kill();
 			}
+			else if (!(obj2 as Destructible_ground).destruction){
+				(obj2 as Destructible_ground).frame = 1;
+			}
+			
 		}
 		
 		// TOURELLES
