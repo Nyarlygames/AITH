@@ -26,8 +26,7 @@ package
 		{
 			super(20, 10, ImgCountTube);
 			scrollFactor = new FlxPoint(0, 0);
-			
-			
+		
 			/*	Texte des menus */
 				choixTiles = new FlxSprite(447, 50, ImgChoixTexte);
 				choixTiles.loadGraphic(ImgChoixTexte, true, false, 447, 50);
@@ -35,6 +34,7 @@ package
 				choixTiles.addAnimation("niveaux", [1], 10, true);
 				choixTiles.addAnimation("score", [2], 10, true);
 			/*	Texte des menus */
+			
 		}
 		
 		override public function update():void 

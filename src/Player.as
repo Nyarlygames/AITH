@@ -365,7 +365,7 @@ package
 			}
 		}
 		
-				// FIN DU MONDE
+		// FIN DU MONDE
 		public function onDeathClosed(state:FlxSubState, result:String):void
 		{
 			// RETRY

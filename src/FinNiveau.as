@@ -19,7 +19,6 @@ package
 		public function FinNiveau(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgFinNiveau);
-			
 		}
 	
 		override public function update():void 
