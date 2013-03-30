@@ -360,6 +360,9 @@ package
 =======
 			if (death == null) {
 				trace("DEAD FROM : ",where);
+<<<<<<< HEAD
+>>>>>>> d194e2c431aee2111e73c832d856b9b06d1f6915
+=======
 >>>>>>> d194e2c431aee2111e73c832d856b9b06d1f6915
 				dead = true;
 				stopPlayer();
