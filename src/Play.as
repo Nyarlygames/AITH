@@ -64,8 +64,10 @@ package
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
 		public var dest_ground:int = 2000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
-		public var justloaded:Boolean = true;				// DEBUT MAP
+		public var justloaded:Boolean = true;				// MAP CHARGEE?
+		public var begin:Boolean = true;					// TUTORIAL DU DEBUT?
 		public var ui:UI = new UI();
+		public var tuto:Tutorial;
 		
 		override public function create():void
 		{				
@@ -137,7 +139,7 @@ package
 		}
 
 		override public function update():void
-		{
+		{		
 			// ON VERIFIE LE CHARGEMENT DE LA MAP
 			if (map.loaded) {
 				if (justloaded == true) {
@@ -212,6 +214,12 @@ package
 				if (player.dead) {
 					player.death.inPause();
 				}
+			}
+			else if (map.finishedload) {
+				if (tuto != null)
+					tuto.update();
+				else
+					tuto = new Tutorial();
 			}
 		}
 		

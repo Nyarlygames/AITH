@@ -46,6 +46,7 @@ package
 		public var batiments_middle:FlxGroup = new FlxGroup();								// BG FAR
 		public var batiments_far:FlxGroup = new FlxGroup();									// BG MIDDLE
 		public var loaded:Boolean = false;													// MAP CHARGEE?
+		public var finishedload:Boolean = false;											// CHARGEMENT FINIT (POUR TUTO)
 		public var player:Player;															// JIMI
 		public var cam:Cam;																	// CAMERA
 		public var offsety:int = 200;														// DEPASSEMENT VERTICAL AUTORISE
@@ -486,8 +487,6 @@ package
 			FlxG.state.add(ens);
 			FlxG.state.add(tourelles);
 			FlxG.state.add(checkpoints);
-			// CHARGEMENT FINIT
-			loaded = true;
 			// AJOUT PLAYER ET CAM
 			player = new Player(50, 610);
 			FlxG.player = player;
@@ -497,6 +496,7 @@ package
 			FlxG.worldBounds = new FlxRect(0, 0, largeur, 600 + offsety);
 			FlxG.camera.setBounds(0, 0, largeur, 600 + offsety);
 			FlxG.camera.follow(cam);
+			finishedload = true;
 		}
 		
 		// RECHARGE OBJETS POUR CHECKPOINTS
