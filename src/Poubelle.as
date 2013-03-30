@@ -50,12 +50,6 @@ package
 					velocity.x = 0;
 					FlxG.player.pushing = false;
 				}
-				
-				/* TODO 
-				 * Destruction
-				 * Collide venant haut
-			 * Movable & collide
-				 */
 			}
 		}
 		

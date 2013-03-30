@@ -50,6 +50,7 @@ package
 		public var level3:FlxSprite;
 		
 		public var save:FlxSave;
+		public var calculated:Boolean = false;
 		
 		public static var checkObjectif1:Boolean;
 		public static var checkObjectif2:Boolean;
@@ -61,7 +62,6 @@ package
 			FlxG.bgColor = 0xaa519CCA;
 			
 			FlxG.pauseSounds();
-			
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
@@ -135,13 +135,109 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
+			
+			/* VALIDATION OBJECTIF 1*/
+			Objectif1.play("on");
+			switch (FlxG.univ) {
+				case 1:
+					switch (FlxG.level) {
+						case 1:
+							FlxG.usersave.level1[0] = 1;
+							break;
+						case 2:
+							FlxG.usersave.level2[0] = 1;
+							break;
+						case 3:
+							FlxG.usersave.level3[0] = 1;
+							break;
+					}
+					break;
+				case 2:
+					switch (FlxG.level) {
+						case 1:
+							FlxG.usersave.level4[0] = 1;
+							break;
+						case 2:
+							FlxG.usersave.level5[0] = 1;
+							break;
+						case 3:
+							FlxG.usersave.level6[0] = 1;
+							break;
+					}
+					break;
+			}
 		
+			/* VALIDATION OBJECTIF SANS MORTS*/
+			if (FlxG.player.deadscore == 0) {
+				Objectif2.play("on");
+				switch (FlxG.univ) {
+					case 1:
+						switch (FlxG.level) {
+							case 1:
+								FlxG.usersave.level1[1] = 1;
+								break;
+							case 2:
+								FlxG.usersave.level2[1] = 1;
+								break;
+							case 3:
+								FlxG.usersave.level3[1] = 1;
+								break;
+						}
+						break;
+					case 2:
+						switch (FlxG.level) {
+							case 1:
+								FlxG.usersave.level4[1] = 1;
+								break;
+							case 2:
+								FlxG.usersave.level5[1] = 1;
+								break;
+							case 3:
+								FlxG.usersave.level6[1] = 1;
+								break;
+						}
+						break;
+				}
+			}
+			/* VALIDATION OBJECTIF 100 TUBES*/
+			if (FlxG.score >= 100) {
+				Objectif3.play("on");
+				switch (FlxG.univ) {
+					case 1:
+						switch (FlxG.level) {
+							case 1:
+								FlxG.usersave.level1[2] = 1;
+								break;
+							case 2:
+								FlxG.usersave.level2[2] = 1;
+								break;
+							case 3:
+								FlxG.usersave.level3[2] = 1;
+								break;
+						}
+						break;
+					case 2:
+						switch (FlxG.level) {
+							case 1:
+								FlxG.usersave.level4[2] = 1;
+								break;
+							case 2:
+								FlxG.usersave.level5[2] = 1;
+								break;
+							case 3:
+								FlxG.usersave.level6[2] = 1;
+								break;
+						}
+						break;
+				}
+			}
+
 			if (FlxG.overlap(cursor, retour))
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new UnivChooser());
-				
+				{
+					FlxG.switchState(new UnivChooser());
 				}
 			}
 			else
@@ -149,10 +245,16 @@ package
 				retour.play("off");
 			}
 			// SI obj 1 = VALIDE, ALORS ANIM + AUGMENTATION DU SCORE DU JOUEUR
+			if (!calculated) {
+				FlxG.usersave.calcStars();
+				calculated = true;
+			}
 			
-			
-			
-			// etc
+			//DEV Respawn at checkpoint
+			if (FlxG.keys.pressed("E")) 
+			{
+				FlxG.usersave.scoreStars++;
+			}
 		}
 	}
 }

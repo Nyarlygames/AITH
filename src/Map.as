@@ -351,6 +351,7 @@ package
 						sol.width = object.width;
 						sol.y += object.height - 10;
 						sol.height = object.height;
+						sol.visible = false;
 						grounds.add(sol);
 						FlxG.state.add(grounds);
 						break;

@@ -25,8 +25,7 @@ package
 		
 		
 		/* flammes 40      20 - 60
-		 * overboard 80      40
-		 */
+		 * overboard 80      40 */
 		
 		public function Tourelle(xpos:int, ypos:int) 
 		{

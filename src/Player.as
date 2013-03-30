@@ -77,7 +77,7 @@ package
 		public var emitterAlien:FlxEmitter;		// MOTEUR
 		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
 		public var steamPart:FlxParticle;
-		
+		public var deadscore:int				= 0;
 		public var death:DeathScreen;
 		
 		public function Player(xPos:int, yPos:int) 
@@ -233,8 +233,9 @@ package
 					jumping = false;
 				}
 				
-				if (velocity.x <= (minspeed - 5))
+				if (velocity.x <= (minspeed - speeddown * FlxG.elapsed)) {
 					velocity.x = init_speed;
+				}
 				if (acceleration.x != acceleration_speed)
 					acceleration.x = acceleration_speed;
 					
@@ -351,8 +352,9 @@ package
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-			if (death == null) 
+			if (death == null)
 			{
+				deadscore += 1;
 				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
 				emitter.kill();
