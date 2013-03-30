@@ -261,7 +261,6 @@ package
 				accumulateur = 0;
 				gravity = mingravity;
 			}
-			else if ((current_tile2 != 1) && (current_tile2 != 0))
 		}
 		
 		// GESTIONS DES COLLISIONS DE POUBELLES
