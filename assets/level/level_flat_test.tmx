@@ -20,7 +20,7 @@
  </tileset>
  <layer name="Sol" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt2r0KgCAUBlApWqv3f9qmtkQT5ZKdA9/k70UHB1MCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAY688DAAAAAAAAs1oax21ddwEAMAdvKwCAetF/xEf9OS/12wuJrqM1pbrunC/myrUfHdf6Ynrcndrziq71KQDkXRwnBgs=
+   eJzt1kEKgCAQBVAp2lb3P22rdkkqE5K+B38l6gzjwpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgztK4bwutAgBgDP5WAADl1kmzv6R3fV/1deesOCu3fgTe9cdEvJ3SefXu9SkA5F2ohQVR
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="600" height="20" opacity="0.9">
@@ -49,19 +49,7 @@
    </properties>
   </object>
   <object type="tremplin" x="880" y="720" width="40" height="40"/>
-  <object type="Des_sol" x="600" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="800" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="1000" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="1400" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="1200" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="1600" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="1800" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="2200" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="2000" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="2400" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="2600" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="2800" y="560" width="200" height="40"/>
-  <object type="Des_sol" x="3000" y="560" width="200" height="40"/>
+  <object type="AlienHorizontal" x="2739" y="455" width="80" height="80"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">
