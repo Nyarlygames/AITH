@@ -23,7 +23,9 @@ package
 		
 		public var soundIdle:FlxSound 	= new FlxSound();
 		public var soundIn:FlxSound 	= new FlxSound();
-		public var gravityup:int 		= 1000;				// Puissance du souffle
+		public var gravityup:int 		= 1000;				// Puissance du souffle en Y
+		public var speedSouffle:int 	= 3000;				// Puissance du souffle en X
+		public var speedBasSouffle:int 	= 10000;			// Puissance du souffle en -X
 		public var emitter:FlxEmitter;						// MOTEUR
 		public var applied:Boolean		= false;
 		public var boost:int			= 200;
@@ -33,7 +35,7 @@ package
 		//   180 -> Bas
 		// - 90 -> Gauche
 		
-		public function Soufflerie(xpos:int, ypos:int, angle:int) 
+		public function Soufflerie(xpos:int, ypos:int, orient:int) 
 		{
 			super(xpos, ypos, ImgSoufflerie);
 			
@@ -41,7 +43,7 @@ package
 			soundIn.loadEmbedded(SfxIn);
 			
 			immovable = true;
-			angle = angle;
+			angle = orient;
 			
 			/*if ((angle == 90) || (angle == -90))
 				x += frameWidth / 2;*/
@@ -63,16 +65,16 @@ package
 			{
 				this.angle = 0;
 				// Emitter
-				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y, 20);
-				for (var i:int = 0; i < 20; i++) 
+				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y, 10);
+				for (var i:int = 0; i < 10; i++) 
 				{
-					var p:FlxParticle = new FlxParticle();
-					p.loadGraphic(ImgPartSouffle);
-					emitter.add(p);
+					var v:FlxParticle = new FlxParticle();
+					v.loadGraphic(ImgPartSouffle);
+					emitter.add(v);
 				}
 				emitter.gravity = -200;
 				emitter.setYSpeed( -5, -400);
-				emitter.start(false, 0.8, 0.1, 0);
+				emitter.start(false, 0.8, 0.05, 0);
 			}
 			if (angle == 90)
 			{
@@ -81,36 +83,32 @@ package
 			if (angle == 180)
 			{
 				// Emitter
-				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y + frameWidth, 20);
-				for (var i:int = 0; i < 20; i++) 
+				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y + frameWidth, 10);
+				for (var g:int = 0; g < 10; g++) 
 				{
-					var p:FlxParticle = new FlxParticle();
-					p.loadGraphic(ImgPartSouffle);
-					emitter.add(p);
+					var u:FlxParticle = new FlxParticle();
+					u.loadGraphic(ImgPartSouffle);
+					emitter.add(u);
 				}
 				emitter.gravity = -200;
 				emitter.setYSpeed( 10, 400);
-				emitter.start(false, 0.8, 0.1, 0);
+				emitter.start(false, 0.8, 0.05, 0);
 			}
 			if (angle == -90)
 			{
-				this.angle = 180;
+				this.angle = -90;
 				// Emitter
-				emitter = new FlxEmitter(this.x + frameWidth / 2, this.y + frameWidth, 20);
-				for (var i:int = 0; i < 20; i++) 
+				emitter = new FlxEmitter(this.x, this.y + frameWidth / 2, 10);
+				for (var l:int = 0; l < 10; l++) 
 				{
-					var p:FlxParticle = new FlxParticle();
-					p.loadGraphic(ImgPartSouffle);
-					emitter.add(p);
+					var d:FlxParticle = new FlxParticle();
+					d.loadGraphic(ImgPartSouffle);
+					emitter.add(d);
 				}
 				emitter.gravity = -200;
-				emitter.setXSpeed( 10, 400);
-				emitter.start(false, 0.8, 0.1, 0);
+				emitter.setXSpeed( -10, -400);
+				emitter.start(false, 0.8, 0.05, 0);
 			}
-			
-			
-			
-			
 			FlxG.state.add(emitter);
 		}
 	
@@ -126,17 +124,20 @@ package
 				{
 					FlxG.player.velocity.y -= gravityup * FlxG.elapsed;
 				}
-				if (FlxG.overlap(FlxG.player, emitter) && angle == 90 ) 
+				else if (FlxG.overlap(FlxG.player, emitter) && angle == 90 ) 
 				{
-					FlxG.player.velocity.x -= gravityup * FlxG.elapsed;
+					FlxG.player.velocity.x -= speedSouffle * FlxG.elapsed;
 				}
-				if (FlxG.overlap(FlxG.player, emitter) && angle == 180 ) 
+				else if (FlxG.overlap(FlxG.player, emitter) && angle == 180 ) 
 				{
-					FlxG.player.velocity.y += gravityup * FlxG.elapsed;
+					FlxG.player.velocity.y += speedBasSouffle * FlxG.elapsed;
 				}
-				if (FlxG.overlap(FlxG.player, emitter) && angle == -90 ) 
+				else if (FlxG.overlap(FlxG.player, emitter) && angle == -90 ) 
 				{
-					FlxG.player.velocity.y -= gravityup * FlxG.elapsed;
+					if ( FlxG.player.velocity.x > FlxG.player.minspeed - speedSouffle * FlxG.elapsed)
+					{
+						FlxG.player.velocity.x -= speedSouffle * FlxG.elapsed;
+					}
 				}
 			}
 		}

@@ -22,7 +22,7 @@
   <image source="../../gfx/gameplay/petit_tube.png" width="40" height="40"/>
  </tileset>
  <tileset firstgid="25" name="soufflerie" tilewidth="40" tileheight="80">
-  <image source="../../gfx/gameplay/soufflerie.png" width="80" height="40"/>
+  <image source="../../gfx/gameplay/soufflerie.png" width="320" height="40"/>
  </tileset>
  <tileset firstgid="25" name="soucoupe" tilewidth="80" tileheight="40">
   <image source="../../gfx/gameplay/soucoupe.png" width="120" height="60"/>
@@ -47,7 +47,7 @@
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
   <object name="alien_im" type="Alien" x="120" y="160" width="80" height="120"/>
-  <object name="mobil" type="AlienVert" x="360" y="0" width="80" height="120"/>
+  <object name="mobil" type="AlienHorizontal" x="360" y="0" width="80" height="120"/>
   <object name="alien_ronde" type="AlienVert" x="240" y="160" width="80" height="120"/>
   <object name="alien_tireur" type="AlienTireur" x="360" y="160" width="80" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="120" y="80" width="200" height="40"/>
@@ -60,7 +60,11 @@
    </properties>
   </object>
   <object name="soucoupe" type="Soucoupe" x="318" y="522" width="80" height="40"/>
-  <object name="soufflerie" type="Soufflerie" x="322" y="598" width="80" height="40"/>
+  <object name="Hsoufflerie" type="Soufflerie" x="600" y="680" width="80" height="40">
+   <properties>
+    <property name="angle" value="0"/>
+   </properties>
+  </object>
   <object name="trigger_ascenseur" type="Trigger" x="240" y="600" width="40" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="0" y="320" width="120" height="40"/>
   <object type="Tremplin80" gid="30" x="120" y="480">
@@ -83,15 +87,26 @@
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="grosTube" type="GrosTube" x="440" y="360" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="440" y="440" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="440" y="400" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="440" y="480" width="40" height="40"/>
   <object name="check" type="Checkpoints" x="120" y="560" width="40" height="200"/>
   <object type="tremplin" x="80" y="440" width="40" height="40"/>
   <object type="tremplin" x="200" y="360" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object name="Gsoufflerie" type="Soufflerie" x="480" y="640" width="40" height="80">
+   <properties>
+    <property name="angle" value="-90"/>
+   </properties>
+  </object>
+  <object name="Dsoufflerie" type="Soufflerie" x="520" y="720" width="40" height="80">
+   <properties>
+    <property name="angle" value="90"/>
+   </properties>
+  </object>
+  <object name="Bsoufflerie" type="Soufflerie" x="600" y="760" width="80" height="40">
+   <properties>
+    <property name="angle" value="180"/>
    </properties>
   </object>
  </objectgroup>
