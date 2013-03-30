@@ -12,6 +12,8 @@ package
 	import org.flixel.FlxEmitter;
 	import org.flixel.FlxParticle;
 	import org.flixel.FlxSound;
+	import com.greensock.*;
+	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxWeapon;
 	import org.flixel.FlxSubState;
 	
@@ -341,7 +343,11 @@ package
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
-			if (death == null) {
+			if (death == null) 
+			{
+				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
+				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
+				emitter.kill();
 				dead = true;
 				stopPlayer();
 				from = where;
