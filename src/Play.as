@@ -202,7 +202,7 @@ package
 					FlxG.overlap(player, map.ens, alien_coll);
 					FlxG.overlap(player, map.item, getTube);
 					FlxG.collide(player, map.piques, die_piques);
-					FlxG.collide(player, map.piques, souffleColl);
+					FlxG.collide(player, map.souffleries, souffleColl);
 					FlxG.collide(player, map.destructible, check_ground);
 					FlxG.overlap(player, map.backflip, startBackflip);
 					FlxG.overlap(player, map.endBackflip, endBackflip);

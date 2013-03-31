@@ -25,7 +25,7 @@ package
 		public var soundIn:FlxSound 	= new FlxSound();
 		public var gravityup:int 		= 1000;				// Puissance du souffle en Y
 		public var speedSouffle:int 	= 3000;				// Puissance du souffle en X
-		public var speedBasSouffle:int 	= 10000;			// Puissance du souffle en -X
+		public var speedBasSouffle:int 	= 3000;			// Puissance du souffle en -X
 		public var emitter:FlxEmitter;						// MOTEUR
 		public var applied:Boolean		= false;
 		public var boost:int			= 200;
