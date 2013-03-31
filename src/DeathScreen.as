@@ -92,7 +92,6 @@ package
 		}
 		
 		// UPDATE DU MENU PAUSE
-<<<<<<< HEAD
 		public function inPause():void
 		{
 			
@@ -102,28 +101,6 @@ package
 				TweenMax.to(continuePic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 				if (FlxG.mouse.justPressed())
 				{
-=======
-		public function inPause():void {
-			
-			if (FlxG.keys.justPressed("ENTER")) {
-				restart();
-			}
-			
-			// GESTION CLICS SOURIS				
-				//RESTART
-				if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) {
-					restartPic.loadGraphic(ImgMenuOn);
-					if (FlxG.mouse.justPressed())
-					restart();
-				}
-				else
-					restartPic.loadGraphic(ImgMenu);
-					
-				//RESUME
-				if (FlxCollision.pixelPerfectCheck(cursor, resumePic)) {
-					resumePic.loadGraphic(ImgMenuOn);
-					if (FlxG.mouse.justPressed())
->>>>>>> 1b3a9fa365200e59f28902ab483f167f06c3bb9c
 					retry();
 				}
 			}
