@@ -109,6 +109,7 @@
     <property name="angle" value="180"/>
    </properties>
   </object>
+  <object name="FinDuNiveau" type="FinNiveau" x="520" y="0" width="120" height="240"/>
  </objectgroup>
  <layer name="sol" width="125" height="20">
   <data encoding="csv">

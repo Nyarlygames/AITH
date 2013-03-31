@@ -170,10 +170,19 @@ package
 					emitterAlien.x = x + 20;
 					emitterAlien.y = y + frameHeight - 30;
 				}
-				if (angle < -45)
+				if ((angle <= -45) && (jumping || on_tremplin))
 				{
 					angularVelocity = 0;
 				}
+				else if (angle <= -45) {
+					angle = -45;
+				}
+				else if ((angle >= 0) && (!jumping && !on_tremplin)){
+					angularVelocity = 0;
+					angle = 0;
+				}
+				trace(angle, jumping, on_tremplin);
+					
 				
 				if (FlxG.keys.pressed("SPACE"))
 				{
@@ -238,8 +247,6 @@ package
 				}
 				if (acceleration.x != acceleration_speed)
 					acceleration.x = acceleration_speed;
-					
-				
 			}
 		}
 		
@@ -260,9 +267,16 @@ package
 				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
 				 */
 			}
+			else if (current_tile == 0) {
+				if (!jumping && !on_tremplin) {
+					jumping = true;
+					angularVelocity = -angularspeed - 30;
+				}
+			}
 			else if (jumping == false) {
-				if (on_tremplin == false)
-					angle = 0;
+				if (on_tremplin == false) {
+					angularVelocity = angularspeed * 2;
+				}
 				accumulateur = 0;
 				gravity = mingravity;
 			}
@@ -348,15 +362,14 @@ package
 			palier_accumulateur = 0;
 			accumulateur = 0;
 			angularVelocity = 0;
-
 		}
 		
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
 			if (death == null)
 			{
 				deadscore += 1;
-				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
-				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
+				TweenMax.to(this, 1.5, { alpha:0, ease:Linear.easeOut }  );
+				TweenMax.to(jauge, 1.5, { alpha:0, ease:Linear.easeOut }  );
 				emitter.kill();
 				trace("DEAD FROM : ",where);
 				dead = true;
@@ -364,6 +377,11 @@ package
 				from = where;
 				death = new DeathScreen();
 				FlxG.state.setSubState(death, onDeathClosed);
+				loadGraphic(ImgMort, true, false, 160, 160);
+				addAnimation("mortmortmort",  [0, 1, 2, 3, 4], 7, false);
+				offset.x = 80;
+				offset.y = 100;
+				play("mortmortmort");
 			}
 		}
 		
@@ -372,8 +390,16 @@ package
 		{
 			// RETRY
 			if (result == DeathScreen.RETRY) {
-				TweenMax.to(this, 1, { alpha:1, ease:Linear.easeOut }  );
-				TweenMax.to(jauge, 1, { alpha:1, ease:Linear.easeOut }  );
+				loadGraphic(ImgPlayer, true, false, 80, 80);
+				addAnimation("slowSpeed",  [0,1], 5, true);
+				addAnimation("midSpeed", 	[4,5], 15, true);
+				addAnimation("fastSpeed",  [8,9,10], 30, true);
+				width = 80;
+				height = 60;
+				offset.y = 20;
+				offset.x = 0;
+				TweenMax.to(this, 1, { alpha:1, ease:Linear.easeOut });
+				TweenMax.to(jauge, 1, { alpha:1, ease:Linear.easeOut });
 				accumulateur = 0;
 				soundRevive.play();
 				x = checkpoint.x;
@@ -382,6 +408,7 @@ package
 				}
 				else
 					y = checkpoint.y;
+				velocity.y = 0;
 				FlxG.map.cam.x = x + 350;
 				palier_accumulateur = max_palier;
 				FlxG.score -= checkscore;

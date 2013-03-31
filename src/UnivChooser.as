@@ -25,6 +25,7 @@ package
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 			protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1.png')] 				protected var ImgUni1:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2.png')] 				protected var ImgUni2:Class;
+		[Embed(source = '../assets/gfx/ui/cadenas.png')] 				protected var ImgUni2Locked:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1_on.png')]				protected var ImgUni1On:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2_on.png')] 				protected var ImgUni2On:Class;
 		
@@ -72,7 +73,7 @@ package
 				backUnivers2.addAnimation("quartier", [1], 10, true);
 				add (backUnivers2);
 				backUnivers2.play("alien");
-				uni2 = new FlxSprite(459, 260, ImgUni2);
+				uni2 = new FlxSprite(459, 260, ImgUni2Locked);
 				add(uni2);
 				backUnivers2.x = 420; backUnivers2.y = 200; backUnivers2.angle = -5;
 				uni2.x = 435; uni2.y = 215; uni2.angle = -5;
@@ -211,7 +212,6 @@ package
 			}		
 			if (FlxG.keys.justPressed("C")) {
 					FlxG.usersave.univUnlock = true;
-					trace (FlxG.usersave.univUnlock);
 			}
 			if (FlxG.keys.pressed("ESCAPE")) {
 				System.exit(0);

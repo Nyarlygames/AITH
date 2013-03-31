@@ -202,13 +202,13 @@ package
 					FlxG.overlap(player, map.ens, alien_coll);
 					FlxG.overlap(player, map.item, getTube);
 					FlxG.collide(player, map.piques, die_piques);
-					FlxG.collide(player, map.piques, souffleColl);
+					FlxG.collide(player, map.souffleries);
 					FlxG.collide(player, map.destructible, check_ground);
 					FlxG.overlap(player, map.backflip, startBackflip);
 					FlxG.overlap(player, map.endBackflip, endBackflip);
 					
 					// POUBELLE JOUEUR
-					FlxG.overlap(player, map.DustbinBieber, player.dustbin);
+					FlxG.collide(player, map.DustbinBieber, player.dustbin);
 					
 					// TOURELLE
 					FlxG.overlap(map.tourelles, player, tourelle);
@@ -225,7 +225,7 @@ package
 					pause.inPause();
 				}
 				// UPDATE PAUSE SCREEN
-				if (player.dead) {
+				if ((player.dead) && (player.death != null)){
 					player.death.inPause();
 				}
 			}
@@ -253,12 +253,6 @@ package
 			tube.destroy();
 			FlxG.score += tube.loot;
 			FlxG.state.add(new Loot(player,tube.loot));
-		}
-		
-		// GESTION RECUP TUBE VERT
-		public function souffleColl(obj1:FlxObject, obj2:FlxObject):void 
-		{
-		
 		}
 		
 		// Commencement du backflip
@@ -293,15 +287,16 @@ package
 		{
 			soundCrepite.volume = 0.5;
 			soundCrepite.play();
-			player.angle = 0;
 			if (player.jauge.frame > dest_ground)
 			{
 				(obj2 as Destructible_ground).play("destruction");
 				(obj2 as Destructible_ground).destruction = true;
+				(obj2 as Destructible_ground).height = 0;
+				(obj2 as Destructible_ground).width = 0;
 				soundDestrSol.volume = 0.5;
 				soundDestrSol.play();
 			}
-			else if (!(obj2 as Destructible_ground).destruction){
+			else if (!(obj2 as Destructible_ground).destruction) {
 				(obj2 as Destructible_ground).frame = 1;
 			}
 			
@@ -372,37 +367,49 @@ package
 			var from:int = 1; // 0 => haut, 1 => partout ailleurs
 			if (player.y <= obj2.y)
 				from = 0;
-			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
+			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite)))  {
+				// TUE
 				if ((player.gravity > alienkill) && (from == 0))
 				{
-					
 					if (obj2 is AlienNormal)
 					{
+						(obj2 as AlienNormal).play("mort");
+						(obj2 as AlienNormal).killed = true;
 						//(obj2 as AlienNormal).soundMort.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
+						(obj2 as AlienHorizontal).play("mort");
+						(obj2 as AlienHorizontal).killed = true;
 						//(obj2 as AlienHorizontal).soundMort.play();
 					}
-					
-					obj2.kill();
-					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
 				// REBONDS
 				else if (from == 0) {
 					if (obj2 is AlienNormal)
 					{
+						(obj2 as AlienNormal).play("rebonds");
 						(obj2 as AlienNormal).soundRebond.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
+						(obj2 as AlienHorizontal).play("rebonds");
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					player.velocity.y = - 250;
 				}
 				// MEURT
 				else {
-					player.die_motherfucker(3);
+					if (obj2 is AlienHorizontal)
+					{
+						if ((obj2 as AlienHorizontal).killed == false)
+							player.die_motherfucker(3);
+					}
+					if (obj2 is AlienNormal)
+					{
+						if ((obj2 as AlienNormal).killed == false)
+							player.die_motherfucker(3);
+					}
 				}
 			}
 		}

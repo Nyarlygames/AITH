@@ -37,7 +37,7 @@ package
 		public var souffleries:FlxGroup 	= new FlxGroup();								// SOUFFLERIES
 		public var soucoupes:FlxGroup 		= new FlxGroup();								// SOUCOUPES
 		public var triggers:FlxGroup		= new FlxGroup();								// FIN DE NIVEAU
-		public var fin:FlxGroup 			= new FlxGroup();								// TRIGGERS
+		public var fin:FlxGroup 			= new FlxGroup();								// TRIGGERS ALLO QUOI?
 		public var checkpoints:FlxGroup 	= new FlxGroup();								// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup 		= new FlxGroup();							// POUBELLES
@@ -120,6 +120,7 @@ package
         [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_120.png')] public var Tremplin120_bleu:Class;
 		public var largeur:int = 30000;														// LARGEUR DE LA MAP
 		public var mapfile:Class = null;
+		public var lootcount:int = 0;
 		
 		/**
 		 * FORMAT TXT
@@ -368,11 +369,13 @@ package
 						break;
 					case "Tube":
 						item.add (new TubeVert(object.x, object.y, 1,0));
-						item_save.add (new TubeVert(object.x, object.y, 1,0));
+						item_save.add (new TubeVert(object.x, object.y, 1, 0));
+						lootcount += 1;
 						break;
 					case "GrosTube":
 						item.add (new TubeVert(object.x, object.y, 5,1));
-						item_save.add (new TubeVert(object.x, object.y, 5,1));
+						item_save.add (new TubeVert(object.x, object.y, 5, 1));
+						lootcount += 5;
 						break;
 					case "Alien":
 						ens.add (new AlienNormal(object.x, object.y));
@@ -484,6 +487,8 @@ package
 						break;
 				}
 			}
+			/* TODO / DEV LOOTCOUNT A VIRER*/
+			trace(lootcount);
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(tremplins);
@@ -499,6 +504,7 @@ package
 			FlxG.state.add(ens);
 			FlxG.state.add(tourelles);
 			FlxG.state.add(checkpoints);
+			FlxG.state.add(fin);
 			// AJOUT PLAYER ET CAM
 			player = new Player(50, 610);
 			FlxG.player = player;
@@ -513,6 +519,12 @@ package
 		
 		// RECHARGE OBJETS POUR CHECKPOINTS
 		public function reload_map():void {
+			for each (var en_clean:FlxSprite in ens.members) {
+				if ((en_clean is AlienHorizontal) && (en_clean as AlienHorizontal).incomming != null) {
+					(en_clean as AlienHorizontal).incomming.kill();
+					(en_clean as AlienHorizontal).incomming.destroy();
+				}
+			}
 			ens.clear();
 			for each (var en:FlxSprite in ens_save.members) {
 				if (en is AlienHorizontal) {
@@ -544,8 +556,24 @@ package
 				var new_dest:Destructible_ground = new Destructible_ground(dest.x, dest.y);
 				destructible.add(new_dest);
 			}
-			tourelles.clear();
-			for each (var tour:FlxSprite in tourelles_save.members) {
+			for each (var tour_clean:Tourelle in tourelles.members) {
+				/*if ((tour_clean as Tourelle).flammes != null) {
+					FlxG.state.remove((tour_clean as Tourelle).flammes, true);
+					(tour_clean as Tourelle).flammes.kill();
+					(tour_clean as Tourelle).flammes.destroy();
+					(tour_clean as Tourelle).flammes = null;
+				}
+				if ((tour_clean as Tourelle).timer != null) {
+					(tour_clean as Tourelle).timer.destroy();
+				}
+				FlxG.state.remove(tour_clean, true);
+				tour_clean.kill();
+				tour_clean.destroy();
+				tour_clean = null;*/
+				tourelles.remove(tour_clean, true);
+			}
+			tourelles = new FlxGroup();
+			for each (var tour:Tourelle in tourelles_save.members) {
 				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
 				tourelles.add(new_tour);
 			}

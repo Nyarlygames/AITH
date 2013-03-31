@@ -253,8 +253,6 @@ package
 				}
 			}
 			
-			
-			
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.level = 1;
 					FlxG.switchState(new Play());
@@ -270,9 +268,8 @@ package
 					FlxG.switchState(new Play());
 			}
 			
-			// DEV : FERME LA FENETRE (à supprimer plus tard)
 			if (FlxG.keys.pressed("ESCAPE")) {
-				System.exit(0);
+				FlxG.switchState(new UnivChooser());
 			}
 		}
 	}

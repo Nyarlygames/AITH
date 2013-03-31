@@ -48,7 +48,7 @@
 52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,0,52
 </data>
  </layer>
- <objectgroup name="Back_clouds" width="420" height="20">
+ <objectgroup name="Back_clouds" width="420" height="20" visible="0">
   <object gid="58" x="280" y="320"/>
   <object gid="55" x="760" y="320"/>
   <object gid="57" x="1440" y="400"/>
@@ -73,7 +73,7 @@
   <object gid="54" x="11800" y="320"/>
   <object gid="59" x="12960" y="280"/>
  </objectgroup>
- <objectgroup name="Back_far" width="420" height="20">
+ <objectgroup name="Back_far" width="420" height="20" visible="0">
   <object gid="49" x="320" y="760"/>
   <object gid="47" x="640" y="760"/>
   <object gid="50" x="1440" y="760"/>
@@ -128,7 +128,7 @@
   <object gid="50" x="14720" y="760"/>
   <object gid="48" x="13240" y="760"/>
  </objectgroup>
- <objectgroup name="Back_middle" width="420" height="20">
+ <objectgroup name="Back_middle" width="420" height="20" visible="0">
   <object gid="25" x="80" y="760"/>
   <object gid="22" x="440" y="760"/>
   <object gid="24" x="1000" y="760"/>
@@ -168,7 +168,7 @@
   <object gid="30" x="16480" y="760"/>
   <object gid="22" x="16480" y="760"/>
  </objectgroup>
- <objectgroup name="Back_near" width="420" height="20">
+ <objectgroup name="Back_near" width="420" height="20" visible="0">
   <object gid="43" x="80" y="760"/>
   <object gid="43" x="1480" y="760"/>
   <object gid="44" x="2920" y="760"/>
@@ -229,7 +229,6 @@
   <object name="tube" type="Tube" x="2760" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="3120" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="3040" y="520" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="4400" y="600" width="40" height="40"/>
   <object name="tube" type="Tube" x="4160" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="4960" y="600" width="40" height="40"/>
   <object name="tube" type="Tube" x="4880" y="600" width="40" height="40"/>
@@ -298,7 +297,6 @@
   <object name="trigger_ascenseur" type="Trigger" x="9040" y="440" width="40" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="9920" y="440" width="200" height="40"/>
   <object name="grosTube" type="GrosTube" x="10080" y="560" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="9720" y="360" width="40" height="40"/>
   <object name="check" type="Checkpoints" x="10520" y="560" width="40" height="200"/>
   <object name="Sol_Destructible" type="Des_sol" x="11400" y="520" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="11760" y="520" width="200" height="40"/>
@@ -343,7 +341,6 @@
   <object name="tube" type="Tube" x="10200" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10280" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10360" y="680" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="9200" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="8280" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="8200" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="8120" y="680" width="40" height="40"/>
@@ -634,7 +631,6 @@
   </object>
   <object name="tube" type="Tube" x="12360" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="12480" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="12600" y="680" width="40" height="40"/>
   <object type="tremplin" x="680" y="720" width="40" height="40"/>
   <object type="tremplin" x="800" y="640" width="40" height="40">
    <properties>
@@ -679,10 +675,8 @@
   <object name="Tourelle" type="Tourelle" x="12040" y="320" width="80" height="40"/>
   <object name="tube" type="Tube" x="13520" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13640" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="13920" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="13800" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="14240" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="14120" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="14800" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="14680" y="680" width="40" height="40"/>
   <object name="GPique" type="Piques" x="2480" y="360" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
@@ -784,29 +778,7 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object name="Ground" type="Ground" x="0" y="720" width="680" height="40"/>
-  <object name="Ground" type="Ground" x="800" y="720" width="280" height="40"/>
-  <object name="Ground" type="Ground" x="1120" y="480" width="120" height="40"/>
-  <object name="Ground" type="Ground" x="1240" y="560" width="120" height="40"/>
-  <object name="Ground" type="Ground" x="1360" y="720" width="520" height="40"/>
-  <object name="Ground" type="Ground" x="2000" y="720" width="320" height="40"/>
-  <object name="Ground" type="Ground" x="2520" y="200" width="120" height="40"/>
-  <object name="Ground" type="Ground" x="2480" y="560" width="1000" height="40"/>
-  <object name="Ground" type="Ground" x="3840" y="480" width="880" height="40"/>
-  <object name="Ground" type="Ground" x="4360" y="640" width="720" height="40"/>
-  <object name="Ground" type="Ground" x="5080" y="720" width="280" height="40"/>
-  <object name="Ground" type="Ground" x="5880" y="480" width="280" height="40"/>
-  <object name="Ground" type="Ground" x="5720" y="680" width="440" height="40"/>
-  <object name="Ground" type="Ground" x="6160" y="720" width="1200" height="40"/>
-  <object name="Ground" type="Ground" x="7480" y="520" width="240" height="40"/>
-  <object name="Ground" type="Ground" x="7840" y="720" width="480" height="40"/>
   <object name="Ground" type="Ground" x="8440" y="720" width="640" height="40"/>
-  <object name="Ground" type="Ground" x="9080" y="400" width="1160" height="40"/>
-  <object name="Ground" type="Ground" x="9360" y="720" width="1400" height="40"/>
-  <object name="Ground" type="Ground" x="10880" y="720" width="280" height="40"/>
-  <object name="Ground" type="Ground" x="11200" y="480" width="1160" height="40"/>
-  <object name="Ground" type="Ground" x="11760" y="720" width="960" height="40"/>
-  <object name="Ground" type="Ground" x="12760" y="720" width="4000" height="40"/>
   <object type="Tremplin80" gid="70" x="15360" y="760">
    <properties>
     <property name="color" value="2"/>
@@ -820,5 +792,9 @@
   <object type="tremplin" x="15320" y="720" width="40" height="40"/>
   <object name="Tourelle" type="Tourelle" x="14440" y="520" width="80" height="40"/>
   <object name="Tourelle" type="Tourelle" x="15040" y="520" width="80" height="40"/>
+  <object name="tube" type="Tube" x="9200" y="360" width="40" height="40"/>
+  <object name="tube" type="Tube" x="9720" y="360" width="40" height="40"/>
+  <object name="tube" type="Tube" x="13760" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="13880" y="680" width="40" height="40"/>
  </objectgroup>
 </map>

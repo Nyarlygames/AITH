@@ -42,6 +42,7 @@ package
 			if (FlxG.player != null) 
 			{
 				FlxG.overlap(FlxG.player, halo, aspire);
+				FlxG.overlap(FlxG.player, this, soucoupes);
 			}
 		}
 		

@@ -945,5 +945,6 @@
     <property name="orientation" value="haut"/>
    </properties>
   </object>
+  <object name="FinDuNiveau" type="FinNiveau" x="17000" y="480" width="120" height="240"/>
  </objectgroup>
 </map>

@@ -47,8 +47,7 @@
  </tileset>
  <objectgroup color="#ff2718" name="Objs" width="125" height="20">
   <object name="alien_im" type="Alien" x="41" y="155" width="80" height="120"/>
-  <object name="mobil" type="AlienVert" x="280" y="0" width="80" height="120"/>
-  <object name="alien_ronde" type="AlienVert" x="160" y="160" width="80" height="120"/>
+  <object name="mobil" type="AlienHorizontal" x="280" y="0" width="80" height="120"/>
   <object name="Sol_Destructible" type="Des_sol" x="40" y="80" width="200" height="40"/>
   <object name="check" type="Checkpoints" x="164" y="321" width="40" height="80"/>
   <object name="poubelle" type="Poubelles" x="240" y="320" width="80" height="80"/>
@@ -60,10 +59,14 @@
    </properties>
   </object>
   <object name="soucoupe" type="Soucoupe" x="238" y="522" width="80" height="40"/>
-  <object name="soufflerie" type="Soufflerie" x="240" y="600" width="80" height="40"/>
+  <object name="Hsoufflerie" type="Soufflerie" x="240" y="600" width="80" height="40">
+   <properties>
+    <property name="angle" value="0"/>
+   </properties>
+  </object>
   <object name="trigger_ascenseur" type="Trigger" x="160" y="600" width="40" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="0" y="320" width="120" height="40"/>
-  <object type="Tremplin80" gid="30" x="40" y="480">
+  <object type="Tremplin80" gid="30" x="400" y="520">
    <properties>
     <property name="color" value="2"/>
    </properties>
@@ -83,8 +86,24 @@
     <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="alien_tireur" type="AlienTireur" x="280" y="160" width="80" height="40"/>
-  <object name="Ground" type="Ground" x="280" y="240" width="40" height="40"/>
+  <object name="FinDuNiveau" type="FinNiveau" x="400" y="40" width="120" height="240"/>
+  <object name="Bsoufflerie" type="Soufflerie" x="360" y="600" width="80" height="40">
+   <properties>
+    <property name="angle" value="180"/>
+   </properties>
+  </object>
+  <object name="Dsoufflerie" type="Soufflerie" x="360" y="680" width="40" height="80">
+   <properties>
+    <property name="angle" value="90"/>
+   </properties>
+  </object>
+  <object type="tremplin" x="360" y="480" width="40" height="40"/>
+  <object type="tremplin" x="480" y="400" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object name="Tourelle" type="Tourelle" x="200" y="200" width="80" height="40"/>
  </objectgroup>
  <layer name="sol" width="125" height="20">
   <data encoding="csv">

@@ -17,6 +17,9 @@ package
 			switch (dir) {
 				case "bas":
 					angle = 180;
+					x += 5;
+					width = frameWidth - 5;
+					offset.x = 5;
 					break;
 				case "gauche":
 					angle = -90;
