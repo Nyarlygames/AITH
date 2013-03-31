@@ -190,10 +190,18 @@ package
 					{
 						FlxG.switchState(new ScoreScreen());
 					}
+					// DEV : TP A LA FIN
+					if ((FlxG.keys.justPressed("E"))) 
+					{
+						player.checkpoint.x = map.fin.members[0].x - 200;
+						player.checkpoint.y = map.fin.members[0].y + (map.fin.members[0] as FinNiveau).frameHeight - 100;
+						player.die_motherfucker( -1);
+						player.deadscore = 0;
+					}
 					// DEV : PASSE AU MENU DE SCORING
 					if ((FlxG.keys.justPressed("L"))) 
 					{
-						var loot:TubeVert = new TubeVert(0, 0, 5, 1);
+						var loot:TubeVert = new TubeVert(0, 0, 100, 1);
 						getTube(player, loot);
 					}
 					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
@@ -276,6 +284,7 @@ package
 		// Commencement du backflip
 		public function startBackflip(obj1:FlxObject, obj2:FlxObject):void 
 		{
+<<<<<<< HEAD
 			TweenMax.to(player, 2, { angle : -360, ease: Linear.easeOut } );
 			TweenMax.to(player.scale, 1, { x : 3, y : 3, ease: Bounce.easeInOut, onComplete:outBackflip } );
 			
@@ -283,6 +292,18 @@ package
 			{
 				TweenMax.to(player.scale, 1, { x : 1, y : 1, ease: Bounce.easeOut } );
 			}
+=======
+			TweenMax.to(player, 4, { angle : -360, ease:Linear.easeOut, onComplete:testBackflip } );
+			backflip = new FlxSprite(0, 0, ImgBackflip);
+			add (backflip);
+		}
+		
+		// Commencement du backflip
+		public function testBackflip():void 
+		{
+			TweenMax.to(player, 2, { angle:0, ease:Linear.easeNone } );
+			TweenMax.to(player, 3, { alpha:1, ease:Cubic.easeInOut } );
+>>>>>>> 60754fc71905f2692db75cac3e5f37872c9b9bf6
 		}
 		
 		// Fin du backflip
@@ -290,7 +311,6 @@ package
 		{
 			//TweenMax.to(player.scale, 3, { x : 1, y:1, ease:Linear.easeNone } );
 			//TweenMax.to(player, 2, { angle : 720, ease:Linear.easeNone } );
-			//trace (player.angle);
 		}
 		
 		

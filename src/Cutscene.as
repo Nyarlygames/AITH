@@ -121,9 +121,12 @@ package
 			FlxG.state.add(introTxt2);
 			
 			FlxG.state.add(intro1);
+<<<<<<< HEAD
 			FlxG.state.add(introTxt1);
 			
 			trace(currentframe);
+=======
+>>>>>>> 60754fc71905f2692db75cac3e5f37872c9b9bf6
 		}
 		
 		override public function update():void {

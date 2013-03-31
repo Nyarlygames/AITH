@@ -238,7 +238,6 @@ package
 				} else {
 					jumping = false;
 					/*if (falled == false) {
-						trace("here");
 						falled = true;
 						play("retombe");
 					}*/
@@ -254,10 +253,8 @@ package
 		private function anims(animationName:String, frameNumber:uint, frameIndex:uint):void 
 		{  	
 			if (animationName == "souffle" ) {
-				trace(frameNumber);
 			}
 			/*else if (animationName == "retombe") {
-				trace(frameNumber);
 			}*/
 		}
 		// GESTIONS DES COLLISIONS DE TILES
@@ -277,16 +274,9 @@ package
 				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
 				 */
 			}
-			else if (current_tile == 0) {
-				if (!jumping && !on_tremplin) {
-					jumping = true;
-					angularVelocity = -angularspeed - 30;
-				}
-			}
 			else if (jumping == false) {
 				if (on_tremplin == false) {
 					angle = 0;
-					angularVelocity = 0;
 				}
 				accumulateur = 0;
 				gravity = mingravity;

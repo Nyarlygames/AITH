@@ -34,7 +34,6 @@ package
 			play("idle");
 			//soundMort.loadEmbedded(SfxMort);
 			hoverboard = new Hoverboardfire(this);
-			trace("la", x);
 		}
 		
 		override public function update():void {
