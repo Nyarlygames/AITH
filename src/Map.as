@@ -575,7 +575,7 @@ package
 				var new_dest:Destructible_ground = new Destructible_ground(dest.x, dest.y);
 				destructible.add(new_dest);
 			}
-			
+			/*
 			while (i < tourelles.length) {
 				if ((tourelles.members[i] as Tourelle) != null) {
 					(tourelles.members[i] as Tourelle).flammes.kill();
@@ -592,7 +592,7 @@ package
 			for each (var tour:Tourelle in tourelles_save.members) {
 				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
 				tourelles.add(new_tour);
-			}
+			}*/
 			FlxG.player.dead = false;
 		}
 	}
