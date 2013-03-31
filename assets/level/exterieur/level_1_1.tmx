@@ -349,7 +349,6 @@
   <object name="tube" type="Tube" x="8120" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="8040" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="7600" y="480" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="6760" y="640" width="40" height="40"/>
   <object name="pique" type="Piques" x="5680" y="720" width="40" height="40"/>
   <object name="pique" type="Piques" x="4240" y="200" width="40" height="40">
    <properties>
@@ -861,5 +860,6 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
+  <object name="tube" type="Tube" x="6880" y="680" width="40" height="40"/>
  </objectgroup>
 </map>
