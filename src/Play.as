@@ -225,7 +225,7 @@ package
 					pause.inPause();
 				}
 				// UPDATE PAUSE SCREEN
-				if (player.dead) {
+				if ((player.dead) && (player.death != null)){
 					player.death.inPause();
 				}
 			}

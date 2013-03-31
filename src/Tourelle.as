@@ -30,20 +30,21 @@ package
 		public function Tourelle(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgTourelle);
-			
-			flammes = new FlxSprite(x + 20, y + frameHeight);
-			flammes.loadGraphic(ImgFlamme, true, false, 40, 160);
-			flammes.addAnimation("flammes",  [0, 1, 2, 3, 4, 2, 3, 4, 3, 2 ,1, 0], 10, false);
+			if (flammes == null) {
+				flammes = new FlxSprite(x + 20, y + frameHeight);
+				flammes.loadGraphic(ImgFlamme, true, false, 40, 160);
+				flammes.addAnimation("flammes",  [0, 1, 2, 3, 4, 2, 3, 4, 3, 2 , 1, 0], 10, false);
+				FlxG.state.add(flammes);
+				timer.start(3, 0, activate_burst);
+			}
 			loadGraphic(ImgTourelle, true, false, 80, 40);
 			addAnimation("default",  [0, 1, 2], 10, true);
-			timer.start(3, 0, activate_burst);
 			
 			/* Pré-écriture de l'anim de flamme, à réutiliser.
 				this.loadGraphic(ImgFlamme, true, false, 40, 80);
 				this.addAnimation("burn",  [0, 1, 2,3,4,5], 5, true);
 			*/
 			play("default");
-			FlxG.state.add(flammes);
 			// Gestion de la flamme
 		}
 		
@@ -54,8 +55,10 @@ package
 			}
 		}
 		
-		public function activate_burst(timer:FlxTimer):void{
-			flammes.play("flammes");
+		public function activate_burst(timer:FlxTimer):void {
+			if (flammes != null) {
+				flammes.play("flammes");
+			}
 		}
 	}
 }

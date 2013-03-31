@@ -50,6 +50,57 @@
   </object>
   <object type="tremplin" x="880" y="720" width="40" height="40"/>
   <object type="AlienHorizontal" x="2739" y="455" width="80" height="80"/>
+  <object type="Piques" x="1480" y="720" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="680" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="640" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="600" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="560" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="520" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="480" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="440" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Piques" x="1480" y="400" width="40" height="40">
+   <properties>
+    <property name="angle" value="gauche"/>
+   </properties>
+  </object>
+  <object type="Tourelle" x="680" y="400" width="80" height="40"/>
+  <object type="Tourelle" x="840" y="400" width="80" height="40"/>
+  <object type="Tourelle" x="1000" y="400" width="80" height="40"/>
+  <object type="Tourelle" x="1160" y="400" width="80" height="40"/>
+  <object type="Tourelle" x="360" y="400" width="80" height="40"/>
+  <object type="Tourelle" x="520" y="400" width="80" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">

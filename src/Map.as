@@ -513,6 +513,12 @@ package
 		
 		// RECHARGE OBJETS POUR CHECKPOINTS
 		public function reload_map():void {
+			for each (var en_clean:FlxSprite in ens.members) {
+				if ((en_clean is AlienHorizontal) && (en_clean as AlienHorizontal).incomming != null) {
+					(en_clean as AlienHorizontal).incomming.kill();
+					(en_clean as AlienHorizontal).incomming.destroy();
+				}
+			}
 			ens.clear();
 			for each (var en:FlxSprite in ens_save.members) {
 				if (en is AlienHorizontal) {
@@ -544,8 +550,21 @@ package
 				var new_dest:Destructible_ground = new Destructible_ground(dest.x, dest.y);
 				destructible.add(new_dest);
 			}
+			var i:int = 0;
+			for each (var tour_clean:Tourelle in tourelles.members) {
+				i++;
+				if ((tour_clean as Tourelle).flammes != null) {
+					FlxG.state.remove((tour_clean as Tourelle).flammes, true);
+					(tour_clean as Tourelle).flammes.kill();
+					(tour_clean as Tourelle).flammes.destroy();
+					(tour_clean as Tourelle).flammes = null;
+				}
+				if ((tour_clean as Tourelle).timer != null) {
+					(tour_clean as Tourelle).timer.destroy();
+				}
+			}
 			tourelles.clear();
-			for each (var tour:FlxSprite in tourelles_save.members) {
+			for each (var tour:Tourelle in tourelles_save.members) {
 				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
 				tourelles.add(new_tour);
 			}
