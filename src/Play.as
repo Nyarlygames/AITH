@@ -208,7 +208,7 @@ package
 					FlxG.overlap(player, map.endBackflip, endBackflip);
 					
 					// POUBELLE JOUEUR
-					FlxG.overlap(player, map.DustbinBieber, player.dustbin);
+					FlxG.collide(player, map.DustbinBieber, player.dustbin);
 					
 					// TOURELLE
 					FlxG.overlap(map.tourelles, player, tourelle);
@@ -375,6 +375,7 @@ package
 			if (player.y <= obj2.y)
 				from = 0;
 			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite)))  {
+				// TUE
 				if ((player.gravity > alienkill) && (from == 0))
 				{
 					if (obj2 is AlienNormal)
@@ -389,7 +390,6 @@ package
 						(obj2 as AlienHorizontal).killed = true;
 						//(obj2 as AlienHorizontal).soundMort.play();
 					}
-					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
 				// REBONDS
 				else if (from == 0) {

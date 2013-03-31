@@ -31,7 +31,7 @@ package
 			super(xpos, ypos, ImgDustbinBieber);
 			soundPushing.loadEmbedded(sfxPushing);
 			soundPushed.loadEmbedded(sfxPushed);
-			immovable = true;
+			immovable = false;
 		}
 		
 		override public function update():void {
@@ -48,6 +48,11 @@ package
 				if (FlxG.tilemap.getTile(Math.floor(x / 40), Math.round(y / 40) +2) == 0) {
 					y += frameHeight;
 					velocity.x = 0;
+					FlxG.player.pushing = false;
+					immovable = true;
+				}
+				if (FlxG.player.jauge.frame >= 5) {
+					destruction();
 					FlxG.player.pushing = false;
 				}
 			}

@@ -120,6 +120,7 @@ package
         [Embed(source = '../assets/gfx/gameplay/tremplin_bleu_120.png')] public var Tremplin120_bleu:Class;
 		public var largeur:int = 30000;														// LARGEUR DE LA MAP
 		public var mapfile:Class = null;
+		public var lootcount:int = 0;
 		
 		/**
 		 * FORMAT TXT
@@ -368,11 +369,13 @@ package
 						break;
 					case "Tube":
 						item.add (new TubeVert(object.x, object.y, 1,0));
-						item_save.add (new TubeVert(object.x, object.y, 1,0));
+						item_save.add (new TubeVert(object.x, object.y, 1, 0));
+						lootcount += 1;
 						break;
 					case "GrosTube":
 						item.add (new TubeVert(object.x, object.y, 5,1));
-						item_save.add (new TubeVert(object.x, object.y, 5,1));
+						item_save.add (new TubeVert(object.x, object.y, 5, 1));
+						lootcount += 5;
 						break;
 					case "Alien":
 						ens.add (new AlienNormal(object.x, object.y));
@@ -484,6 +487,8 @@ package
 						break;
 				}
 			}
+			/* TODO / DEV LOOTCOUNT A VIRER*/
+			trace(lootcount);
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(tremplins);

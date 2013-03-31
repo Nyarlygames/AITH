@@ -20,19 +20,13 @@
  </tileset>
  <layer name="Sol" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKgCAQBVAp2lb3P22rdkkqE5K+B38l6gzjwpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgztK4bwutAgBgDP5WAADl1kmzv6R3fV/1deesOCu3fgTe9cdEvJ3SefXu9SkA5F2ohQVR
+   eJzt0sEKQBEUQEFl7/n/r7Wye0KRZKbOSuFGCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAd4uPljqdvt+uuWp5Yq/W+rfwrBtb8XdG3+v0rH8B0FYAZJoFQw==
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="600" height="20" opacity="0.9">
   <object type="Poubelles" x="5960" y="680" width="80" height="80"/>
   <object type="Soucoupe" x="4760" y="520" width="80" height="40"/>
-  <object type="Soufflerie" x="1440" y="760" width="80" height="40"/>
-  <object type="tremplin" x="320" y="720" width="40" height="40"/>
-  <object type="tremplin" x="440" y="640" width="40" height="40">
-   <properties>
-    <property name="haut" value=""/>
-   </properties>
-  </object>
+  <object type="Soufflerie" x="440" y="760" width="80" height="40"/>
   <object type="Alien" x="5167" y="404" width="80" height="80"/>
   <object type="Tourelle" x="5360" y="320" width="80" height="40"/>
   <object type="Soucoupe" x="5040" y="400" width="80" height="40"/>
@@ -43,15 +37,10 @@
   <object type="Tourelle" x="4600" y="80" width="80" height="40"/>
   <object type="Tourelle" x="4840" y="80" width="80" height="40"/>
   <object type="Tourelle" x="5080" y="80" width="80" height="40"/>
-  <object type="tremplin" x="1000" y="640" width="40" height="40">
-   <properties>
-    <property name="haut" value=""/>
-   </properties>
-  </object>
-  <object type="tremplin" x="880" y="720" width="40" height="40"/>
   <object type="AlienHorizontal" x="1680" y="-240" width="80" height="80"/>
   <object type="Alien" x="1240" y="-240" width="80" height="80"/>
-  <object type="Des_sol" x="1360" y="680" width="200" height="40"/>
+  <object type="Poubelles" x="760" y="680" width="80" height="80"/>
+  <object type="Soufflerie" x="160" y="760" width="80" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">
