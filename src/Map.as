@@ -521,10 +521,6 @@ package
 		public function reload_map():void {
 			var i:int = 0;
 			while (i < ens.length) {
-				if ((ens.members[i] is AlienHorizontal) && ((ens.members[i] as AlienHorizontal).incomming != null)) {
-					(ens.members[i] as AlienHorizontal).incomming.kill();
-					FlxG.state.remove((ens.members[i] as AlienHorizontal).incomming, true);
-				}
 				ens.members[i].kill();
 				FlxG.state.remove(ens.members[i], true);
 				ens.remove(ens.members[i], true);

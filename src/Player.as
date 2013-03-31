@@ -80,6 +80,8 @@ package
 		public var deadscore:int				= 0;
 		public var endLvl:Boolean				= false;
 		public var death:DeathScreen;
+		public var falled:Boolean = false;
+		public var souffled:Boolean = false;
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -144,9 +146,12 @@ package
 			
 			//Animations du joueur
 			this.loadGraphic(ImgPlayer, true, false, 80, 80);
-			this.addAnimation("slowSpeed",  [0,1], 5, true);
-			this.addAnimation("midSpeed", 	[4,5], 15, true);
-			this.addAnimation("fastSpeed",  [8,9,10], 30, true);
+			this.addAnimation("slowSpeed", [0,1], 5, true);
+			this.addAnimation("midSpeed", [6,7], 15, true);
+			this.addAnimation("fastSpeed", [12,13,14], 30, true);
+			this.addAnimation("souffle", [18,19,20], 30, false);
+			this.addAnimation("retombe", [24, 25, 26, 27, 28], 30, false);
+			addAnimationCallback(anims);
 			width = 80;
 			height = 60;
 			offset.y = 20;
@@ -232,6 +237,11 @@ package
 					jumping = true;
 				} else {
 					jumping = false;
+					/*if (falled == false) {
+						trace("here");
+						falled = true;
+						play("retombe");
+					}*/
 				}
 				
 				if (velocity.x <= (minspeed - speeddown * FlxG.elapsed)) {
@@ -241,7 +251,15 @@ package
 					acceleration.x = acceleration_speed;
 			}
 		}
-		
+		private function anims(animationName:String, frameNumber:uint, frameIndex:uint):void 
+		{  	
+			if (animationName == "souffle" ) {
+				trace(frameNumber);
+			}
+			/*else if (animationName == "retombe") {
+				trace(frameNumber);
+			}*/
+		}
 		// GESTIONS DES COLLISIONS DE TILES
 		public function tiles_coll(obj1:FlxObject, obj2:FlxObject):void {
 			// TILE COURANTE DE COLLISION
@@ -384,9 +402,11 @@ package
 			// RETRY
 			if (result == DeathScreen.RETRY) {
 				loadGraphic(ImgPlayer, true, false, 80, 80);
-				addAnimation("slowSpeed",  [0,1], 5, true);
-				addAnimation("midSpeed", 	[4,5], 15, true);
-				addAnimation("fastSpeed",  [8,9,10], 30, true);
+				this.addAnimation("slowSpeed", [0,1], 5, true);
+				this.addAnimation("midSpeed", [6,7], 15, true);
+				this.addAnimation("fastSpeed", [12,13,14], 30, true);
+				this.addAnimation("souffle", [18,19,20], 30, false);
+				this.addAnimation("retombe", [24, 25, 26, 27, 28], 30, false);
 				width = 80;
 				height = 60;
 				offset.y = 20;
