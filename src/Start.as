@@ -161,6 +161,7 @@ package
 					TweenMax.to(authors, 0.9, { y:300, ease:Linear.easeOut } );
 					TweenMax.to(retour, 0.9, { alpha:1, ease:Linear.easeOut } );
 					TweenMax.to(logo, 0.4, { alpha:0, ease:Linear.easeOut } );
+					TweenMax.to(arrowPlay, 0.4, { alpha:0, ease:Linear.easeOut } );
 					TweenMax.to(credits, 0.4, { alpha:0, ease:Linear.easeOut } );
 					TweenMax.to(jimi, 0.4, { alpha:0, ease:Linear.easeOut } );
 				}

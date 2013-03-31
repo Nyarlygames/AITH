@@ -14,11 +14,16 @@ package
 	 */
 	public class FinNiveau extends FlxSprite 
 	{
-		[Embed(source = '../assets/gfx/gameplay/souffle.png')] protected var ImgFinNiveau:Class;
+		[Embed(source = '../assets/gfx/gameplay/End_aliensship.png')] protected var ImgFinNiveau2:Class;
+		[Embed(source = '../assets/gfx/gameplay/End_Hood.png')] protected var ImgFinNiveau:Class;
 		
 		public function FinNiveau(xpos:int, ypos:int) 
 		{
-			super(xpos, ypos, ImgFinNiveau);
+			super(xpos, ypos);
+			if (FlxG.univ == 1)
+				loadGraphic(ImgFinNiveau);
+			else
+				loadGraphic(ImgFinNiveau2);
 		}
 	
 		override public function update():void 

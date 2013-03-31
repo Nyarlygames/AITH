@@ -37,7 +37,7 @@ package
 		public var souffleries:FlxGroup 	= new FlxGroup();								// SOUFFLERIES
 		public var soucoupes:FlxGroup 		= new FlxGroup();								// SOUCOUPES
 		public var triggers:FlxGroup		= new FlxGroup();								// FIN DE NIVEAU
-		public var fin:FlxGroup 			= new FlxGroup();								// TRIGGERS
+		public var fin:FlxGroup 			= new FlxGroup();								// TRIGGERS ALLO QUOI?
 		public var checkpoints:FlxGroup 	= new FlxGroup();								// CHECKPOINTS
 		public var id:int = 0;																// NIVEAU
 		public var DustbinBieber:FlxGroup 		= new FlxGroup();							// POUBELLES
@@ -499,6 +499,7 @@ package
 			FlxG.state.add(ens);
 			FlxG.state.add(tourelles);
 			FlxG.state.add(checkpoints);
+			FlxG.state.add(fin);
 			// AJOUT PLAYER ET CAM
 			player = new Player(50, 610);
 			FlxG.player = player;

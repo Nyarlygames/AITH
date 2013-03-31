@@ -47,11 +47,11 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
 			
-			if (FlxCollision.pixelPerfectCheck(cursor, btnPlay))
+			if (FlxCollision.pixelPerfectCheck(cursor, btnPlay)|| (FlxG.keys.pressed("SPACE")))
 			{
 				TweenMax.to(btnPlay.scale, 0.3, { x:1,y:1 , ease:Linear.easeIn } );
 				TweenMax.to(this.scale, 0.3, { x:1,y:1 , ease:Linear.easeIn } );
-				if (FlxG.mouse.justPressed())
+				if (FlxG.mouse.justPressed() || (FlxG.keys.justPressed("SPACE")))
 				{
 					TweenMax.to(btnPlay, 1, { y : -100, alpha: 0, ease:Expo.easeIn } );
 					TweenMax.to(this, 1, {y : -100, alpha: 0, ease:Expo.easeIn } );
