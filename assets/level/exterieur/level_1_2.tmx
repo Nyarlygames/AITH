@@ -962,9 +962,9 @@
   <object name="tube" type="Tube" x="13720" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="13840" y="440" width="40" height="40"/>
   <object name="ascenseur" type="Ascenceur" x="13480" y="360" width="120" height="40"/>
-  <object name="trigger_ascenseur" type="Trigger" x="13560" y="480" width="40" height="40"/>
-  <object name="trigger_ascenseur" type="Trigger" x="13520" y="480" width="40" height="40"/>
-  <object name="trigger_ascenseur" type="Trigger" x="13480" y="480" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="13560" y="520" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="13520" y="520" width="40" height="40"/>
+  <object name="trigger_ascenseur" type="Trigger" x="13480" y="520" width="40" height="40"/>
   <object name="BPique" type="Piques" x="13480" y="120" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>

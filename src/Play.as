@@ -298,6 +298,8 @@ package
 			{
 				(obj2 as Destructible_ground).play("destruction");
 				(obj2 as Destructible_ground).destruction = true;
+				(obj2 as Destructible_ground).height = 0;
+				(obj2 as Destructible_ground).width = 0;
 				soundDestrSol.volume = 0.5;
 				soundDestrSol.play();
 			}
