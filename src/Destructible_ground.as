@@ -18,6 +18,7 @@ package
 			loadGraphic(ImgDesSol, true, false, 200, 205);
 			addAnimation("destruction",  [1, 2, 3, 4, 5, 6, 7], 15, false);
 			addAnimationCallback(destroyed);
+			height = 25;
 		}
 		
 		private function destroyed(animationName:String, frameNumber:uint, frameIndex:uint):void {  
