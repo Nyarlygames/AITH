@@ -24,7 +24,7 @@ package
 	public class Player extends FlxSprite 
 	{
 		[Embed(source = '../assets/gfx/gameplay/jimi_tile.png')]	 	 protected var ImgPlayer:Class;
-		[Embed(source = '../assets/gfx/gameplay/Jimi_mort.png')]	 	 protected var ImgMort:Class;
+		[Embed(source = '../assets/gfx/gameplay/Jimi_mortv2.png')]	 	 protected var ImgMort:Class;
 		[Embed(source = '../assets/gfx/misc/particle.png')] 			 protected var ImgParticle:Class;
 		[Embed(source = '../assets/gfx/misc/alienPart.png')] 			 protected var ImgParticleAlien:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
@@ -170,19 +170,10 @@ package
 					emitterAlien.x = x + 20;
 					emitterAlien.y = y + frameHeight - 30;
 				}
-				if ((angle <= -45) && (jumping || on_tremplin))
+				if (angle <= -45)
 				{
 					angularVelocity = 0;
 				}
-				else if (angle <= -45) {
-					angle = -45;
-				}
-				else if ((angle >= 0) && (!jumping && !on_tremplin)){
-					angularVelocity = 0;
-					angle = 0;
-				}
-				trace(angle, jumping, on_tremplin);
-					
 				
 				if (FlxG.keys.pressed("SPACE"))
 				{
@@ -275,7 +266,8 @@ package
 			}
 			else if (jumping == false) {
 				if (on_tremplin == false) {
-					angularVelocity = angularspeed * 2;
+					angle = 0;
+					angularVelocity = 0;
 				}
 				accumulateur = 0;
 				gravity = mingravity;
@@ -378,7 +370,7 @@ package
 				death = new DeathScreen();
 				FlxG.state.setSubState(death, onDeathClosed);
 				loadGraphic(ImgMort, true, false, 160, 160);
-				addAnimation("mortmortmort",  [0, 1, 2, 3, 4], 7, false);
+				addAnimation("mortmortmort",  [0, 1, 2, 3, 4, 5, 6, 7, 8], 17, false);
 				offset.x = 80;
 				offset.y = 100;
 				play("mortmortmort");
