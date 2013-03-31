@@ -127,9 +127,9 @@ package
 		}
 		
 		override public function update():void {
-			if (FlxG.keys.justReleased("ENTER"))
+			if (FlxG.keys.justReleased("ENTER") || FlxG.keys.justReleased("ESCAPE"))
 				FlxG.switchState(new UnivChooser);
-			if (FlxG.keys.justReleased("SPACE") || FlxG.keys.justReleased("ESCAPE") || FlxG.mouse.justPressed()) {
+			if (FlxG.keys.justReleased("SPACE") || FlxG.mouse.justPressed()) {
 				switch_page(timer);
 			}
 		}

@@ -29,12 +29,14 @@ package
 		override public function update():void {
 			if (target.onScreen(FlxG.camera) || (FlxG.player.dead)) {
 				kill();
-				destroy();
+				if (this != null)
+					destroy();
 			}
 			if (target.x < FlxG.player.x){
 				visible = false;
 				exists = false;
-				_curAnim.destroy();
+				if (_curAnim != null)
+					_curAnim.destroy();
 			}
 		}
 		

@@ -221,9 +221,6 @@ package
 			if (FlxG.keys.justPressed("C")) {
 					FlxG.usersave.univUnlock = true;
 			}
-			if (FlxG.keys.pressed("ESCAPE")) {
-				System.exit(0);
-			}
 		}
 	}
 }

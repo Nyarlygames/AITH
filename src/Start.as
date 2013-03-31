@@ -181,10 +181,6 @@ package
 			{
 				FlxG.switchState(new Cutscene());
 			}
-			// DEV : FERME LA FENETRE (à supprimer plus tard)
-			if (FlxG.keys.pressed("ESCAPE")) {
-				System.exit(0);
-			}
 		}
 	}
 }

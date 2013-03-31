@@ -240,6 +240,12 @@ package
 					FlxG.switchState(new UnivChooser());
 				}
 			}
+			
+			// Ajout de point d'objectifs
+			if (FlxG.keys.pressed("ENTER")) 
+			{
+				FlxG.switchState(new UnivChooser());
+			}
 			else
 			{
 				retour.play("off");
@@ -250,8 +256,8 @@ package
 				calculated = true;
 			}
 			
-			//DEV Respawn at checkpoint
-			if (FlxG.keys.pressed("E")) 
+			// Ajout de point d'objectifs
+			if (FlxG.keys.pressed("O")) 
 			{
 				FlxG.usersave.scoreStars++;
 			}

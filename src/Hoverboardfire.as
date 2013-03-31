@@ -29,7 +29,6 @@ package
 		
 		override public function update():void {
 			if ((target.exists == false) && !hidden) {
-				scrollFactor = new FlxPoint(0, 0);
 				hidden = true;
 				kill();
 				destroy();
