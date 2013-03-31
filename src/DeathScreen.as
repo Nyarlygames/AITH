@@ -66,13 +66,13 @@ package
 			FlxG.state.add(deathPic);
 			
 			// Texte de continue
-			continuePic = new FlxSprite(40,112, ImgContinue);
+			continuePic = new FlxSprite(40,150, ImgContinue);
 			continuePic.loadGraphic(ImgContinue, true, false, 300, 62);
 			continuePic.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(continuePic);
 			
 			// Texte de restart
-			restartPic = new FlxSprite(40, 174, ImgRestart);
+			restartPic = new FlxSprite(40, 225, ImgRestart);
 			restartPic.loadGraphic(ImgRestart, true, false, 300, 63);
 			restartPic.scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(restartPic);

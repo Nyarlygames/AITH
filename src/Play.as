@@ -78,7 +78,7 @@ package
 		{				
 			tube_count = new FlxText(75, 0, 200, "0");
 			tube_count.y += tube_count.frameHeight - 10;
-			tube_count.setFormat("onedalism", 28, 0x000000);
+			tube_count.setFormat("onedalism", 35,0xFF0000000 , null, 0xFFFFFF );
 			tube_count.scrollFactor = new FlxPoint(0, 0);
 
 			soundCrepite.loadEmbedded(SfxCrepite);
@@ -251,8 +251,17 @@ package
 		
 		// GESTION RECUP TUBE VERT
 		public function getTube(obj1:FlxObject, tube:TubeVert):void {
-			
-			TweenMax.to(tube_count.scale, 0.5, { x:1.3,y:1.4, ease:Bounce.easeIn } );
+			if (!player.dead && tube_count.alive)
+			{
+				TweenMax.to(tube_count.scale, 0.1, { x:1.2,y:1.2, ease:Bounce.easeIn, onComplete : resetTubes } );
+				TweenMax.to(tube_count, 0.1, { x:100, y:10, ease:Bounce.easeIn, onComplete : resetTubes  } );
+				
+				function resetTubes():void
+				{
+					TweenMax.to(tube_count.scale, 0.1, { x:1,y:1, ease:Bounce.easeIn } );
+					TweenMax.to(tube_count, 0.1, { x:80, y:0, ease:Bounce.easeIn  } );
+				}
+			}
 			if (tube.loot == 5)
 			{
 				tube.soundGrosTube.play();
@@ -352,6 +361,7 @@ package
 			// play ending animations and sounds.
 				FlxG.player.endLvl = true;
 				TweenMax.to(FlxG.player, 1, { x: FlxG.player.x + 100 , alpha : 0, ease:Linear.easeOut } );
+				TweenMax.to(FlxG.player.jauge, 1, { alpha : 0, ease:Linear.easeOut } );
 				player.stopPlayer();
 				if (sound != null) {
 					sound.stop();
