@@ -23,6 +23,7 @@ package
 		[Embed(source = '../assets/gfx/ui/tile-tubes.png')] 		protected var ImgTubes:Class;
 		[Embed(source = '../assets/gfx/ui/logo-tile.png')]		 	protected var ImgLogoTile:Class;
 		[Embed(source = '../assets/gfx/ui/etoile.png')] 			protected var ImgStars:Class;
+		[Embed(source = '../assets/gfx/ui/logoiut.png')] 			protected var ImgLogoIUT:Class;
 		[Embed(source = '../assets/gfx/ui/play-arrow.png')] 		protected var ImgArrowPlay:Class;
 		[Embed(source = '../assets/gfx/ui/jimi_roule_rapide.png')] 	protected var ImgRunningJimi:Class;
 		[Embed(source = '../assets/gfx/ui/background-default.png')] protected var ImgBackDefault:Class;
@@ -36,6 +37,7 @@ package
 		public var retour:FlxSprite;
 		public var logo:FlxSprite;
 		public var cursor:FlxSprite;
+		public var logoIut:FlxSprite;
 		public var arrowPlay:FlxSprite;
 		public var credits:FlxSprite;
 		public var authors:FlxSprite;
@@ -62,9 +64,12 @@ package
 			add(logo);
 			
 			//CREDITS
-				credits = new FlxSprite(700, 245, ImgCredits);
-				credits.x = 700; credits.y = -200;
+				credits = new FlxSprite(700, -200, ImgCredits);
 				add(credits);
+			
+			//Logo iut
+				logoIut = new FlxSprite(100, -200, ImgLogoIUT);
+				add(logoIut);
 			
 			//Authors 
 				authors = new FlxSprite(800, 206, ImgCreditsAuthors);
@@ -159,6 +164,7 @@ package
 				if (FlxG.mouse.justPressed()) 
 				{
 					TweenMax.to(authors, 0.9, { y:300, ease:Linear.easeOut } );
+					TweenMax.to(logoIut, 0.9, { y:100, ease:Linear.easeOut } );
 					TweenMax.to(retour, 0.9, { alpha:1, ease:Linear.easeOut } );
 					TweenMax.to(logo, 0.4, { alpha:0, ease:Linear.easeOut } );
 					TweenMax.to(arrowPlay, 0.4, { alpha:0, ease:Linear.easeOut } );

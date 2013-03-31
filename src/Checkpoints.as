@@ -31,7 +31,7 @@ package
 			soundActivate.loadEmbedded(SfxActivate);
 			soundRevives.loadEmbedded(SfxRevives);
 			immovable = true;
-			offset.x = -200;
+			offset.x = -50;
 			
 			this.loadGraphic(ImgCheck, true, false, 80, 200);
 			this.addAnimation("default",  [0], 30, true);

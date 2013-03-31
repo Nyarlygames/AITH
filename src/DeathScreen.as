@@ -94,7 +94,7 @@ package
 		// UPDATE DU MENU PAUSE
 		public function inPause():void
 		{
-			
+			//____________SOURIS___________________//
 			// Continue la partie
 			if (FlxCollision.pixelPerfectCheck(cursor, continuePic)) 
 			{
@@ -136,9 +136,27 @@ package
 			{
 				TweenMax.to(menuPic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 			}
+			//____________SOURIS___________________//
+			
+			//____________CLAVIER___________________//
+			
+			if (FlxG.keys.justPressed("ENTER"))
+			{
+				retry();
+			}
+			if (FlxG.keys.justPressed("BACKSPACE"))
+			{
+				retry();
+			}
+			if (FlxG.keys.justPressed("ESCAPE"))
+			{
+				tryQuit();
+			}
 			
 			
 			
+			
+			//____________CLAVIER___________________//
 			// Gestion clavier
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	
@@ -152,6 +170,7 @@ package
 			restartPic.kill();
 			menuPic.kill();
 			continuePic.kill();
+			cursor.kill();
 			this.close(RETRY);
 		}
 		

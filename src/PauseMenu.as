@@ -82,7 +82,7 @@ package
 			/*	Texte de pause */
 			
 			/*	Textes de reprendre */
-				pauseTxtRep = new FlxSprite(469, 414, ImgPauseTxt);
+				pauseTxtRep = new FlxSprite(469, 459, ImgPauseTxt);
 				pauseTxtRep.loadGraphic(ImgPauseTxt, true, false, 250, 46);
 				pauseTxtRep.addAnimation("reprendre", [0], 10, true);
 				pauseTxtRep.addAnimation("recommencer", [1], 10, true);
@@ -94,7 +94,7 @@ package
 			/*	Texte de reprendre */
 			
 			/*	Textes de recommencer */
-				pauseTxtRest = new FlxSprite(469, 459, ImgPauseTxt);
+				pauseTxtRest = new FlxSprite(469, 414, ImgPauseTxt);
 				pauseTxtRest.loadGraphic(ImgPauseTxt, true, false, 250, 46);
 				pauseTxtRest.addAnimation("reprendre", [0], 10, true);
 				pauseTxtRest.addAnimation("recommencer", [1], 10, true);

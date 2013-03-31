@@ -36,6 +36,7 @@ package
 	{
 		
 		[Embed(source = "../assets/level/map_test.txt", mimeType = "application/octet-stream")] public var maptest:Class;
+		[Embed(source = "../assets/level/mapDesignerTest.txt", mimeType = "application/octet-stream")] public var mapDesignerTest:Class;
 		[Embed(source = "../assets/level/map01.txt", mimeType = "application/octet-stream")] public var mapfile:Class;
 		[Embed(source = "../assets/level/map02.txt", mimeType = "application/octet-stream")] public var mapfile2:Class;
 		[Embed(source = "../assets/level/map03.txt", mimeType = "application/octet-stream")] public var mapfile3:Class;
@@ -86,6 +87,9 @@ package
 				// UNIVERS 1
 				case -1:
 					map = new Map(maptest);
+					break;
+				case -2:
+					map = new Map(mapDesignerTest);
 					break;
 				case 1:
 					switch (FlxG.level) { 
@@ -156,7 +160,7 @@ package
 					justloaded = false;
 				}
 				super.update(); 
-				if ((!FlxG.player.pause) && (!FlxG.player.dead)) 
+				if ((!FlxG.player.pause) && (!FlxG.player.dead) && (!FlxG.player.endLvl)) 
 				{
 					tube_count.text = "" + FlxG.score;
 					// MENU PAUSE
@@ -258,17 +262,16 @@ package
 		// Commencement du backflip
 		public function startBackflip(obj1:FlxObject, obj2:FlxObject):void 
 		{
-			TweenMax.to(player, 3, { angle : -360, ease:Linear.easeNone, onComplete:testBackflip } );
+			TweenMax.to(player, 4, { angle : -360, ease:Linear.easeOut, onComplete:testBackflip } );
 			backflip = new FlxSprite(0, 0, ImgBackflip);
 			add (backflip);
-			trace (backflip.alpha);
 		}
 		
 		// Commencement du backflip
 		public function testBackflip():void 
 		{
 			trace ("testgoesOK");
-			TweenMax.to(player, 1, { angle:0, ease:Linear.easeNone } );
+			TweenMax.to(player, 2, { angle:0, ease:Linear.easeNone } );
 			TweenMax.to(player, 3, { alpha:1, ease:Cubic.easeInOut } );
 		}
 		
@@ -339,6 +342,8 @@ package
 		public function endLevel(player:Player, end:FlxObject):void 
 		{
 			// play ending animations and sounds.
+				FlxG.player.endLvl = true;
+				TweenMax.to(FlxG.player, 1, { x: FlxG.player.x + 100 , alpha : 0, ease:Linear.easeOut } );
 				player.stopPlayer();
 				if (sound != null) {
 					sound.stop();
@@ -353,7 +358,7 @@ package
 					player.vitesse3.destroy();
 				}
 				var t : FlxTimer = new FlxTimer();
-				t.start(2, 1,goScore) ;
+				t.start(3, 1,goScore) ;
 			// Then go to Score Screens
 			function goScore():void
 			{

@@ -78,6 +78,7 @@ package
 		public var checkpoint:FlxPoint 			= new FlxPoint(50, 700 - 40);
 		public var steamPart:FlxParticle;
 		public var deadscore:int				= 0;
+		public var endLvl:Boolean				= false;
 		public var death:DeathScreen;
 		
 		public function Player(xPos:int, yPos:int) 
@@ -153,7 +154,7 @@ package
 		
 		override public function update():void 
 		{
-			if ((!pause) && (!dead)) {
+			if ((!pause) && (!dead) && (!endLvl)) {
 				play ("midSpeed");
 				jauge.y = y - 270;
 				jauge.frame = (palier_accumulateur + 10000) / 7500 + 12;

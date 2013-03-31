@@ -202,6 +202,10 @@ package
 				FlxG.univ = -1;
 				FlxG.switchState(new Play());
 			}
+			if (FlxG.keys.justPressed("U")) {
+				FlxG.univ = -1;
+				FlxG.switchState(new Play());
+			}
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.univ = 1;
 					soundUniverse.play();
