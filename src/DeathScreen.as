@@ -1,6 +1,6 @@
 package 
 {
-	import flashx.textLayout.formats.TextAlign;
+	import flash.sampler.NewObjectSample;
 	import org.flixel.FlxButton;
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
@@ -8,6 +8,9 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	import org.flixel.FlxSubState;
+	import com.greensock.*;
+	import com.greensock.easing.*;
+	import org.flixel.plugin.photonstorm.FlxSpecialFX;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 
 	/**
@@ -19,71 +22,66 @@ package
 		public static const QUIT_GAME:String = "DeathScreen::quit_game";
 		public static const RETRY:String = "DeathScreen::retry";
 		public static const RESTART:String = "DeathScreen::restart";
+		
+		[Embed(source = '../assets/gfx/ui/cursor.png')] 			protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 		protected var ImgCursorAnim:Class;
+		[Embed(source = '../assets/gfx/ui/menu-mort.png')] 			protected var ImgMenu:Class;
+		[Embed(source = '../assets/gfx/ui/mort-mort.png')] 			protected var ImgMort:Class;
+		[Embed(source = '../assets/gfx/ui/recommencer-mort.png')] 	protected var ImgRestart:Class;
+		[Embed(source = '../assets/gfx/ui/continuer-mort.png')] 	protected var ImgContinue:Class;
+		[Embed(source = '../assets/gfx/ui/filtre-mort.png')] 	protected var ImgFiltre:Class;
+		[Embed(source = '../assets/gfx/ui/pause_pic.png')] 		protected var ImgPause:Class;
+		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
+		
 		public var text:FlxText;
 		public var restartText:FlxText;
 		public var resumeText:FlxText;
 		public var quitText:FlxText;
 		public var cursor:FlxSprite;
-		public var resumePic:FlxSprite;
+		public var deathPic:FlxSprite;
+		public var filtreDeath:FlxSprite;
 		public var restartPic:FlxSprite;
-		public var quitPic:FlxSprite;
-		[Embed(source = '../assets/gfx/ui/cursor.png')] protected var ImgCursor:Class;
-		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
-		[Embed(source = '../assets/gfx/ui/btn_menu.png')] protected var ImgMenu:Class;
-		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] protected var ImgMenuOn:Class;
-		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
+		public var continuePic:FlxSprite;
+		public var menuPic:FlxSprite;
 		
 		public function DeathScreen()
 		{
-			super(true, 0x33FF00FF, true);
+			super(true, 0xA4B7A3, true);
 			FlxG.mouse.hide();
 		}
 		
 		public override function create():void
-		{			
-			// RESUME			
-			resumePic = new FlxSprite(0, FlxG.height *3/15, ImgMenu);
-			resumePic.x = (FlxG.width / 2) - (resumePic.frameWidth / 2);
-			FlxG.state.add(resumePic);
-			resumePic.scrollFactor = new FlxPoint(0, 0);
+		{
 			
-			resumeText = new FlxText(0, FlxG.height * 3 / 15, FlxG.width, "Reprendre");
-			resumeText.y += resumePic.frameHeight / 7;
-			resumeText.setFormat("philly", 40, 0x00000000, TextAlign.CENTER, 0xFFCCCCCC);
-			FlxG.state.add(resumeText);
-			resumeText.scrollFactor = new FlxPoint(0, 0);
+			// Filtre de mort
+			filtreDeath = new FlxSprite(0, 0, ImgFiltre);
+			filtreDeath.loadGraphic(ImgFiltre, true, false, 800, 600);
+			filtreDeath.scrollFactor = new FlxPoint(0, 0);
+			FlxG.state.add(filtreDeath);
 			
+			// Texte de mort
+			deathPic = new FlxSprite(40, 30, ImgMort);
+			deathPic.loadGraphic(ImgMort, true, false, 211, 81);
+			deathPic.scrollFactor = new FlxPoint(0, 0);
+			FlxG.state.add(deathPic);
 			
-			// RESTART
-			restartPic = new FlxSprite(0, FlxG.height *6/15, ImgMenu);
-			restartPic.x = (FlxG.width / 2) - (restartPic.frameWidth / 2);
-			FlxG.state.add(restartPic);
+			// Texte de continue
+			continuePic = new FlxSprite(40,112, ImgContinue);
+			continuePic.loadGraphic(ImgContinue, true, false, 300, 62);
+			continuePic.scrollFactor = new FlxPoint(0, 0);
+			FlxG.state.add(continuePic);
+			
+			// Texte de restart
+			restartPic = new FlxSprite(40, 174, ImgRestart);
+			restartPic.loadGraphic(ImgRestart, true, false, 300, 63);
 			restartPic.scrollFactor = new FlxPoint(0, 0);
+			FlxG.state.add(restartPic);
 			
-			restartText = new FlxText(0, FlxG.height * 6 / 15, FlxG.width, "Recommencer");
-			restartText.y += restartPic.frameHeight / 7;
-			restartText.setFormat("philly", 40, 0x00000000, TextAlign.CENTER, 0xFFCCCCCC);
-			FlxG.state.add(restartText);
-			restartText.scrollFactor = new FlxPoint(0, 0);
-			
-			// RETOUR AU MENU
-			quitPic = new FlxSprite(0, FlxG.height *9/15, ImgMenu);
-			quitPic.x = (FlxG.width / 2) - (quitPic.frameWidth / 2);
-			FlxG.state.add(quitPic);
-			quitPic.scrollFactor = new FlxPoint(0, 0);
-			
-			quitText = new FlxText(0, FlxG.height * 9 / 15, FlxG.width, "Retour au menu");
-			quitText.y += quitPic.frameHeight / 7;
-			quitText.setFormat("philly", 40, 0x00000000, TextAlign.CENTER, 0xFFCCCCCC);
-			FlxG.state.add(quitText);
-			quitText.scrollFactor = new FlxPoint(0, 0);
-			
-			
-			// PAUSE
-			text = new FlxText(0, FlxG.height /15, FlxG.width, "MORT");
-			text.setFormat("philly", 60, 0x00FF8000, TextAlign.CENTER, 0xFFCCCCCC);
-			FlxG.state.add(text);
-			text.scrollFactor = new FlxPoint(0, 0);
+			// Texte de menu
+			menuPic = new FlxSprite(627, 516, ImgMenu);
+			menuPic.loadGraphic(ImgMenu, true, false, 150, 72);
+			menuPic.scrollFactor = new FlxPoint(0, 0);
+			FlxG.state.add(menuPic);
 			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
@@ -94,34 +92,54 @@ package
 		}
 		
 		// UPDATE DU MENU PAUSE
-		public function inPause():void {
-			// GESTION CLICS SOURIS				
-				//RESTART
-				if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) {
-					restartPic.loadGraphic(ImgMenuOn);
-					if (FlxG.mouse.justPressed())
-					restart();
-				}
-				else
-					restartPic.loadGraphic(ImgMenu);
-					
-				//RESUME
-				if (FlxCollision.pixelPerfectCheck(cursor, resumePic)) {
-					resumePic.loadGraphic(ImgMenuOn);
-					if (FlxG.mouse.justPressed())
+		public function inPause():void
+		{
+			
+			// Continue la partie
+			if (FlxCollision.pixelPerfectCheck(cursor, continuePic)) 
+			{
+				TweenMax.to(continuePic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
+				if (FlxG.mouse.justPressed())
+				{
 					retry();
 				}
-				else
-					resumePic.loadGraphic(ImgMenu);
-				
-				//QUIT
-				if (FlxCollision.pixelPerfectCheck(cursor, quitPic)) {
-					quitPic.loadGraphic(ImgMenuOn);
-					if (FlxG.mouse.justPressed())
+			}
+			else
+			{
+				TweenMax.to(continuePic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
+			}
+			
+			// Relance la partie
+			if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) 
+			{
+				TweenMax.to(restartPic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
+				if (FlxG.mouse.justPressed())
+				{
+					restart();
+				}
+			}
+			else
+			{
+				TweenMax.to(restartPic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
+			}
+			
+			// Renvoie au menu
+			if (FlxCollision.pixelPerfectCheck(cursor, menuPic)) 
+			{
+				TweenMax.to(menuPic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
+				if (FlxG.mouse.justPressed())
+				{
 					tryQuit();
 				}
-				else
-					quitPic.loadGraphic(ImgMenu);
+			}
+			else
+			{
+				TweenMax.to(menuPic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
+			}
+			
+			
+			
+			// Gestion clavier
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	
 		}
@@ -129,14 +147,11 @@ package
 		// REPRENDRE
 		private function retry():void
 		{
-			cursor.kill();
+			filtreDeath.kill();
+			deathPic.kill();
 			restartPic.kill();
-			restartText.kill();
-			resumePic.kill();
-			resumeText.kill();
-			quitPic.kill();
-			quitText.kill();
-			text.kill();
+			menuPic.kill();
+			continuePic.kill();
 			this.close(RETRY);
 		}
 		

@@ -50,7 +50,7 @@
   <object name="mobil" type="AlienVert" x="280" y="0" width="80" height="120"/>
   <object name="alien_ronde" type="AlienVert" x="160" y="160" width="80" height="120"/>
   <object name="Sol_Destructible" type="Des_sol" x="40" y="80" width="200" height="40"/>
-  <object name="check" type="Checkpoints" x="160" y="320" width="40" height="80"/>
+  <object name="check" type="Checkpoints" x="164" y="321" width="40" height="80"/>
   <object name="poubelle" type="Poubelles" x="240" y="320" width="80" height="80"/>
   <object name="tube" type="Tube" x="160" y="440" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="240" y="440" width="40" height="40"/>

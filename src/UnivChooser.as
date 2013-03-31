@@ -107,39 +107,6 @@ package
 				txtUnivers.x = 30; txtUnivers.y = 30; txtUnivers.play("univers");
 			/*	Texte Univers */
 			
-			
-			// Débloque l'univers 2
-			//if ( Player.scoreStars > Player.starsNeed)
-			//{
-				//this.unlockUniv2(Player.univUnlock);
-			//}
-			
-			/*
-			SCORE 1
-			var uni1text:FlxText = new FlxText(uni1.x + uni1.frameWidth/5, uni1.y + uni1.frameHeight /2, uni1.frameWidth, "0");
-			uni1text.setFormat("slick", 32, 0x044071);
-			add(uni1text);	
-			
-			//TOTAL 1
-			var uni1text2:FlxText = new FlxText(uni1.x, uni1.y + uni1.frameHeight *4/5, uni1.frameWidth *4/5, "15");
-			uni1text2.setFormat("slick", 32, 0x044071);
-			uni1text2.alignment = "right";
-			add(uni1text2);		
-			
-			
-			//SCORE 2
-			var uni2text:FlxText = new FlxText(uni2.x + uni2.frameWidth*2/5, uni2.y + uni2.frameHeight /2, uni2.frameWidth, "0");
-			uni2text.setFormat("slick", 32, 0x044071);
-			add(uni2text);	
-			
-			//TOTAL 2
-			var uni2text2:FlxText = new FlxText(uni2.x, uni2.y + uni2.frameHeight *4/5, uni2.frameWidth *4/5, "13");
-			uni2text2.setFormat("slick", 32, 0x044071);
-			uni2text2.alignment = "right";
-			add(uni2text2);
-			
-			*/
-			
 			// CURSEUR SOURIS
 			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
