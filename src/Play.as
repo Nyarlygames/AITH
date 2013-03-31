@@ -185,10 +185,18 @@ package
 					{
 						FlxG.switchState(new ScoreScreen());
 					}
+					// DEV : TP A LA FIN
+					if ((FlxG.keys.justPressed("E"))) 
+					{
+						player.checkpoint.x = map.fin.members[0].x - 200;
+						player.checkpoint.y = map.fin.members[0].y + (map.fin.members[0] as FinNiveau).frameHeight - 100;
+						player.die_motherfucker( -1);
+						player.deadscore = 0;
+					}
 					// DEV : PASSE AU MENU DE SCORING
 					if ((FlxG.keys.justPressed("L"))) 
 					{
-						var loot:TubeVert = new TubeVert(0, 0, 5, 1);
+						var loot:TubeVert = new TubeVert(0, 0, 100, 1);
 						getTube(player, loot);
 					}
 					// DEV : RESTART ET DEPASSEMENT (à supprimer plus tard)
