@@ -24,8 +24,8 @@ package
 		public var soundIdle:FlxSound 	= new FlxSound();
 		public var soundIn:FlxSound 	= new FlxSound();
 		public var gravityup:int 		= 1000;				// Puissance du souffle en Y
-		public var speedSouffle:int 	= 3000;				// Puissance du souffle en X
-		public var speedBasSouffle:int 	= 3000;			// Puissance du souffle en -X
+		public var speedSouffle:int 	= 1000;				// Puissance du souffle en X
+		public var speedBasSouffle:int 	= 1000;			// Puissance du souffle en -X
 		public var applied:Boolean		= false;
 		public var boost:int			= 200;
 		public var souffle:FlxSprite;
@@ -106,7 +106,7 @@ package
 				// HAUT
 				if (FlxG.overlap(FlxG.player, souffle) && angle == 0 ) 
 				{
-					FlxG.player.velocity.y -= gravityup * FlxG.elapsed;
+					FlxG.player.velocity.y -= speedSouffle * FlxG.elapsed;
 				}
 				// DROITE
 				else if (angle == 90 && !FlxG.overlap(FlxG.player, souffle, boost_player)) 
@@ -131,7 +131,7 @@ package
 		public function boost_player(obj1:FlxSprite, obj2:FlxObject):void 
 		{
 			FlxG.player.maxVelocity.x = 500;
-			FlxG.player.velocity.x += speedSouffle * FlxG.elapsed;
+			FlxG.player.velocity.x += gravityup * FlxG.elapsed;
 		}
 		
 		public function stopsouffle(obj1:FlxSprite, obj2:FlxObject):void 
