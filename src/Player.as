@@ -238,8 +238,6 @@ package
 				}
 				if (acceleration.x != acceleration_speed)
 					acceleration.x = acceleration_speed;
-					
-				
 			}
 		}
 		
@@ -355,8 +353,8 @@ package
 			if (death == null)
 			{
 				deadscore += 1;
-				TweenMax.to(this, 2, { alpha:0, ease:Linear.easeOut }  );
-				TweenMax.to(jauge, 2, { alpha:0, ease:Linear.easeOut }  );
+				TweenMax.to(this, 1.5, { alpha:0, ease:Linear.easeOut }  );
+				TweenMax.to(jauge, 1.5, { alpha:0, ease:Linear.easeOut }  );
 				emitter.kill();
 				trace("DEAD FROM : ",where);
 				dead = true;
@@ -364,6 +362,11 @@ package
 				from = where;
 				death = new DeathScreen();
 				FlxG.state.setSubState(death, onDeathClosed);
+				loadGraphic(ImgMort, true, false, 160, 160);
+				addAnimation("mortmortmort",  [0, 1, 2, 3, 4], 7, false);
+				offset.x = 80;
+				offset.y = 100;
+				play("mortmortmort");
 			}
 		}
 		
@@ -372,6 +375,14 @@ package
 		{
 			// RETRY
 			if (result == DeathScreen.RETRY) {
+				loadGraphic(ImgPlayer, true, false, 80, 80);
+				addAnimation("slowSpeed",  [0,1], 5, true);
+				addAnimation("midSpeed", 	[4,5], 15, true);
+				addAnimation("fastSpeed",  [8,9,10], 30, true);
+				width = 80;
+				height = 60;
+				offset.y = 20;
+				offset.x = 0;
 				TweenMax.to(this, 1, { alpha:1, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 1, { alpha:1, ease:Linear.easeOut }  );
 				accumulateur = 0;

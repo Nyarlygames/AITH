@@ -66,7 +66,7 @@ package
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 6000;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 6;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// MAP CHARGEE?
 		public var begin:Boolean = true;					// TUTORIAL DU DEBUT?
 		public var ui:UI = new UI();
@@ -225,7 +225,7 @@ package
 					pause.inPause();
 				}
 				// UPDATE PAUSE SCREEN
-				if (player.dead) {
+				if ((player.dead) && (player.death != null)){
 					player.death.inPause();
 				}
 			}
@@ -294,12 +294,17 @@ package
 			soundCrepite.volume = 0.5;
 			soundCrepite.play();
 			player.angle = 0;
-			if (player.gravity > dest_ground)
+			if (player.jauge.frame > dest_ground)
 			{
+				(obj2 as Destructible_ground).play("destruction");
+				(obj2 as Destructible_ground).destruction = true;
 				soundDestrSol.volume = 0.5;
 				soundDestrSol.play();
-				obj2.kill();
 			}
+			else if (!(obj2 as Destructible_ground).destruction) {
+				(obj2 as Destructible_ground).frame = 1;
+			}
+			
 		}
 		
 		// TOURELLES
@@ -367,37 +372,49 @@ package
 			var from:int = 1; // 0 => haut, 1 => partout ailleurs
 			if (player.y <= obj2.y)
 				from = 0;
-			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite))) {
+			if (FlxCollision.pixelPerfectCheck((obj1 as FlxSprite), (obj2 as FlxSprite)))  {
 				if ((player.gravity > alienkill) && (from == 0))
 				{
-					
 					if (obj2 is AlienNormal)
 					{
+						(obj2 as AlienNormal).play("mort");
+						(obj2 as AlienNormal).killed = true;
 						//(obj2 as AlienNormal).soundMort.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
+						(obj2 as AlienHorizontal).play("mort");
+						(obj2 as AlienHorizontal).killed = true;
 						//(obj2 as AlienHorizontal).soundMort.play();
 					}
-					
-					obj2.kill();
 					FlxG.state.add(new Loot(player,(obj2 as Alien).loot));
 				}
 				// REBONDS
 				else if (from == 0) {
 					if (obj2 is AlienNormal)
 					{
+						(obj2 as AlienNormal).play("rebonds");
 						(obj2 as AlienNormal).soundRebond.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
+						(obj2 as AlienHorizontal).play("rebonds");
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					player.velocity.y = - 250;
 				}
 				// MEURT
 				else {
-					player.die_motherfucker(3);
+					if (obj2 is AlienHorizontal)
+					{
+						if ((obj2 as AlienHorizontal).killed == false)
+							player.die_motherfucker(3);
+					}
+					if (obj2 is AlienNormal)
+					{
+						if ((obj2 as AlienNormal).killed == false)
+							player.die_motherfucker(3);
+					}
 				}
 			}
 		}

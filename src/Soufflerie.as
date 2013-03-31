@@ -118,6 +118,9 @@ package
 			{
 				//soundIdle.play();
 			}
+			FlxG.overlap(emitter, FlxG.map.destructible, souffle_sol);
+			FlxG.collide(emitter, FlxG.map.tile, souffle_sol);
+			
 			if (FlxG.player != null)
 			{
 				if (FlxG.overlap(FlxG.player, emitter) && angle == 0 ) 
@@ -140,6 +143,11 @@ package
 					}
 				}
 			}
+		}
+
+		public function souffle_sol(obj1:FlxSprite, obj2:FlxObject):void 
+		{
+			obj1.kill();
 		}
 	}
 
