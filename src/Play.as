@@ -284,28 +284,10 @@ package
 		// Commencement du backflip
 		public function startBackflip(obj1:FlxObject, obj2:FlxObject):void 
 		{
-<<<<<<< HEAD
-			TweenMax.to(player, 2, { angle : -360, ease: Linear.easeOut } );
-			TweenMax.to(player.scale, 1, { x : 3, y : 3, ease: Bounce.easeInOut, onComplete:outBackflip } );
-			
-			function outBackflip() :void
-			{
-				TweenMax.to(player.scale, 1, { x : 1, y : 1, ease: Bounce.easeOut } );
-			}
-=======
-			TweenMax.to(player, 4, { angle : -360, ease:Linear.easeOut, onComplete:testBackflip } );
+			TweenMax.to(player, 2, { angle : -360, ease:Linear.easeOut } );
 			backflip = new FlxSprite(0, 0, ImgBackflip);
 			add (backflip);
 		}
-		
-		// Commencement du backflip
-		public function testBackflip():void 
-		{
-			TweenMax.to(player, 2, { angle:0, ease:Linear.easeNone } );
-			TweenMax.to(player, 3, { alpha:1, ease:Cubic.easeInOut } );
->>>>>>> 60754fc71905f2692db75cac3e5f37872c9b9bf6
-		}
-		
 		// Fin du backflip
 		public function endBackflip(obj1:FlxObject, obj2:FlxObject):void 
 		{
