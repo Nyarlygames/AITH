@@ -155,7 +155,7 @@ package
 				logo.play("contour");
 				if (FlxG.mouse.justPressed()) 
 				{
-					FlxG.switchState(new UnivChooser());
+					FlxG.switchState(new Cutscene());
 				}
 			}
 			if (FlxCollision.pixelPerfectCheck(cursor, credits))
@@ -179,7 +179,7 @@ package
 			
 			if (FlxG.keys.pressed("SPACE")) 
 			{
-				FlxG.switchState(new UnivChooser());
+				FlxG.switchState(new Cutscene());
 			}
 			// DEV : FERME LA FENETRE (à supprimer plus tard)
 			if (FlxG.keys.pressed("ESCAPE")) {
