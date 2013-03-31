@@ -20,7 +20,7 @@
  </tileset>
  <layer name="Sol" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKgCAQBVBB2mb3P22rViUVKJ/iPfgrQWdGF5YCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8y3pAgAAfsTfCgDgrAaTrGW9SXIuM/s6sr3Yq7feBp71xYx4O0/vK93rVQDo2wHiJgVB
+   eJzt1jEKwCAMBVBButre/7SdnKzYghLavgd/EmKCDkkJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1tuiGwAA+BC7FQBAK/80ZZDo/lbNVXM8qNU73yfe9cbM+Dt33yt61qsA0HcCTJ0FTQ==
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="600" height="20" opacity="0.9">
@@ -28,9 +28,7 @@
   <object type="Soucoupe" x="4760" y="520" width="80" height="40"/>
   <object type="Soufflerie" x="4880" y="760" width="80" height="40"/>
   <object type="Alien" x="5167" y="404" width="80" height="80"/>
-  <object type="Tourelle" x="5360" y="320" width="80" height="40"/>
   <object type="Soucoupe" x="5040" y="400" width="80" height="40"/>
-  <object type="Tourelle" x="5720" y="320" width="80" height="40"/>
   <object type="Alien" x="4800" y="320" width="80" height="80"/>
   <object type="AlienHorizontal" x="4960" y="600" width="80" height="80"/>
   <object type="Piques" x="5000" y="600" width="40" height="40"/>
@@ -47,21 +45,19 @@
   <object type="Alien" x="3368" y="200" width="80" height="160"/>
   <object type="Alien" x="3688" y="40" width="80" height="80"/>
   <object type="Alien" x="3548" y="36" width="80" height="80"/>
-  <object type="Tourelle" x="760" y="-120" width="80" height="40"/>
-  <object type="Tourelle" x="280" y="-120" width="80" height="40"/>
-  <object type="Tourelle" x="520" y="-120" width="80" height="40"/>
+  <object type="Tourelle" x="1200" y="360" width="80" height="40"/>
+  <object type="Tourelle" x="720" y="360" width="80" height="40"/>
+  <object type="Tourelle" x="960" y="360" width="80" height="40"/>
   <object type="Soucoupe" x="1120" y="-40" width="80" height="40"/>
-  <object type="Tourelle" x="880" y="-120" width="80" height="40"/>
-  <object type="Tourelle" x="640" y="-120" width="80" height="40"/>
-  <object type="Tourelle" x="400" y="-120" width="80" height="40"/>
+  <object type="Tourelle" x="1320" y="360" width="80" height="40"/>
+  <object type="Tourelle" x="1080" y="360" width="80" height="40"/>
+  <object type="Tourelle" x="840" y="360" width="80" height="40"/>
   <object type="tremplin" x="560" y="720" width="40" height="40"/>
   <object type="tremplin" x="680" y="640" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
    </properties>
   </object>
-  <object type="Soufflerie" x="1320" y="760" width="80" height="40"/>
-  <object type="Soufflerie" x="1240" y="760" width="80" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">

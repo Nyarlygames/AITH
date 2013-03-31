@@ -34,6 +34,7 @@ package
 				flammes = new FlxSprite(x + 20, y + frameHeight);
 				flammes.loadGraphic(ImgFlamme, true, false, 40, 160);
 				flammes.addAnimation("flammes",  [0, 1, 2, 3, 4, 2, 3, 4, 3, 2 , 1, 0], 10, false);
+				flammes.addAnimation("dead",  [5], 1, false);
 				FlxG.state.add(flammes);
 				timer.start(3, 0, activate_burst);
 			}

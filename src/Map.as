@@ -519,13 +519,16 @@ package
 		
 		// RECHARGE OBJETS POUR CHECKPOINTS
 		public function reload_map():void {
-			for each (var en_clean:FlxSprite in ens.members) {
-				if ((en_clean is AlienHorizontal) && (en_clean as AlienHorizontal).incomming != null) {
-					(en_clean as AlienHorizontal).incomming.kill();
-					(en_clean as AlienHorizontal).incomming.destroy();
+			var i:int = 0;
+			while (i < ens.length) {
+				if ((ens.members[i] is AlienHorizontal) && ((ens.members[i] as AlienHorizontal).incomming != null)) {
+					(ens.members[i] as AlienHorizontal).incomming.kill();
+					FlxG.state.remove((ens.members[i] as AlienHorizontal).incomming, true);
 				}
+				ens.members[i].kill();
+				FlxG.state.remove(ens.members[i], true);
+				ens.remove(ens.members[i], true);
 			}
-			ens.clear();
 			for each (var en:FlxSprite in ens_save.members) {
 				if (en is AlienHorizontal) {
 					var new_enh:AlienHorizontal = new AlienHorizontal(en.x, en.y);
@@ -536,43 +539,56 @@ package
 					ens.add(new_enn);
 				}
 			}
-			ascenceurs.clear();
+			while (i < ascenceurs.length) {
+				ascenceurs.members[i].kill();
+				FlxG.state.remove(ascenceurs.members[i], true);
+				ascenceurs.remove(ascenceurs.members[i], true);
+			}
 			for each (var asc:Ascenceur in ascenceurs_save.members) {
 				var new_asc:Ascenceur = new Ascenceur(asc.x, asc.y);
 				ascenceurs.add(new_asc);
 			}
-			item.clear();
+			while (i < item.length) {
+				item.members[i].kill();
+				FlxG.state.remove(item.members[i], true);
+				item.remove(item.members[i], true);
+			}
 			for each (var itm:TubeVert in item_save.members) {
 				var new_item:TubeVert = new TubeVert(itm.x, itm.y, itm.loot, itm.type);
 				item.add(new_item);
 			}
-			DustbinBieber.clear();
+			while (i < DustbinBieber.length) {
+				DustbinBieber.members[i].kill();
+				FlxG.state.remove(DustbinBieber.members[i], true);
+				DustbinBieber.remove(DustbinBieber.members[i], true);
+			}
 			for each (var dust:Poubelle in DustbinBieber_save.members) {
 				var new_dust:Poubelle = new Poubelle(dust.x, dust.y);
 				DustbinBieber.add(new_dust);
 			}
-			destructible.clear();
+			while (i < destructible.length) {
+				destructible.members[i].kill();
+				FlxG.state.remove(destructible.members[i], true);
+				destructible.remove(destructible.members[i], true);
+			}
 			for each (var dest:Destructible_ground in destructible_save.members) {
 				var new_dest:Destructible_ground = new Destructible_ground(dest.x, dest.y);
 				destructible.add(new_dest);
 			}
-			for each (var tour_clean:Tourelle in tourelles.members) {
-				/*if ((tour_clean as Tourelle).flammes != null) {
-					FlxG.state.remove((tour_clean as Tourelle).flammes, true);
-					(tour_clean as Tourelle).flammes.kill();
-					(tour_clean as Tourelle).flammes.destroy();
-					(tour_clean as Tourelle).flammes = null;
+			
+			while (i < tourelles.length) {
+				if ((tourelles.members[i] as Tourelle) != null) {
+					(tourelles.members[i] as Tourelle).flammes.kill();
+					(tourelles.members[i] as Tourelle).flammes.exists = false;
+					FlxG.state.remove((tourelles.members[i] as Tourelle).flammes, true);
+					(tourelles.members[i] as Tourelle).flammes.destroy();
+					(tourelles.members[i] as Tourelle).flammes = null;
 				}
-				if ((tour_clean as Tourelle).timer != null) {
-					(tour_clean as Tourelle).timer.destroy();
-				}
-				FlxG.state.remove(tour_clean, true);
-				tour_clean.kill();
-				tour_clean.destroy();
-				tour_clean = null;*/
-				tourelles.remove(tour_clean, true);
+				tourelles.members[i].kill();
+				(tourelles.members[i] as Tourelle).exists = false;
+				FlxG.state.remove(tourelles.members[i], true);
+				tourelles.remove(tourelles.members[i], true);
 			}
-			tourelles = new FlxGroup();
 			for each (var tour:Tourelle in tourelles_save.members) {
 				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
 				tourelles.add(new_tour);
