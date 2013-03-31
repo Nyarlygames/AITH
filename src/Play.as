@@ -287,7 +287,6 @@ package
 		// Commencement du backflip
 		public function testBackflip():void 
 		{
-			trace ("testgoesOK");
 			TweenMax.to(player, 2, { angle:0, ease:Linear.easeNone } );
 			TweenMax.to(player, 3, { alpha:1, ease:Cubic.easeInOut } );
 		}
@@ -297,7 +296,6 @@ package
 		{
 			//TweenMax.to(player.scale, 3, { x : 1, y:1, ease:Linear.easeNone } );
 			//TweenMax.to(player, 2, { angle : 720, ease:Linear.easeNone } );
-			//trace (player.angle);
 		}
 		
 		

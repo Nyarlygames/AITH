@@ -46,7 +46,6 @@ package
 			FlxG.state.add(intro3);
 			FlxG.state.add(intro2);
 			FlxG.state.add(intro1);
-			trace(currentframe);
 		}
 		
 		override public function update():void {

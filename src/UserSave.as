@@ -25,7 +25,8 @@ package
 		
 		public function calcStars():void
 		{
-			scoreStars = level1[0] + level1[1] + level1[2] + level2[0] + level2[1] + level2[2] + level3[0] + level3[1] + level3[2];
+			scoreStars = level1[0] + level1[1] + level1[2] + level2[0] + level2[1] + level2[2] + level3[0] + level3[1] + level3[2]
+						+ level4[0] + level4[1] + level4[2] + level5[0] + level5[1] + level5[2] + level6[0] + level6[1] + level6[2];
 			
 			if (scoreStars >= starsNeed)
 				univUnlock = true;

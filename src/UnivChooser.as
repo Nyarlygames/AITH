@@ -49,6 +49,7 @@ package
 		public var soundChoose:FlxSound = new FlxSound();
 		public var soundUniverse:FlxSound = new FlxSound();
 		public var end:EndGame;
+		public var gamefinished:Boolean = false;
 		
 		override public function create():void
 		{
@@ -125,8 +126,11 @@ package
 			super.update();
 				
 			
-			if (FlxG.usersave.scoreStars >= FlxG.usersave.maxStars)
-				end = new EndGame;
+			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && !gamefinished) {
+				end = new EndGame();
+				FlxG.switchState(end);
+				gamefinished = true;
+			}
 			
 			//REPLAY
 			if (FlxG.overlap(cursor, retour))
