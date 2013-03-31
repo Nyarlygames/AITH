@@ -202,7 +202,7 @@ package
 					FlxG.overlap(player, map.ens, alien_coll);
 					FlxG.overlap(player, map.item, getTube);
 					FlxG.collide(player, map.piques, die_piques);
-					FlxG.collide(player, map.souffleries, souffleColl);
+					FlxG.collide(player, map.souffleries);
 					FlxG.collide(player, map.destructible, check_ground);
 					FlxG.overlap(player, map.backflip, startBackflip);
 					FlxG.overlap(player, map.endBackflip, endBackflip);
@@ -255,12 +255,6 @@ package
 			FlxG.state.add(new Loot(player,tube.loot));
 		}
 		
-		// GESTION RECUP TUBE VERT
-		public function souffleColl(obj1:FlxObject, obj2:FlxObject):void 
-		{
-		
-		}
-		
 		// Commencement du backflip
 		public function startBackflip(obj1:FlxObject, obj2:FlxObject):void 
 		{
@@ -293,7 +287,6 @@ package
 		{
 			soundCrepite.volume = 0.5;
 			soundCrepite.play();
-			player.angle = 0;
 			if (player.jauge.frame > dest_ground)
 			{
 				(obj2 as Destructible_ground).play("destruction");
