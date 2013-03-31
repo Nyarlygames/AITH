@@ -34,6 +34,7 @@ package
 			halo.addAnimation("aspire", [0, 1, 2, 3], 10, true);
 			halo.addAnimation("default", [0], 10, true);
 			FlxG.state.add(halo);
+			play ("default");
 			immovable = true;
 		}
 	
@@ -44,6 +45,7 @@ package
 				FlxG.overlap(FlxG.player, halo, aspire);
 				FlxG.overlap(FlxG.player, this, soucoupes);
 			}
+			play ("default");
 		}
 		
 		// Soucoupes

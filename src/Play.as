@@ -80,6 +80,11 @@ package
 			tube_count.y += tube_count.frameHeight - 10;
 			tube_count.setFormat("onedalism", 35,0xFF0000000 , null, 0xFFFFFF );
 			tube_count.scrollFactor = new FlxPoint(0, 0);
+			
+			backflip = new FlxSprite(500, 100, ImgBackflip);
+			backflip.loadGraphic(ImgBackflip, false, false, 210, 82);
+			backflip.scrollFactor.x = 0;
+			backflip.scrollFactor.y = 0;
 
 			soundCrepite.loadEmbedded(SfxCrepite);
 			soundDestrSol.loadEmbedded(SfxDestrSol);
@@ -271,17 +276,13 @@ package
 		// Commencement du backflip
 		public function startBackflip(obj1:FlxObject, obj2:FlxObject):void 
 		{
-			TweenMax.to(player, 4, { angle : -360, ease:Linear.easeOut, onComplete:testBackflip } );
-			backflip = new FlxSprite(0, 0, ImgBackflip);
-			add (backflip);
-		}
-		
-		// Commencement du backflip
-		public function testBackflip():void 
-		{
-			trace ("testgoesOK");
-			TweenMax.to(player, 2, { angle:0, ease:Linear.easeNone } );
-			TweenMax.to(player, 3, { alpha:1, ease:Cubic.easeInOut } );
+			TweenMax.to(player, 2, { angle : -360, ease: Linear.easeOut } );
+			TweenMax.to(player.scale, 1, { x : 3, y : 3, ease: Bounce.easeInOut, onComplete:outBackflip } );
+			
+			function outBackflip() :void
+			{
+				TweenMax.to(player.scale, 1, { x : 1, y : 1, ease: Bounce.easeOut } );
+			}
 		}
 		
 		// Fin du backflip
@@ -353,7 +354,7 @@ package
 			// play ending animations and sounds.
 				FlxG.player.endLvl = true;
 				TweenMax.to(FlxG.player, 1, { x: FlxG.player.x + 100 , alpha : 0, ease:Linear.easeOut } );
-				TweenMax.to(FlxG.player.jauge, 1, { alpha : 0, ease:Linear.easeOut } );
+				TweenMax.to(FlxG.player.jauge, 0.3, { alpha : 0, ease:Linear.easeOut } );
 				player.stopPlayer();
 				if (sound != null) {
 					sound.stop();

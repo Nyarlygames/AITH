@@ -339,7 +339,7 @@
     <property name="color" value="2"/>
    </properties>
   </object>
-  <object name="check" type="Checkpoints" x="12920" y="560" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="12680" y="560" width="40" height="200"/>
   <object name="alien_im" type="Alien" x="8720" y="360" width="80" height="120"/>
   <object name="tube" type="Tube" x="10200" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10280" y="680" width="40" height="40"/>
@@ -672,13 +672,13 @@
   <object name="check" type="Checkpoints" x="7880" y="560" width="40" height="200"/>
   <object name="grosTube" type="GrosTube" x="1280" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="1240" y="400" width="40" height="40"/>
-  <object name="FinDuNiveau" type="FinNiveau" x="16520" y="520" width="120" height="240"/>
+  <object name="FinDuNiveau" type="FinNiveau" x="16720" y="520" width="120" height="240"/>
   <object name="tube" type="Tube" x="9840" y="360" width="40" height="40"/>
   <object name="Tourelle" type="Tourelle" x="12040" y="320" width="80" height="40"/>
   <object name="tube" type="Tube" x="13520" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13640" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="14800" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="14680" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="14760" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="14640" y="680" width="40" height="40"/>
   <object name="GPique" type="Piques" x="2480" y="360" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
@@ -799,7 +799,7 @@
   <object name="tube" type="Tube" x="13760" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13880" y="680" width="40" height="40"/>
   <object name="Backflip" type="backflip" x="15480" y="120" width="40" height="640"/>
-  <object name="EndBackflip" type="endBackflip" x="16200" y="120" width="40" height="640"/>
+  <object name="EndBackflip" type="endBackflip" x="16400" y="120" width="40" height="640"/>
   <object name="DPique" type="Piques" x="6840" y="480" width="40" height="40">
    <properties>
     <property name="orientation" value="droite"/>
@@ -861,5 +861,7 @@
    </properties>
   </object>
   <object name="tube" type="Tube" x="6880" y="680" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="15800" y="400" width="40" height="40"/>
+  <object name="tube" type="Tube" x="14880" y="680" width="40" height="40"/>
  </objectgroup>
 </map>

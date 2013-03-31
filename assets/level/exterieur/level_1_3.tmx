@@ -554,7 +554,6 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object type="FinNiveau" x="15000" y="280" width="120" height="400"/>
   <object name="Ground" type="Ground" x="9120" y="720" width="40" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="9640" y="280" width="80" height="40"/>
   <object name="GPique" type="Piques" x="10000" y="520" width="40" height="40">
@@ -702,5 +701,6 @@
    </properties>
   </object>
   <object type="tremplin" x="7680" y="720" width="40" height="40"/>
+  <object name="FinDuNiveau" type="FinNiveau" x="15040" y="440" width="120" height="240"/>
  </objectgroup>
 </map>

@@ -203,7 +203,7 @@ package
 				FlxG.switchState(new Play());
 			}
 			if (FlxG.keys.justPressed("U")) {
-				FlxG.univ = -1;
+				FlxG.univ = -2;
 				FlxG.switchState(new Play());
 			}
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
