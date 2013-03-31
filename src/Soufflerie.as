@@ -106,16 +106,19 @@ package
 				// HAUT
 				if (FlxG.overlap(FlxG.player, souffle) && angle == 0 ) 
 				{
+					FlxG.player.souffled = true;
 					FlxG.player.velocity.y -= speedSouffle * FlxG.elapsed;
 				}
 				// DROITE
 				else if (angle == 90 && !FlxG.overlap(FlxG.player, souffle, boost_player)) 
 				{
+					FlxG.player.souffled = true;
 					FlxG.player.maxVelocity.x = FlxG.player.init_speed;
 				}
 				//BAS
 				else if (FlxG.overlap(FlxG.player, souffle) && angle == 180 ) 
 				{
+					FlxG.player.souffled = true;
 					FlxG.player.velocity.y += speedBasSouffle * FlxG.elapsed;
 				}
 				
@@ -123,6 +126,7 @@ package
 				{
 					if ( FlxG.player.velocity.x > FlxG.player.minspeed - speedSouffle * FlxG.elapsed)
 					{
+						FlxG.player.souffled = true;
 						FlxG.player.velocity.x -= speedSouffle * FlxG.elapsed;
 					}
 				}
