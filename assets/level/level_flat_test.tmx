@@ -20,13 +20,13 @@
  </tileset>
  <layer name="Sol" width="600" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0sEKQBEUQEFl7/n/r7Wye0KRZKbOSuFGCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAd4uPljqdvt+uuWp5Yq/W+rfwrBtb8XdG3+v0rH8B0FYAZJoFQw==
+   eJzt1kEKgCAQBVBB2mb3P22rViUVKJ/iPfgrQWdGF5YCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8y3pAgAAfsTfCgDgrAaTrGW9SXIuM/s6sr3Yq7feBp71xYx4O0/vK93rVQDo2wHiJgVB
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="600" height="20" opacity="0.9">
   <object type="Poubelles" x="5960" y="680" width="80" height="80"/>
   <object type="Soucoupe" x="4760" y="520" width="80" height="40"/>
-  <object type="Soufflerie" x="440" y="760" width="80" height="40"/>
+  <object type="Soufflerie" x="4880" y="760" width="80" height="40"/>
   <object type="Alien" x="5167" y="404" width="80" height="80"/>
   <object type="Tourelle" x="5360" y="320" width="80" height="40"/>
   <object type="Soucoupe" x="5040" y="400" width="80" height="40"/>
@@ -34,13 +34,34 @@
   <object type="Alien" x="4800" y="320" width="80" height="80"/>
   <object type="AlienHorizontal" x="4960" y="600" width="80" height="80"/>
   <object type="Piques" x="5000" y="600" width="40" height="40"/>
-  <object type="Tourelle" x="4600" y="80" width="80" height="40"/>
-  <object type="Tourelle" x="4840" y="80" width="80" height="40"/>
-  <object type="Tourelle" x="5080" y="80" width="80" height="40"/>
-  <object type="AlienHorizontal" x="1680" y="-240" width="80" height="80"/>
-  <object type="Alien" x="1240" y="-240" width="80" height="80"/>
-  <object type="Poubelles" x="760" y="680" width="80" height="80"/>
-  <object type="Soufflerie" x="160" y="760" width="80" height="40"/>
+  <object type="AlienHorizontal" x="4408" y="-560" width="80" height="80"/>
+  <object type="Alien" x="3968" y="-560" width="80" height="80"/>
+  <object type="Soufflerie" x="4600" y="760" width="80" height="40"/>
+  <object type="Piques" x="3168" y="200" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object type="Alien" x="3248" y="40" width="80" height="80"/>
+  <object type="Alien" x="3080" y="24" width="80" height="80"/>
+  <object type="Alien" x="3368" y="200" width="80" height="160"/>
+  <object type="Alien" x="3688" y="40" width="80" height="80"/>
+  <object type="Alien" x="3548" y="36" width="80" height="80"/>
+  <object type="Tourelle" x="760" y="-120" width="80" height="40"/>
+  <object type="Tourelle" x="280" y="-120" width="80" height="40"/>
+  <object type="Tourelle" x="520" y="-120" width="80" height="40"/>
+  <object type="Soucoupe" x="1120" y="-40" width="80" height="40"/>
+  <object type="Tourelle" x="880" y="-120" width="80" height="40"/>
+  <object type="Tourelle" x="640" y="-120" width="80" height="40"/>
+  <object type="Tourelle" x="400" y="-120" width="80" height="40"/>
+  <object type="tremplin" x="560" y="720" width="40" height="40"/>
+  <object type="tremplin" x="680" y="640" width="40" height="40">
+   <properties>
+    <property name="haut" value=""/>
+   </properties>
+  </object>
+  <object type="Soufflerie" x="1320" y="760" width="80" height="40"/>
+  <object type="Soufflerie" x="1240" y="760" width="80" height="40"/>
  </objectgroup>
  <objectgroup name="Back_near" width="600" height="20"/>
  <layer name="Back_fond" width="600" height="20">

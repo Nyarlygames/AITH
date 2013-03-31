@@ -43,7 +43,6 @@ package
 					velocity.x = player.velocity.x;
 				}
 				//	destruction();
-				
 				// POUBELLE VIDE
 				if (FlxG.tilemap.getTile(Math.floor(x / 40), Math.round(y / 40) +2) == 0) {
 					y += frameHeight;

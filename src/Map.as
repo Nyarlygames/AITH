@@ -556,10 +556,8 @@ package
 				var new_dest:Destructible_ground = new Destructible_ground(dest.x, dest.y);
 				destructible.add(new_dest);
 			}
-			var i:int = 0;
 			for each (var tour_clean:Tourelle in tourelles.members) {
-				i++;
-				if ((tour_clean as Tourelle).flammes != null) {
+				/*if ((tour_clean as Tourelle).flammes != null) {
 					FlxG.state.remove((tour_clean as Tourelle).flammes, true);
 					(tour_clean as Tourelle).flammes.kill();
 					(tour_clean as Tourelle).flammes.destroy();
@@ -568,8 +566,13 @@ package
 				if ((tour_clean as Tourelle).timer != null) {
 					(tour_clean as Tourelle).timer.destroy();
 				}
+				FlxG.state.remove(tour_clean, true);
+				tour_clean.kill();
+				tour_clean.destroy();
+				tour_clean = null;*/
+				tourelles.remove(tour_clean, true);
 			}
-			tourelles.clear();
+			tourelles = new FlxGroup();
 			for each (var tour:Tourelle in tourelles_save.members) {
 				var new_tour:Tourelle = new Tourelle(tour.x, tour.y);
 				tourelles.add(new_tour);
