@@ -192,7 +192,7 @@ package
 			var tmx:TmxMap = new TmxMap(xml);
 			// RECUPERATION DES TILES CSV
 			
-			if (FlxG.univ == 1) {
+			if (FlxG.univ == 1 || FlxG.univ == -1) {
 				var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
 				var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
 				fond.loadMap(csv3, BgFond, 40, 40);

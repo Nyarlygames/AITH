@@ -42,7 +42,7 @@ package
 			if (onScreen(FlxG.camera)) {
 				velocity.x = -speed;
 			}
-			if ((FlxG.player.x >= x - 1500) && (incomming == null)){
+			if ((FlxG.player.x >= x - 1000) && (incomming == null)){
 				incomming = new IndicateurAlien(this);
 			}
 		}

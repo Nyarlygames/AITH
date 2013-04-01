@@ -18,6 +18,8 @@ package
 	{
 		[Embed(source = '../assets/gfx/ui/background-default.png')] protected var ImgBackDefault:Class;
 		[Embed(source = '../assets/gfx/ui/choix-tiles.png')] 	 	protected var ImgChoixTexte:Class;
+		[Embed(source = '../assets/gfx/ui/tetealienor_small.png')] 		protected var ImgAlienSmall:Class;
+		[Embed(source = '../assets/gfx/ui/tetealiengrise_small.png')] 		protected var ImgAlienGrisSmall:Class;
 		[Embed(source = '../assets/gfx/ui/backChxLvl.png')] 	protected var ImgFondLevel:Class;
 		[Embed(source = '../assets/gfx/ui/tile-tubes.png')] 	protected var ImgTubes:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] 		protected var ImgCursor:Class;
@@ -49,6 +51,15 @@ package
 		public var level1:FlxSprite;
 		public var level2:FlxSprite;
 		public var level3:FlxSprite;
+		public var trophy1:FlxSprite;
+		public var trophy2:FlxSprite;
+		public var trophy3:FlxSprite;
+		public var trophy4:FlxSprite;
+		public var trophy5:FlxSprite;
+		public var trophy6:FlxSprite;
+		public var trophy7:FlxSprite;
+		public var trophy8:FlxSprite;
+		public var trophy9:FlxSprite;
 		
 		override public function create():void
 		{
@@ -56,7 +67,7 @@ package
 			FlxG.bgColor = 0xaa519CCA;
 			
 			new UI();
-			
+			FlxG.usersave.calcStars_levels();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
@@ -74,14 +85,65 @@ package
 				backLevel1 = new FlxSprite(206, 206, ImgFondLevel);
 				backLevel1.x = 58;
 				backLevel1.y = 312;
-				add (backLevel1);
+				add (backLevel1);	
+				trophy1 = new FlxSprite(70, backLevel1.y - 120, ImgAlienGrisSmall);
+				trophy2 = new FlxSprite(130, backLevel1.y - 120, ImgAlienGrisSmall);
+				trophy3 = new FlxSprite(190, backLevel1.y - 120, ImgAlienGrisSmall);
+				switch (FlxG.usersave.score1) {
+					case 1:
+						trophy1.loadGraphic(ImgAlienSmall);
+						break;
+					case 2:
+						trophy1.loadGraphic(ImgAlienSmall);
+						if (FlxG.usersave.level1[1] == 1)
+							trophy2.loadGraphic(ImgAlienSmall);
+						else
+							trophy3.loadGraphic(ImgAlienSmall);
+						break;
+					case 3:
+						trophy1.loadGraphic(ImgAlienSmall);
+						trophy2.loadGraphic(ImgAlienSmall);
+						trophy3.loadGraphic(ImgAlienSmall);
+						break;
+					default:
+						break;
+				}
+				add(trophy1);
+				add(trophy2);
+				add(trophy3);
 			/*	Back level 1 */
 			
 			/*	Back level 2 */
 				backLevel2 = new FlxSprite(206, 206, ImgFondLevel);
 				backLevel2.x = 315;
 				backLevel2.y = 312;
-				add (backLevel2);
+				add (backLevel2);			
+				trophy4 = new FlxSprite(325, backLevel2.y - 120, ImgAlienGrisSmall);
+				trophy5 = new FlxSprite(385, backLevel2.y - 120, ImgAlienGrisSmall);
+				trophy6 = new FlxSprite(445, backLevel2.y - 120, ImgAlienGrisSmall);
+				switch (FlxG.usersave.score2) {
+					case 1:
+						trophy4.loadGraphic(ImgAlienSmall);
+						break;
+					case 2:
+						trophy4.loadGraphic(ImgAlienSmall);
+						if (FlxG.usersave.level2[1] == 1) {
+							trophy5.loadGraphic(ImgAlienSmall);
+						}
+						else
+							trophy6.loadGraphic(ImgAlienSmall);
+						break;
+					case 3:
+						trophy4.loadGraphic(ImgAlienSmall);
+						trophy5.loadGraphic(ImgAlienSmall);
+						trophy6.loadGraphic(ImgAlienSmall);
+						break;
+					default:
+						break;
+				}
+				add(trophy4);
+				add(trophy5);
+				add(trophy6);				
 			/*	Back level 2 */
 			
 			/*	Back level 3 */
@@ -89,6 +151,31 @@ package
 				backLevel3.x = 565;
 				backLevel3.y = 312;
 				add (backLevel3);
+				trophy7 = new FlxSprite(575, backLevel3.y - 120, ImgAlienGrisSmall);
+				trophy8 = new FlxSprite(635, backLevel3.y - 120, ImgAlienGrisSmall);
+				trophy9 = new FlxSprite(695, backLevel3.y - 120, ImgAlienGrisSmall);
+				switch (FlxG.usersave.score3) {
+					case 1:
+						trophy7.loadGraphic(ImgAlienSmall);
+						break;
+					case 2:
+						trophy7.loadGraphic(ImgAlienSmall);
+						if (FlxG.usersave.level3[1] == 1)
+							trophy8.loadGraphic(ImgAlienSmall);
+						else
+							trophy9.loadGraphic(ImgAlienSmall);
+						break;
+					case 3:
+						trophy7.loadGraphic(ImgAlienSmall);
+						trophy8.loadGraphic(ImgAlienSmall);
+						trophy9.loadGraphic(ImgAlienSmall);
+						break;
+					default:
+						break;
+				}
+				add(trophy7);
+				add(trophy8);
+				add(trophy9);
 			/*	Back level 3 */
 			
 			/*	Retour en arrière */

@@ -28,6 +28,7 @@ package
 		[Embed(source = '../assets/gfx/ui/cadenas.png')] 				protected var ImgUni2Locked:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1_on.png')]				protected var ImgUni1On:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2_on.png')] 				protected var ImgUni2On:Class;
+		[Embed(source = '../assets/gfx/ui/tetealienor_small.png')] 		protected var ImgAlienSmall:Class;
 		
 		[Embed(source = '../assets/sfx/gameplay/AlienTireur_Rebond.mp3')] protected var sfxChoose:Class;
 		[Embed(source = '../assets/sfx/gameplay/AlienTireur_Tir1.mp3')] protected var sfxUniverse:Class;
@@ -46,6 +47,12 @@ package
 		public var uni2:FlxSprite;
 		public var uni3:FlxSprite;
 		
+		public var trophy1:FlxText;
+		public var trophy2:FlxText;
+		public var trophy_help:FlxText;
+		public var goldenalien1:FlxSprite;
+		public var goldenalien2:FlxSprite;
+		
 		public var soundChoose:FlxSound = new FlxSound();
 		public var soundUniverse:FlxSound = new FlxSound();
 		public var end:EndGame;
@@ -59,7 +66,7 @@ package
 			
 			soundChoose.loadEmbedded(sfxChoose);
 			soundUniverse.loadEmbedded(sfxUniverse);
-			
+			FlxG.usersave.calcStars_univ();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
 				backDefault.x = 0;
@@ -78,6 +85,24 @@ package
 				add(uni2);
 				backUnivers2.x = 420; backUnivers2.y = 200; backUnivers2.angle = -5;
 				uni2.x = 435; uni2.y = 215; uni2.angle = -5;
+
+				trophy2 = new FlxText(backUnivers2.x, backUnivers2.y + backUnivers2.frameHeight + 30, backUnivers2.frameWidth, "0/9");
+				trophy2.y -= trophy2.frameHeight;
+				trophy2.setFormat("onedalism", 40, 0xFFFFFF, "center", 0xaa000000);
+				trophy2.text = FlxG.usersave.scoreuniv2 + "/9";
+				add(trophy2);
+				
+				goldenalien2 = new FlxSprite(trophy2.x + 50, trophy2.y, ImgAlienSmall);
+				add(goldenalien2);
+				
+				
+				if (FlxG.usersave.scoreStars < FlxG.usersave.starsNeed) {
+					trophy_help = new FlxText(backUnivers2.x, backUnivers2.y + backUnivers2.frameHeight /2, backUnivers2.frameWidth, "4 trophés requis");
+					trophy_help.y -= trophy_help.frameHeight;
+					trophy_help.setFormat("onedalism", 32, 0xFFFFFF, "center", 0xaa000000);
+					add(trophy_help);
+				}
+				
 			/*	Setup Univers 2 */
 				
 			/*	Setup Univers 1 */
@@ -91,6 +116,16 @@ package
 				add(uni1);
 				backUnivers.x = 125; backUnivers.y = 200; backUnivers.angle = 10;
 				uni1.x = 145; uni1.y = 220;  uni1.angle = 10;
+				
+				trophy1 = new FlxText(backUnivers.x, backUnivers.y + backUnivers.frameHeight + 30, backUnivers.frameWidth, "0/9");
+				trophy1.y -= trophy1.frameHeight;
+				trophy1.setFormat("onedalism", 40, 0xFFFFFF, "center", 0xaa000000);
+				trophy1.text = FlxG.usersave.scoreuniv1 + "/9";
+				add(trophy1);
+				
+				goldenalien1 = new FlxSprite(trophy1.x + 50, trophy1.y, ImgAlienSmall);
+				add(goldenalien1);
+				
 			/*	Setup Univers 1 */
 			
 			/*	Retour en arrière */
@@ -124,7 +159,6 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
-				
 			
 			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && !gamefinished) {
 				end = new EndGame();

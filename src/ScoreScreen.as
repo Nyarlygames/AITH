@@ -56,10 +56,14 @@ package
 		public static var checkObjectif2:Boolean;
 		public static var checkObjectif3:Boolean;
 		
+		public var completed:FlxText;
+		public var nodeath:FlxText;
+		public var alltubes:FlxText;
+		
+		
 		override public function create():void
 		{
-			
-			FlxG.bgColor = 0xaa519CCA;
+			FlxG.bgColor = 0xaa519CCA;		
 			
 			FlxG.pauseSounds();
 			/*	Back par défaut */
@@ -82,6 +86,13 @@ package
 				Objectif1.addAnimation("off", [1], 1, true);
 				Objectif1.play("off");
 				add (Objectif1);
+				
+				completed = new FlxText(Objectif1.x - 25, Objectif1.y - 70, Objectif1.frameWidth + 50, "Terminé");
+				completed.y -= completed.frameHeight;
+				completed.setFormat("onedalism", 40, 0xFFFFFF, "center", 0x000000);
+				add(completed);
+				
+				
 			/*	Tete alien 1 */
 		
 			/*	Tete alien 2 */
@@ -91,6 +102,12 @@ package
 				Objectif2.addAnimation("off", [1], 1, true);
 				Objectif2.play("off");
 				add (Objectif2);
+				
+				nodeath = new FlxText(Objectif2.x - 25, Objectif2.y - 70, Objectif2.frameWidth + 50, "Sans faute");
+				nodeath.y -= nodeath.frameHeight;
+				nodeath.setFormat("onedalism", 40, 0xFFFFFF, "center", 0x000000);
+				add(nodeath);
+				
 			/*	Tete alien 2 */
 		
 			/*	Tete alien 3 */
@@ -100,6 +117,12 @@ package
 				Objectif3.addAnimation("off", [1], 1, true);
 				Objectif3.play("off");
 				add (Objectif3);
+				
+				
+				alltubes = new FlxText(Objectif3.x - 25, Objectif3.y - 70, Objectif3.frameWidth + 50, "100 Tubes");
+				alltubes.y -= alltubes.frameHeight;
+				alltubes.setFormat("onedalism", 40, 0xFFFFFF, "center", 0x000000);
+				add(alltubes);
 			/*	Tete alien 2 */
 			
 			

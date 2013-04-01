@@ -249,6 +249,11 @@ package
 				if (acceleration.x != acceleration_speed)
 					acceleration.x = acceleration_speed;
 			}
+			/*if (FlxG.univ == -1) {
+				vitesse1.volume = 0;
+				vitesse2.volume = 0;
+				vitesse3.volume = 0;
+			}*/
 		}
 		private function anims(animationName:String, frameNumber:uint, frameIndex:uint):void 
 		{  	
