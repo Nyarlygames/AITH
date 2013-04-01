@@ -203,6 +203,7 @@ package
 			}
 			
 			if (FlxG.usersave.univUnlock == true) {
+				trophy_help.kill();
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2))
 				{
 					TweenMax.to(uni2.scale, 0.5, { y:1.2,x:1.2, ease:Bounce.easeOut } );
