@@ -17,10 +17,6 @@ package
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube1.wav')] public var SfxPetitTube1:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube2.wav')] public var SfxPetitTube2:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube3.wav')] public var SfxPetitTube3:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube4.wav')] public var SfxPetitTube4:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube5.wav')] public var SfxPetitTube5:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube6.wav')] public var SfxPetitTube6:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Petit_Tube7.wav')] public var SfxPetitTube7:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Gros_Tube1.wav')] public var SfxGrosTube1:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Gros_tube2.wav')] public var SfxGrosTube2:Class;
 		public var loot:int = 0;
@@ -53,7 +49,7 @@ package
 		
 		public function tubesound(loot:int):void {
 			if (loot == 1) {
-				var chance:int = Math.ceil(Math.random() * 7);
+				var chance:int = Math.ceil(Math.random() * 3);
 				switch(chance) {
 					case 1:
 						FlxG.play(SfxPetitTube1, 0.8, false, true);
@@ -63,18 +59,6 @@ package
 						break;
 					case 3:
 						FlxG.play(SfxPetitTube3, 0.8, false, true);
-						break;
-					case 4:
-						FlxG.play(SfxPetitTube4, 0.8, false, true);
-						break;
-					case 5:
-						FlxG.play(SfxPetitTube5, 0.8, false, true);
-						break;
-					case 6:
-						FlxG.play(SfxPetitTube6, 0.8, false, true);
-						break;
-					case 7:
-						FlxG.play(SfxPetitTube7, 0.8, false, true);
 						break;
 				}
 			}

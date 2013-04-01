@@ -725,6 +725,14 @@ package
 					ens.add(new_enn);
 				}
 			}
+			
+			/*while (i < souffleries.length) {
+				if ((ascenceurs.members[i] as Soufflerie).soundIn != null) {
+					(ascenceurs.members[i] as Soufflerie).soundIn.stop();
+					(ascenceurs.members[i] as Soufflerie).soundIn.kill();
+					(ascenceurs.members[i] as Soufflerie).soundIn.destroy();
+				}
+			}*/
 			while (i < ascenceurs.length) {
 				if ((ascenceurs.members[i] as Ascenceur).soundActivation1 != null) {
 					(ascenceurs.members[i] as Ascenceur).soundActivation1.stop();

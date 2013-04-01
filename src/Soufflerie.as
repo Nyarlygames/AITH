@@ -97,10 +97,10 @@ package
 	
 		override public function update():void {
 			
-		/*if (onScreen(FlxG.camera))
+			if (!onScreen(FlxG.camera))
 			{
-				soundIdle.play();
-			}*/
+				soundIdle.stop();
+			}
 			
 			if ((FlxG.player != null) && (!FlxG.overlap(souffle, FlxG.map.destructible, stopsouffle)))
 			{

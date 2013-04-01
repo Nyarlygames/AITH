@@ -51,6 +51,7 @@ package
 				this.addAnimation("burn",  [0, 1, 2,3,4,5], 5, true);
 			*/
 			play("default");
+			flammes.addAnimationCallback(firingmahlaser);
 			// Gestion de la flamme
 			laseroff.loadEmbedded(SfxLaserOff, false, false);
 			laseron.loadEmbedded(SfxLaserOn, false, false)
@@ -58,27 +59,28 @@ package
 		
 		override public function update():void 
 		{
-			if (onScreen(FlxG.camera) && ((FlxG.state as Play).tuto != null)) {
-				laseroff.play();
-				laseroff.volume = 1;
-			}
-			else {
-				laseroff.volume = 0;
-			}
 			if (FlxCollision.pixelPerfectCheck(FlxG.player, flammes)) {
 				FlxG.player.die_motherfucker(0);
 			}
 		}
 		
-		public function activate_burst(timer:FlxTimer):void {
-			laseroff.volume = 0;
-			if ((flammes != null)){
-				trace(laseroff.volume, "test");
-				if (onScreen(FlxG.camera)) {
+		private function firingmahlaser(animationName:String, frameNumber:uint, frameIndex:uint):void 
+		{  			
+			if (onScreen(FlxG.camera)) {
+				if ((animationName == "flammes") && (frameNumber > 2)) {
+					laseroff.stop();
 					laseron.play();
-					trace(laseroff.volume, "test2");
 				}
+			}
+	
+		}		
+		
+		public function activate_burst(timer:FlxTimer):void {
+			if ((flammes != null)){
 				flammes.play("flammes");
+				if (onScreen(FlxG.camera)) {
+					laseroff.play();
+				}
 			}
 		}
 	}
