@@ -83,7 +83,7 @@
   <object gid="47" x="2920" y="760"/>
   <object gid="48" x="3280" y="760"/>
   <object gid="49" x="3640" y="760"/>
-  <object gid="50" x="2600" y="760"/>
+  <object gid="50" x="2560" y="600"/>
   <object gid="48" x="4480" y="760"/>
   <object gid="49" x="4080" y="760"/>
   <object gid="50" x="5520" y="760"/>
@@ -130,6 +130,11 @@
   <object gid="49" x="16920" y="760"/>
   <object gid="50" x="17200" y="760"/>
   <object gid="47" x="17360" y="760"/>
+  <object gid="47" x="4640" y="760"/>
+  <object gid="49" x="6480" y="760"/>
+  <object gid="49" x="7440" y="760"/>
+  <object gid="47" x="7560" y="760"/>
+  <object gid="50" x="9320" y="760"/>
  </objectgroup>
  <objectgroup name="Back_middle" width="440" height="20">
   <object gid="25" x="80" y="760"/>
@@ -137,7 +142,7 @@
   <object gid="24" x="1000" y="760"/>
   <object gid="23" x="1440" y="760"/>
   <object gid="25" x="2200" y="760"/>
-  <object gid="20" x="2680" y="760"/>
+  <object gid="20" x="2640" y="600"/>
   <object gid="25" x="3040" y="760"/>
   <object gid="24" x="3400" y="760"/>
   <object gid="22" x="3800" y="760"/>
@@ -148,7 +153,7 @@
   <object gid="22" x="7040" y="760"/>
   <object gid="25" x="7800" y="760"/>
   <object gid="22" x="8472" y="760"/>
-  <object gid="24" x="8880" y="760"/>
+  <object gid="24" x="8880" y="800"/>
   <object gid="20" x="9440" y="760"/>
   <object gid="22" x="10080" y="760"/>
   <object gid="20" x="10640" y="760"/>
@@ -176,7 +181,7 @@
  <objectgroup name="Back_near" width="440" height="20">
   <object gid="43" x="80" y="760"/>
   <object gid="43" x="1480" y="760"/>
-  <object gid="44" x="2920" y="760"/>
+  <object gid="44" x="3000" y="640"/>
   <object gid="38" x="5520" y="760"/>
   <object gid="38" x="5520" y="760"/>
   <object gid="38" x="14760" y="760"/>
@@ -192,6 +197,12 @@
   <object gid="45" x="15640" y="760"/>
   <object gid="39" x="14560" y="760"/>
   <object gid="44" x="16760" y="760"/>
+  <object gid="42" x="2280" y="600"/>
+  <object gid="45" x="4560" y="680"/>
+  <object gid="42" x="4920" y="760"/>
+  <object gid="38" x="8160" y="760"/>
+  <object gid="41" x="12280" y="760"/>
+  <object gid="41" x="12280" y="760"/>
  </objectgroup>
  <layer name="Sol" width="440" height="20" opacity="0.9">
   <data encoding="csv">
@@ -340,7 +351,7 @@
    </properties>
   </object>
   <object name="check" type="Checkpoints" x="12680" y="560" width="40" height="200"/>
-  <object name="alien_im" type="Alien" x="8720" y="360" width="80" height="120"/>
+  <object name="alien_im" type="Alien" x="8760" y="360" width="80" height="120"/>
   <object name="tube" type="Tube" x="10200" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10280" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="10360" y="680" width="40" height="40"/>
@@ -581,7 +592,7 @@
   </object>
   <object name="tube" type="Tube" x="1160" y="400" width="40" height="40"/>
   <object name="tube" type="Tube" x="1440" y="680" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="13360" y="680" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="13640" y="480" width="40" height="40"/>
   <object name="tube" type="Tube" x="11280" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="11440" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="11520" y="440" width="40" height="40"/>
@@ -675,8 +686,7 @@
   <object name="FinDuNiveau" type="FinNiveau" x="16720" y="520" width="120" height="240"/>
   <object name="tube" type="Tube" x="9840" y="360" width="40" height="40"/>
   <object name="Tourelle" type="Tourelle" x="12040" y="320" width="80" height="40"/>
-  <object name="tube" type="Tube" x="13520" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="13640" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="13680" y="560" width="40" height="40"/>
   <object name="tube" type="Tube" x="14760" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="14640" y="680" width="40" height="40"/>
   <object name="GPique" type="Piques" x="2480" y="360" width="40" height="40">
@@ -796,8 +806,7 @@
   <object name="Tourelle" type="Tourelle" x="15040" y="520" width="80" height="40"/>
   <object name="tube" type="Tube" x="9200" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="9720" y="360" width="40" height="40"/>
-  <object name="tube" type="Tube" x="13760" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="13880" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="13800" y="680" width="40" height="40"/>
   <object name="Backflip" type="backflip" x="15480" y="120" width="40" height="640"/>
   <object name="EndBackflip" type="endBackflip" x="16400" y="120" width="40" height="640"/>
   <object name="DPique" type="Piques" x="6840" y="480" width="40" height="40">
