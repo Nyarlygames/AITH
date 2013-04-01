@@ -32,7 +32,7 @@ package
 			super(xpos, ypos, ImgCheck);
 			soundActivate.loadEmbedded(SfxActivate);
 			soundRevives.loadEmbedded(SfxRevives);
-			soundRevives = 0.85;
+			soundRevives.volume = 0.85;
 			immovable = true;
 			offset.x = -50;
 			

@@ -32,6 +32,8 @@ package
 		[Embed(source = '../assets/gfx/ui/cursor.png')] 			protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 		protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
 		public var backDefault:FlxSprite;
 		public var retour:FlxSprite;
@@ -141,7 +143,8 @@ package
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new Start());  }
+				{ FlxG.switchState(new Start()); 
+				FlxG.play(SfxMenuClick, 1, false, true);}
 			}
 			else
 			{
@@ -154,7 +157,8 @@ package
 			{
 				logo.play("contour");
 				if (FlxG.mouse.justPressed()) 
-				{
+				{	
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Cutscene());
 				}
 			}
@@ -163,6 +167,7 @@ package
 				TweenMax.to(credits, 1, { alpha:0.4, ease:Linear.easeOut } );
 				if (FlxG.mouse.justPressed()) 
 				{
+					FlxG.play(SfxMenuClick, 1, false, true);
 					TweenMax.to(authors, 0.9, { y:300, ease:Linear.easeOut } );
 					TweenMax.to(logoIut, 0.9, { y:100, ease:Linear.easeOut } );
 					TweenMax.to(retour, 0.9, { alpha:1, ease:Linear.easeOut } );
@@ -177,8 +182,9 @@ package
 				TweenMax.to(credits, 1, { alpha:1, ease:Linear.easeOut } );
 			}
 			
-			if (FlxG.keys.pressed("SPACE")) 
-			{
+			if (FlxG.keys.pressed("SPACE") || FlxG.keys.pressed("ENTER")) 
+			{				
+				FlxG.play(SfxMenuClick, 1, false, true);
 				FlxG.switchState(new Cutscene());
 			}
 		}
