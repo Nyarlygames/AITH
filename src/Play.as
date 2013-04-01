@@ -476,6 +476,7 @@ package
 				player.vitesse1.destroy();
 				player.vitesse2.destroy();
 				player.vitesse3.destroy();
+				FlxG.map.reload_map();
 				FlxG.switchState(new UnivChooser()); 
 			}
 			// REDEMARRE LE NIVEAU
@@ -487,6 +488,7 @@ package
 				player.vitesse2.destroy();
 				player.vitesse3.destroy();
 				FlxG.score = -map.id;
+				FlxG.map.reload_map();
 				FlxG.resetState();
 			}
 			// RETOUR AU JEU

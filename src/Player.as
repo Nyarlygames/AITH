@@ -299,20 +299,18 @@ package
 			var current_tile2:uint = (obj2 as FlxTilemap).getTile(Math.floor(x / 40) +1, Math.round(y / 40) +1);// en dessous
 			
 			// SUR LE TREMPLIN ON AUGMENTE L'ACCUMULATEUR
-			if (((current_tile == 1) || (current_tile == 4)))
+			if (((current_tile == 1) || (current_tile == 4)) && (jumping == false))
 			{
 				angularVelocity = -angularspeed;
 				offset.y = 20;
 				width = 60;
-				on_tremplin = true;
 				/* TODO
 				 * ANGLE QUAND ON TOUCHE MAIS JUMP = TRUE
 				 */
 			}
-			else if (jumping == false) {
-				if (on_tremplin == false) {
+			else if (current_tile2 == 2 && jumping == false){
+				if (on_tremplin == false)
 					angle = 0;
-				}
 				accumulateur = 0;
 				gravity = mingravity;
 			}
@@ -514,6 +512,7 @@ package
 				vitesse1.destroy();
 				vitesse2.destroy();
 				vitesse3.destroy();
+				FlxG.map.reload_map();
 				FlxG.switchState(new UnivChooser());
 			}
 			else if (result == DeathScreen.RESTART) {
@@ -523,6 +522,7 @@ package
 				vitesse2.destroy();
 				vitesse3.destroy();
 				FlxG.score = -(FlxG.state as Play).map.id;
+				FlxG.map.reload_map();
 				FlxG.resetState();
 			}
 		}

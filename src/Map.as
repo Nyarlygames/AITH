@@ -726,10 +726,15 @@ package
 				}
 			}
 			while (i < ascenceurs.length) {
-				if ((ascenceurs.members[i] as Ascenceur).soundActivation != null) {
-					(ascenceurs.members[i] as Ascenceur).soundActivation.stop();
-					(ascenceurs.members[i] as Ascenceur).soundActivation.kill();
-					(ascenceurs.members[i] as Ascenceur).soundActivation.destroy();
+				if ((ascenceurs.members[i] as Ascenceur).soundActivation1 != null) {
+					(ascenceurs.members[i] as Ascenceur).soundActivation1.stop();
+					(ascenceurs.members[i] as Ascenceur).soundActivation1.kill();
+					(ascenceurs.members[i] as Ascenceur).soundActivation1.destroy();
+				}
+				if ((ascenceurs.members[i] as Ascenceur).soundActivation2 != null) {
+					(ascenceurs.members[i] as Ascenceur).soundActivation2.stop();
+					(ascenceurs.members[i] as Ascenceur).soundActivation2.kill();
+					(ascenceurs.members[i] as Ascenceur).soundActivation2.destroy();
 				}
 				if ((ascenceurs.members[i] as Ascenceur).soundMoves != null) {
 					(ascenceurs.members[i] as Ascenceur).soundMoves.stop();

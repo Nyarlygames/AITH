@@ -21,7 +21,8 @@ package
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Ascenseur.wav')] public var SfxAscenseur:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'JimiMoteur_Arret.wav')] public var SfxMoteur:Class;
 		
-		public var soundActivation:FlxSound = new FlxSound();
+		public var soundActivation1:FlxSound = new FlxSound();
+		public var soundActivation2:FlxSound = new FlxSound();
 		public var soundChangeWay:FlxSound 	= new FlxSound();
 		public var soundEnd:FlxSound 		= new FlxSound();
 		public var soundMoves:FlxSound 		= new FlxSound();
@@ -34,7 +35,8 @@ package
 		public function Ascenceur(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgAscenceur);
-			soundActivation.loadEmbedded(SfxAscenseur, true, false);
+			soundActivation1.loadEmbedded(SfxAscenseur, true, false);
+			soundActivation2.loadEmbedded(SfxAscenseur, true, false);
 			/*soundChangeWay.loadEmbedded(SfxChangeWay);
 			soundEnd.loadEmbedded(SfxEnd);*/
 			soundMoves.loadEmbedded(SfxMoteur);
@@ -67,10 +69,10 @@ package
 				// DEPLACEMENT BLOQUE
 				if (FlxG.keys.pressed("SPACE")) 
 				{
-					soundActivation.stop();
-					soundActivation.kill();
-					soundActivation.revive();
-					soundActivation.play();
+					soundActivation2.stop();
+					soundActivation2.kill();
+					soundActivation1.revive();
+					soundActivation1.play();
 					/*soundMoves.revive();
 					soundMoves.play();*/
 					y += speed * FlxG.elapsed;
@@ -79,10 +81,10 @@ package
 				}
 				else 
 				{
-					soundActivation.stop();
-					soundActivation.kill();
-					soundActivation.revive();
-					soundActivation.play();
+					soundActivation1.stop();
+					soundActivation1.kill();
+					soundActivation2.revive();
+					soundActivation2.play();
 					/*soundActivation.revive();
 					soundActivation.play();
 					soundMoves.kill();*/
@@ -103,9 +105,12 @@ package
 			}
 			if (!onScreen(FlxG.camera) || (blocked == false) )
 				if (soundMoves != null) {
-					soundActivation.stop();
-					soundActivation.kill();
-					soundActivation.destroy();
+					soundActivation1.stop();
+					soundActivation1.kill();
+					soundActivation1.destroy();
+					soundActivation2.stop();
+					soundActivation2.kill();
+					soundActivation2.destroy();
 					soundMoves.stop();
 					soundMoves.kill();
 					soundMoves.destroy();
@@ -119,9 +124,13 @@ package
 			soundActivation.stop();
 			soundChangeWay.stop();
 			soundEnd.play();*/
-			if (soundActivation != null) {
-				soundActivation.stop();
-				soundActivation.kill();
+			if (soundActivation1 != null) {
+				soundActivation1.stop();
+				soundActivation1.kill();
+			}
+			if (soundActivation2 != null) {
+				soundActivation2.stop();
+				soundActivation2.kill();
 			}
 			if (soundMoves != null) {
 				soundMoves.stop();

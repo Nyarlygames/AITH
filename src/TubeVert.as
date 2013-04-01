@@ -56,25 +56,25 @@ package
 				var chance:int = Math.ceil(Math.random() * 7);
 				switch(chance) {
 					case 1:
-						FlxG.play(SfxPetitTube1, 1, false, true);
+						FlxG.play(SfxPetitTube1, 0.8, false, true);
 						break;
 					case 2:
-						FlxG.play(SfxPetitTube2, 1, false, true);
+						FlxG.play(SfxPetitTube2, 0.8, false, true);
 						break;
 					case 3:
-						FlxG.play(SfxPetitTube3, 1, false, true);
+						FlxG.play(SfxPetitTube3, 0.8, false, true);
 						break;
 					case 4:
-						FlxG.play(SfxPetitTube4, 1, false, true);
+						FlxG.play(SfxPetitTube4, 0.8, false, true);
 						break;
 					case 5:
-						FlxG.play(SfxPetitTube5, 1, false, true);
+						FlxG.play(SfxPetitTube5, 0.8, false, true);
 						break;
 					case 6:
-						FlxG.play(SfxPetitTube6, 1, false, true);
+						FlxG.play(SfxPetitTube6, 0.8, false, true);
 						break;
 					case 7:
-						FlxG.play(SfxPetitTube7, 1, false, true);
+						FlxG.play(SfxPetitTube7, 0.8, false, true);
 						break;
 				}
 			}
@@ -82,10 +82,10 @@ package
 				var chance2:int = Math.ceil(Math.random() * 2);
 				switch(chance2) {
 					case 1:
-						FlxG.play(SfxGrosTube1, 1, false, true);
+						FlxG.play(SfxGrosTube1, 0.8, false, true);
 						break;
 					case 2:
-						FlxG.play(SfxGrosTube2, 1, false, true);
+						FlxG.play(SfxGrosTube2, 0.8, false, true);
 						break;
 				}
 			}
