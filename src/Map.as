@@ -43,9 +43,13 @@ package
 		public var DustbinBieber:FlxGroup 		= new FlxGroup();							// POUBELLES
         public var tile:FlxTilemapExt 			= new FlxTilemapExt();						// TILES
         public var fond:FlxTilemap 				= new FlxTilemap();							// FOND
+		public var batiments_near_vaisseau:FlxGroup		= new FlxGroup();							// BG NEAR
 		public var batiments_near:FlxGroup		= new FlxGroup();							// BG NEAR
+		public var batiments_fond:FlxGroup		= new FlxGroup();							// BG FOND VAISSEAU
 		public var clouds:FlxGroup 				= new FlxGroup();							// CLOUDS
+		public var batiments_middle_vaisseau:FlxGroup	= new FlxGroup();							// BG FAR
 		public var batiments_middle:FlxGroup	= new FlxGroup();							// BG FAR
+		public var batiments_far_vaisseau:FlxGroup 		= new FlxGroup();							// BG MIDDLE
 		public var batiments_far:FlxGroup 		= new FlxGroup();							// BG MIDDLE
 		public var loaded:Boolean 				= false;									// MAP CHARGEE?
 		public var finishedload:Boolean = false;											// CHARGEMENT FINIT (POUR TUTO)
@@ -62,8 +66,43 @@ package
 		public var ascenceurs_save:FlxGroup = new FlxGroup();									// ASCENCEURS
 		public var DustbinBieber_save:FlxGroup = new FlxGroup();								// POUBELLES
         [Embed(source = '../assets/gfx/misc/aith_tiles.png')] public var MapTiles:Class;
+        [Embed(source = '../assets/gfx/misc/aith_tiles_vaisseau.png')] public var MapTiles2:Class;
         [Embed(source = '../assets/level/exterieur/fond.png')] public var BgFond:Class;
+        [Embed(source = '../assets/level/vaisseau/fond.png')] public var BgFond2:Class;
         [Embed(source = '../assets/gfx/gameplay/sol_destructible.png')] public var ImgDesSol:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_01.png')] public var ImgFarVaisseau1:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_02.png')] public var ImgFarVaisseau2:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_03.png')] public var ImgFarVaisseau3:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_04.png')] public var ImgFarVaisseau4:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_05.png')] public var ImgFarVaisseau5:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_06.png')] public var ImgFarVaisseau6:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_07.png')] public var ImgFarVaisseau7:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_08.png')] public var ImgFarVaisseau8:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_09.png')] public var ImgFarVaisseau9:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_10.png')] public var ImgFarVaisseau10:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-far_11.png')] public var ImgFarVaisseau11:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_01.png')] public var ImgMiddleVaisseau11:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_02.png')] public var ImgMiddleVaisseau12:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_03.png')] public var ImgMiddleVaisseau13:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_04.png')] public var ImgMiddleVaisseau14:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_05.png')] public var ImgMiddleVaisseau15:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_06.png')] public var ImgMiddleVaisseau16:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_07.png')] public var ImgMiddleVaisseau17:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_08.png')] public var ImgMiddleVaisseau18:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_09.png')] public var ImgMiddleVaisseau19:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_10.png')] public var ImgMiddleVaisseau110:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-middle_11.png')] public var ImgMiddleVaisseau111:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_01.png')] public var ImgNearVaisseau11:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_02.png')] public var ImgNearVaisseau12:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_03.png')] public var ImgNearVaisseau13:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_04.png')] public var ImgNearVaisseau14:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_05.png')] public var ImgNearVaisseau15:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_06.png')] public var ImgNearVaisseau16:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_07.png')] public var ImgNearVaisseau17:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_08.png')] public var ImgNearVaisseau18:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_09.png')] public var ImgNearVaisseau19:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_10.png')] public var ImgNearVaisseau110:Class;
+        [Embed(source = '../assets/gfx/levels/vaisseau/background-near_11.png')] public var ImgNearVaisseau111:Class;
         [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_01.png')] public var ImgCloud1:Class;
         [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_02.png')] public var ImgCloud2:Class;
         [Embed(source = '../assets/gfx/levels/background_exterieur_clouds_03.png')] public var ImgCloud3:Class;
@@ -152,193 +191,344 @@ package
 			var xml:XML = new XML(e.target.data);
 			var tmx:TmxMap = new TmxMap(xml);
 			// RECUPERATION DES TILES CSV
-			var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
-			var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
-			// TODO CALQUES D'OBJETS
-			fond.loadMap(csv3, BgFond, 40, 40);
-			tile.loadMap(csv, MapTiles, 40, 40);
-			FlxG.state.add(fond);
 			
-			/* Clouds */
-			var group_clouds:TmxObjectGroup = tmx.getObjectGroup('Back_clouds');
-			for each(var object_cloud:TmxObject in group_clouds.objects) {
-				var bat_cloud:FlxSprite = new FlxSprite(object_cloud.x, object_cloud.y);
-				switch(object_cloud.gid) {
-					case 54 :
-						bat_cloud.loadGraphic(ImgCloud2);
-						break;
-					case 55 :
-						bat_cloud.loadGraphic(ImgCloud3);
-						break;
-					case 56 :
-						bat_cloud.loadGraphic(ImgCloud4);
-						break;
-					case 57 :
-						bat_cloud.loadGraphic(ImgCloud5);
-						break;
-					case 58 :
-						bat_cloud.loadGraphic(ImgCloud6);
-						break;
-					case 59 :
-						bat_cloud.loadGraphic(ImgCloud7);
-						break;
-					case 60 :
-						bat_cloud.loadGraphic(ImgCloud8);
-						break;
-					case 61 :
-						bat_cloud.loadGraphic(ImgCloud9);
-						break;
-					case 62 :
-						bat_cloud.loadGraphic(ImgCloud10);
-						break;
-					case 63 :
-						bat_cloud.loadGraphic(ImgCloud11);
-						break;
-					case 64 :
-						bat_cloud.loadGraphic(ImgCloud12);
-						break;
-					case 65 :
-						bat_cloud.loadGraphic(ImgCloud13);
-						break;
-					case 66 :
-						bat_cloud.loadGraphic(ImgCloud14);
-						break;
-					case 67 :
-						bat_cloud.loadGraphic(ImgCloud15);
-						break;
-					case 68 :
-						bat_cloud.loadGraphic(ImgCloud16);
-						break;
+			if (FlxG.univ == 1) {
+				var csv:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles'));
+				var csv3:String = tmx.getLayer('Back_fond').toCsv(tmx.getTileSet('fond'));
+				fond.loadMap(csv3, BgFond, 40, 40);
+				tile.loadMap(csv, MapTiles, 40, 40);
+				FlxG.state.add(fond);
+				
+				/* Clouds */
+				var group_clouds:TmxObjectGroup = tmx.getObjectGroup('Back_clouds');
+				for each(var object_cloud:TmxObject in group_clouds.objects) {
+					var bat_cloud:FlxSprite = new FlxSprite(object_cloud.x, object_cloud.y);
+					switch(object_cloud.gid) {
+						case 54 :
+							bat_cloud.loadGraphic(ImgCloud2);
+							break;
+						case 55 :
+							bat_cloud.loadGraphic(ImgCloud3);
+							break;
+						case 56 :
+							bat_cloud.loadGraphic(ImgCloud4);
+							break;
+						case 57 :
+							bat_cloud.loadGraphic(ImgCloud5);
+							break;
+						case 58 :
+							bat_cloud.loadGraphic(ImgCloud6);
+							break;
+						case 59 :
+							bat_cloud.loadGraphic(ImgCloud7);
+							break;
+						case 60 :
+							bat_cloud.loadGraphic(ImgCloud8);
+							break;
+						case 61 :
+							bat_cloud.loadGraphic(ImgCloud9);
+							break;
+						case 62 :
+							bat_cloud.loadGraphic(ImgCloud10);
+							break;
+						case 63 :
+							bat_cloud.loadGraphic(ImgCloud11);
+							break;
+						case 64 :
+							bat_cloud.loadGraphic(ImgCloud12);
+							break;
+						case 65 :
+							bat_cloud.loadGraphic(ImgCloud13);
+							break;
+						case 66 :
+							bat_cloud.loadGraphic(ImgCloud14);
+							break;
+						case 67 :
+							bat_cloud.loadGraphic(ImgCloud15);
+							break;
+						case 68 :
+							bat_cloud.loadGraphic(ImgCloud16);
+							break;
+					}
+					bat_cloud.y -= bat_cloud.frameHeight;
+					bat_cloud.scrollFactor = new FlxPoint(1, 1);
+					clouds.add(bat_cloud);
 				}
-				bat_cloud.y -= bat_cloud.frameHeight
-				bat_cloud.scrollFactor = new FlxPoint(1, 1);
-				clouds.add(bat_cloud);
-			}
-			FlxG.state.add(clouds);
-			
-			/* FAR */
-			var group_far:TmxObjectGroup = tmx.getObjectGroup('Back_far');
-			for each(var object_far:TmxObject in group_far.objects) {
-				var bat_far:FlxSprite = new FlxSprite(object_far.x, object_far.y);
-				switch(object_far.gid) {
-					case 47 :
-						bat_far.loadGraphic(ImgFar2);
-						break;
-					case 48 :
-						bat_far.loadGraphic(ImgFar3);
-						break;
-					case 49 :
-						bat_far.loadGraphic(ImgFar4);
-						break;
-					case 50 :
-						bat_far.loadGraphic(ImgFar5);
-						break;
+				FlxG.state.add(clouds);
+				
+				/* FAR */
+				var group_far:TmxObjectGroup = tmx.getObjectGroup('Back_far');
+				for each(var object_far:TmxObject in group_far.objects) {
+					var bat_far:FlxSprite = new FlxSprite(object_far.x, object_far.y);
+					switch(object_far.gid) {
+						case 47 :
+							bat_far.loadGraphic(ImgFar2);
+							break;
+						case 48 :
+							bat_far.loadGraphic(ImgFar3);
+							break;
+						case 49 :
+							bat_far.loadGraphic(ImgFar4);
+							break;
+						case 50 :
+							bat_far.loadGraphic(ImgFar5);
+							break;
+					}
+					bat_far.y -= bat_far.frameHeight;
+					bat_far.scrollFactor = new FlxPoint(0.1, 0.1);
+					batiments_far.add(bat_far);
 				}
-				bat_far.y -= bat_far.frameHeight
-				bat_far.scrollFactor = new FlxPoint(0.1, 0.1);
-				batiments_far.add(bat_far);
-			}
-			FlxG.state.add(batiments_far);
-			
-			/* MIDDLE */
-			var group_middle:TmxObjectGroup = tmx.getObjectGroup('Back_middle');
-			for each(var object_middle:TmxObject in group_middle.objects) {
-				var bat_middle:FlxSprite = new FlxSprite(object_middle.x, object_middle.y);
-				switch(object_middle.gid) {
-					case 20 :
-						bat_middle.loadGraphic(ImgMiddle2);
-						break;
-					case 21 :
-						bat_middle.loadGraphic(ImgMiddle3);
-						break;
-					case 22 :
-						bat_middle.loadGraphic(ImgMiddle4);
-						break;
-					case 23 :
-						bat_middle.loadGraphic(ImgMiddle5);
-						break;
-					case 24 :
-						bat_middle.loadGraphic(ImgMiddle6);
-						break;
-					case 25 :
-						bat_middle.loadGraphic(ImgMiddle7);
-						break;
-					case 26 :
-						bat_middle.loadGraphic(ImgMiddle8);
-						break;
-					case 27 :
-						bat_middle.loadGraphic(ImgMiddle9);
-						break;
-					case 28 :
-						bat_middle.loadGraphic(ImgMiddle10);
-						break;
-					case 29 :
-						bat_middle.loadGraphic(ImgMiddle11);
-						break;
-					case 30 :
-						bat_middle.loadGraphic(ImgMiddle12);
-						break;
-					case 31 :
-						bat_middle.loadGraphic(ImgMiddle13);
-						break;
-					case 32 :
-						bat_middle.loadGraphic(ImgMiddle14);
-						break;
-					case 33 :
-						bat_middle.loadGraphic(ImgMiddle15);
-						break;
-					case 34 :
-						bat_middle.loadGraphic(ImgMiddle16);
-						break;
-					case 35 :
-						bat_middle.loadGraphic(ImgMiddle17);
-						break;
-					case 36 :
-						bat_middle.loadGraphic(ImgMiddle18);
-						break;
+				FlxG.state.add(batiments_far);
+				
+				/* MIDDLE */
+				var group_middle:TmxObjectGroup = tmx.getObjectGroup('Back_middle');
+				for each(var object_middle:TmxObject in group_middle.objects) {
+					var bat_middle:FlxSprite = new FlxSprite(object_middle.x, object_middle.y);
+					switch(object_middle.gid) {
+						case 20 :
+							bat_middle.loadGraphic(ImgMiddle2);
+							break;
+						case 21 :
+							bat_middle.loadGraphic(ImgMiddle3);
+							break;
+						case 22 :
+							bat_middle.loadGraphic(ImgMiddle4);
+							break;
+						case 23 :
+							bat_middle.loadGraphic(ImgMiddle5);
+							break;
+						case 24 :
+							bat_middle.loadGraphic(ImgMiddle6);
+							break;
+						case 25 :
+							bat_middle.loadGraphic(ImgMiddle7);
+							break;
+						case 26 :
+							bat_middle.loadGraphic(ImgMiddle8);
+							break;
+						case 27 :
+							bat_middle.loadGraphic(ImgMiddle9);
+							break;
+						case 28 :
+							bat_middle.loadGraphic(ImgMiddle10);
+							break;
+						case 29 :
+							bat_middle.loadGraphic(ImgMiddle11);
+							break;
+						case 30 :
+							bat_middle.loadGraphic(ImgMiddle12);
+							break;
+						case 31 :
+							bat_middle.loadGraphic(ImgMiddle13);
+							break;
+						case 32 :
+							bat_middle.loadGraphic(ImgMiddle14);
+							break;
+						case 33 :
+							bat_middle.loadGraphic(ImgMiddle15);
+							break;
+						case 34 :
+							bat_middle.loadGraphic(ImgMiddle16);
+							break;
+						case 35 :
+							bat_middle.loadGraphic(ImgMiddle17);
+							break;
+						case 36 :
+							bat_middle.loadGraphic(ImgMiddle18);
+							break;
+					}
+					bat_middle.y -= bat_middle.frameHeight;
+					bat_middle.scrollFactor = new FlxPoint(0.5, 0.5);
+					batiments_middle.add(bat_middle);
 				}
-				bat_middle.y -= bat_middle.frameHeight
-				bat_middle.scrollFactor = new FlxPoint(0.5, 0.5);
-				batiments_middle.add(bat_middle);
-			}
-			FlxG.state.add(batiments_middle);
-			
-			/* NEAR */
-			var group_near:TmxObjectGroup = tmx.getObjectGroup('Back_near');
-			for each(var object_near:TmxObject in group_near.objects) {
-				var bat_near:FlxSprite = new FlxSprite(object_near.x, object_near.y);
-				switch(object_near.gid) {
-					case 38 :
-						bat_near.loadGraphic(ImgNear2);
-						break;
-					case 39 :
-						bat_near.loadGraphic(ImgNear3);
-						break;
-					case 40 :
-						bat_near.loadGraphic(ImgNear4);
-						break;
-					case 41 :
-						bat_near.loadGraphic(ImgNear5);
-						break;
-					case 42 :
-						bat_near.loadGraphic(ImgNear6);
-						break;
-					case 43 :
-						bat_near.loadGraphic(ImgNear7);
-						break;
-					case 44 :
-						bat_near.loadGraphic(ImgNear8);
-						break;
-					case 45 :
-						bat_near.loadGraphic(ImgNear9);
-						break;
+				FlxG.state.add(batiments_middle);
+				
+				/* NEAR */
+				var group_near:TmxObjectGroup = tmx.getObjectGroup('Back_near');
+				for each(var object_near:TmxObject in group_near.objects) {
+					var bat_near:FlxSprite = new FlxSprite(object_near.x, object_near.y);
+					switch(object_near.gid) {
+						case 38 :
+							bat_near.loadGraphic(ImgNear2);
+							break;
+						case 39 :
+							bat_near.loadGraphic(ImgNear3);
+							break;
+						case 40 :
+							bat_near.loadGraphic(ImgNear4);
+							break;
+						case 41 :
+							bat_near.loadGraphic(ImgNear5);
+							break;
+						case 42 :
+							bat_near.loadGraphic(ImgNear6);
+							break;
+						case 43 :
+							bat_near.loadGraphic(ImgNear7);
+							break;
+						case 44 :
+							bat_near.loadGraphic(ImgNear8);
+							break;
+						case 45 :
+							bat_near.loadGraphic(ImgNear9);
+							break;
+					}
+					bat_near.y -= bat_near.frameHeight;
+					bat_near.scrollFactor = new FlxPoint(1, 1);
+					batiments_near.add(bat_near);
 				}
-				bat_near.y -= bat_near.frameHeight
-				bat_near.scrollFactor = new FlxPoint(1, 1);
-				batiments_near.add(bat_near);
+				FlxG.state.add(batiments_near);
 			}
-			FlxG.state.add(batiments_near);
-			
+			else if (FlxG.univ == 2) { // ---------------------------------------------------UNIV 2 -------------------------------------
+				var csv_vaisseau:String = tmx.getLayer('Sol').toCsv(tmx.getTileSet('aith_tiles_vaisseau'));
+				tile.loadMap(csv_vaisseau, MapTiles2, 40, 40);
+				
+				/* FOND */
+				var group_fond:TmxObjectGroup = tmx.getObjectGroup('Fond');
+				for each(var object_fond:TmxObject in group_fond.objects) {
+					var bat_fond:FlxSprite = new FlxSprite(object_fond.x, object_fond.y);
+					switch(object_fond.gid) {
+						case 43 :
+							bat_fond.loadGraphic(BgFond2);
+							break;
+					}
+					bat_fond.y -= bat_fond.frameHeight
+					batiments_fond.add(bat_fond);
+				}
+				FlxG.state.add(batiments_fond);
+				
+				/* FAR */
+				var group_far_vaisseau:TmxObjectGroup = tmx.getObjectGroup('Back_far');
+				for each(var object_far_vaisseau:TmxObject in group_far_vaisseau.objects) {
+					var bat_far_vaisseau:FlxSprite = new FlxSprite(object_far_vaisseau.x, object_far_vaisseau.y);
+					switch(object_far_vaisseau.gid) {
+						case 44 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau1);
+							break;
+						case 45 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau2);
+							break;
+						case 46 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau3);
+							break;
+						case 47 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau4);
+							break;
+						case 48 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau5);
+							break;
+						case 49 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau6);
+							break;
+						case 50 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau7);
+							break;
+						case 51 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau8);
+							break;
+						case 52 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau9);
+							break;
+						case 53 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau10);
+							break;
+						case 54 :
+							bat_far_vaisseau.loadGraphic(ImgFarVaisseau11);
+							break;
+					}
+					bat_far_vaisseau.y -= bat_far_vaisseau.frameHeight;
+					batiments_far_vaisseau.add(bat_far_vaisseau);
+				}
+				FlxG.state.add(batiments_far_vaisseau);
+				
+				/* MIDDLE */
+				var group_middle_vaisseau:TmxObjectGroup = tmx.getObjectGroup('Back_middle');
+				for each(var object_middle_vaisseau:TmxObject in group_middle_vaisseau.objects) {
+					var bat_middle_vaisseau:FlxSprite = new FlxSprite(object_middle_vaisseau.x, object_middle_vaisseau.y);
+					switch(object_middle_vaisseau.gid) {
+						case 55 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau11);
+							break;
+						case 56 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau12);
+							break;
+						case 57 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau13);
+							break;
+						case 58 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau14);
+							break;
+						case 59 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau15);
+							break;
+						case 60 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau16);
+							break;
+						case 61 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau17);
+							break;
+						case 62 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau18);
+							break;
+						case 63 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau19);
+							break;
+						case 64 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau111);
+							break;
+						case 65 :
+							bat_middle_vaisseau.loadGraphic(ImgMiddleVaisseau110);
+							break;
+					}
+					bat_middle_vaisseau.y -= bat_middle_vaisseau.frameHeight;
+					batiments_middle_vaisseau.add(bat_middle_vaisseau);
+				}
+				FlxG.state.add(batiments_middle_vaisseau);
+				
+				/* NEAR */
+				var group_near_vaisseau:TmxObjectGroup = tmx.getObjectGroup('Back_near');
+				for each(var object_near_vaisseau:TmxObject in group_near_vaisseau.objects) {
+					var bat_near_vaisseau:FlxSprite = new FlxSprite(object_near_vaisseau.x, object_near_vaisseau.y);
+					switch(object_near_vaisseau.gid) {
+						case 66 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau11);
+							break;
+						case 67 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau12);
+							break;
+						case 68 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau13);
+							break;
+						case 69 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau14);
+							break;
+						case 70 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau15);
+							break;
+						case 71 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau16);
+							break;
+						case 72 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau17);
+							break;
+						case 73 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau18);
+							break;
+						case 74 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau19);
+							break;
+						case 75 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau110);
+							break;
+						case 76 :
+							bat_near_vaisseau.loadGraphic(ImgNearVaisseau111);
+							break;
+					}
+					bat_near_vaisseau.y -= bat_near_vaisseau.frameHeight;
+					batiments_near_vaisseau.add(bat_near_vaisseau);
+				}
+				FlxG.state.add(batiments_near_vaisseau);
+			}
 			FlxG.state.add(tile);
 			FlxG.tilemap = tile;
 			
@@ -488,7 +678,7 @@ package
 				}
 			}
 			/* TODO / DEV LOOTCOUNT A VIRER*/
-			trace(lootcount);
+			trace("Loot des tubes : ", lootcount);
 			FlxG.state.add(item);
 			FlxG.state.add(destructible);
 			FlxG.state.add(tremplins);

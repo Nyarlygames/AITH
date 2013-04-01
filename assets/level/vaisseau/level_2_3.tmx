@@ -3,20 +3,26 @@
  <tileset firstgid="1" name="aith_tiles" tilewidth="40" tileheight="40">
   <image source="../../gfx/misc/aith_tiles.png" width="240" height="120"/>
  </tileset>
- <tileset firstgid="19" name="background_exterieur_middle" tilewidth="320" tileheight="560">
-  <image source="background-middle.png" width="4400" height="400"/>
- </tileset>
- <tileset firstgid="19" name="background_exterieur_near" tilewidth="800" tileheight="720">
-  <image source="background-near.png" width="4400" height="400"/>
- </tileset>
- <tileset firstgid="19" name="background_exterieur_far" tilewidth="320" tileheight="480">
-  <image source="background-far.png" width="4400" height="400"/>
- </tileset>
  <tileset firstgid="19" name="tileset_tremplin_80" tilewidth="80" tileheight="80">
   <image source="../../gfx/gameplay/tileset_tremplin_80.png" width="240" height="80"/>
  </tileset>
- <tileset firstgid="22" name="fond" tilewidth="5000" tileheight="800">
+ <tileset firstgid="22" name="tileset_tremplin_120" tilewidth="120" tileheight="120">
+  <image source="../../gfx/gameplay/tileset_tremplin_120.png" width="360" height="120"/>
+ </tileset>
+ <tileset firstgid="25" name="aith_tiles_vaisseau" tilewidth="40" tileheight="40">
+  <image source="../../gfx/misc/aith_tiles_vaisseau.png" width="240" height="120"/>
+ </tileset>
+ <tileset firstgid="43" name="fond" tilewidth="5000" tileheight="800">
   <image source="fond.png" width="5000" height="800"/>
+ </tileset>
+ <tileset firstgid="44" name="background-far" tilewidth="400" tileheight="400">
+  <image source="background-far.png" width="4400" height="400"/>
+ </tileset>
+ <tileset firstgid="55" name="background-middle" tilewidth="400" tileheight="400">
+  <image source="background-middle.png" width="4400" height="400"/>
+ </tileset>
+ <tileset firstgid="66" name="background-near" tilewidth="400" tileheight="400">
+  <image source="background-near.png" width="4400" height="400"/>
  </tileset>
  <layer name="Back_fond" width="500" height="20" visible="0">
   <data encoding="csv">
@@ -43,11 +49,11 @@
 </data>
  </layer>
  <objectgroup name="Fond" width="500" height="20">
-  <object gid="22" x="-1200" y="920"/>
-  <object gid="22" x="3800" y="920"/>
-  <object gid="22" x="8800" y="920"/>
-  <object gid="22" x="13800" y="920"/>
-  <object gid="22" x="18800" y="920"/>
+  <object gid="43" x="-1200" y="920"/>
+  <object gid="43" x="3800" y="920"/>
+  <object gid="43" x="8800" y="920"/>
+  <object gid="43" x="13800" y="920"/>
+  <object gid="43" x="18800" y="920"/>
  </objectgroup>
  <objectgroup name="Back_clouds" width="500" height="20" visible="0"/>
  <objectgroup name="Back_far" width="500" height="20" visible="0"/>
