@@ -39,8 +39,8 @@ package
 		{
 			super(xpos, ypos, ImgSoufflerie);
 			
-			soundIdle.loadEmbedded(SfxIn);
-			soundIn.loadEmbedded(SfxIn);
+			soundIdle.loadEmbedded(SfxIn, false, true);
+			soundIn.loadEmbedded(SfxIn, false, true);
 			
 			immovable = true;
 			angle = orient;
@@ -92,14 +92,15 @@ package
 					break;
 			}
 			FlxG.state.add(souffle);
+			soundIdle.volume = 0.6;
 		}
 	
 		override public function update():void {
 			
-			if (onScreen(FlxG.camera))
+		/*if (onScreen(FlxG.camera))
 			{
 				soundIdle.play();
-			}
+			}*/
 			
 			if ((FlxG.player != null) && (!FlxG.overlap(souffle, FlxG.map.destructible, stopsouffle)))
 			{
@@ -108,18 +109,21 @@ package
 				if (FlxG.overlap(FlxG.player, souffle) && angle == 0 ) 
 				{
 					FlxG.player.souffled = true;
+					soundIn.play();
 					FlxG.player.velocity.y -= speedSouffle * FlxG.elapsed;
 				}
 				// DROITE
 				else if (angle == 90 && !FlxG.overlap(FlxG.player, souffle, boost_player)) 
 				{
 					FlxG.player.souffled = true;
+					soundIn.play();
 					FlxG.player.maxVelocity.x = FlxG.player.init_speed;
 				}
 				//BAS
 				else if (FlxG.overlap(FlxG.player, souffle) && angle == 180 ) 
 				{
 					FlxG.player.souffled = true;
+					soundIn.play();
 					FlxG.player.velocity.y += speedBasSouffle * FlxG.elapsed;
 				}
 				
@@ -128,8 +132,12 @@ package
 					if ( FlxG.player.velocity.x > FlxG.player.minspeed - speedSouffle * FlxG.elapsed)
 					{
 						FlxG.player.souffled = true;
+						soundIn.play();
 						FlxG.player.velocity.x -= speedSouffle * FlxG.elapsed;
 					}
+				}
+				else {
+					soundIn.stop();
 				}
 			}
 		}

@@ -114,6 +114,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 						case 2:
@@ -121,6 +122,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 						case 3:    
@@ -128,6 +130,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 					}
@@ -407,6 +410,18 @@ package
 						(obj2 as AlienHorizontal).killed = true;
 						//(obj2 as AlienHorizontal).soundMort.play();
 					}
+					var chance2:int = Math.ceil(Math.random() * 3);
+					switch(chance2) {
+						case 1:
+							FlxG.play(SfxAlienMort1, 0.6, false, true);
+							break;
+						case 2:
+							FlxG.play(SfxAlienMort1, 0.6, false, true);
+							break;
+						case 3:
+							FlxG.play(SfxAlienMort1, 0.6, false, true);
+							break;
+					}
 				}
 				// REBONDS
 				else if (from == 0) {
@@ -445,18 +460,6 @@ package
 					{
 						if ((obj2 as AlienNormal).killed == false)
 							player.die_motherfucker(3);
-					}
-					var chance2:int = Math.ceil(Math.random() * 3);
-					switch(chance2) {
-						case 1:
-							FlxG.play(SfxAlienMort1, 1, false, true);
-							break;
-						case 2:
-							FlxG.play(SfxAlienMort1, 1, false, true);
-							break;
-						case 3:
-							FlxG.play(SfxAlienMort1, 1, false, true);
-							break;
 					}
 				}
 			}
