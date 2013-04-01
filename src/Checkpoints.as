@@ -16,8 +16,10 @@ package
 	public class Checkpoints extends FlxSprite 
 	{
 		[Embed(source = '../assets/gfx/gameplay/checkpoint_tile.png')]			 protected var ImgCheck:Class;
-		[Embed(source = "../assets/sfx/gameplay/CheckPoint_Activation.mp3")] 	public var SfxActivate:Class;
-		[Embed(source = "../assets/sfx/gameplay/CheckPoint_Revive.mp3")] 		public var SfxRevives:Class;
+		/*[Embed(source = "../assets/sfx/gameplay/CheckPoint_Activation.mp3")] 	public var SfxActivate:Class;
+		[Embed(source = "../assets/sfx/gameplay/CheckPoint_Revive.mp3")] 		public var SfxRevives:Class;*/
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'CheckPoint_Activation.wav')] public var SfxActivate:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'CheckPoint_Revive.wav')] public var SfxRevives:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font:Class;
 		
 		public var soundActivate:FlxSound 		= new FlxSound();

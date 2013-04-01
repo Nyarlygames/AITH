@@ -159,6 +159,11 @@ package
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
 			
+			if (FlxG.mouse.justPressed()) {
+				FlxG.play(SfxMenuClick, 1, false, true);
+			}
+			
+			
 			/* VALIDATION OBJECTIF 1*/
 			Objectif1.play("on");
 			switch (FlxG.univ) {

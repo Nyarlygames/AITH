@@ -1,6 +1,7 @@
 package  
 {
 	import org.flixel.FlxRect;
+	import org.flixel.FlxSound;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxG;
@@ -16,12 +17,15 @@ package
 	{
 		[Embed(source = '../assets/gfx/gameplay/overboard_tourelle.png')] protected var ImgTourelle:Class;
 		[Embed(source = '../assets/gfx/gameplay/flamme.png')] protected var ImgFlamme:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Laser_On.wav')] public var SfxLaserOn:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Laser_Off.wav')] public var SfxLaserOff:Class;
 		public var rate:int = 1500;							// CADENCE DE TIR
 		public var maxtir:int = 200;						// MAXIMUM DE TIR
 		public var speed:int = 300;							// VITESSE DE TIR
 		public var gravity:int = 1000;						// GRAVITE DE TIR
 		public var flammes:FlxSprite;
 		public var timer:FlxTimer = new FlxTimer();
+		public var laseroff:FlxSound = new FlxSound;
 		
 		
 		/* flammes 40      20 - 60
@@ -47,17 +51,25 @@ package
 			*/
 			play("default");
 			// Gestion de la flamme
+			laseroff.loadEmbedded(SfxLaserOff, true, false);
+			laseroff.play();
 		}
 		
 		override public function update():void 
 		{
+			if (onScreen(FlxG.camera) && (flammes.frame == 0)) {
+				laseroff.volume = 1;
+			}
 			if (FlxCollision.pixelPerfectCheck(FlxG.player, flammes)) {
 				FlxG.player.die_motherfucker(0);
 			}
 		}
 		
 		public function activate_burst(timer:FlxTimer):void {
+			laseroff.volume = 0;
 			if (flammes != null) {
+				if (onScreen(FlxG.camera))
+					FlxG.play(SfxLaserOn, 1, false, true);	
 				flammes.play("flammes");
 			}
 		}

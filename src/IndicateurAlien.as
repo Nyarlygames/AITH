@@ -3,6 +3,7 @@ package
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxSound;
 	
 	/**
 	 * ...
@@ -12,6 +13,9 @@ package
 	{
 		public var target:AlienHorizontal;
 		[Embed(source = '../assets/gfx/gameplay/point_d_exclamation.png')] protected var ImgIncomming:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'AlienEnRoute_Stinger.wav')] public var SfxIndic:Class;
+		
+		public var indic:FlxSound = new FlxSound();
 		
 		public function IndicateurAlien(alien:AlienHorizontal) 
 		{
@@ -24,15 +28,27 @@ package
 			play("incomming");
 			scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(this);
+			indic.loadEmbedded(SfxIndic, true, false);
+			indic.play();
 		}
 		
 		override public function update():void {
 			if (target.onScreen(FlxG.camera) || (FlxG.player.dead)) {
+				if (indic != null) {
+					indic.stop();
+					indic.kill();
+					indic.destroy();
+				}
 				kill();
 				if (this != null)
 					destroy();
 			}
-			if (target.x < FlxG.player.x){
+			if (target.x < FlxG.player.x) {
+				if (indic != null) {
+					indic.stop();
+					indic.kill();
+					indic.destroy();
+				}
 				visible = false;
 				exists = false;
 				if (_curAnim != null)

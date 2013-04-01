@@ -14,10 +14,12 @@ package
 		[Embed(source = '../assets/gfx/gameplay/ascenceur.png')] 			protected var ImgAscenceur:Class;
 		[Embed(source = '../assets/gfx/gameplay/ascenceur_down.png')] 		protected var ImgAscenceurDown:Class;
 		[Embed(source = '../assets/gfx/gameplay/ascenceur_up.png')]			 protected var ImgAscenceurUp:Class;
-		[Embed(source = "../assets/sfx/gameplay/Ascenseur_Activation.mp3")] 		public var SfxActivation:Class;
+		/*[Embed(source = "../assets/sfx/gameplay/Ascenseur_Activation.mp3")] 		public var SfxActivation:Class;
 		[Embed(source = "../assets/sfx/gameplay/Ascenseur_ChangeDirection.mp3")] 	public var SfxChangeWay:Class;
 		[Embed(source = "../assets/sfx/gameplay/Ascenseur_End.mp3")] 				public var SfxEnd:Class;
-		[Embed(source = "../assets/sfx/gameplay/Ascenseur_Move.mp3")] 				public var SfxMoves:Class;
+		[Embed(source = "../assets/sfx/gameplay/Ascenseur_Move.mp3")] 				public var SfxMoves:Class;*/
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Ascenseur.wav')] public var SfxAscenseur:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'JimiMoteur_Arret.wav')] public var SfxMoteur:Class;
 		
 		public var soundActivation:FlxSound = new FlxSound();
 		public var soundChangeWay:FlxSound 	= new FlxSound();
@@ -32,10 +34,10 @@ package
 		public function Ascenceur(xpos:int, ypos:int) 
 		{
 			super(xpos, ypos, ImgAscenceur);
-			soundActivation.loadEmbedded(SfxActivation);
-			soundChangeWay.loadEmbedded(SfxChangeWay);
-			soundEnd.loadEmbedded(SfxEnd);
-			soundMoves.loadEmbedded(SfxMoves);
+			soundActivation.loadEmbedded(SfxAscenseur, true, false);
+			/*soundChangeWay.loadEmbedded(SfxChangeWay);
+			soundEnd.loadEmbedded(SfxEnd);*/
+			soundMoves.loadEmbedded(SfxMoteur);
 			immovable = true;
 		}
 		
@@ -58,21 +60,25 @@ package
 				FlxG.player.velocity.x = 0;
 				FlxG.player.velocity.y = 0;
 				
+				soundActivation.play();
+				soundMoves.play();
+				FlxG.player.vitesse1.volume = 0;
+				FlxG.player.vitesse2.volume = 0;
+				FlxG.player.vitesse3.volume = 0;
 				// DEPLACEMENT BLOQUE
 				if (FlxG.keys.pressed("SPACE")) 
 				{
-					soundActivation.kill();
-					soundMoves.revive();
-					soundMoves.play();
+					/*soundMoves.revive();
+					soundMoves.play();*/
 					y += speed * FlxG.elapsed;
 					loadGraphic(ImgAscenceurDown);
 					FlxG.player.y += speed * FlxG.elapsed;
 				}
 				else 
 				{
-					soundActivation.revive();
+					/*soundActivation.revive();
 					soundActivation.play();
-					soundMoves.kill();
+					soundMoves.kill();*/
 					y -= speed * FlxG.elapsed;
 					loadGraphic(ImgAscenceurUp);
 					FlxG.player.y -= speed * FlxG.elapsed;
@@ -88,20 +94,29 @@ package
 					}
 				}
 			}
-			if (!onScreen(FlxG.camera))
+			/*if (!onScreen(FlxG.camera))
 				if (soundMoves != null)
-					soundMoves.kill();
+					soundMoves.kill();*/
 		}
 		
 		// DEBLOQUE ASCENCEUR
 		public function delock(trig:Trigger):void 
 		{
-			soundMoves.stop();
+			/*soundMoves.stop();
 			soundActivation.stop();
 			soundChangeWay.stop();
-			soundEnd.play();
+			soundEnd.play();*/
+			if (soundActivation != null) {
+				soundActivation.stop();
+				soundActivation.kill();
+			}
+			if (soundMoves != null) {
+				soundMoves.stop();
+				soundMoves.kill();
+			}
 			blocked = false;
 			FlxG.player.velocity.x = FlxG.player.init_speed;
+			FlxG.player.vitesse3.volume = 1;
 		}
 		
 	}

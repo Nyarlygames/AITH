@@ -20,6 +20,9 @@ package
 		}
 	
 		override public function update():void {
+			if (FlxG.keys.justPressed("ENTER") || FlxG.keys.justPressed("SPACE")) {
+				FlxG.switchState(new UnivChooser);
+			}
 		}
 	}
 

@@ -299,6 +299,10 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
 			
+			if (FlxG.mouse.justPressed()) {
+				FlxG.play(SfxMenuClick, 1, false, true);
+			}
+			
 			if (FlxG.overlap(cursor, retour))
 			{
 				retour.play("on");

@@ -140,13 +140,13 @@ package
 			
 			//____________CLAVIER___________________//
 			
-			if (FlxG.keys.justPressed("ENTER"))
+			/*if (FlxG.keys.justPressed("ENTER"))
 			{
 				retry();
-			}
+			}*/
 			if (FlxG.keys.justPressed("BACKSPACE"))
 			{
-				retry();
+				restart();
 			}
 			if (FlxG.keys.justPressed("ESCAPE"))
 			{

@@ -29,9 +29,20 @@ package
 		[Embed(source = '../assets/gfx/misc/alienPart.png')] 			 protected var ImgParticleAlien:Class;
 		[Embed(source = '../assets/gfx/ui/jauge.png')] 					 protected var ImgJauge:Class;
 		[Embed(source = "../assets/sfx/gameplay/CheckPoint_Revive.mp3")] public var sfxRevive:Class;
-		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
+		/*[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse1.mp3")] public var Sfx_Vitesse1:Class;
 		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse2.mp3")] public var Sfx_Vitesse2:Class;
-		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;
+		[Embed(source = "../assets/sfx/gameplay/moteur/JimiMoteur_Vitesse3.mp3")] public var Sfx_Vitesse3:Class;*/
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'JimiMoteur_Vitesse1.wav')] public var Sfx_Vitesse1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'JimiMoteur_Vitesse2.wav')] public var Sfx_Vitesse2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'JimiMoteur_Vitesse3.wav')] public var Sfx_Vitesse3:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Mort_Normal1.wav')] public var SfxMort1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Mort_Normal2.wav')] public var SfxMort2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Mort_Normal3.wav')] public var SfxMort3:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Mort_OutScreen1.wav')] public var SfxMortOutScreen1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Mort_OutScreen2.wav')] public var SfxMortOutScreen2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Mort_OutScreen3.wav')] public var SfxMortOutScreen3:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Atterrissage1.wav')] public var SfxAtterissage1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Jimi_Atterrissage2.wav')] public var SfxAtterissage2:Class;
 		
 		[Embed(source = '../assets/gfx/gameplay/tir_player.png')] public var ImgShoot:Class;
 		
@@ -237,6 +248,15 @@ package
 					jumping = true;
 				} else {
 					jumping = false;
+					var chance:int = Math.ceil(Math.random() * 2);
+					switch(chance) {
+						case 1:
+							FlxG.play(SfxAtterissage1, 1, false, true);
+							break;
+						case 2:
+							FlxG.play(SfxAtterissage1, 1, false, true);
+							break;
+					}
 					/*if (falled == false) {
 						falled = true;
 						play("retombe");
@@ -373,6 +393,34 @@ package
 		public function die_motherfucker(where:int):void { // MORT : TUE LE JOUEUR ET LE FAIS REVIVRE
 			if (death == null)
 			{
+				if (where == 1) {
+					var chance:int = Math.ceil(Math.random() * 3);
+					switch(chance) {
+						case 1:
+							FlxG.play(SfxMortOutScreen1, 1, false, true);
+							break;
+						case 2:
+							FlxG.play(SfxMortOutScreen2, 1, false, true);
+							break;
+						case 3:
+							FlxG.play(SfxMortOutScreen3, 1, false, true);
+							break;
+					}
+				}
+				else{
+					var chance2:int = Math.ceil(Math.random() * 3);
+					switch(chance2) {
+						case 1:
+							FlxG.play(SfxMort1, 1, false, true);
+							break;
+						case 2:
+							FlxG.play(SfxMort2, 1, false, true);
+							break;
+						case 3:
+							FlxG.play(SfxMort3, 1, false, true);
+							break;
+					}
+				}
 				deadscore += 1;
 				TweenMax.to(this, 1.5, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 1.5, { alpha:0, ease:Linear.easeOut }  );

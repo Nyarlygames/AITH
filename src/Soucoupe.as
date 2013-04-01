@@ -16,7 +16,8 @@ package
 		[Embed(source = '../assets/gfx/gameplay/soucoupe.png')] protected var ImgSoucoupe:Class;
 		[Embed(source = '../assets/gfx/gameplay/halo_soucoupe_anim_aspiration.png')] protected var ImgHalo:Class;
 		//[Embed(source = "../assets/sfx/gameplay/Soucoupe_in.mp3")] 		public var SfxIdle:Class;
-		[Embed(source = "../assets/sfx/gameplay/Soucoupe_in.mp3")] 		public var SfxIn:Class;
+		//[Embed(source = "../assets/sfx/gameplay/Soucoupe_in.mp3")] 		public var SfxIn:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Soucoupe.wav')] public var SfxIn:Class;
 		
 		//public var soundIdle:FlxSound 		= new FlxSound();
 		public var soundIn:FlxSound 		= new FlxSound();
