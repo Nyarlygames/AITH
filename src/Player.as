@@ -4,6 +4,7 @@ package
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
+	import org.flixel.FlxTimer;
 	import org.flixel.plugin.photonstorm.FlxVelocity;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	import org.flixel.FlxRect;
@@ -94,6 +95,8 @@ package
 		public var falled:Boolean = false;
 		public var souffled:Boolean = false;
 		public var played:Boolean = true;
+		public var atterissage1:FlxSound = new FlxSound();
+		public var atterissage2:FlxSound = new FlxSound();
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -110,6 +113,8 @@ package
 			vitesse1.loadEmbedded(Sfx_Vitesse1, true, true);
 			vitesse2.loadEmbedded(Sfx_Vitesse2, true, true);
 			vitesse3.loadEmbedded(Sfx_Vitesse3, true, true);
+			atterissage1.loadEmbedded(SfxAtterissage1, false, true);
+			atterissage2.loadEmbedded(SfxAtterissage2, false, true);
 			vitesse1.volume = 0;
 			vitesse2.volume = 0;
 			vitesse3.volume = 1;
@@ -247,7 +252,7 @@ package
 				
 				if (velocity.y != 0) {
 					jumping = true;
-					played == false;
+					played = false;
 				} else {
 					jumping = false;
 					if (played == false) {
@@ -255,10 +260,10 @@ package
 						var chance:int = Math.ceil(Math.random() * 2);
 						switch(chance) {
 							case 1:
-								FlxG.play(SfxAtterissage1, 1, false, true);
+								atterissage1.play();
 								break;
 							case 2:
-								FlxG.play(SfxAtterissage1, 1, false, true);
+								atterissage2.play();
 								break;
 						}
 						/*if (falled == false) {

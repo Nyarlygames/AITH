@@ -60,7 +60,6 @@ package
 				FlxG.player.velocity.x = 0;
 				FlxG.player.velocity.y = 0;
 				
-				soundActivation.play();
 				soundMoves.play();
 				FlxG.player.vitesse1.volume = 0;
 				FlxG.player.vitesse2.volume = 0;
@@ -68,6 +67,10 @@ package
 				// DEPLACEMENT BLOQUE
 				if (FlxG.keys.pressed("SPACE")) 
 				{
+					soundActivation.stop();
+					soundActivation.kill();
+					soundActivation.revive();
+					soundActivation.play();
 					/*soundMoves.revive();
 					soundMoves.play();*/
 					y += speed * FlxG.elapsed;
@@ -76,6 +79,10 @@ package
 				}
 				else 
 				{
+					soundActivation.stop();
+					soundActivation.kill();
+					soundActivation.revive();
+					soundActivation.play();
 					/*soundActivation.revive();
 					soundActivation.play();
 					soundMoves.kill();*/

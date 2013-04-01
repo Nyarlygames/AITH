@@ -72,7 +72,7 @@ package
 		
 		public function activate_burst(timer:FlxTimer):void {
 			laseroff.volume = 0;
-			if ((flammes != null) && (flammes.frame > 0)){
+			if ((flammes != null)){
 				trace(laseroff.volume, "test");
 				if (onScreen(FlxG.camera)) {
 					laseron.play();
