@@ -88,6 +88,9 @@ package
 					}
 				}
 			}
+			if (!onScreen(FlxG.camera))
+				if (soundMoves != null)
+					soundMoves.kill();
 		}
 		
 		// DEBLOQUE ASCENCEUR

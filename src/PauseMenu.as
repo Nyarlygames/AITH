@@ -11,6 +11,7 @@ package
 	import com.greensock.*;
 	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxCollision;
+	import flash.media.SoundMixer;
 
 	/**
 	 * Pause
@@ -61,9 +62,9 @@ package
 				pausePic = new FlxSprite(0, 0, ImgPause);
 				pausePic.scrollFactor = new FlxPoint(0, 0);
 				FlxG.state.add(pausePic);
-			/*	Bouton de mute */
+				/*Bouton de mute */
 			
-			/*	Bouton de mute */
+			/*	Bouton de mute 
 				btnMute = new FlxSprite(711, 12, ImgMute);
 				btnMute.loadGraphic(ImgMute, true, false, 80, 80);
 				btnMute.addAnimation("unmuted", [0], 10, true);
@@ -72,7 +73,7 @@ package
 				btnMute.scrollFactor.x = 0;
 				btnMute.scrollFactor.y = 0;
 				FlxG.state.add(btnMute);
-			/*	Bouton de mute */
+				Bouton de mute */
 			
 			/*	Texte de pause */
 				pauseIn = new FlxSprite(1400, 450, ImgPauseIn);
@@ -173,21 +174,19 @@ package
 				{
 					TweenMax.to(pauseTxtMenu.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 				}
-				
+				/*
 				// Mute le son
 				if (FlxCollision.pixelPerfectCheck(cursor, btnMute)) 
 				{
 					TweenMax.to(btnMute.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut } );
 					if (FlxG.mouse.justPressed())
 					{
-						(FlxG.state as Play).sound.volume = 0;
-						(FlxG.state as Play).sound.volume = 0;
 					}
 				}
 				else
 				{
-					TweenMax.to(btnMute.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
-				}
+					TweenMax.to(btnMute.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut } );
+				}*/
 				
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;	
@@ -203,7 +202,7 @@ package
 		private function resume():void
 		{
 			pausePic.kill();
-			btnMute.kill();
+			//btnMute.kill();
 			pauseTxtRest.kill();
 			pauseTxtMenu.kill();
 			pauseTxtRep.kill();

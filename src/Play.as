@@ -53,6 +53,8 @@ package
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level4:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level5:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level6:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_Univers1.wav')] public var Music1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_Univers2.wav')] public var Music2:Class;
 		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		
@@ -103,21 +105,21 @@ package
 							// SON ARRIERE PLAN
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level1, true, true);
+								sound.loadEmbedded(Music1, true, true);
 							}
 							break;
 						case 2:
 							map = new Map(mapfile2);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level2, true, true);
+								sound.loadEmbedded(Music1, true, true);
 							}
 							break;
 						case 3:    
 							map = new Map(mapfile3);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level3, true, true);
+								sound.loadEmbedded(Music1, true, true);
 							}
 							break;
 					}
@@ -129,21 +131,21 @@ package
 							map = new Map(mapfile4);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level4, true, true);
+								sound.loadEmbedded(Music2, true, true);
 							}
 							break;
 						case 2:
 							map = new Map(mapfile5);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level5, true, true);
+								sound.loadEmbedded(Music2, true, true);
 							}
 							break;
 						case 3:
 							map = new Map(mapfile6);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level6, true, true);
+								sound.loadEmbedded(Music2, true, true);
 							}
 							break;
 					}
@@ -267,14 +269,7 @@ package
 					TweenMax.to(tube_count, 0.1, { x:80, y:0, ease:Bounce.easeIn  } );
 				}
 			}
-			if (tube.loot == 5)
-			{
-				tube.soundGrosTube.play();
-			}
-			if (tube.loot == 1)
-			{
-				tube.soundPetitTube.play();
-			}
+			tube.tubesound(tube.loot);
 			tube.kill();
 			tube.destroy();
 			FlxG.score += tube.loot;
