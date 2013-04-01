@@ -311,36 +311,36 @@ package
 			
 			if (FlxG.keys.pressed("SPACE")) 
 			{
-				if (velocity.x > 180) 
+				if (velocity.x > 250) 
 				{
 					play("fastSpeed", true);
 					vitesse3.volume -= (212.5 * FlxG.elapsed) / 100;
 					vitesse2.volume += (212.5 * FlxG.elapsed) / 100;
 				}
-				else if (velocity.x > 120) 
+				else if (velocity.x > 160) 
 				{
 					vitesse2.volume -= (250 * FlxG.elapsed) / 100;
 					vitesse1.volume += (250 * FlxG.elapsed) / 100;
 					play("midSpeed", true);
 				}
-				else if (velocity.x > 50) 
+				else if (velocity.x > 0) 
 				{
 					play("slowSpeed", true);
 				}
 			}
 			else if (!FlxG.keys.any())
 			{
-				if (velocity.x < 120) 
+				if (velocity.x < 160) 
 				{
 					play("slowSpeed", true);
 				}
-				else if (velocity.x < 180) 
+				else if (velocity.x < 250) 
 				{
 					play("midSpeed", true);
 					vitesse2.volume += (250 * FlxG.elapsed) / 100;
 					vitesse1.volume -= (250 * FlxG.elapsed) / 100;
 				}
-				else if (velocity.x < 252) 
+				else if (velocity.x < 370) 
 				{
 					play("fastSpeed", true);
 					vitesse3.volume += (212.5 * FlxG.elapsed) / 100;

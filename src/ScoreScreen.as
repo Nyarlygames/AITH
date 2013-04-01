@@ -89,7 +89,7 @@ package
 				
 				completed = new FlxText(Objectif1.x - 25, Objectif1.y - 70, Objectif1.frameWidth + 50, "Terminé");
 				completed.y -= completed.frameHeight;
-				completed.setFormat("onedalism", 40, 0xFFFFFF, "center", 0x000000);
+				completed.setFormat("onedalism", 40, 0xFFFFFF, "center", 0xaa000000);
 				add(completed);
 				
 				
@@ -105,7 +105,7 @@ package
 				
 				nodeath = new FlxText(Objectif2.x - 25, Objectif2.y - 70, Objectif2.frameWidth + 50, "Sans faute");
 				nodeath.y -= nodeath.frameHeight;
-				nodeath.setFormat("onedalism", 40, 0xFFFFFF, "center", 0x000000);
+				nodeath.setFormat("onedalism", 40, 0xFFFFFF, "center", 0xaa000000);
 				add(nodeath);
 				
 			/*	Tete alien 2 */
@@ -121,7 +121,7 @@ package
 				
 				alltubes = new FlxText(Objectif3.x - 25, Objectif3.y - 70, Objectif3.frameWidth + 50, "100 Tubes");
 				alltubes.y -= alltubes.frameHeight;
-				alltubes.setFormat("onedalism", 40, 0xFFFFFF, "center", 0x000000);
+				alltubes.setFormat("onedalism", 40, 0xFFFFFF, "center", 0xaa000000);
 				add(alltubes);
 			/*	Tete alien 2 */
 			
