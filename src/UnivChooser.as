@@ -57,6 +57,7 @@ package
 		
 		public var soundChoose:FlxSound = new FlxSound();
 		public var soundUniverse:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
 		public var end:EndGame;
 		public var gamefinished:Boolean = false;
 		
@@ -68,6 +69,7 @@ package
 			
 			soundChoose.loadEmbedded(sfxChoose);
 			soundUniverse.loadEmbedded(sfxUniverse);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
 			FlxG.usersave.calcStars_univ();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
