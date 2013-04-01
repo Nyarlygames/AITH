@@ -23,6 +23,7 @@ package
 		public function Tutorial() 
 		{
 			super(FlxG.width / 2, FlxG.height / 3, ImgTuto);
+			FlxG.player.jumping = true;
 			btnPlay = new FlxSprite(FlxG.width / 2, FlxG.height *3 / 4, ImgPlay);
 			x -= frameWidth / 2;
 			btnPlay.x -= frameWidth / 2;
@@ -54,7 +55,8 @@ package
 				if (FlxG.mouse.justPressed() || (FlxG.keys.justPressed("SPACE")) || (FlxG.keys.pressed("ENTER")))
 				{
 					TweenMax.to(btnPlay, 1, { y : -100, alpha: 0, ease:Expo.easeIn } );
-					TweenMax.to(this, 1, {y : -100, alpha: 0, ease:Expo.easeIn } );
+					TweenMax.to(this, 1, { y : -100, alpha: 0, ease:Expo.easeIn } );
+					FlxG.player.jumping = false;
 					FlxG.map.loaded = true;
 					cursor.kill();
 				}

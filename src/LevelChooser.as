@@ -39,6 +39,8 @@ package
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
 		public var replaypic:FlxSprite;
 		public var texteUnivers:FlxSprite;
@@ -89,24 +91,48 @@ package
 				trophy1 = new FlxSprite(70, backLevel1.y - 120, ImgAlienGrisSmall);
 				trophy2 = new FlxSprite(130, backLevel1.y - 120, ImgAlienGrisSmall);
 				trophy3 = new FlxSprite(190, backLevel1.y - 120, ImgAlienGrisSmall);
-				switch (FlxG.usersave.score1) {
-					case 1:
-						trophy1.loadGraphic(ImgAlienSmall);
-						break;
-					case 2:
-						trophy1.loadGraphic(ImgAlienSmall);
-						if (FlxG.usersave.level1[1] == 1)
+				if (FlxG.univ == 1) {
+					switch (FlxG.usersave.score1) {
+						case 1:
+							trophy1.loadGraphic(ImgAlienSmall);
+							break;
+						case 2:
+							trophy1.loadGraphic(ImgAlienSmall);
+							if (FlxG.usersave.level1[1] == 1)
+								trophy2.loadGraphic(ImgAlienSmall);
+							else
+								trophy3.loadGraphic(ImgAlienSmall);
+							break;
+						case 3:
+							trophy1.loadGraphic(ImgAlienSmall);
 							trophy2.loadGraphic(ImgAlienSmall);
-						else
 							trophy3.loadGraphic(ImgAlienSmall);
-						break;
-					case 3:
-						trophy1.loadGraphic(ImgAlienSmall);
-						trophy2.loadGraphic(ImgAlienSmall);
-						trophy3.loadGraphic(ImgAlienSmall);
-						break;
-					default:
-						break;
+							break;
+						default:
+							break;
+					}
+				}
+				else {
+					switch (FlxG.usersave.score4) {
+						case 1:
+							trophy1.loadGraphic(ImgAlienSmall);
+							break;
+						case 2:
+							trophy1.loadGraphic(ImgAlienSmall);
+							if (FlxG.usersave.level4[1] == 1)
+								trophy2.loadGraphic(ImgAlienSmall);
+							else
+								trophy3.loadGraphic(ImgAlienSmall);
+							break;
+						case 3:
+							trophy1.loadGraphic(ImgAlienSmall);
+							trophy2.loadGraphic(ImgAlienSmall);
+							trophy3.loadGraphic(ImgAlienSmall);
+							break;
+						default:
+							break;
+					}
+					
 				}
 				add(trophy1);
 				add(trophy2);
@@ -121,25 +147,50 @@ package
 				trophy4 = new FlxSprite(325, backLevel2.y - 120, ImgAlienGrisSmall);
 				trophy5 = new FlxSprite(385, backLevel2.y - 120, ImgAlienGrisSmall);
 				trophy6 = new FlxSprite(445, backLevel2.y - 120, ImgAlienGrisSmall);
-				switch (FlxG.usersave.score2) {
-					case 1:
-						trophy4.loadGraphic(ImgAlienSmall);
-						break;
-					case 2:
-						trophy4.loadGraphic(ImgAlienSmall);
-						if (FlxG.usersave.level2[1] == 1) {
+				if (FlxG.univ == 1) {
+					switch (FlxG.usersave.score2) {
+						case 1:
+							trophy4.loadGraphic(ImgAlienSmall);
+							break;
+						case 2:
+							trophy4.loadGraphic(ImgAlienSmall);
+							if (FlxG.usersave.level2[1] == 1) {
+								trophy5.loadGraphic(ImgAlienSmall);
+							}
+							else
+								trophy6.loadGraphic(ImgAlienSmall);
+							break;
+						case 3:
+							trophy4.loadGraphic(ImgAlienSmall);
 							trophy5.loadGraphic(ImgAlienSmall);
-						}
-						else
 							trophy6.loadGraphic(ImgAlienSmall);
-						break;
-					case 3:
-						trophy4.loadGraphic(ImgAlienSmall);
-						trophy5.loadGraphic(ImgAlienSmall);
-						trophy6.loadGraphic(ImgAlienSmall);
-						break;
-					default:
-						break;
+							break;
+						default:
+							break;
+					}
+				}
+				else {
+					switch (FlxG.usersave.score5) {
+						case 1:
+							trophy4.loadGraphic(ImgAlienSmall);
+							break;
+						case 2:
+							trophy4.loadGraphic(ImgAlienSmall);
+							if (FlxG.usersave.level5[1] == 1) {
+								trophy5.loadGraphic(ImgAlienSmall);
+							}
+							else
+								trophy6.loadGraphic(ImgAlienSmall);
+							break;
+						case 3:
+							trophy4.loadGraphic(ImgAlienSmall);
+							trophy5.loadGraphic(ImgAlienSmall);
+							trophy6.loadGraphic(ImgAlienSmall);
+							break;
+						default:
+							break;
+					}
+
 				}
 				add(trophy4);
 				add(trophy5);
@@ -154,24 +205,48 @@ package
 				trophy7 = new FlxSprite(575, backLevel3.y - 120, ImgAlienGrisSmall);
 				trophy8 = new FlxSprite(635, backLevel3.y - 120, ImgAlienGrisSmall);
 				trophy9 = new FlxSprite(695, backLevel3.y - 120, ImgAlienGrisSmall);
-				switch (FlxG.usersave.score3) {
-					case 1:
-						trophy7.loadGraphic(ImgAlienSmall);
-						break;
-					case 2:
-						trophy7.loadGraphic(ImgAlienSmall);
-						if (FlxG.usersave.level3[1] == 1)
+				if (FlxG.univ == 1) {
+					switch (FlxG.usersave.score3) {
+						case 1:
+							trophy7.loadGraphic(ImgAlienSmall);
+							break;
+						case 2:
+							trophy7.loadGraphic(ImgAlienSmall);
+							if (FlxG.usersave.level3[1] == 1)
+								trophy8.loadGraphic(ImgAlienSmall);
+							else
+								trophy9.loadGraphic(ImgAlienSmall);
+							break;
+						case 3:
+							trophy7.loadGraphic(ImgAlienSmall);
 							trophy8.loadGraphic(ImgAlienSmall);
-						else
 							trophy9.loadGraphic(ImgAlienSmall);
-						break;
-					case 3:
-						trophy7.loadGraphic(ImgAlienSmall);
-						trophy8.loadGraphic(ImgAlienSmall);
-						trophy9.loadGraphic(ImgAlienSmall);
-						break;
-					default:
-						break;
+							break;
+						default:
+							break;
+					}
+				}
+				else {
+					switch (FlxG.usersave.score6) {
+						case 1:
+							trophy7.loadGraphic(ImgAlienSmall);
+							break;
+						case 2:
+							trophy7.loadGraphic(ImgAlienSmall);
+							if (FlxG.usersave.level6[1] == 1)
+								trophy8.loadGraphic(ImgAlienSmall);
+							else
+								trophy9.loadGraphic(ImgAlienSmall);
+							break;
+						case 3:
+							trophy7.loadGraphic(ImgAlienSmall);
+							trophy8.loadGraphic(ImgAlienSmall);
+							trophy9.loadGraphic(ImgAlienSmall);
+							break;
+						default:
+							break;
+					}
+
 				}
 				add(trophy7);
 				add(trophy8);
@@ -226,11 +301,13 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
 			
+			
 			if (FlxG.overlap(cursor, retour))
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new UnivChooser());  }
+				{ FlxG.switchState(new UnivChooser());
+				FlxG.play(SfxMenuClick, 1, false, true);  }
 			}
 			else
 			{
@@ -324,38 +401,45 @@ package
 				// NIVEAU 1
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
 					FlxG.level = 1;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 2
 				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
 					FlxG.level = 2;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 3
 				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
 					FlxG.level = 3;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 				}
 			}
 			
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.level = 1;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
 					FlxG.level = 2;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.justPressed("THREE") || FlxG.keys.justPressed("NUMPADTHREE")) {
 					FlxG.level = 3;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.pressed("ESCAPE")) {
+				FlxG.play(SfxMenuClick, 1, false, true);
 				FlxG.switchState(new UnivChooser());
 			}
 		}

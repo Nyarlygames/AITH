@@ -30,6 +30,8 @@ package
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
 		public var finTexte:FlxSprite;
 		public var texteUnivers:FlxSprite;
@@ -260,6 +262,7 @@ package
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
 				{
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new UnivChooser());
 				}
 			}
@@ -267,6 +270,7 @@ package
 			// Ajout de point d'objectifs
 			if (FlxG.keys.pressed("ENTER")) 
 			{
+				FlxG.play(SfxMenuClick, 1, false, true);
 				FlxG.switchState(new UnivChooser());
 			}
 			else

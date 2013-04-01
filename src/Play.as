@@ -45,14 +45,24 @@ package
 		[Embed(source = "../assets/level/map06.txt", mimeType = "application/octet-stream")] public var mapfile6:Class;
 		[Embed(source = '../assets/gfx/ui/backflip.png')] 	 		protected var ImgBackflip:Class;
 		
-		[Embed(source = "../assets/sfx/gameplay/SolDestructible_EnDestruction.mp3")] public var SfxCrepite:Class;
-		[Embed(source = "../assets/sfx/gameplay/SolDestructible_Destruction.mp3")] public var SfxDestrSol:Class;
+		/*[Embed(source = "../assets/sfx/gameplay/SolDestructible_EnDestruction.mp3")] public var SfxCrepite:Class;
+		[Embed(source = "../assets/sfx/gameplay/SolDestructible_Destruction.mp3")] public var SfxDestrSol:Class;*/
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'SolDestructible_EnDestruction.wav')] public var SfxCrepite:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'SolDestructible_Destruction.wav')] public var SfxDestrSol:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level1:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level2:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level3:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level4:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level5:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level6:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_Univers1.wav')] public var Music1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_Univers2.wav')] public var Music2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_Mort1.wav')] public var SfxAlienMort1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_Mort2.wav')] public var SfxAlienMort2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_Mort3.wav')] public var SfxAlienMort3:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_rebond1.wav')] public var SfxRebond1:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_rebond2.wav')] public var SfxRebond2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_rebond3.wav')] public var SfxRebond3:Class;
 		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
 		
@@ -103,21 +113,21 @@ package
 							// SON ARRIERE PLAN
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level1, true, true);
+								sound.loadEmbedded(Music1, true, true);
 							}
 							break;
 						case 2:
 							map = new Map(mapfile2);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level2, true, true);
+								sound.loadEmbedded(Music1, true, true);
 							}
 							break;
 						case 3:    
 							map = new Map(mapfile3);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level3, true, true);
+								sound.loadEmbedded(Music1, true, true);
 							}
 							break;
 					}
@@ -129,21 +139,24 @@ package
 							map = new Map(mapfile4);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level4, true, true);
+								sound.loadEmbedded(Music2, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 						case 2:
 							map = new Map(mapfile5);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level5, true, true);
+								sound.loadEmbedded(Music2, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 						case 3:
 							map = new Map(mapfile6);
 							if (sound == null) {
 								sound = new FlxSound();
-								sound.loadEmbedded(Sfx_Level6, true, true);
+								sound.loadEmbedded(Music2, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 					}
@@ -267,14 +280,7 @@ package
 					TweenMax.to(tube_count, 0.1, { x:80, y:0, ease:Bounce.easeIn  } );
 				}
 			}
-			if (tube.loot == 5)
-			{
-				tube.soundGrosTube.play();
-			}
-			if (tube.loot == 1)
-			{
-				tube.soundPetitTube.play();
-			}
+			tube.tubesound(tube.loot);
 			tube.kill();
 			tube.destroy();
 			FlxG.score += tube.loot;
@@ -407,7 +413,7 @@ package
 					if (obj2 is AlienNormal)
 					{
 						(obj2 as AlienNormal).play("rebonds");
-						(obj2 as AlienNormal).soundRebond.play();
+						//(obj2 as AlienNormal).soundRebond.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
@@ -415,6 +421,18 @@ package
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					player.velocity.y = - 250;
+					var chance:int = Math.ceil(Math.random() * 3);
+					switch(chance) {
+						case 1:
+							FlxG.play(SfxRebond1, 1, false, true);
+							break;
+						case 2:
+							FlxG.play(SfxRebond2, 1, false, true);
+							break;
+						case 3:
+							FlxG.play(SfxRebond3, 1, false, true);
+							break;
+					}
 				}
 				// MEURT
 				else {
@@ -427,6 +445,18 @@ package
 					{
 						if ((obj2 as AlienNormal).killed == false)
 							player.die_motherfucker(3);
+					}
+					var chance2:int = Math.ceil(Math.random() * 3);
+					switch(chance2) {
+						case 1:
+							FlxG.play(SfxAlienMort1, 1, false, true);
+							break;
+						case 2:
+							FlxG.play(SfxAlienMort1, 1, false, true);
+							break;
+						case 3:
+							FlxG.play(SfxAlienMort1, 1, false, true);
+							break;
 					}
 				}
 			}

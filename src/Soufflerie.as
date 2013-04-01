@@ -18,8 +18,9 @@ package
 		[Embed(source = '../assets/gfx/gameplay/soufflerie_anim_souffle.png')] 			protected var ImgSouffle:Class;
 		[Embed(source = '../assets/gfx/gameplay/soufflePart.png')] 		protected var ImgPartSouffle:Class;
 		
-		[Embed(source = "../assets/sfx/gameplay/Soufflerie_idle.mp3")] 		public var SfxIdle:Class;
-		[Embed(source = "../assets/sfx/gameplay/Soufflerie_in.mp3")] 		public var SfxIn:Class;
+		//[Embed(source = "../assets/sfx/gameplay/Soufflerie_idle.mp3")] 		public var SfxIdle:Class;
+		//[Embed(source = "../assets/sfx/gameplay/Soufflerie_in.mp3")] 		public var SfxIn:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Soufflerie_In.wav')] public var SfxIn:Class;
 		
 		public var soundIdle:FlxSound 	= new FlxSound();
 		public var soundIn:FlxSound 	= new FlxSound();
@@ -97,7 +98,7 @@ package
 			
 			if (onScreen(FlxG.camera))
 			{
-				//soundIdle.play();
+				soundIdle.play();
 			}
 			
 			if ((FlxG.player != null) && (!FlxG.overlap(souffle, FlxG.map.destructible, stopsouffle)))

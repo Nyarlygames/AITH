@@ -36,6 +36,8 @@ package
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] 	 protected var	Font:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")]	 protected var	Font3:Class;
 		[Embed(source = '../assets/fonts/onedalism.ttf',	fontFamily = "onedalism", embedAsCFF = "false")] protected var	Font2:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
 		public var retour:FlxSprite;
 		public var texteUnivers:FlxSprite;
@@ -55,6 +57,7 @@ package
 		
 		public var soundChoose:FlxSound = new FlxSound();
 		public var soundUniverse:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
 		public var end:EndGame;
 		public var gamefinished:Boolean = false;
 		
@@ -66,6 +69,7 @@ package
 			
 			soundChoose.loadEmbedded(sfxChoose);
 			soundUniverse.loadEmbedded(sfxUniverse);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
 			FlxG.usersave.calcStars_univ();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
@@ -172,6 +176,7 @@ package
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
 				{ FlxG.switchState(new Start()); soundChoose.play();
+					FlxG.play(SfxMenuClick, 1, false, true);
 				}
 			}
 			else
@@ -212,14 +217,16 @@ package
 				}
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2) && FlxG.mouse.justPressed()) 
 					{
+						FlxG.play(SfxMenuClick, 1, false, true);
 						FlxG.univ = 2;
-						soundUniverse.play();
+						//soundUniverse.play();
 						// Does not work, dunno why :'(
 						TweenMax.to(uni2, 3, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : FlxG.switchState(new LevelChooser())}  );
 					}
 				if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
 						FlxG.univ = 2;
-						soundUniverse.play();
+						FlxG.play(SfxMenuClick, 1, false, true);
+						//soundUniverse.play();
 						FlxG.switchState(new LevelChooser());
 				}
 			}
@@ -230,8 +237,9 @@ package
 			if (FlxCollision.pixelPerfectCheck(cursor, uni1) && FlxG.mouse.justPressed()) 
 				{
 					FlxG.univ = 1;
-					soundUniverse.play();
+					//soundUniverse.play();
 					// Does not work, dunno why :'(
+					FlxG.play(SfxMenuClick, 1, false, true);
 					TweenMax.to(uni1, 15, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : FlxG.switchState(new LevelChooser())}  );
 				}
 
@@ -246,7 +254,8 @@ package
 			}
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.univ = 1;
-					soundUniverse.play();
+					FlxG.play(SfxMenuClick, 1, false, true);
+					//soundUniverse.play();
 					FlxG.switchState(new LevelChooser());
 			}			
 			if (FlxG.keys.justPressed("FOUR") || FlxG.keys.justPressed("NUMPADFOUR")) {
