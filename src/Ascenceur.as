@@ -94,9 +94,15 @@ package
 					}
 				}
 			}
-			/*if (!onScreen(FlxG.camera))
-				if (soundMoves != null)
-					soundMoves.kill();*/
+			if (!onScreen(FlxG.camera) || (blocked == false) )
+				if (soundMoves != null) {
+					soundActivation.stop();
+					soundActivation.kill();
+					soundActivation.destroy();
+					soundMoves.stop();
+					soundMoves.kill();
+					soundMoves.destroy();
+				}
 		}
 		
 		// DEBLOQUE ASCENCEUR

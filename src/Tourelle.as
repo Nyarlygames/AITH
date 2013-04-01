@@ -26,6 +26,7 @@ package
 		public var flammes:FlxSprite;
 		public var timer:FlxTimer = new FlxTimer();
 		public var laseroff:FlxSound = new FlxSound;
+		public var laseron:FlxSound = new FlxSound;
 		
 		
 		/* flammes 40      20 - 60
@@ -51,14 +52,18 @@ package
 			*/
 			play("default");
 			// Gestion de la flamme
-			laseroff.loadEmbedded(SfxLaserOff, true, false);
-			laseroff.play();
+			laseroff.loadEmbedded(SfxLaserOff, false, false);
+			laseron.loadEmbedded(SfxLaserOn, false, false)
 		}
 		
 		override public function update():void 
 		{
-			if (onScreen(FlxG.camera) && (flammes.frame == 0)) {
+			if (onScreen(FlxG.camera) && ((FlxG.state as Play).tuto != null)) {
+				laseroff.play();
 				laseroff.volume = 1;
+			}
+			else {
+				laseroff.volume = 0;
 			}
 			if (FlxCollision.pixelPerfectCheck(FlxG.player, flammes)) {
 				FlxG.player.die_motherfucker(0);
@@ -67,9 +72,12 @@ package
 		
 		public function activate_burst(timer:FlxTimer):void {
 			laseroff.volume = 0;
-			if (flammes != null) {
-				if (onScreen(FlxG.camera))
-					FlxG.play(SfxLaserOn, 1, false, true);	
+			if ((flammes != null) && (flammes.frame > 0)){
+				trace(laseroff.volume, "test");
+				if (onScreen(FlxG.camera)) {
+					laseron.play();
+					trace(laseroff.volume, "test2");
+				}
 				flammes.play("flammes");
 			}
 		}

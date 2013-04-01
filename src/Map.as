@@ -726,6 +726,16 @@ package
 				}
 			}
 			while (i < ascenceurs.length) {
+				if ((ascenceurs.members[i] as Ascenceur).soundActivation != null) {
+					(ascenceurs.members[i] as Ascenceur).soundActivation.stop();
+					(ascenceurs.members[i] as Ascenceur).soundActivation.kill();
+					(ascenceurs.members[i] as Ascenceur).soundActivation.destroy();
+				}
+				if ((ascenceurs.members[i] as Ascenceur).soundMoves != null) {
+					(ascenceurs.members[i] as Ascenceur).soundMoves.stop();
+					(ascenceurs.members[i] as Ascenceur).soundMoves.kill();
+					(ascenceurs.members[i] as Ascenceur).soundMoves.destroy();
+				}
 				ascenceurs.members[i].kill();
 				FlxG.state.remove(ascenceurs.members[i], true);
 				ascenceurs.remove(ascenceurs.members[i], true);

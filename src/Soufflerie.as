@@ -98,7 +98,7 @@ package
 			
 			if (onScreen(FlxG.camera))
 			{
-				//soundIdle.play();
+				soundIdle.play();
 			}
 			
 			if ((FlxG.player != null) && (!FlxG.overlap(souffle, FlxG.map.destructible, stopsouffle)))

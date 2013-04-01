@@ -61,6 +61,7 @@ package
 		public function aspire(obj1:FlxObject, obj2:FlxObject):void 
 		{
 			halo.play("aspire");
+			soundIn.play();
 			FlxG.player.velocity.y -= gravityup * FlxG.elapsed;
 		}
 	}

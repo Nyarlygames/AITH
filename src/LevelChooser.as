@@ -301,15 +301,13 @@ package
 			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
 			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
 			
-			if (FlxG.mouse.justPressed()) {
-				FlxG.play(SfxMenuClick, 1, false, true);
-			}
 			
 			if (FlxG.overlap(cursor, retour))
 			{
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
-				{ FlxG.switchState(new UnivChooser());  }
+				{ FlxG.switchState(new UnivChooser());
+				FlxG.play(SfxMenuClick, 1, false, true);  }
 			}
 			else
 			{
@@ -403,38 +401,45 @@ package
 				// NIVEAU 1
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
 					FlxG.level = 1;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 2
 				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
 					FlxG.level = 2;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 3
 				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
 					FlxG.level = 3;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 				}
 			}
 			
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.level = 1;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
 					FlxG.level = 2;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.justPressed("THREE") || FlxG.keys.justPressed("NUMPADTHREE")) {
 					FlxG.level = 3;
+					FlxG.play(SfxMenuClick, 1, false, true);
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.pressed("ESCAPE")) {
+				FlxG.play(SfxMenuClick, 1, false, true);
 				FlxG.switchState(new UnivChooser());
 			}
 		}

@@ -164,10 +164,6 @@ package
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
 			
-			if (FlxG.mouse.justPressed()) {
-				FlxG.play(SfxMenuClick, 1, false, true);
-			}
-			
 			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && !gamefinished) {
 				end = new EndGame();
 				FlxG.switchState(end);
@@ -180,6 +176,7 @@ package
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
 				{ FlxG.switchState(new Start()); soundChoose.play();
+					FlxG.play(SfxMenuClick, 1, false, true);
 				}
 			}
 			else
@@ -220,14 +217,16 @@ package
 				}
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2) && FlxG.mouse.justPressed()) 
 					{
+						FlxG.play(SfxMenuClick, 1, false, true);
 						FlxG.univ = 2;
-						soundUniverse.play();
+						//soundUniverse.play();
 						// Does not work, dunno why :'(
 						TweenMax.to(uni2, 3, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : FlxG.switchState(new LevelChooser())}  );
 					}
 				if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
 						FlxG.univ = 2;
-						soundUniverse.play();
+						FlxG.play(SfxMenuClick, 1, false, true);
+						//soundUniverse.play();
 						FlxG.switchState(new LevelChooser());
 				}
 			}
@@ -238,8 +237,9 @@ package
 			if (FlxCollision.pixelPerfectCheck(cursor, uni1) && FlxG.mouse.justPressed()) 
 				{
 					FlxG.univ = 1;
-					soundUniverse.play();
+					//soundUniverse.play();
 					// Does not work, dunno why :'(
+					FlxG.play(SfxMenuClick, 1, false, true);
 					TweenMax.to(uni1, 15, { x : 1, y : 1, ease:Elastic.easeInOut, onComplete : FlxG.switchState(new LevelChooser())}  );
 				}
 
@@ -254,7 +254,8 @@ package
 			}
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.univ = 1;
-					soundUniverse.play();
+					FlxG.play(SfxMenuClick, 1, false, true);
+					//soundUniverse.play();
 					FlxG.switchState(new LevelChooser());
 			}			
 			if (FlxG.keys.justPressed("FOUR") || FlxG.keys.justPressed("NUMPADFOUR")) {

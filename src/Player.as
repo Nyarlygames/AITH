@@ -93,6 +93,7 @@ package
 		public var death:DeathScreen;
 		public var falled:Boolean = false;
 		public var souffled:Boolean = false;
+		public var played:Boolean = true;
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -246,21 +247,25 @@ package
 				
 				if (velocity.y != 0) {
 					jumping = true;
+					played == false;
 				} else {
 					jumping = false;
-					var chance:int = Math.ceil(Math.random() * 2);
-					switch(chance) {
-						case 1:
-							FlxG.play(SfxAtterissage1, 1, false, true);
-							break;
-						case 2:
-							FlxG.play(SfxAtterissage1, 1, false, true);
-							break;
+					if (played == false) {
+						played = true;
+						var chance:int = Math.ceil(Math.random() * 2);
+						switch(chance) {
+							case 1:
+								FlxG.play(SfxAtterissage1, 1, false, true);
+								break;
+							case 2:
+								FlxG.play(SfxAtterissage1, 1, false, true);
+								break;
+						}
+						/*if (falled == false) {
+							falled = true;
+							play("retombe");
+						}*/
 					}
-					/*if (falled == false) {
-						falled = true;
-						play("retombe");
-					}*/
 				}
 				
 				if (velocity.x <= (minspeed - speeddown * FlxG.elapsed)) {

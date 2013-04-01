@@ -140,6 +140,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 						case 2:
@@ -147,6 +148,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 						case 3:
@@ -154,6 +156,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
+								sound.volume = 0.8;
 							}
 							break;
 					}
