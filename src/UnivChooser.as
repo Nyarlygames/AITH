@@ -25,7 +25,7 @@ package
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 			protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1.png')] 				protected var ImgUni1:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2.png')] 				protected var ImgUni2:Class;
-		[Embed(source = '../assets/gfx/ui/cadenas.png')] 				protected var ImgUni2Locked:Class;
+		[Embed(source = '../assets/gfx/ui/cadenas-new.png')] 				protected var ImgUni2Locked:Class;
 		[Embed(source = '../assets/gfx/ui/univ_1_on.png')]				protected var ImgUni1On:Class;
 		[Embed(source = '../assets/gfx/ui/univ_2_on.png')] 				protected var ImgUni2On:Class;
 		[Embed(source = '../assets/gfx/ui/tetealienor_small.png')] 		protected var ImgAlienSmall:Class;
@@ -94,7 +94,7 @@ package
 				uni2 = new FlxSprite(459, 260, ImgUni2Locked);
 				add(uni2);
 				backUnivers2.x = 420; backUnivers2.y = 200; backUnivers2.angle = -5;
-				uni2.x = 435; uni2.y = 215; uni2.angle = -5;
+				uni2.x = 435; uni2.y = 215;
 
 				trophy2 = new FlxText(backUnivers2.x, backUnivers2.y + backUnivers2.frameHeight + 30, backUnivers2.frameWidth, "0/9");
 				trophy2.y -= trophy2.frameHeight;
@@ -109,7 +109,7 @@ package
 				if (FlxG.usersave.scoreStars < FlxG.usersave.starsNeed) {
 					trophy_help = new FlxText(backUnivers2.x, backUnivers2.y + backUnivers2.frameHeight /2, backUnivers2.frameWidth, "4 trophés requis");
 					trophy_help.y -= trophy_help.frameHeight;
-					trophy_help.setFormat("onedalism", 32, 0xFFFFFF, "center", 0xaa000000);
+					trophy_help.setFormat("onedalism", 42, 0xFFFFFF, "center", 0xaa000000);
 					add(trophy_help);
 				}
 				
@@ -209,6 +209,7 @@ package
 			}
 			
 			if (FlxG.usersave.univUnlock == true) {
+				uni2.angle = -5;
 				if (trophy_help != null)
 					trophy_help.kill();
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2))
