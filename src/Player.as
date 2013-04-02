@@ -183,17 +183,14 @@ package
 				
 				if (velocity.x > 260) 
 				{
-					trace("V3 DOWN");
 					play("fastSpeed");
 				}
 				else if (velocity.x > 160) 
 				{
-					trace("V2 DOWN");
 					play("midSpeed");
 				}
 				else if (velocity.x >= -10) 
 				{
-					trace("V1 DOWN");
 					play("slowSpeed");
 				}
 				
@@ -490,20 +487,20 @@ package
 				TweenMax.to(jauge, 1, { alpha:1, ease:Linear.easeOut });
 				accumulateur = 0;
 				soundRevive.play();
+				velocity.y = 0;
+				palier_accumulateur = max_palier;
+				gravity = mingravity;
 				x = checkpoint.x;
 				if (from == 1) {
 					y = checkpoint.y - 10;
 				}
 				else
 					y = checkpoint.y;
-				velocity.y = 0;
 				FlxG.map.cam.x = x + 350;
-				palier_accumulateur = max_palier;
 				FlxG.score -= checkscore;
 				checkscore = 0;
 				velocity.x = init_speed;
 				angle = 0;
-				gravity = mingravity;
 				if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null) && (muted == false)) {
 					vitesse1.volume = 0;
 					vitesse2.volume = 0;
