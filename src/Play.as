@@ -95,7 +95,7 @@ package
 					if (sound == null) {
 						sound = new FlxSound();
 						sound.loadEmbedded(Music1, true, true);
-						sound.volume = 0.8;
+						sound.volume = 1;
 					}
 					break;
 				case -2:
@@ -109,7 +109,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
-								sound.volume = 0.8;
+								sound.volume = 1;
 							}
 							break;
 						case 2:
@@ -117,7 +117,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
-								sound.volume = 0.8;
+								sound.volume = 1;
 							}
 							break;
 						case 3:    
@@ -125,7 +125,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
-								sound.volume = 0.8;
+								sound.volume = 1;
 							}
 							break;
 					}
@@ -138,7 +138,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
-								sound.volume = 0.8;
+								sound.volume = 1;
 							}
 							break;
 						case 2:
@@ -146,7 +146,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
-								sound.volume = 0.8;
+								sound.volume = 1;
 							}
 							break;
 						case 3:
@@ -154,7 +154,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
-								sound.volume = 0.8;
+								sound.volume = 1;
 							}
 							break;
 					}
@@ -205,7 +205,7 @@ package
 					if (FlxG.keys.justPressed("M")) 
 					{
 						if (player.muted == true) {
-							sound.volume = 0.8;
+							sound.volume = 1;
 							player.vitesse1.volume = old_volume1;
 							player.vitesse2.volume = old_volume2;
 							player.vitesse3.volume = old_volume3;
@@ -538,7 +538,7 @@ package
 			// RETOUR AU JEU
 			else if (result == PauseMenu.RESUME_GAME) {
 				if (player.muted == false) {
-					sound.volume = 0.8;
+					sound.volume = 1;
 					player.vitesse1.volume = old_volume1;
 					player.vitesse2.volume = old_volume2;
 					player.vitesse3.volume = old_volume3;
