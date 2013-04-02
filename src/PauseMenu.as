@@ -12,6 +12,7 @@ package
 	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	import flash.media.SoundMixer;
+	import org.flixel.FlxSound;
 
 	/**
 	 * Pause
@@ -32,6 +33,9 @@ package
 		[Embed(source = '../assets/gfx/ui/pause-in.png')] 		protected var ImgPauseIn:Class;
 		[Embed(source = '../assets/gfx/ui/btn_menu_on.png')] 	protected var ImgMenuOn:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
+		
 		
 		public var text:FlxText;
 		public var restartText:FlxText;
@@ -50,6 +54,10 @@ package
 		public var resumePic:FlxSprite;
 		public var restartPic:FlxSprite;
 		public var quitPic:FlxSprite;
+		public var soundChoose:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
+		public var sfxIdle2:FlxSound = new FlxSound();
+		public var sfxIdle3:FlxSound = new FlxSound();
 		
 		public function PauseMenu()
 		{
@@ -58,6 +66,10 @@ package
 		
 		public override function create():void
 		{
+			soundChoose.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle2.loadEmbedded(SfxMenuIdle);
+			sfxIdle3.loadEmbedded(SfxMenuIdle);
 			/*	Bouton de mute */
 				pausePic = new FlxSprite(0, 0, ImgPause);
 				pausePic.scrollFactor = new FlxPoint(0, 0);
@@ -125,7 +137,15 @@ package
 				cursor.play("souris");
 				FlxG.state.add(cursor);
 			/*	Curseur */
-			
+			if ((FlxG.state as Play).sound != null) {
+				(FlxG.state as Play).sound.volume = 0;
+				(FlxG.state as Play).old_volume1 = (FlxG.state as Play).player.vitesse1.volume;
+				(FlxG.state as Play).old_volume2 = (FlxG.state as Play).player.vitesse2.volume;
+				(FlxG.state as Play).old_volume3 = (FlxG.state as Play).player.vitesse3.volume;
+				(FlxG.state as Play).player.vitesse1.volume = 0;
+				(FlxG.state as Play).player.vitesse2.volume = 0;
+				(FlxG.state as Play).player.vitesse3.volume = 0;
+			}
 			
 		}
 		
@@ -136,42 +156,54 @@ package
 				// Relance la partie
 				if (FlxCollision.pixelPerfectCheck(cursor, pauseTxtRep)) 
 				{
+					sfxIdle.play();
 					TweenMax.to(pauseTxtRep.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 					if (FlxG.mouse.justPressed())
 					{
+						sfxIdle.stop();
+						soundChoose.play();
 						restart();
 					}
 				}
 				else
 				{
+					sfxIdle.stop();
 					TweenMax.to(pauseTxtRep.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 				}
 					
 				// Reprend la partie
 				if (FlxCollision.pixelPerfectCheck(cursor, pauseTxtRest)) 
 				{
+					sfxIdle2.play();
 					TweenMax.to(pauseTxtRest.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 					if (FlxG.mouse.justPressed())
 					{
+						sfxIdle2.stop();
+						soundChoose.play();
 						resume();
 					}
 				}
 				else
 				{
+					sfxIdle2.stop();
 					TweenMax.to(pauseTxtRest.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 				}
 				
 				// Retourne au menu
 				if (FlxCollision.pixelPerfectCheck(cursor, pauseTxtMenu)) 
 				{
+					sfxIdle3.play();
 					TweenMax.to(pauseTxtMenu.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 					if (FlxG.mouse.justPressed())
 					{
+						sfxIdle3.stop();
+						soundChoose.play();
 						tryQuit();
 					}
 				}
 				else
 				{
+					sfxIdle3.stop();
 					TweenMax.to(pauseTxtMenu.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 				}
 				/*

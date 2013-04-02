@@ -116,7 +116,6 @@ package
 				else if (angle == 90 && !FlxG.overlap(FlxG.player, souffle, boost_player)) 
 				{
 					FlxG.player.souffled = true;
-					soundIn.play();
 					FlxG.player.maxVelocity.x = FlxG.player.init_speed;
 				}
 				//BAS
@@ -145,6 +144,7 @@ package
 		{
 			FlxG.player.maxVelocity.x = 500;
 			FlxG.player.velocity.x += gravityup * FlxG.elapsed;
+			soundIn.play();
 		}
 		
 		public function stopsouffle(obj1:FlxSprite, obj2:FlxObject):void 

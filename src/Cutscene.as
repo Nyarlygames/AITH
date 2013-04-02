@@ -3,6 +3,7 @@ package
 	import flash.utils.Timer;
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxSound;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
 	import flash.display.MovieClip;
@@ -33,6 +34,7 @@ package
 		[Embed(source = '../assets/gfx/cine/E.png')] 		protected var ImgTxtIntro5:Class;
 		[Embed(source = '../assets/gfx/cine/F1.png')] 		protected var ImgTxtIntro61:Class;
 		[Embed(source = '../assets/gfx/cine/F2.png')] 		protected var ImgTxtIntro62:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_CutScene.wav')] public var SfxCutscene:Class;
 
 		public var intro1:FlxSprite;
 		public var intro2:FlxSprite;
@@ -59,8 +61,12 @@ package
 		public var timer:FlxTimer 		= new FlxTimer();
 		public var timerTween:FlxTimer	= new FlxTimer();
 		
+		public var music:FlxSound = new FlxSound();
+		
 		override public function create():void
 		{
+			music.loadEmbedded(SfxCutscene, true, true);
+			music.play();
 			intro1 = new FlxSprite(0, 0, ImgIntro1);
 			intro2 = new FlxSprite(0, 0, ImgIntro2);
 			intro3 = new FlxSprite(0, 0, ImgIntro3);
@@ -122,13 +128,13 @@ package
 			
 			FlxG.state.add(intro1);
 			FlxG.state.add(introTxt1);
-			
-			trace(currentframe);
 		}
 		
 		override public function update():void {
-			if (FlxG.keys.justReleased("ENTER") || FlxG.keys.justReleased("ESCAPE"))
+			if (FlxG.keys.justReleased("ENTER") || FlxG.keys.justReleased("ESCAPE")) {
+				music.stop();
 				FlxG.switchState(new UnivChooser);
+			}
 			if (FlxG.keys.justReleased("SPACE") || FlxG.mouse.justPressed()) {
 				switch_page(timer);
 			}
@@ -164,6 +170,7 @@ package
 						fadeOut(intro5);
 						break;
 					case 6:
+						music.stop();
 						FlxG.switchState(new UnivChooser);
 						break;
 				}

@@ -97,6 +97,7 @@ package
 		public var played:Boolean = true;
 		public var atterissage1:FlxSound = new FlxSound();
 		public var atterissage2:FlxSound = new FlxSound();
+		public var muted:Boolean = false;
 		
 		public function Player(xPos:int, yPos:int) 
 		{
@@ -104,6 +105,7 @@ package
 			FlxG.score = 0;
 			
 			soundRevive.loadEmbedded(sfxRevive);
+			soundRevive.volume = 0.3;
 			palier_accumulateur = max_palier;
 			maxVelocity.y = maxgravity_test;
 			maxVelocity.x = init_speed;
@@ -117,7 +119,7 @@ package
 			atterissage2.loadEmbedded(SfxAtterissage2, false, true);
 			vitesse1.volume = 0;
 			vitesse2.volume = 0;
-			vitesse3.volume = 1;
+			vitesse3.volume = 0;
 			vitesse3.play();
 			vitesse2.play();
 			vitesse1.play();
@@ -255,22 +257,6 @@ package
 					played = false;
 				} else {
 					jumping = false;
-					if (played == false) {
-						played = true;
-						var chance:int = Math.ceil(Math.random() * 2);
-						switch(chance) {
-							case 1:
-								atterissage1.play();
-								break;
-							case 2:
-								atterissage2.play();
-								break;
-						}
-						/*if (falled == false) {
-							falled = true;
-							play("retombe");
-						}*/
-					}
 				}
 				
 				if (velocity.x <= (minspeed - speeddown * FlxG.elapsed)) {
@@ -311,6 +297,18 @@ package
 			else if (current_tile2 == 2 && jumping == false){
 				if (on_tremplin == false)
 					angle = 0;
+				if (played == false) {
+					played = true;
+					var chance:int = Math.ceil(Math.random() * 2);
+					switch(chance) {
+						case 1:
+							atterissage1.play();
+							break;
+						case 2:
+							atterissage2.play();
+							break;
+					}
+				}
 				accumulateur = 0;
 				gravity = mingravity;
 			}
@@ -432,7 +430,7 @@ package
 				deadscore += 1;
 				TweenMax.to(this, 1.5, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 1.5, { alpha:0, ease:Linear.easeOut }  );
-				emitter.kill();
+				//emitter.kill();
 				trace("DEAD FROM : ",where);
 				dead = true;
 				stopPlayer();
@@ -480,7 +478,7 @@ package
 				velocity.x = init_speed;
 				angle = 0;
 				gravity = mingravity;
-				if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null)) {
+				if ((vitesse1 != null) && (vitesse2 != null) && (vitesse3 != null) && (muted == false)) {
 					vitesse1.volume = 0;
 					vitesse2.volume = 0;
 					vitesse3.volume = 1;

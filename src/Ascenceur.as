@@ -41,6 +41,8 @@ package
 			soundEnd.loadEmbedded(SfxEnd);*/
 			soundMoves.loadEmbedded(SfxMoteur);
 			immovable = true;
+			soundActivation1.volume = 0.5;
+			soundActivation2.volume = 0.5;
 		}
 		
 		override public function update():void {

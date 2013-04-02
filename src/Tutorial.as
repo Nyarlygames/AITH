@@ -1,5 +1,6 @@
 package  
 {
+	import org.flixel.FlxSound;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	import org.flixel.plugin.photonstorm.FlxCollision;
@@ -16,14 +17,20 @@ package
 		[Embed(source = '../assets/gfx/ui/tuto-space.png')] protected var ImgTuto:Class;
 		[Embed(source = '../assets/gfx/ui/tuto-play.png')] protected var ImgPlay:Class;
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 			protected var ImgCursorAnim:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
 		public var btnPlay:FlxSprite;
 		public var cursor:FlxSprite;
+		public var clicked:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
 		
 		public function Tutorial() 
 		{
 			super(FlxG.width / 2, FlxG.height / 3, ImgTuto);
 			FlxG.player.jumping = true;
+			clicked.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
 			btnPlay = new FlxSprite(FlxG.width / 2, FlxG.height *3 / 4, ImgPlay);
 			x -= frameWidth / 2;
 			btnPlay.x -= frameWidth / 2;
@@ -50,10 +57,13 @@ package
 			
 			if (FlxCollision.pixelPerfectCheck(cursor, btnPlay)|| (FlxG.keys.pressed("SPACE")) || (FlxG.keys.pressed("ENTER")) )
 			{
+				sfxIdle.play();
 				TweenMax.to(btnPlay.scale, 0.3, { x:1,y:1 , ease:Linear.easeIn } );
 				TweenMax.to(this.scale, 0.3, { x:1,y:1 , ease:Linear.easeIn } );
 				if (FlxG.mouse.justPressed() || (FlxG.keys.justPressed("SPACE")) || (FlxG.keys.pressed("ENTER")))
 				{
+					sfxIdle.stop();
+					clicked.play();
 					TweenMax.to(btnPlay, 1, { y : -100, alpha: 0, ease:Expo.easeIn } );
 					TweenMax.to(this, 1, { y : -100, alpha: 0, ease:Expo.easeIn } );
 					FlxG.player.jumping = false;
@@ -63,6 +73,7 @@ package
 			}
 			else
 			{
+				sfxIdle.stop();
 				TweenMax.to(btnPlay.scale, 0.3, { x:0.8,y:0.8 , ease:Linear.easeIn } );
 				TweenMax.to(this.scale, 0.3, { x:0.8,y:0.8 , ease:Linear.easeIn } );
 			}

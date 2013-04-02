@@ -10,6 +10,7 @@ package
 	import com.greensock.*;
 	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxCollision;
+	import org.flixel.FlxSound;
 	 
 	/**
 	 * LEVEL
@@ -61,12 +62,16 @@ package
 		public var completed:FlxText;
 		public var nodeath:FlxText;
 		public var alltubes:FlxText;
+		public var soundChoose:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
 		
 		
 		override public function create():void
 		{
 			FlxG.bgColor = 0xaa519CCA;		
 			
+			soundChoose.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
 			FlxG.pauseSounds();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
@@ -260,9 +265,11 @@ package
 			if (FlxG.overlap(cursor, retour))
 			{
 				retour.play("on");
+				sfxIdle.play();
 				if (FlxG.mouse.justPressed())
 				{
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle.stop();
+					soundChoose.play();
 					FlxG.switchState(new UnivChooser());
 				}
 			}
@@ -270,12 +277,9 @@ package
 			// Ajout de point d'objectifs
 			if (FlxG.keys.pressed("ENTER")) 
 			{
-				FlxG.play(SfxMenuClick, 1, false, true);
+				sfxIdle.stop();
+				soundChoose.play();
 				FlxG.switchState(new UnivChooser());
-			}
-			else
-			{
-				retour.play("off");
 			}
 			// SI obj 1 = VALIDE, ALORS ANIM + AUGMENTATION DU SCORE DU JOUEUR
 			if (!calculated) {

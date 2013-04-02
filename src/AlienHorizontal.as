@@ -21,7 +21,6 @@ package
 		public var soundRebond:FlxSound = new FlxSound();
 		public var soundMort:FlxSound = new FlxSound();
 		public var speed:int = 200;							// VITESSE DE DEPLACEMENT
-		public var killed:Boolean = false;
 		public var incomming:FlxSprite;
 		
 		public function AlienHorizontal(xpos:int, ypos:int) 

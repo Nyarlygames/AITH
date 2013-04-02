@@ -52,13 +52,13 @@ package
 				var chance:int = Math.ceil(Math.random() * 3);
 				switch(chance) {
 					case 1:
-						FlxG.play(SfxPetitTube1, 0.8, false, true);
+						FlxG.play(SfxPetitTube1, 1, false, true);
 						break;
 					case 2:
-						FlxG.play(SfxPetitTube2, 0.8, false, true);
+						FlxG.play(SfxPetitTube2, 1, false, true);
 						break;
 					case 3:
-						FlxG.play(SfxPetitTube3, 0.8, false, true);
+						FlxG.play(SfxPetitTube3, 1, false, true);
 						break;
 				}
 			}
@@ -66,10 +66,10 @@ package
 				var chance2:int = Math.ceil(Math.random() * 2);
 				switch(chance2) {
 					case 1:
-						FlxG.play(SfxGrosTube1, 0.8, false, true);
+						FlxG.play(SfxGrosTube1, 1, false, true);
 						break;
 					case 2:
-						FlxG.play(SfxGrosTube2, 0.8, false, true);
+						FlxG.play(SfxGrosTube2, 1, false, true);
 						break;
 				}
 			}

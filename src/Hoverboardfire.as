@@ -21,6 +21,7 @@ package
 			super(target.x, target.y);
 			loadGraphic(ImgHoverboard, true, false, 80, 20);
 			addAnimation("idle", [0, 1, 2, 3], 15, true);
+			addAnimation("default", [0], 10, true);
 			y += target.frameHeight
 			x += target.frameWidth/2;
 			play("idle");
@@ -28,12 +29,13 @@ package
 		}
 		
 		override public function update():void {
-			if ((target.exists == false) && !hidden) {
+			if (target.killed == true) {
 				hidden = true;
 				kill();
 				destroy();
 				exists = false;
 				visible = false;
+				FlxG.state.remove(this, true);
 			}
 		}
 	}

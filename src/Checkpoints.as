@@ -32,7 +32,6 @@ package
 			super(xpos, ypos, ImgCheck);
 			soundActivate.loadEmbedded(SfxActivate);
 			soundRevives.loadEmbedded(SfxRevives);
-			soundRevives.volume = 0.85;
 			immovable = true;
 			offset.x = -50;
 			
@@ -41,6 +40,8 @@ package
 			this.addAnimation("validation",  [0,1,2,3], 30, true);
 			this.addAnimation("valide",  [3], 30, true);
 			play("default");
+			soundRevives.volume = 0;
+			soundActivate.volume = 0.5;
 		}
 		
 		override public function update():void {
