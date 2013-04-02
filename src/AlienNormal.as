@@ -43,7 +43,6 @@ package
 		private function killing(animationName:String, frameNumber:uint, frameIndex:uint):void {  
 			if ((animationName == "mort") && (frameNumber == 3)) {
 				kill();
-				trace("olol");
 				/*if (hoverboard != null) {
 					hoverboard.play("default", true);
 					hoverboard.kill();
