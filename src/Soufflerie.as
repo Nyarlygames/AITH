@@ -102,7 +102,7 @@ package
 				soundIdle.stop();
 			}
 			
-			if ((FlxG.player != null) && (!FlxG.overlap(souffle, FlxG.map.destructible, stopsouffle)))
+			if ((FlxG.player != null) && (onScreen(FlxG.camera)) && (!FlxG.overlap(souffle, FlxG.map.destructible, stopsouffle)))
 			{
 				souffle.visible = true;
 				// HAUT

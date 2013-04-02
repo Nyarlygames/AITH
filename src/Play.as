@@ -65,7 +65,7 @@ package
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 3;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 6;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// MAP CHARGEE?
 		public var begin:Boolean = true;					// TUTORIAL DU DEBUT?
 		public var ui:UI = new UI();
@@ -336,7 +336,7 @@ package
 		{
 			(obj2 as Destructible_ground).rolled = true;
 			player.angle = 0;
-			if (player.jauge.frame >= dest_ground)
+			if (player.jauge.frame > dest_ground) 
 			{
 				(obj2 as Destructible_ground).soundCrepite.stop();
 				(obj2 as Destructible_ground).soundCrepite.kill();
@@ -474,24 +474,6 @@ package
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					player.velocity.y = - 250;
-					/*var chance:int = Math.ceil(Math.random() * 3);
-					switch(chance) {
-						case 1:
-							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond1);
-							(obj2 as Alien).alienrebond.play();
-							//FlxG.play(SfxRebond1, 0.7, false, true);
-							break;
-						case 2:
-							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond2);
-							(obj2 as Alien).alienrebond.play();
-							//FlxG.play(SfxRebond2, 0.7, false, true);
-							break;
-						case 3:
-							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond3);
-							(obj2 as Alien).alienrebond.play();
-							//FlxG.play(SfxRebond3, 0.7, false, true);
-							break;
-					}*/
 				}
 				// MEURT
 				else {

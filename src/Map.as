@@ -251,7 +251,7 @@ package
 							break;
 					}
 					bat_cloud.y -= bat_cloud.frameHeight;
-					bat_cloud.scrollFactor = new FlxPoint(1, 1);
+					bat_cloud.scrollFactor = new FlxPoint(0.3, 0.3);
 					clouds.add(bat_cloud);
 				}
 				FlxG.state.add(clouds);
@@ -611,6 +611,9 @@ package
 						break;
 					case "Soucoupe":
 						soucoupes.add (new Soucoupe(object.x, object.y));
+						break;
+					case "transitionUnivers":
+						fin.add (new FinNiveau(object.x, object.y));
 						break;
 					case "backflip":
 						var startBF :FlxSprite = new FlxSprite(object.x, object.y);
