@@ -20,7 +20,6 @@ package
 		public var soundRebond:FlxSound = new FlxSound();
 		public var soundMort:FlxSound = new FlxSound();
 		public var hoverboard:FlxSprite;
-		public var killed:Boolean = false;
 		
 		public function AlienNormal(xpos:int, ypos:int) 
 		{
@@ -37,13 +36,20 @@ package
 		}
 		
 		override public function update():void {
-			if (FlxCollision.pixelPerfectCheck(hoverboard, FlxG.player))
+			if ((killed == false) && (FlxCollision.pixelPerfectCheck(hoverboard, FlxG.player)))
 				FlxG.player.die_motherfucker(3);
 		}	
 		
 		private function killing(animationName:String, frameNumber:uint, frameIndex:uint):void {  
 			if ((animationName == "mort") && (frameNumber == 3)) {
 				kill();
+				trace("olol");
+				/*if (hoverboard != null) {
+					hoverboard.play("default", true);
+					hoverboard.kill();
+					hoverboard.destroy();
+					FlxG.state.remove(hoverboard, true);
+				}*/
 			}
 		}	
 	}

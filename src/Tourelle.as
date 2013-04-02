@@ -19,6 +19,7 @@ package
 		[Embed(source = '../assets/gfx/gameplay/flamme.png')] protected var ImgFlamme:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Laser_On.wav')] public var SfxLaserOn:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Laser_Off.wav')] public var SfxLaserOff:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Laser.wav')] public var SfxLaser:Class;
 		public var rate:int = 1500;							// CADENCE DE TIR
 		public var maxtir:int = 200;						// MAXIMUM DE TIR
 		public var speed:int = 300;							// VITESSE DE TIR
@@ -27,6 +28,7 @@ package
 		public var timer:FlxTimer = new FlxTimer();
 		public var laseroff:FlxSound = new FlxSound;
 		public var laseron:FlxSound = new FlxSound;
+		public var laser:FlxSound = new FlxSound;
 		
 		
 		/* flammes 40      20 - 60
@@ -53,6 +55,7 @@ package
 			play("default");
 			flammes.addAnimationCallback(firingmahlaser);
 			// Gestion de la flamme
+			laser.loadEmbedded(SfxLaser, false, false);
 			laseroff.loadEmbedded(SfxLaserOff, false, false);
 			laseron.loadEmbedded(SfxLaserOn, false, false)
 		}
@@ -66,12 +69,12 @@ package
 		
 		private function firingmahlaser(animationName:String, frameNumber:uint, frameIndex:uint):void 
 		{  			
-			if (onScreen(FlxG.camera)) {
+			/*if (onScreen(FlxG.camera)) {
 				if ((animationName == "flammes") && (frameNumber > 2)) {
-					laseroff.stop();
+					/*laseroff.stop();
 					laseron.play();
 				}
-			}
+			}*/
 	
 		}		
 		
@@ -79,7 +82,7 @@ package
 			if ((flammes != null)){
 				flammes.play("flammes");
 				if (onScreen(FlxG.camera)) {
-					laseroff.play();
+					laser.play();
 				}
 			}
 		}

@@ -9,6 +9,7 @@ package
 	import com.greensock.*;
 	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxCollision;
+	import org.flixel.FlxSound;
 	 
 	/**
 	 * LEVEL
@@ -62,6 +63,11 @@ package
 		public var trophy7:FlxSprite;
 		public var trophy8:FlxSprite;
 		public var trophy9:FlxSprite;
+		public var soundChoose:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
+		public var sfxIdle2:FlxSound = new FlxSound();
+		public var sfxIdle3:FlxSound = new FlxSound();
+		public var sfxIdle4:FlxSound = new FlxSound();
 		
 		override public function create():void
 		{
@@ -69,6 +75,11 @@ package
 			FlxG.bgColor = 0xaa519CCA;
 			
 			new UI();
+			soundChoose.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle2.loadEmbedded(SfxMenuIdle);
+			sfxIdle3.loadEmbedded(SfxMenuIdle);
+			sfxIdle4.loadEmbedded(SfxMenuIdle);
 			FlxG.usersave.calcStars_levels();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
@@ -304,25 +315,30 @@ package
 			
 			if (FlxG.overlap(cursor, retour))
 			{
+				sfxIdle.play();
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
 				{ FlxG.switchState(new UnivChooser());
-				FlxG.play(SfxMenuClick, 1, false, true);  }
+				soundChoose.play();
+				sfxIdle.stop(); }
 			}
 			else
 			{
+				sfxIdle.stop();
 				retour.play("off");
 			}
 				
 			if (FlxG.univ == 1) {
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) 
 				{
+					sfxIdle2.play();
 					level1.loadGraphic(ImgLevel1On);
 					TweenMax.to(level1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					TweenMax.to(backLevel1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
+					sfxIdle2.stop();
 					level1.loadGraphic(ImgLevel1);
 					TweenMax.to(level1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 					TweenMax.to(backLevel1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
@@ -330,12 +346,14 @@ package
 				
 				if (FlxCollision.pixelPerfectCheck(cursor, level2)) 
 				{
+					sfxIdle3.play();
 					level2.loadGraphic(ImgLevel2On);
 					TweenMax.to(level2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					TweenMax.to(backLevel2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
+					sfxIdle3.stop();
 					level2.loadGraphic(ImgLevel2);
 					TweenMax.to(level2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 					TweenMax.to(backLevel2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
@@ -343,12 +361,14 @@ package
 				
 				if (FlxCollision.pixelPerfectCheck(cursor, level3)) 
 				{
+					sfxIdle4.play();
 					level3.loadGraphic(ImgLevel3On);
 					TweenMax.to(level3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					TweenMax.to(backLevel3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
+					sfxIdle4.stop();
 					level3.loadGraphic(ImgLevel3);
 					TweenMax.to(level3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 					TweenMax.to(backLevel3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
@@ -357,12 +377,14 @@ package
 			else if (FlxG.univ == 2) {
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) 
 				{
+					sfxIdle2.play();
 					level1.loadGraphic(ImgLevel4On);
 					TweenMax.to(level1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					TweenMax.to(backLevel1.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
+					sfxIdle2.stop();
 					level1.loadGraphic(ImgLevel4);
 					TweenMax.to(level1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 					TweenMax.to(backLevel1.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
@@ -370,12 +392,14 @@ package
 				
 				if (FlxCollision.pixelPerfectCheck(cursor, level2)) 
 				{
+					sfxIdle3.play();
 					level2.loadGraphic(ImgLevel5On);
 					TweenMax.to(level2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					TweenMax.to(backLevel2.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
+					sfxIdle3.stop();
 					level2.loadGraphic(ImgLevel5);
 					TweenMax.to(level2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 					TweenMax.to(backLevel2.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
@@ -383,12 +407,14 @@ package
 				
 				if (FlxCollision.pixelPerfectCheck(cursor, level3)) 
 				{
+					sfxIdle4.play();
 					level3.loadGraphic(ImgLevel6On);
 					TweenMax.to(level3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 					TweenMax.to(backLevel3.scale, 0.2, { x:1.1,y:1.1, ease:Bounce.easeIn } );
 				}
 				else
 				{
+					sfxIdle4.stop();
 					level3.loadGraphic(ImgLevel6);
 					TweenMax.to(level3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
 					TweenMax.to(backLevel3.scale, 0.2, { x:1,y:1, ease:Bounce.easeOut } );
@@ -401,45 +427,64 @@ package
 				// NIVEAU 1
 				if (FlxCollision.pixelPerfectCheck(cursor, level1)) {
 					FlxG.level = 1;
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle2.stop();
+					soundChoose.play();
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 2
 				if (FlxCollision.pixelPerfectCheck(cursor, level2)) {
 					FlxG.level = 2;
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle3.stop();
+					soundChoose.play();
 					FlxG.switchState(new Play());
 				}
 
 				// NIVEAU 3
 				if (FlxCollision.pixelPerfectCheck(cursor, level3)) {
 					FlxG.level = 3;
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle4.stop();
+					soundChoose.play();
 					FlxG.switchState(new Play());
 				}
 			}
 			
 			if (FlxG.keys.justPressed("ONE") || FlxG.keys.justPressed("NUMPADONE")) {
 					FlxG.level = 1;
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle.stop();
+					sfxIdle2.stop();
+					sfxIdle3.stop();
+					sfxIdle4.stop();
+					soundChoose.play();
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.justPressed("TWO") || FlxG.keys.justPressed("NUMPADTWO")) {
 					FlxG.level = 2;
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle.stop();
+					sfxIdle2.stop();
+					sfxIdle3.stop();
+					sfxIdle4.stop();
+					soundChoose.play();
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.justPressed("THREE") || FlxG.keys.justPressed("NUMPADTHREE")) {
 					FlxG.level = 3;
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle.stop();
+					sfxIdle2.stop();
+					sfxIdle3.stop();
+					sfxIdle4.stop();
+					soundChoose.play();
 					FlxG.switchState(new Play());
 			}
 			
 			if (FlxG.keys.pressed("ESCAPE")) {
-				FlxG.play(SfxMenuClick, 1, false, true);
+				sfxIdle.stop();
+				sfxIdle2.stop();
+				sfxIdle3.stop();
+				sfxIdle4.stop();
+				soundChoose.play();
 				FlxG.switchState(new UnivChooser());
 			}
 		}

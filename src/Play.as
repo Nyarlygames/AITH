@@ -47,8 +47,6 @@ package
 		
 		/*[Embed(source = "../assets/sfx/gameplay/SolDestructible_EnDestruction.mp3")] public var SfxCrepite:Class;
 		[Embed(source = "../assets/sfx/gameplay/SolDestructible_Destruction.mp3")] public var SfxDestrSol:Class;*/
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'SolDestructible_EnDestruction.wav')] public var SfxCrepite:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'SolDestructible_Destruction.wav')] public var SfxDestrSol:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_1.mp3")] public var Sfx_Level1:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level2:Class;
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level3:Class;
@@ -57,18 +55,8 @@ package
 		[Embed(source = "../assets/sfx/levels/level_1_2.mp3")] public var Sfx_Level6:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_Univers1.wav')] public var Music1:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_Univers2.wav')] public var Music2:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_Mort1.wav')] public var SfxAlienMort1:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_Mort2.wav')] public var SfxAlienMort2:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_Mort3.wav')] public var SfxAlienMort3:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_rebond1.wav')] public var SfxRebond1:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_rebond2.wav')] public var SfxRebond2:Class;
-		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Alien_rebond3.wav')] public var SfxRebond3:Class;
 		
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
-		
-		
-		public var soundCrepite:FlxSound = new FlxSound();
-		public var soundDestrSol:FlxSound = new FlxSound();
 
 		public var tube_count:FlxText;
 		public var player:Player;
@@ -83,6 +71,10 @@ package
 		public var ui:UI = new UI();
 		public var backflip  : FlxSprite;
 		public var tuto:Tutorial;
+		public var old_volume1:Number = 0;
+		public var old_volume2:Number = 0;
+		public var old_volume3:Number = 0;
+		
 		
 		override public function create():void
 		{				
@@ -91,13 +83,11 @@ package
 			tube_count.setFormat("onedalism", 35,0xFF0000000 , null, 0xFFFFFF );
 			tube_count.scrollFactor = new FlxPoint(0, 0);
 			
+			
 			backflip = new FlxSprite(500, 100, ImgBackflip);
 			backflip.loadGraphic(ImgBackflip, false, false, 210, 82);
 			backflip.scrollFactor.x = 0;
 			backflip.scrollFactor.y = 0;
-
-			soundCrepite.loadEmbedded(SfxCrepite);
-			soundDestrSol.loadEmbedded(SfxDestrSol);
 			switch (FlxG.univ) {
 				// UNIVERS 1
 				case -1:
@@ -179,11 +169,15 @@ package
 					if (sound != null)
 						sound.play();
 					justloaded = false;
+					player.vitesse1.volume = 1;
+					tuto.kill();
+					tuto.destroy();
 				}
 				super.update(); 
 				if ((!FlxG.player.pause) && (!FlxG.player.dead) && (!FlxG.player.endLvl)) 
 				{
 					tube_count.text = "" + FlxG.score;
+					
 					// MENU PAUSE
 					if ((FlxG.keys.justPressed("ESCAPE")) || (FlxG.keys.justPressed("P")))
 					{
@@ -200,6 +194,28 @@ package
 					if (FlxG.keys.pressed("R")) 
 					{
 						player.die_motherfucker(4);
+					}
+					
+					//DEV Mute sound
+					if (FlxG.keys.justPressed("M")) 
+					{
+						if (player.muted == true) {
+							sound.volume = 0.8;
+							player.vitesse1.volume = old_volume1;
+							player.vitesse2.volume = old_volume2;
+							player.vitesse3.volume = old_volume3;
+							player.muted = false;
+						}
+						else if (player.muted == false) {
+							old_volume1 = player.vitesse1.volume;
+							old_volume2 = player.vitesse2.volume;
+							old_volume3 = player.vitesse3.volume;
+							sound.volume = 0;
+							player.vitesse1.volume = 0;
+							player.vitesse2.volume = 0;
+							player.vitesse3.volume = 0;
+							player.muted = true;
+						}
 					}
 					// DEV : PASSE AU MENU DE SCORING
 					if ((FlxG.keys.justPressed("S"))) 
@@ -228,6 +244,7 @@ package
 						player.vitesse2.destroy();
 						player.vitesse3.destroy();
 						FlxG.score = -map.id;
+						FlxG.map.reload_map();
 						FlxG.resetState();
 					}
 					
@@ -274,13 +291,16 @@ package
 		public function getTube(obj1:FlxObject, tube:TubeVert):void {
 			if (!player.dead && tube_count.alive)
 			{
-				TweenMax.to(tube_count.scale, 0.1, { x:1.2,y:1.2, ease:Bounce.easeIn, onComplete : resetTubes } );
-				TweenMax.to(tube_count, 0.1, { x:100, y:10, ease:Bounce.easeIn, onComplete : resetTubes  } );
-				
+				if (tube_count != null) {
+					TweenMax.to(tube_count.scale, 0.1, { x:1.2,y:1.2, ease:Bounce.easeIn, onComplete : resetTubes } );
+					TweenMax.to(tube_count, 0.1, { x:100, y:10, ease:Bounce.easeIn, onComplete : resetTubes  } );
+				}
 				function resetTubes():void
 				{
-					TweenMax.to(tube_count.scale, 0.1, { x:1,y:1, ease:Bounce.easeIn } );
-					TweenMax.to(tube_count, 0.1, { x:80, y:0, ease:Bounce.easeIn  } );
+					if (tube_count != null) {
+						TweenMax.to(tube_count.scale, 0.1, { x:1,y:1, ease:Bounce.easeIn } );
+						TweenMax.to(tube_count, 0.1, { x:80, y:0, ease:Bounce.easeIn  } );
+					}
 				}
 			}
 			tube.tubesound(tube.loot);
@@ -309,19 +329,25 @@ package
 		// GESTION SOL DESTRUCTIBLE
 		public function check_ground(obj1:FlxObject, obj2:FlxObject):void 
 		{
-			soundCrepite.volume = 0.5;
-			soundCrepite.play();
+			(obj2 as Destructible_ground).rolled = true;
+			player.angle = 0;
 			if (player.jauge.frame > dest_ground)
 			{
+				(obj2 as Destructible_ground).soundCrepite.stop();
+				(obj2 as Destructible_ground).soundCrepite.kill();
 				(obj2 as Destructible_ground).play("destruction");
 				(obj2 as Destructible_ground).destruction = true;
 				(obj2 as Destructible_ground).height = 0;
 				(obj2 as Destructible_ground).width = 0;
-				soundDestrSol.volume = 0.5;
-				soundDestrSol.play();
+				(obj2 as Destructible_ground).soundDestrSol.volume = 0.5;
+				(obj2 as Destructible_ground).soundDestrSol.play();
 			}
 			else if (!(obj2 as Destructible_ground).destruction) {
 				(obj2 as Destructible_ground).frame = 1;
+				if ((obj2 as Destructible_ground).soundCrepite != null) {
+					(obj2 as Destructible_ground).soundCrepite.volume = 0.5;
+					(obj2 as Destructible_ground).soundCrepite.play();
+				}
 			}
 			
 		}
@@ -398,6 +424,23 @@ package
 				// TUE
 				if ((player.gravity > alienkill) && (from == 0))
 				{
+					if ((obj2 as Alien).killed == false) {
+						var chance2:int = Math.ceil(Math.random() * 3);
+						switch(chance2) {
+							case 1:
+								(obj2 as Alien).alienkillsfx1.play();
+								//FlxG.play(SfxAlienMort1, 0.3, false, true);
+								break;
+							case 2:
+								(obj2 as Alien).alienkillsfx2.play();
+								//FlxG.play(SfxAlienMort1, 0.3, false, true);
+								break;
+							case 3:
+								(obj2 as Alien).alienkillsfx3.play();
+								//FlxG.play(SfxAlienMort1, 0.3, false, true);
+								break;
+						}
+					}
 					if (obj2 is AlienNormal)
 					{
 						(obj2 as AlienNormal).play("mort");
@@ -410,44 +453,40 @@ package
 						(obj2 as AlienHorizontal).killed = true;
 						//(obj2 as AlienHorizontal).soundMort.play();
 					}
-					var chance2:int = Math.ceil(Math.random() * 3);
-					switch(chance2) {
-						case 1:
-							FlxG.play(SfxAlienMort1, 0.6, false, true);
-							break;
-						case 2:
-							FlxG.play(SfxAlienMort1, 0.6, false, true);
-							break;
-						case 3:
-							FlxG.play(SfxAlienMort1, 0.6, false, true);
-							break;
-					}
 				}
 				// REBONDS
 				else if (from == 0) {
 					if (obj2 is AlienNormal)
 					{
 						(obj2 as AlienNormal).play("rebonds");
+						(obj2 as AlienNormal).alienrebond1.play();
 						//(obj2 as AlienNormal).soundRebond.play();
 					}
 					if (obj2 is AlienHorizontal)
 					{
 						(obj2 as AlienHorizontal).play("rebonds");
+						(obj2 as AlienHorizontal).alienrebond3.play();
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					player.velocity.y = - 250;
-					var chance:int = Math.ceil(Math.random() * 3);
+					/*var chance:int = Math.ceil(Math.random() * 3);
 					switch(chance) {
 						case 1:
-							FlxG.play(SfxRebond1, 1, false, true);
+							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond1);
+							(obj2 as Alien).alienrebond.play();
+							//FlxG.play(SfxRebond1, 0.7, false, true);
 							break;
 						case 2:
-							FlxG.play(SfxRebond2, 1, false, true);
+							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond2);
+							(obj2 as Alien).alienrebond.play();
+							//FlxG.play(SfxRebond2, 0.7, false, true);
 							break;
 						case 3:
-							FlxG.play(SfxRebond3, 1, false, true);
+							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond3);
+							(obj2 as Alien).alienrebond.play();
+							//FlxG.play(SfxRebond3, 0.7, false, true);
 							break;
-					}
+					}*/
 				}
 				// MEURT
 				else {
@@ -493,6 +532,12 @@ package
 			}
 			// RETOUR AU JEU
 			else if (result == PauseMenu.RESUME_GAME) {
+				if (player.muted == false) {
+					sound.volume = 0.8;
+					player.vitesse1.volume = old_volume1;
+					player.vitesse2.volume = old_volume2;
+					player.vitesse3.volume = old_volume3;
+				}
 				player.acceleration.x = player.old_acceleration.y;
 				player.acceleration.x = player.old_acceleration.y;
 				player.gravity = player.old_gravity;

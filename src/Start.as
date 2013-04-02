@@ -10,7 +10,7 @@ package
 	import com.greensock.*;
 	import com.greensock.easing.*;
 	import flash.system.System;
-	
+	import org.flixel.FlxSound;
 	import org.flixel.plugin.photonstorm.FlxCollision;
 	 
 	/**
@@ -45,12 +45,20 @@ package
 		public var authors:FlxSprite;
 		public var jimi:FlxSprite;
 		public var timer : FlxTimer = new FlxTimer();
+		public var soundChoose:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
+		public var sfxIdle2:FlxSound = new FlxSound();
+		public var sfxIdle3:FlxSound = new FlxSound();
 		
 		override public function create():void
 		{
 			
 			FlxG.bgColor = 0xaa519CCA;
 			
+			soundChoose.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle2.loadEmbedded(SfxMenuIdle);
+			sfxIdle3.loadEmbedded(SfxMenuIdle);
 			backDefault = new FlxSprite(490, 245, ImgBackDefault);
 			backDefault.x = 0;
 			backDefault.y = 0;
@@ -141,13 +149,16 @@ package
 			// Gestion de la retour en arrière dans les crédits
 			if (FlxG.overlap(cursor, retour))
 			{
+				sfxIdle.play();
 				retour.play("on");
 				if (FlxG.mouse.justPressed())
 				{ FlxG.switchState(new Start()); 
-				FlxG.play(SfxMenuClick, 1, false, true);}
+					soundChoose.play();
+					sfxIdle.stop();}
 			}
 			else
 			{
+				sfxIdle.stop();
 				retour.play("off");
 			}
 			
@@ -155,19 +166,26 @@ package
 			logo.play("normal");
 			if (FlxCollision.pixelPerfectCheck(cursor, logo))
 			{
+				sfxIdle2.play();
 				logo.play("contour");
 				if (FlxG.mouse.justPressed()) 
 				{	
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle2.stop();
+					soundChoose.play();
 					FlxG.switchState(new Cutscene());
 				}
 			}
+			else {
+				sfxIdle2.stop();
+			}
 			if (FlxCollision.pixelPerfectCheck(cursor, credits))
 			{
+				sfxIdle3.play();
 				TweenMax.to(credits, 1, { alpha:0.4, ease:Linear.easeOut } );
 				if (FlxG.mouse.justPressed()) 
 				{
-					FlxG.play(SfxMenuClick, 1, false, true);
+					sfxIdle3.stop();
+					soundChoose.play();
 					TweenMax.to(authors, 0.9, { y:300, ease:Linear.easeOut } );
 					TweenMax.to(logoIut, 0.9, { y:100, ease:Linear.easeOut } );
 					TweenMax.to(retour, 0.9, { alpha:1, ease:Linear.easeOut } );
@@ -179,12 +197,16 @@ package
 			}
 			else
 			{
+				sfxIdle3.stop();
 				TweenMax.to(credits, 1, { alpha:1, ease:Linear.easeOut } );
 			}
 			
 			if (FlxG.keys.pressed("SPACE") || FlxG.keys.pressed("ENTER")) 
 			{				
-				FlxG.play(SfxMenuClick, 1, false, true);
+				sfxIdle.stop();
+				sfxIdle2.stop();
+				sfxIdle3.stop();
+				soundChoose.play();
 				FlxG.switchState(new Cutscene());
 			}
 		}

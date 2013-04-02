@@ -12,6 +12,7 @@ package
 	import com.greensock.easing.*;
 	import org.flixel.plugin.photonstorm.FlxSpecialFX;
 	import org.flixel.plugin.photonstorm.FlxCollision;
+	import org.flixel.FlxSound;
 
 	/**
 	 * Pause
@@ -32,6 +33,8 @@ package
 		[Embed(source = '../assets/gfx/ui/filtre-mort.png')] 	protected var ImgFiltre:Class;
 		[Embed(source = '../assets/gfx/ui/pause_pic.png')] 		protected var ImgPause:Class;
 		[Embed(source = '../assets/fonts/phillysansps.otf',	fontFamily = "philly", embedAsCFF = "false")] protected var	Font3:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
 		public var text:FlxText;
 		public var restartText:FlxText;
@@ -43,6 +46,10 @@ package
 		public var restartPic:FlxSprite;
 		public var continuePic:FlxSprite;
 		public var menuPic:FlxSprite;
+		public var soundChoose:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
+		public var sfxIdle2:FlxSound = new FlxSound();
+		public var sfxIdle3:FlxSound = new FlxSound();
 		
 		public function DeathScreen()
 		{
@@ -53,6 +60,10 @@ package
 		public override function create():void
 		{
 			
+			soundChoose.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle2.loadEmbedded(SfxMenuIdle);
+			sfxIdle3.loadEmbedded(SfxMenuIdle);
 			// Filtre de mort
 			filtreDeath = new FlxSprite(0, 0, ImgFiltre);
 			filtreDeath.loadGraphic(ImgFiltre, true, false, 800, 600);
@@ -98,63 +109,84 @@ package
 			// Continue la partie
 			if (FlxCollision.pixelPerfectCheck(cursor, continuePic)) 
 			{
+				sfxIdle.play();
 				TweenMax.to(continuePic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 				if (FlxG.mouse.justPressed())
 				{
+					sfxIdle.stop();
+					soundChoose.play();
 					retry();
 				}
 			}
 			else
 			{
+				sfxIdle.stop();
 				TweenMax.to(continuePic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 			}
 			
 			// Relance la partie
 			if (FlxCollision.pixelPerfectCheck(cursor, restartPic)) 
 			{
+				sfxIdle2.play();
 				TweenMax.to(restartPic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 				if (FlxG.mouse.justPressed())
 				{
+					sfxIdle2.stop();
+					soundChoose.play();
 					restart();
 				}
 			}
 			else
 			{
+				sfxIdle2.stop();
 				TweenMax.to(restartPic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 			}
 			
 			// Renvoie au menu
 			if (FlxCollision.pixelPerfectCheck(cursor, menuPic)) 
 			{
+				sfxIdle3.play();
 				TweenMax.to(menuPic.scale, 0.5, { x : 1.1, y : 1.1, ease:Linear.easeOut});
 				if (FlxG.mouse.justPressed())
 				{
+					sfxIdle3.stop();
+					soundChoose.play();
 					tryQuit();
 				}
 			}
 			else
 			{
+				sfxIdle3.stop();
 				TweenMax.to(menuPic.scale, 0.5, { x : 1, y : 1, ease:Linear.easeOut});
 			}
 			//____________SOURIS___________________//
 			
 			//____________CLAVIER___________________//
 			
-			/*if (FlxG.keys.justPressed("ENTER"))
+			if (FlxG.keys.justPressed("ENTER"))
 			{
+				sfxIdle.stop();
+				sfxIdle2.stop();
+				sfxIdle3.stop();
+				soundChoose.play();
 				retry();
-			}*/
+			}
 			if (FlxG.keys.justPressed("BACKSPACE"))
 			{
+				sfxIdle.stop();
+				sfxIdle2.stop();
+				sfxIdle3.stop();
+				soundChoose.play();
 				restart();
 			}
 			if (FlxG.keys.justPressed("ESCAPE"))
 			{
+				sfxIdle.stop();
+				sfxIdle2.stop();
+				sfxIdle3.stop();
+				soundChoose.play();
 				tryQuit();
-			}
-			
-			
-			
+			}			
 			
 			//____________CLAVIER___________________//
 			// Gestion clavier
