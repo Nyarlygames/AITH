@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="410" height="20" tilewidth="40" tileheight="40">
+<map version="1.0" orientation="orthogonal" width="430" height="20" tilewidth="40" tileheight="40">
  <tileset firstgid="1" name="aith_tiles" tilewidth="40" tileheight="40">
   <image source="../../gfx/misc/aith_tiles.png" width="240" height="120"/>
  </tileset>
@@ -27,12 +27,12 @@
  <tileset firstgid="71" name="tileset_tremplin_80" tilewidth="80" tileheight="80">
   <image source="../../gfx/gameplay/tileset_tremplin_80.png" width="240" height="80"/>
  </tileset>
- <layer name="Back_fond" width="410" height="20" opacity="0.9">
+ <layer name="Back_fond" width="430" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJztwwENAAAMw6CKmn9td3AFkLBqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqur7AAvKgfs=
+   eJztw0ENAAAMA6ETVf/aZmJPSFg1VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV3x81j9M7
   </data>
  </layer>
- <objectgroup name="Back_clouds" width="410" height="20" visible="0">
+ <objectgroup name="Back_clouds" width="430" height="20">
   <object gid="55" x="9320" y="520"/>
   <object gid="58" x="9960" y="520"/>
   <object gid="55" x="10560" y="680"/>
@@ -60,7 +60,7 @@
   <object gid="58" x="1080" y="680"/>
   <object gid="57" x="120" y="600"/>
  </objectgroup>
- <objectgroup name="Back_far" width="410" height="20" visible="0">
+ <objectgroup name="Back_far" width="430" height="20">
   <object gid="47" x="120" y="800"/>
   <object gid="48" x="680" y="800"/>
   <object gid="49" x="1120" y="800"/>
@@ -88,7 +88,7 @@
   <object gid="48" x="10240" y="800"/>
   <object gid="49" x="10720" y="800"/>
   <object gid="47" x="11160" y="800"/>
-  <object gid="48" x="11840" y="720"/>
+  <object gid="48" x="11840" y="800"/>
   <object gid="49" x="12080" y="800"/>
   <object gid="48" x="12520" y="800"/>
   <object gid="50" x="12800" y="800"/>
@@ -100,7 +100,7 @@
   <object gid="48" x="15480" y="680"/>
   <object gid="49" x="15200" y="680"/>
  </objectgroup>
- <objectgroup name="Back_middle" width="410" height="20" visible="0">
+ <objectgroup name="Back_middle" width="430" height="20">
   <object gid="20" x="200" y="800"/>
   <object gid="22" x="760" y="800"/>
   <object gid="24" x="1400" y="800"/>
@@ -118,9 +118,9 @@
   <object gid="21" x="8480" y="800"/>
   <object gid="22" x="9560" y="800"/>
   <object gid="24" x="10320" y="800"/>
-  <object gid="25" x="11480" y="720"/>
-  <object gid="22" x="12200" y="680"/>
-  <object gid="20" x="13160" y="680"/>
+  <object gid="25" x="11440" y="760"/>
+  <object gid="22" x="12200" y="760"/>
+  <object gid="20" x="13160" y="760"/>
   <object gid="22" x="12720" y="800"/>
   <object gid="24" x="13560" y="800"/>
   <object gid="24" x="15160" y="680"/>
@@ -129,7 +129,7 @@
   <object gid="20" x="15680" y="680"/>
   <object gid="24" x="9240" y="800"/>
  </objectgroup>
- <objectgroup name="Back_near" width="410" height="20" visible="0">
+ <objectgroup name="Back_near" width="430" height="20" visible="0">
   <object gid="41" x="1480" y="760"/>
   <object gid="45" x="4320" y="760"/>
   <object gid="44" x="3000" y="800"/>
@@ -137,17 +137,17 @@
   <object gid="40" x="6640" y="800"/>
   <object gid="43" x="7160" y="800"/>
   <object gid="44" x="8440" y="800"/>
-  <object gid="45" x="9960" y="760"/>
+  <object gid="45" x="9960" y="800"/>
   <object gid="42" x="10560" y="760"/>
-  <object gid="41" x="12520" y="680"/>
-  <object gid="43" x="13240" y="680"/>
+  <object gid="41" x="12520" y="800"/>
+  <object gid="43" x="13240" y="760"/>
  </objectgroup>
- <layer name="Sol" width="410" height="20" opacity="0.9">
+ <layer name="Sol" width="430" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJztnNlOBCEQACca40Zdj/3/j3V9IEECbAPdXFOV9JOZ4aYYYD0OqOEziNmYOW8rYVV/l+N/G70apQP9CNtUErQ75MAz5wDPgBQ8A9rgmXOAZ0AKngFt8MxYbvd4vsePcTp4BqTgGdAGz4zFjWnrcYpnQMr7Pa5evB14BtrAM2PBMzA7ku8b2h1y4Jmx+GPYEjwDteAZaOUaxGzs7ple5cMzUAuegd3BM3rpWIBn9sc/r0md1dDusDJ4Ri8dC0Z5xt3Tg76kvm3wDKwMntFLpxTJnevwblKv+cbNdxDnYvRe9s1gR/CMXjql9LoLV8OKnrGa+3umFa4rXHwYpQfQg909MzN4RpeengHQwO1phGH9u/LezO6ZWDvs0gZ4BuDc1Hy/ptwkiRXnTr+8VvmPnYvOOC/XgGcAoJSa/1u08tzpl7c1/0+CNFaqq1R5fCw9I13zhOsD99yXUb6gHkmfgv3BM3Xkxs+KnpHOB62eKa03Sb/zv+M5e54HHFPGy+gMKBFr9508I2mnnGdK9xBT+26xOv0ufLfVvmWujJL3tXjm0bxT65kazjgHat85aNlz3yk02KU/luzxrOiZ0vV4LP+ldZEqf0udWtd/Lm+S97nnW7xZ4meLfjfTmF75XnOvfj57WK8bR3tUoxxWnrll6u3R3yzXFnim7X0aZWutt/D50eOqpY/6c3/PtDTS+zsPGz3HzxC/Z+wsaA==
+   eJztnNluwyAQAK1WVaO26ZH//9i6DygUgbMcCwuekfYpspfLjA0o2wYlfAZhDctlmwmt9rts//voVSkP9CPsU0nQ79ATvHUO8BZIwVtgHbx1DvAWSMFbYB28NZbbHs97/CjnwVsgBW+BdfDWWNwcof3c4y2Q8r7H1Yu3DW+BLfDWWPAWWEfy/UW/Q0/w1lj8OUETvAWl4C2wxjUIa6zurV71w1tQCt4CyANvtcujAd5aH3+/K7XXRb8D3MFb7fJoMMpb7hwm9CX17YW3AO7grXZ5cpGc0Q/PnvWav9z8CXEuSvdlnRDgMXirXZ5cep11LGFGb2m5pGeu8D3FxYdSPoAZWd1blsFbbenpLQCLuDWcMLT/d6E31r0V64dV+gBvAUBLSr7XU66TxIxzsV9frfLH9qktzvMl4C0AGE3J/47NPBf79a0t/5Mgx0xtlaqPj6a3pO9Q4fuGu+5LqVxQjmRMAeSCt8o4eh5n9JZ0fqn1Vm67Scadv87AWQA74KyxvIwuQCNi42glb0n66chbuWumqXXGWJt+Z95ba532qI6S+9V469E8VuqtEs44p7Y+A1Kzx0CkowWrjO+cNa0ZvZX7vRArf25bpOpf06ba7X9UNsn93PU1Hs7xvca4s/RMz3wOvtc4P1tov9eO9nKLemh563bQbo9+03xXwVt192tRt9p2C68f/VzVjFHfJT1ztcj3t584eo5fMX4B4Ywu1A==
   </data>
  </layer>
- <objectgroup color="#ff2718" name="Gameplay" width="410" height="20" opacity="0.9">
+ <objectgroup color="#ff2718" name="Gameplay" width="430" height="20" opacity="0.9">
   <object type="Tremplin80" gid="72" x="680" y="760">
    <properties>
     <property name="color" value="2"/>
@@ -568,7 +568,7 @@
   <object name="grosTube" type="GrosTube" x="14000" y="600" width="40" height="40"/>
   <object name="tube" type="Tube" x="13920" y="600" width="40" height="40"/>
   <object name="tube" type="Tube" x="13840" y="600" width="40" height="40"/>
-  <object name="TransitionUnivers" type="transitionUnivers" x="15560" y="400" width="240" height="280"/>
+  <object name="TransitionUnivers" type="transitionUnivers" x="15720" y="120" width="1000" height="560"/>
   <object name="soucoupe" type="Soucoupe" x="12680" y="440" width="80" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="11440" y="440" width="80" height="40"/>
   <object name="soucoupe" type="Soucoupe" x="13400" y="440" width="80" height="40"/>

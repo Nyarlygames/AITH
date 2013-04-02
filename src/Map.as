@@ -251,7 +251,7 @@ package
 							break;
 					}
 					bat_cloud.y -= bat_cloud.frameHeight;
-					bat_cloud.scrollFactor = new FlxPoint(0.5, 0.5);
+					bat_cloud.scrollFactor = new FlxPoint(0.3, 0.3);
 					clouds.add(bat_cloud);
 				}
 				FlxG.state.add(clouds);
