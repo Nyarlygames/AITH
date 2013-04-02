@@ -27,13 +27,14 @@ package
 		public var score5:int = 0;
 		public var score6:int = 0;
 		public var gamefinished:Boolean = false;
+		public var gamecompleted:Boolean = false;
+		public var completed:Boolean = false;
 		public var twounlock:Boolean = false;
 		
 		public function UserSave() 
 		{
 		}
-		
-		
+			
 		public function calcStars_levels():void
 		{
 			score1 = level1[0] + level1[1] + level1[2];
@@ -48,6 +49,10 @@ package
 		{
 			scoreuniv1 = level1[0] + level1[1] + level1[2] + level2[0] + level2[1] + level2[2] + level3[0] + level3[1] + level3[2];
 			scoreuniv2 = level4[0] + level4[1] + level4[2] + level5[0] + level5[1] + level5[2] + level6[0] + level6[1] + level6[2];
+			
+			if ((level1[0] + level2[0] + level3[0] + level4[0] + level5[0] + level6[0]) == 6) {
+				gamecompleted = true;
+			}
 		}
 		
 		public function calcStars():void

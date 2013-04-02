@@ -28,7 +28,7 @@ package
 			{
 				stage.scaleMode = StageScaleMode.NO_SCALE;
 				stage.align = StageAlign.TOP_LEFT;
-				stage.quality = StageQuality.LOW;
+				stage.quality = StageQuality.HIGH;
 			}
 			
 			addEventListener(Event.ENTER_FRAME, checkFrame);

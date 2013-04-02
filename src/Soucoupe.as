@@ -37,7 +37,7 @@ package
 			FlxG.state.add(halo);
 			halo.play("default");
 			immovable = true;
-			soundIn.volume = 0.8;
+			soundIn.volume = 0.7;
 		}
 	
 		override public function update():void 
