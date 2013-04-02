@@ -24,4 +24,5 @@
  <objecttype name="Ground" color="#ff7c1e"/>
  <objecttype name="backflip" color="#96a478"/>
  <objecttype name="endBackflip" color="#ffff00"/>
+ <objecttype name="transitionUnivers" color="#ff557f"/>
 </objecttypes>
