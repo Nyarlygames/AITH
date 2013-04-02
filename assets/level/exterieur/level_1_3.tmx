@@ -195,9 +195,6 @@
   <object name="soucoupe" type="Soucoupe" x="1000" y="240" width="80" height="40"/>
   <object name="alien_im" type="Alien" x="1880" y="440" width="80" height="200"/>
   <object name="alien_im" type="Alien" x="2160" y="440" width="80" height="200"/>
-  <object name="grosTube" type="GrosTube" x="2520" y="440" width="40" height="40"/>
-  <object name="tube" type="Tube" x="2440" y="440" width="40" height="40"/>
-  <object name="tube" type="Tube" x="2680" y="440" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="2600" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="2040" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="1760" y="320" width="40" height="40"/>
@@ -727,5 +724,24 @@
   <object name="grosTube" type="GrosTube" x="11800" y="160" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="11400" y="280" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="10680" y="480" width="40" height="40"/>
+  <object name="tube" type="Tube" x="9280" y="520" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="8560" y="320" width="40" height="40"/>
+  <object name="tube" type="Tube" x="9920" y="520" width="40" height="40"/>
+  <object name="tube" type="Tube" x="9920" y="680" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="7800" y="560" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="4560" y="520" width="40" height="40"/>
+  <object name="tube" type="Tube" x="6400" y="440" width="40" height="40"/>
+  <object name="tube" type="Tube" x="5680" y="600" width="40" height="40"/>
+  <object name="tube" type="Tube" x="5840" y="600" width="40" height="40"/>
+  <object name="tube" type="Tube" x="5760" y="600" width="40" height="40"/>
+  <object name="tube" type="Tube" x="4600" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="4760" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="4680" y="680" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="2440" y="440" width="40" height="40"/>
+  <object name="tube" type="Tube" x="2280" y="320" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="9600" y="360" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="14000" y="600" width="40" height="40"/>
+  <object name="tube" type="Tube" x="13920" y="600" width="40" height="40"/>
+  <object name="tube" type="Tube" x="13840" y="600" width="40" height="40"/>
  </objectgroup>
 </map>

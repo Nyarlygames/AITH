@@ -79,23 +79,8 @@
   <object gid="61" x="17600" y="280"/>
   <object gid="62" x="18000" y="280"/>
   <object gid="58" x="18320" y="440"/>
-  <object name="GPique" type="Piques" x="4939" y="493" width="40" height="40">
-   <properties>
-    <property name="orientation" value="gauche"/>
-   </properties>
-  </object>
-  <object name="GPique" type="Piques" x="4939" y="493" width="40" height="40">
-   <properties>
-    <property name="orientation" value="gauche"/>
-   </properties>
-  </object>
-  <object name="GPique" type="Piques" x="4945" y="496" width="40" height="40">
-   <properties>
-    <property name="orientation" value="gauche"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup name="Back_far" width="500" height="20">
+ <objectgroup name="Back_far" width="500" height="20" visible="0">
   <object gid="47" x="520" y="800"/>
   <object gid="49" x="1120" y="800"/>
   <object gid="47" x="1880" y="800"/>
@@ -142,7 +127,7 @@
   <object gid="47" x="19640" y="760"/>
   <object gid="49" x="19920" y="760"/>
  </objectgroup>
- <objectgroup name="Back_middle" width="500" height="20">
+ <objectgroup name="Back_middle" width="500" height="20" visible="0">
   <object gid="22" x="5200" y="800"/>
   <object gid="22" x="6760" y="800"/>
   <object gid="25" x="5800" y="800"/>
@@ -170,7 +155,7 @@
   <object gid="28" x="19360" y="760"/>
   <object gid="33" x="19760" y="760"/>
  </objectgroup>
- <objectgroup name="Back_near" width="500" height="20">
+ <objectgroup name="Back_near" width="500" height="20" visible="0">
   <object gid="40" x="1480" y="800"/>
   <object gid="41" x="2360" y="760"/>
   <object gid="44" x="3400" y="760"/>
