@@ -31,10 +31,10 @@
  </layer>
  <objectgroup name="Fond" width="500" height="20">
   <object gid="43" x="-1200" y="920"/>
-  <object gid="43" x="3800" y="920"/>
-  <object gid="43" x="8800" y="920"/>
-  <object gid="43" x="13560" y="920"/>
-  <object gid="43" x="18560" y="920"/>
+  <object gid="43" x="3560" y="920"/>
+  <object gid="43" x="8320" y="920"/>
+  <object gid="43" x="13080" y="920"/>
+  <object gid="43" x="17560" y="920"/>
  </objectgroup>
  <objectgroup name="Back_clouds" width="500" height="20"/>
  <objectgroup name="Back_far" width="500" height="20"/>
@@ -42,7 +42,7 @@
  <objectgroup name="Back_near" width="500" height="20"/>
  <layer name="Sol" width="500" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="500" height="20" opacity="0.9">
@@ -283,7 +283,7 @@
     <property name="Angle" value="0"/>
    </properties>
   </object>
-  <object name="check" type="Checkpoints" x="7640" y="560" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="7480" y="560" width="40" height="200"/>
   <object name="tube" type="Tube" x="7040" y="440" width="40" height="40"/>
   <object type="tremplin" x="7800" y="720" width="40" height="40"/>
   <object type="tremplin" x="7920" y="640" width="40" height="40">
@@ -614,7 +614,7 @@
    </properties>
   </object>
   <object name="Tourelle" type="Tourelle" x="13040" y="520" width="80" height="40"/>
-  <object name="tube" type="Tube" x="7560" y="480" width="40" height="40"/>
+  <object name="tube" type="Tube" x="7200" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="9080" y="560" width="40" height="40"/>
   <object name="Backflip" type="backflip" x="18280" y="80" width="40" height="680"/>
   <object name="EndBackflip" type="EndBackflip" x="19200" y="80" width="40" height="680"/>
@@ -890,7 +890,7 @@
   <object name="tube" type="Tube" x="13800" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="14880" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="15360" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="15760" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="15440" y="680" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="7040" y="520" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="4120" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="3720" y="320" width="40" height="40"/>
@@ -899,14 +899,14 @@
   <object name="tube" type="Tube" x="8040" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="8560" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="8720" y="320" width="40" height="40"/>
-  <object name="tube" type="Tube" x="10920" y="520" width="40" height="40"/>
+  <object name="tube" type="Tube" x="11000" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="11200" y="480" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="11640" y="560" width="40" height="40"/>
   <object name="tube" type="Tube" x="11640" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="12300" y="700" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="14120" y="520" width="40" height="40"/>
-  <object name="tube" type="Tube" x="15680" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="15600" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="15520" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="13520" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="7280" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="7040" y="320" width="40" height="40"/>
@@ -970,18 +970,18 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object name="check" type="Checkpoints" x="16360" y="360" width="40" height="200"/>
-  <object type="Tremplin80" gid="20" x="15960" y="760">
+  <object name="check" type="Checkpoints" x="16320" y="360" width="40" height="200"/>
+  <object type="Tremplin80" gid="20" x="15720" y="760">
    <properties>
     <property name="color" value="2"/>
    </properties>
   </object>
-  <object type="tremplin" x="16040" y="640" width="40" height="40">
+  <object type="tremplin" x="15800" y="640" width="40" height="40">
    <properties>
     <property name="haut" value=""/>
    </properties>
   </object>
-  <object type="tremplin" x="15920" y="720" width="40" height="40"/>
+  <object type="tremplin" x="15680" y="720" width="40" height="40"/>
   <object name="HPique" type="Piques" x="16040" y="720" width="40" height="40">
    <properties>
     <property name="orientation" value="haut"/>

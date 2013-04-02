@@ -52,7 +52,7 @@
  </objectgroup>
  <layer name="Sol" width="430" height="20" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="430" height="20" opacity="0.9">
@@ -801,7 +801,6 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object name="soufflerie" type="Soufflerie" x="10040" y="480" width="80" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="9720" y="440" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="9920" y="440" width="200" height="40"/>
   <object name="Backflip" type="backflip" x="15240" y="120" width="40" height="640"/>
@@ -1037,5 +1036,15 @@
   <object name="grosTube" type="GrosTube" x="9600" y="360" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="6840" y="440" width="40" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="14480" y="720" width="80" height="40"/>
+  <object name="HPique" type="Piques" x="10040" y="480" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object name="HPique" type="Piques" x="10080" y="480" width="40" height="40">
+   <properties>
+    <property name="orientation" value="haut"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
