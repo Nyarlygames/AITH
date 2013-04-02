@@ -92,6 +92,11 @@ package
 				// UNIVERS 1
 				case -1:
 					map = new Map(maptest);
+					if (sound == null) {
+						sound = new FlxSound();
+						sound.loadEmbedded(Music1, true, true);
+						sound.volume = 0.8;
+					}
 					break;
 				case -2:
 					map = new Map(mapDesignerTest);
@@ -169,7 +174,7 @@ package
 					if (sound != null)
 						sound.play();
 					justloaded = false;
-					player.vitesse1.volume = 1;
+					player.vitesse3.volume = 1;
 					tuto.kill();
 					tuto.destroy();
 				}

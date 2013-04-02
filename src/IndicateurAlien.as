@@ -28,7 +28,7 @@ package
 			play("incomming");
 			scrollFactor = new FlxPoint(0, 0);
 			FlxG.state.add(this);
-			indic.loadEmbedded(SfxIndic, true, false);
+			indic.loadEmbedded(SfxIndic, false, false);
 			indic.play();
 			indic.volume = 0.9;
 		}

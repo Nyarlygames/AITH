@@ -52,7 +52,6 @@ package
 		
 		private function ioError(e:IOErrorEvent):void 
 		{
-			trace(e.text);
 		}
 		
 		private function progress(e:ProgressEvent):void 

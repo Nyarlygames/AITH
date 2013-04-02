@@ -179,6 +179,7 @@ package
 		override public function update():void 
 		{
 			if ((!pause) && (!dead) && (!endLvl)) {
+				handle_sound();
 				play ("midSpeed");
 				jauge.y = y - 270;
 				jauge.frame = (palier_accumulateur + 10000) / 7500 + 12;
@@ -334,19 +335,18 @@ package
 		
 		// GESTION SON MOTEUR
 		public function handle_sound():void {
-			
 			if (FlxG.keys.pressed("SPACE")) 
 			{
-				if (velocity.x > 250) 
+				if (velocity.x > 260) 
 				{
 					play("fastSpeed", true);
-					vitesse3.volume -= (212.5 * FlxG.elapsed) / 100;
-					vitesse2.volume += (212.5 * FlxG.elapsed) / 100;
+					vitesse3.volume -= (111 * FlxG.elapsed) / 100;
+					vitesse2.volume += (111 * FlxG.elapsed) / 100;
 				}
 				else if (velocity.x > 160) 
 				{
-					vitesse2.volume -= (250 * FlxG.elapsed) / 100;
-					vitesse1.volume += (250 * FlxG.elapsed) / 100;
+					vitesse2.volume -= (100 * FlxG.elapsed) / 100;
+					vitesse1.volume += (100 * FlxG.elapsed) / 100;
 					play("midSpeed", true);
 				}
 				else if (velocity.x > 0) 
@@ -363,14 +363,14 @@ package
 				else if (velocity.x < 250) 
 				{
 					play("midSpeed", true);
-					vitesse2.volume += (250 * FlxG.elapsed) / 100;
-					vitesse1.volume -= (250 * FlxG.elapsed) / 100;
+					vitesse2.volume += (167 * FlxG.elapsed) / 100;
+					vitesse1.volume -= (167 * FlxG.elapsed) / 100;
 				}
 				else if (velocity.x < 370) 
 				{
 					play("fastSpeed", true);
-					vitesse3.volume += (212.5 * FlxG.elapsed) / 100;
-					vitesse2.volume -= (212.5 * FlxG.elapsed) / 100;
+					vitesse3.volume += (150 * FlxG.elapsed) / 100;
+					vitesse2.volume -= (150 * FlxG.elapsed) / 100;
 				}
 			}
 		}
@@ -430,8 +430,6 @@ package
 				deadscore += 1;
 				TweenMax.to(this, 1.5, { alpha:0, ease:Linear.easeOut }  );
 				TweenMax.to(jauge, 1.5, { alpha:0, ease:Linear.easeOut }  );
-				//emitter.kill();
-				trace("DEAD FROM : ",where);
 				dead = true;
 				stopPlayer();
 				from = where;
