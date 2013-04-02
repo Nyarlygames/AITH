@@ -61,6 +61,7 @@ package
 		public var sfxIdle2:FlxSound = new FlxSound();
 		public var sfxIdle3:FlxSound = new FlxSound();
 		public var end:EndGame;
+		public var unlockuniv2:UnlockUniv2;
 		
 		override public function create():void
 		{
@@ -290,10 +291,15 @@ package
 				FlxG.switchState(end);
 				FlxG.usersave.gamefinished = true;
 			}
-			
-			if ((FlxG.usersave.univUnlock == true) && (FlxG.usersave.twounlock == false)) {
+			if ((FlxG.usersave.gamecompleted == true) && (FlxG.usersave.completed == false)) {
 				end = new EndGame();
 				FlxG.switchState(end);
+				FlxG.usersave.completed = true;
+			}
+			
+			if ((FlxG.usersave.univUnlock == true) && (FlxG.usersave.twounlock == false)) {
+				unlockuniv2 = new UnlockUniv2();
+				FlxG.switchState(unlockuniv2);
 				FlxG.usersave.twounlock = true;
 			}
 		}
