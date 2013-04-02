@@ -197,7 +197,7 @@ package
 				
 				//play ("midSpeed");
 				jauge.y = y - 270;
-				jauge.frame = - ((velocity.x - minspeed) / 24) + 12;
+				jauge.frame = (palier_accumulateur + 10000) / 7500 + 12; 
 				
 				if (angle == 0) {
 					emitter.y = y + frameHeight - 35;
