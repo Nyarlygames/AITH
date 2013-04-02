@@ -70,6 +70,9 @@ package
 			sfxIdle.loadEmbedded(SfxMenuIdle);
 			sfxIdle2.loadEmbedded(SfxMenuIdle);
 			sfxIdle3.loadEmbedded(SfxMenuIdle);
+			sfxIdle.volume = 0.8;
+			sfxIdle2.volume = 0.8;
+			sfxIdle3.volume = 0.8;
 			/*	Bouton de mute */
 				pausePic = new FlxSprite(0, 0, ImgPause);
 				pausePic.scrollFactor = new FlxPoint(0, 0);
