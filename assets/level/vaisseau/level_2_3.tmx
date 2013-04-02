@@ -61,15 +61,10 @@
   <object name="soufflerie" type="Soufflerie" x="1960" y="640" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="1880" y="640" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="2200" y="600" width="80" height="40"/>
-  <object name="mobil" type="AlienHorizontal" x="2480" y="480" width="80" height="120"/>
-  <object name="check" type="Checkpoints" x="2640" y="240" width="40" height="200"/>
+  <object name="mobil" type="AlienHorizontal" x="2440" y="480" width="80" height="120"/>
+  <object name="check" type="Checkpoints" x="2440" y="200" width="40" height="200"/>
   <object name="soufflerie" type="Soufflerie" x="1720" y="680" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="1800" y="680" width="80" height="40"/>
-  <object name="GPique" type="Piques" x="2280" y="400" width="40" height="40">
-   <properties>
-    <property name="orientation" value="gauche"/>
-   </properties>
-  </object>
   <object name="GPique" type="Piques" x="2280" y="440" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
@@ -270,7 +265,7 @@
   <object name="Sol_Destructible" type="Des_sol" x="6960" y="640" width="200" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="7280" y="760" width="80" height="40"/>
   <object name="soufflerie" type="Soufflerie" x="7440" y="760" width="80" height="40"/>
-  <object name="mobil" type="AlienHorizontal" x="7920" y="520" width="80" height="120"/>
+  <object name="mobil" type="AlienHorizontal" x="7880" y="520" width="80" height="120"/>
   <object name="GPique" type="Piques" x="7520" y="720" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
@@ -603,7 +598,7 @@
   <object name="tube" type="Tube" x="14440" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="15280" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="15040" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="2440" y="320" width="40" height="40"/>
+  <object name="tube" type="Tube" x="2720" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="3200" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="3413" y="370" width="40" height="40"/>
   <object name="tube" type="Tube" x="4760" y="400" width="40" height="40"/>
