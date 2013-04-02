@@ -41,9 +41,9 @@ package
 			load.x = 0
 			load.y = 0
 			
-			progressBar = new Bitmap(new BitmapData(448*2, 16*2, false, 0xffa1a5d7));
-			progressBar.x = 16*2;
-			progressBar.y = 128*2;
+			progressBar = new Bitmap(new BitmapData(600, 20, false, 0x28AF01));
+			progressBar.x = 100;
+			progressBar.y = 500;
 			
 			addChild(bg);
 			addChild(load);
