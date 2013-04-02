@@ -163,7 +163,7 @@
  </objectgroup>
  <layer name="Sol" width="500" height="20" opacity="0.69">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup color="#ff2718" name="Gameplay" width="500" height="20" opacity="0.9">
@@ -284,7 +284,7 @@
     <property name="orientation" value="Bas"/>
    </properties>
   </object>
-  <object name="check" type="Checkpoints" x="7760" y="480" width="40" height="200"/>
+  <object name="check" type="Checkpoints" x="7640" y="480" width="40" height="200"/>
   <object name="HPique" type="Piques" x="8880" y="440" width="40" height="40">
    <properties>
     <property name="orientation" value="haut"/>
@@ -411,14 +411,9 @@
     <property name="orientation" value="droite"/>
    </properties>
   </object>
-  <object name="soucoupe" type="Soucoupe" x="15480" y="200" width="80" height="40"/>
-  <object name="alien_im" type="Alien" x="15880" y="520" width="80" height="160"/>
+  <object name="soucoupe" type="Soucoupe" x="15440" y="200" width="80" height="40"/>
+  <object name="alien_im" type="Alien" x="15920" y="520" width="80" height="160"/>
   <object name="check" type="Checkpoints" x="14800" y="240" width="40" height="200"/>
-  <object type="Tremplin80" gid="70" x="16280" y="720">
-   <properties>
-    <property name="color" value="2"/>
-   </properties>
-  </object>
   <object name="BPique" type="Piques" x="16480" y="320" width="40" height="40">
    <properties>
     <property name="orientation" value="bas"/>
@@ -597,7 +592,7 @@
   <object name="tube" type="Tube" x="14680" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="14600" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="15000" y="360" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="16080" y="400" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="16200" y="440" width="40" height="40"/>
   <object name="GPique" type="Piques" x="16640" y="560" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
@@ -622,9 +617,9 @@
   <object name="tube" type="Tube" x="15440" y="640" width="40" height="40"/>
   <object name="tube" type="Tube" x="15160" y="480" width="40" height="40"/>
   <object name="tube" type="Tube" x="15680" y="520" width="40" height="40"/>
-  <object name="tube" type="Tube" x="15880" y="400" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="16480" y="680" width="40" height="40"/>
-  <object name="tube" type="Tube" x="16360" y="480" width="40" height="40"/>
+  <object name="tube" type="Tube" x="16280" y="440" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="16520" y="680" width="40" height="40"/>
+  <object name="tube" type="Tube" x="16600" y="680" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="11320" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="11720" y="280" width="40" height="40"/>
   <object name="tube" type="Tube" x="14400" y="360" width="40" height="40"/>
@@ -763,12 +758,6 @@
    </properties>
   </object>
   <object type="tremplin" x="15520" y="680" width="40" height="40"/>
-  <object type="tremplin" x="16360" y="600" width="40" height="40">
-   <properties>
-    <property name="haut" value=""/>
-   </properties>
-  </object>
-  <object type="tremplin" x="16240" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="5760" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="5880" y="600" width="40" height="40"/>
   <object name="tube" type="Tube" x="6040" y="560" width="40" height="40"/>
@@ -1035,59 +1024,59 @@
   <object name="grosTube" type="GrosTube" x="18320" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="17400" y="520" width="40" height="40"/>
   <object name="tube" type="Tube" x="17640" y="680" width="40" height="40"/>
-  <object name="BPique" type="Piques" x="11160" y="240" width="40" height="40">
-   <properties>
-    <property name="orientation" value="Bas"/>
-   </properties>
-  </object>
-  <object name="BPique" type="Piques" x="11120" y="240" width="40" height="40">
-   <properties>
-    <property name="orientation" value="Bas"/>
-   </properties>
-  </object>
   <object name="BPique" type="Piques" x="10920" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
-   </properties>
-  </object>
-  <object name="BPique" type="Piques" x="11000" y="240" width="40" height="40">
-   <properties>
-    <property name="orientation" value="Bas"/>
-   </properties>
-  </object>
-  <object name="BPique" type="Piques" x="11040" y="240" width="40" height="40">
-   <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
   <object name="BPique" type="Piques" x="10960" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="11000" y="240" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="11040" y="240" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
   <object name="BPique" type="Piques" x="11080" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="11240" y="240" width="40" height="40">
+  <object name="BPique" type="Piques" x="11120" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="11160" y="240" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
   <object name="BPique" type="Piques" x="11200" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
-  <object name="BPique" type="Piques" x="11320" y="240" width="40" height="40">
+  <object name="BPique" type="Piques" x="11240" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
   <object name="BPique" type="Piques" x="11280" y="240" width="40" height="40">
    <properties>
-    <property name="orientation" value="Bas"/>
+    <property name="orientation" value="bas"/>
+   </properties>
+  </object>
+  <object name="BPique" type="Piques" x="11320" y="240" width="40" height="40">
+   <properties>
+    <property name="orientation" value="bas"/>
    </properties>
   </object>
  </objectgroup>

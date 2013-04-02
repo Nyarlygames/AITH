@@ -775,7 +775,7 @@
     <property name="orientation" value="haut"/>
    </properties>
   </object>
-  <object name="FinDuNiveau" type="FinNiveau" x="16280" y="520" width="120" height="240"/>
+  <object name="FinDuNiveau" type="FinNiveau" x="16440" y="520" width="120" height="240"/>
   <object name="GPique" type="Piques" x="8080" y="280" width="40" height="40">
    <properties>
     <property name="orientation" value="gauche"/>
@@ -804,7 +804,7 @@
   <object name="Sol_Destructible" type="Des_sol" x="9720" y="440" width="200" height="40"/>
   <object name="Sol_Destructible" type="Des_sol" x="9920" y="440" width="200" height="40"/>
   <object name="Backflip" type="backflip" x="15240" y="120" width="40" height="640"/>
-  <object name="EndBackflip" type="endBackflip" x="15960" y="120" width="40" height="640"/>
+  <object name="EndBackflip" type="endBackflip" x="16120" y="120" width="40" height="640"/>
   <object type="Tremplin80" gid="20" x="15120" y="760">
    <properties>
     <property name="color" value="2"/>
@@ -1003,7 +1003,7 @@
   <object name="tube" type="Tube" x="7000" y="440" width="40" height="40"/>
   <object name="tube" type="Tube" x="7560" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="7640" y="360" width="40" height="40"/>
-  <object name="grosTube" type="GrosTube" x="7880" y="680" width="40" height="40"/>
+  <object name="grosTube" type="GrosTube" x="7920" y="680" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="9160" y="400" width="40" height="40"/>
   <object name="grosTube" type="GrosTube" x="10600" y="320" width="40" height="40"/>
   <object name="tube" type="Tube" x="10240" y="280" width="40" height="40"/>
