@@ -139,6 +139,8 @@ package
 					soundIn.stop();
 				}
 			}
+			if (!FlxG.overlap(FlxG.player, souffle))
+				soundIn.stop();
 		}
 		public function boost_player(obj1:FlxSprite, obj2:FlxObject):void 
 		{

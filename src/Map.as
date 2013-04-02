@@ -725,7 +725,7 @@ package
 					ens.add(new_enn);
 				}
 			}
-			var j:int = 0;
+			/*var j:int = 0;
 			while (j < souffleries.length) {
 				if ((souffleries.members[i] as Soufflerie).soundIn != null) {
 					(souffleries.members[i] as Soufflerie).soundIn.stop();
@@ -733,7 +733,7 @@ package
 					(souffleries.members[i] as Soufflerie).soundIn.destroy();
 				}
 				j++;
-			}
+			}*/
 			while (i < ascenceurs.length) {
 				if ((ascenceurs.members[i] as Ascenceur).soundActivation1 != null) {
 					(ascenceurs.members[i] as Ascenceur).soundActivation1.stop();

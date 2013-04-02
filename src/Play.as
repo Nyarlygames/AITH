@@ -65,7 +65,7 @@ package
 		public var ending:FlxSubState;
 		public var sound:FlxSound;
 		public var alienkill:int = 33000;					// GRAVITE MINIMALE POUR TUER UN ALIEN
-		public var dest_ground:int = 6;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
+		public var dest_ground:int = 3;					// GRAVITE MINIMALE POUR DESTRUIRE UN SOL
 		public var justloaded:Boolean = true;				// MAP CHARGEE?
 		public var begin:Boolean = true;					// TUTORIAL DU DEBUT?
 		public var ui:UI = new UI();
@@ -336,7 +336,7 @@ package
 		{
 			(obj2 as Destructible_ground).rolled = true;
 			player.angle = 0;
-			if (player.jauge.frame > dest_ground)
+			if (player.jauge.frame >= dest_ground)
 			{
 				(obj2 as Destructible_ground).soundCrepite.stop();
 				(obj2 as Destructible_ground).soundCrepite.kill();

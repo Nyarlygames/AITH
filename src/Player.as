@@ -180,9 +180,27 @@ package
 		{
 			if ((!pause) && (!dead) && (!endLvl)) {
 				handle_sound();
-				play ("midSpeed");
+				
+				if (velocity.x > 260) 
+				{
+					trace("V3 DOWN");
+					play("fastSpeed");
+				}
+				else if (velocity.x > 160) 
+				{
+					trace("V2 DOWN");
+					play("midSpeed");
+				}
+				else if (velocity.x >= -10) 
+				{
+					trace("V1 DOWN");
+					play("slowSpeed");
+				}
+				
+				
+				//play ("midSpeed");
 				jauge.y = y - 270;
-				jauge.frame = (palier_accumulateur + 10000) / 7500 + 12;
+				jauge.frame = - ((velocity.x - minspeed) / 24) + 12;
 				
 				if (angle == 0) {
 					emitter.y = y + frameHeight - 35;
@@ -339,39 +357,49 @@ package
 			{
 				if (velocity.x > 260) 
 				{
-					play("fastSpeed", true);
+					//trace("V3 DOWN");
+					//play("fastSpeed", true);
 					vitesse3.volume -= (111 * FlxG.elapsed) / 100;
 					vitesse2.volume += (111 * FlxG.elapsed) / 100;
 				}
 				else if (velocity.x > 160) 
 				{
+					//trace("V2 DOWN");
 					vitesse2.volume -= (100 * FlxG.elapsed) / 100;
 					vitesse1.volume += (100 * FlxG.elapsed) / 100;
-					play("midSpeed", true);
+					//play("midSpeed", true);
 				}
-				else if (velocity.x > 0) 
+				else if (velocity.x >= 0) 
 				{
-					play("slowSpeed", true);
+					//trace("V1 DOWN");
+					//play("slowSpeed", true);
 				}
+				//else
+					//trace("DOWN ",velocity.x);
 			}
 			else if (!FlxG.keys.any())
 			{
 				if (velocity.x < 160) 
 				{
-					play("slowSpeed", true);
+					//trace("V1 up");
+					//play("slowSpeed", true);
 				}
 				else if (velocity.x < 250) 
 				{
-					play("midSpeed", true);
+					//trace("V2 up");
+					//play("midSpeed", true);
 					vitesse2.volume += (167 * FlxG.elapsed) / 100;
 					vitesse1.volume -= (167 * FlxG.elapsed) / 100;
 				}
 				else if (velocity.x < 370) 
 				{
-					play("fastSpeed", true);
+					//trace("V3 up");
+					//play("fastSpeed", true);
 					vitesse3.volume += (150 * FlxG.elapsed) / 100;
 					vitesse2.volume -= (150 * FlxG.elapsed) / 100;
 				}
+				//else
+					//trace("UP ",velocity.x);
 			}
 		}
 		
