@@ -61,7 +61,6 @@ package
 		public var sfxIdle2:FlxSound = new FlxSound();
 		public var sfxIdle3:FlxSound = new FlxSound();
 		public var end:EndGame;
-		public var gamefinished:Boolean = false;
 		
 		override public function create():void
 		{
@@ -171,12 +170,6 @@ package
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
 			
-			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && !gamefinished) {
-				end = new EndGame();
-				FlxG.switchState(end);
-				gamefinished = true;
-			}
-			
 			//REPLAY
 			if (FlxG.overlap(cursor, retour))
 			{
@@ -216,7 +209,8 @@ package
 			}
 			
 			if (FlxG.usersave.univUnlock == true) {
-				trophy_help.kill();
+				if (trophy_help != null)
+					trophy_help.kill();
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2))
 				{
 					sfxIdle3.play();
@@ -288,6 +282,18 @@ package
 			}		
 			if (FlxG.keys.justPressed("C")) {
 					FlxG.usersave.univUnlock = true;
+			}
+			
+			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && (FlxG.usersave.gamefinished == false)) {
+				end = new EndGame();
+				FlxG.switchState(end);
+				FlxG.usersave.gamefinished = true;
+			}
+			
+			if ((FlxG.usersave.univUnlock == true) && (FlxG.usersave.twounlock == false)) {
+				end = new EndGame();
+				FlxG.switchState(end);
+				FlxG.usersave.twounlock = true;
 			}
 		}
 	}

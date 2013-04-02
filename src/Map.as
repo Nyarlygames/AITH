@@ -612,6 +612,9 @@ package
 					case "Soucoupe":
 						soucoupes.add (new Soucoupe(object.x, object.y));
 						break;
+					case "transitionUnivers":
+						fin.add (new FinNiveau(object.x, object.y));
+						break;
 					case "backflip":
 						var startBF :FlxSprite = new FlxSprite(object.x, object.y);
 						startBF.width = object.width;

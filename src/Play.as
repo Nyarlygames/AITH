@@ -474,24 +474,6 @@ package
 						//(obj2 as AlienHorizontal).soundRebond.play();
 					}
 					player.velocity.y = - 250;
-					/*var chance:int = Math.ceil(Math.random() * 3);
-					switch(chance) {
-						case 1:
-							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond1);
-							(obj2 as Alien).alienrebond.play();
-							//FlxG.play(SfxRebond1, 0.7, false, true);
-							break;
-						case 2:
-							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond2);
-							(obj2 as Alien).alienrebond.play();
-							//FlxG.play(SfxRebond2, 0.7, false, true);
-							break;
-						case 3:
-							(obj2 as Alien).alienrebond.loadEmbedded((obj2 as Alien).SfxRebond3);
-							(obj2 as Alien).alienrebond.play();
-							//FlxG.play(SfxRebond3, 0.7, false, true);
-							break;
-					}*/
 				}
 				// MEURT
 				else {

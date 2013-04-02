@@ -26,6 +26,8 @@ package
 		public var score4:int = 0;
 		public var score5:int = 0;
 		public var score6:int = 0;
+		public var gamefinished:Boolean = false;
+		public var twounlock:Boolean = false;
 		
 		public function UserSave() 
 		{
