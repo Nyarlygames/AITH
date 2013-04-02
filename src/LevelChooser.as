@@ -80,6 +80,10 @@ package
 			sfxIdle2.loadEmbedded(SfxMenuIdle);
 			sfxIdle3.loadEmbedded(SfxMenuIdle);
 			sfxIdle4.loadEmbedded(SfxMenuIdle);
+			sfxIdle.volume = 0.8;
+			sfxIdle2.volume = 0.8;
+			sfxIdle3.volume = 0.8;
+			sfxIdle4.volume = 0.8;
 			FlxG.usersave.calcStars_levels();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);

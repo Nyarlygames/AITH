@@ -64,6 +64,9 @@ package
 			sfxIdle.loadEmbedded(SfxMenuIdle);
 			sfxIdle2.loadEmbedded(SfxMenuIdle);
 			sfxIdle3.loadEmbedded(SfxMenuIdle);
+			sfxIdle.volume = 0.8;
+			sfxIdle2.volume = 0.8;
+			sfxIdle3.volume = 0.8;
 			// Filtre de mort
 			filtreDeath = new FlxSprite(0, 0, ImgFiltre);
 			filtreDeath.loadGraphic(ImgFiltre, true, false, 800, 600);

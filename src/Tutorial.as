@@ -31,6 +31,7 @@ package
 			FlxG.player.jumping = true;
 			clicked.loadEmbedded(SfxMenuClick);
 			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle.volume = 0.8;
 			btnPlay = new FlxSprite(FlxG.width / 2, FlxG.height *3 / 4, ImgPlay);
 			x -= frameWidth / 2;
 			btnPlay.x -= frameWidth / 2;

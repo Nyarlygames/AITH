@@ -72,6 +72,7 @@ package
 			
 			soundChoose.loadEmbedded(SfxMenuClick);
 			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle.volume = 0.8;
 			FlxG.pauseSounds();
 			/*	Back par défaut */
 				backDefault = new FlxSprite(490, 245, ImgBackDefault);
