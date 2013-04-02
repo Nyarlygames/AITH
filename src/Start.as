@@ -28,7 +28,7 @@ package
 		[Embed(source = '../assets/gfx/ui/jimi_roule_rapide.png')] 	protected var ImgRunningJimi:Class;
 		[Embed(source = '../assets/gfx/ui/background-default.png')] protected var ImgBackDefault:Class;
 		[Embed(source = '../assets/gfx/ui/borne-credits.png')] 		protected var ImgCredits:Class;
-		[Embed(source = '../assets/gfx/ui/credits.png')] 			protected var ImgCreditsAuthors:Class;
+		[Embed(source = '../assets/gfx/ui/credits-new.png')] 			protected var ImgCreditsAuthors:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] 			protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 		protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/fonts/Urban_slick.ttf',	fontFamily = "slick", embedAsCFF = "false")] protected var	Font:Class;
@@ -81,12 +81,12 @@ package
 				add(credits);
 			
 			//Logo iut
-				logoIut = new FlxSprite(100, -200, ImgLogoIUT);
+				logoIut = new FlxSprite(350, -200, ImgLogoIUT);
 				add(logoIut);
 			
 			//Authors 
 				authors = new FlxSprite(800, 206, ImgCreditsAuthors);
-				authors.x = 0; authors.y = -200;
+				authors.x = 0; authors.y = -350;
 				add(authors);
 			
 			// Running Jimi
@@ -189,8 +189,8 @@ package
 				{
 					sfxIdle3.stop();
 					soundChoose.play();
-					TweenMax.to(authors, 0.9, { y:300, ease:Linear.easeOut } );
-					TweenMax.to(logoIut, 0.9, { y:100, ease:Linear.easeOut } );
+					TweenMax.to(authors, 0.9, { y:230, ease:Linear.easeOut } );
+					TweenMax.to(logoIut, 0.9, { y:80, ease:Linear.easeOut } );
 					TweenMax.to(retour, 0.9, { alpha:1, ease:Linear.easeOut } );
 					TweenMax.to(logo, 0.4, { alpha:0, ease:Linear.easeOut } );
 					TweenMax.to(arrowPlay, 0.4, { alpha:0, ease:Linear.easeOut } );

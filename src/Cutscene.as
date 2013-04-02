@@ -3,6 +3,7 @@ package
 	import flash.utils.Timer;
 	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxSave;
 	import org.flixel.FlxSound;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
@@ -13,6 +14,7 @@ package
 	import com.greensock.*;
 	import com.greensock.events.TweenEvent;
 	import com.greensock.easing.*;
+	import org.flixel.plugin.photonstorm.FlxCollision;
 	
 	/**
 	 * 
@@ -34,7 +36,12 @@ package
 		[Embed(source = '../assets/gfx/cine/E.png')] 		protected var ImgTxtIntro5:Class;
 		[Embed(source = '../assets/gfx/cine/F1.png')] 		protected var ImgTxtIntro61:Class;
 		[Embed(source = '../assets/gfx/cine/F2.png')] 		protected var ImgTxtIntro62:Class;
+		[Embed(source = '../assets/gfx/ui/btn-skip.png')] 	protected var ImgBtnSkip:Class;
+		[Embed(source = '../assets/gfx/ui/cursor.png')] 				protected var ImgCursor:Class;
+		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 			protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_CutScene.wav')] public var SfxCutscene:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
+		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 
 		public var intro1:FlxSprite;
 		public var intro2:FlxSprite;
@@ -42,6 +49,8 @@ package
 		public var intro4:FlxSprite;
 		public var intro5:FlxSprite;
 		public var intro6:FlxSprite;
+		public var skip:FlxSprite;
+		public var cursor:FlxSprite;
 		
 		public var introTxt1:FlxSprite;
 		public var introTxt2:FlxSprite;
@@ -62,10 +71,14 @@ package
 		public var timerTween:FlxTimer	= new FlxTimer();
 		
 		public var music:FlxSound = new FlxSound();
+		public var soundChoose:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();
 		
 		override public function create():void
 		{
 			music.loadEmbedded(SfxCutscene, true, true);
+			soundChoose.loadEmbedded(SfxMenuClick);
+			sfxIdle.loadEmbedded(SfxMenuIdle);
 			music.play();
 			intro1 = new FlxSprite(0, 0, ImgIntro1);
 			intro2 = new FlxSprite(0, 0, ImgIntro2);
@@ -73,6 +86,9 @@ package
 			intro4 = new FlxSprite(0, 0, ImgIntro4);
 			intro5 = new FlxSprite(0, 0, ImgIntro5);
 			intro6 = new FlxSprite(0, 0, ImgIntro6);
+			skip = new FlxSprite(0, FlxG.height, ImgBtnSkip);
+			skip.y -= skip.frameHeight + 10;
+			skip.x += 10;
 			
 			introTxt1 = new FlxSprite(518, 32, ImgTxtIntro1);
 			introTxt2 = new FlxSprite(475, 35, ImgTxtIntro2);
@@ -128,12 +144,34 @@ package
 			
 			FlxG.state.add(intro1);
 			FlxG.state.add(introTxt1);
+			FlxG.state.add(skip);
+			cursor = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
+			cursor.loadGraphic(ImgCursorAnim, true, false, 40, 40);
+			cursor.addAnimation("souris", [0, 1, 2, 3], 8, true);
+			cursor.play("souris");
+			FlxG.state.add(cursor)
+			FlxG.mouse.hide();
 		}
 		
 		override public function update():void {
+			cursor.x = FlxG.mouse.x - cursor.frameWidth/2;
+			cursor.y = FlxG.mouse.y - cursor.frameHeight / 2;
+			super.update();
 			if (FlxG.keys.justReleased("ENTER") || FlxG.keys.justReleased("ESCAPE")) {
 				music.stop();
 				FlxG.switchState(new UnivChooser);
+			}
+			if (FlxCollision.pixelPerfectCheck(cursor, skip)) {
+				sfxIdle.play();
+				if (FlxG.mouse.justPressed()) {
+					music.stop();
+					sfxIdle.stop();
+					soundChoose.play();
+					FlxG.switchState(new UnivChooser);
+				}
+			}
+			else {
+				sfxIdle.stop();
 			}
 			if (FlxG.keys.justReleased("SPACE") || FlxG.mouse.justPressed()) {
 				switch_page(timer);
@@ -168,6 +206,8 @@ package
 					case 5:
 						reverseTween5();
 						fadeOut(intro5);
+						skip.kill();
+						cursor.kill();
 						break;
 					case 6:
 						music.stop();
