@@ -32,12 +32,12 @@ package
 			sfxIdle.loadEmbedded(SfxMenuIdle);
 			sfxIdle.volume = 0.8;
 			/*	Retour au menu */
-				retour = new FlxSprite(50, 194, ImgTubes);
+				retour = new FlxSprite(50, FlxG.height);
 				retour.loadGraphic(ImgTubes, true, false, 194, 50);
 				retour.addAnimation("off", [6], 10, true);
 				retour.addAnimation("on", [7], 10, true);
 				retour.x = 576;
-				retour.y = 38;
+				retour.y -= retour.frameHeight + 10;
 				add (retour);
 				retour.play("off");
 			/*	Retour au menu */
