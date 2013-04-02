@@ -281,11 +281,6 @@ package
 				if (acceleration.x != acceleration_speed)
 					acceleration.x = acceleration_speed;
 			}
-			/*if (FlxG.univ == -1) {
-				vitesse1.volume = 0;
-				vitesse2.volume = 0;
-				vitesse3.volume = 0;
-			}*/
 		}
 		private function anims(animationName:String, frameNumber:uint, frameIndex:uint):void 
 		{  	
@@ -354,49 +349,33 @@ package
 			{
 				if (velocity.x > 260) 
 				{
-					//trace("V3 DOWN");
-					//play("fastSpeed", true);
 					vitesse3.volume -= (111 * FlxG.elapsed) / 100;
 					vitesse2.volume += (111 * FlxG.elapsed) / 100;
 				}
 				else if (velocity.x > 160) 
 				{
-					//trace("V2 DOWN");
 					vitesse2.volume -= (100 * FlxG.elapsed) / 100;
 					vitesse1.volume += (100 * FlxG.elapsed) / 100;
-					//play("midSpeed", true);
 				}
 				else if (velocity.x >= 0) 
 				{
-					//trace("V1 DOWN");
-					//play("slowSpeed", true);
 				}
-				//else
-					//trace("DOWN ",velocity.x);
 			}
 			else if (!FlxG.keys.any())
 			{
 				if (velocity.x < 160) 
 				{
-					//trace("V1 up");
-					//play("slowSpeed", true);
 				}
 				else if (velocity.x < 250) 
 				{
-					//trace("V2 up");
-					//play("midSpeed", true);
 					vitesse2.volume += (167 * FlxG.elapsed) / 100;
 					vitesse1.volume -= (167 * FlxG.elapsed) / 100;
 				}
 				else if (velocity.x < 370) 
 				{
-					//trace("V3 up");
-					//play("fastSpeed", true);
 					vitesse3.volume += (150 * FlxG.elapsed) / 100;
 					vitesse2.volume -= (150 * FlxG.elapsed) / 100;
 				}
-				//else
-					//trace("UP ",velocity.x);
 			}
 		}
 		

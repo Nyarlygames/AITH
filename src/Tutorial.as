@@ -16,7 +16,7 @@ package
 		
 		[Embed(source = '../assets/gfx/ui/tuto-space.png')] protected var ImgTuto:Class;
 		[Embed(source = '../assets/gfx/ui/tuto-play.png')] protected var ImgPlay:Class;
-		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 			protected var ImgCursorAnim:Class;
+		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_Click.wav')] public var SfxMenuClick:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Menu_Navigate_idle.wav')] public var SfxMenuIdle:Class;
 		
