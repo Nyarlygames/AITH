@@ -881,7 +881,7 @@
   </object>
   <object name="FinDuNiveau" type="FinNiveau" x="19160" y="520" width="120" height="240"/>
   <object name="tube" type="Tube" x="1880" y="360" width="40" height="40"/>
-  <object name="tube" type="Tube" x="2240" y="640" width="40" height="40"/>
+  <object name="tube" type="Tube" x="2480" y="680" width="40" height="40"/>
   <object name="tube" type="Tube" x="2040" y="360" width="40" height="40"/>
   <object name="tube" type="Tube" x="4440" y="480" width="40" height="40"/>
   <object name="tube" type="Tube" x="3360" y="400" width="40" height="40"/>

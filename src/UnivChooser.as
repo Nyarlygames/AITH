@@ -213,8 +213,7 @@ package
 			}
 			
 			if (FlxG.usersave.univUnlock == true) {
-				trophy_help.visible = false;
-				trophy_help.exists = false;
+				trophy_help.kill();
 				if (FlxCollision.pixelPerfectCheck(cursor, uni2))
 				{
 					sfxIdle3.play();
