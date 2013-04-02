@@ -58,7 +58,7 @@ package
 			laser.loadEmbedded(SfxLaser, false, false);
 			laseroff.loadEmbedded(SfxLaserOff, false, false);
 			laseron.loadEmbedded(SfxLaserOn, false, false)
-			laser.volume = 0.8;
+			laser.volume = 0.7;
 		}
 		
 		override public function update():void 

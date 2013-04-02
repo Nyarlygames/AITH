@@ -117,6 +117,8 @@ package
 			vitesse3.loadEmbedded(Sfx_Vitesse3, true, true);
 			atterissage1.loadEmbedded(SfxAtterissage1, false, true);
 			atterissage2.loadEmbedded(SfxAtterissage2, false, true);
+			atterissage1.volume = 0.8;
+			atterissage2.volume = 0.8;
 			vitesse1.volume = 0;
 			vitesse2.volume = 0;
 			vitesse3.volume = 0;

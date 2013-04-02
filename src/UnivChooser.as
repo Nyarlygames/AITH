@@ -287,17 +287,20 @@ package
 			}
 			
 			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && (FlxG.usersave.gamefinished == false)) {
+				sfxIdle.stop();
 				end = new EndGame();
 				FlxG.switchState(end);
 				FlxG.usersave.gamefinished = true;
 			}
 			if ((FlxG.usersave.gamecompleted == true) && (FlxG.usersave.completed == false)) {
+				sfxIdle.stop();
 				end = new EndGame();
 				FlxG.switchState(end);
 				FlxG.usersave.completed = true;
 			}
 			
 			if ((FlxG.usersave.univUnlock == true) && (FlxG.usersave.twounlock == false)) {
+				sfxIdle.stop();
 				unlockuniv2 = new UnlockUniv2();
 				FlxG.switchState(unlockuniv2);
 				FlxG.usersave.twounlock = true;

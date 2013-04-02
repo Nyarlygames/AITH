@@ -63,7 +63,7 @@ package
 		public var nodeath:FlxText;
 		public var alltubes:FlxText;
 		public var soundChoose:FlxSound = new FlxSound();
-		public var sfxIdle:FlxSound = new FlxSound();
+		public var sfxIdle:FlxSound = new FlxSound();;
 		
 		
 		override public function create():void
@@ -135,10 +135,10 @@ package
 			
 			
 			/*	Retour au menu */
-				retour = new FlxSprite(50, 194, ImgTubes);
+				retour = new FlxSprite(50, 194);
 				retour.loadGraphic(ImgTubes, true, false, 194, 50);
-				retour.addAnimation("off", [0], 10, true);
-				retour.addAnimation("on", [1], 10, true);
+				retour.addAnimation("off", [6], 10, true);
+				retour.addAnimation("on", [7], 10, true);
 				retour.x = 576;
 				retour.y = 38;
 				add (retour);
@@ -273,6 +273,11 @@ package
 					soundChoose.play();
 					FlxG.switchState(new UnivChooser());
 				}
+			}
+			else
+			{
+				sfxIdle.stop();
+				retour.play("off");
 			}
 			
 			// Ajout de point d'objectifs

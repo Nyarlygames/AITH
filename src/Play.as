@@ -225,6 +225,10 @@ package
 					// DEV : PASSE AU MENU DE SCORING
 					if ((FlxG.keys.justPressed("S"))) 
 					{
+						sound.stop();
+						FlxG.player.vitesse1.stop();
+						FlxG.player.vitesse2.stop();
+						FlxG.player.vitesse3.stop();
 						FlxG.switchState(new ScoreScreen());
 					}
 					// DEV : TP A LA FIN

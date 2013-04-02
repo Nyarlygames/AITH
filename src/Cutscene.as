@@ -36,7 +36,7 @@ package
 		[Embed(source = '../assets/gfx/cine/E.png')] 		protected var ImgTxtIntro5:Class;
 		[Embed(source = '../assets/gfx/cine/F1.png')] 		protected var ImgTxtIntro61:Class;
 		[Embed(source = '../assets/gfx/cine/F2.png')] 		protected var ImgTxtIntro62:Class;
-		[Embed(source = '../assets/gfx/ui/btn-skip.png')] 	protected var ImgBtnSkip:Class;
+		[Embed(source = '../assets/gfx/ui/btn-passer.png')] 	protected var ImgBtnSkip:Class;
 		[Embed(source = '../assets/gfx/ui/cursor.png')] 				protected var ImgCursor:Class;
 		[Embed(source = '../assets/gfx/ui/cursor_anim.png')] 			protected var ImgCursorAnim:Class;
 		[Embed(source = '../assets/sfx/sonsaith.swf', symbol = 'Music_CutScene.wav')] public var SfxCutscene:Class;
@@ -79,6 +79,7 @@ package
 			music.loadEmbedded(SfxCutscene, true, true);
 			soundChoose.loadEmbedded(SfxMenuClick);
 			sfxIdle.loadEmbedded(SfxMenuIdle);
+			sfxIdle.volume = 0.8;
 			music.play();
 			intro1 = new FlxSprite(0, 0, ImgIntro1);
 			intro2 = new FlxSprite(0, 0, ImgIntro2);

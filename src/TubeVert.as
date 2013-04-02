@@ -66,10 +66,10 @@ package
 				var chance2:int = Math.ceil(Math.random() * 2);
 				switch(chance2) {
 					case 1:
-						FlxG.play(SfxGrosTube1, 1, false, true);
+						FlxG.play(SfxGrosTube1, 0.7, false, true);
 						break;
 					case 2:
-						FlxG.play(SfxGrosTube2, 1, false, true);
+						FlxG.play(SfxGrosTube2, 0.7, false, true);
 						break;
 				}
 			}
