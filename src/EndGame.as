@@ -55,6 +55,8 @@ package
 			cursor.y = FlxG.mouse.y - cursor.frameHeight/2;
 			super.update();
 			if (FlxG.keys.justPressed("ENTER") || FlxG.keys.justPressed("SPACE")) {
+				sfxIdle.stop();
+				soundChoose.play();
 				FlxG.switchState(new UnivChooser);
 			}
 			if (FlxG.overlap(cursor, retour))

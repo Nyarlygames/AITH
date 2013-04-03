@@ -30,7 +30,7 @@ package
 			FlxG.state.add(this);
 			indic.loadEmbedded(SfxIndic, false, false);
 			indic.play();
-			indic.volume = 0.9;
+			indic.volume = 0.7;
 		}
 		
 		override public function update():void {
