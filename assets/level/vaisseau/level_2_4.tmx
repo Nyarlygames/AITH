@@ -519,7 +519,7 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object type="tremplin" gid="20" x="11440" y="720"/>
+  <object gid="20" x="11440" y="720"/>
   <object name="trigger_ascenseur" type="Trigger" x="9560" y="280" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="9600" y="280" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="9640" y="280" width="40" height="40"/>
