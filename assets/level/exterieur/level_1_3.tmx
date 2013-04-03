@@ -164,7 +164,6 @@
     <property name="color" value="2"/>
    </properties>
   </object>
-  <object name="Tourelle" type="Tourelle" x="3160" y="320" width="80" height="40"/>
   <object name="alien_im" type="Alien" x="4080" y="600" width="80" height="120"/>
   <object name="check" type="Checkpoints" x="3240" y="360" width="40" height="200"/>
   <object name="alien_im" type="Alien" x="3800" y="600" width="80" height="120"/>
