@@ -262,6 +262,7 @@ package
 				}
 
 			// Raccourcis développeurs pour choisir l'univers
+			/*
 			if (FlxG.keys.justPressed("T")) {
 				FlxG.univ = -1;
 				FlxG.switchState(new Play());
@@ -285,6 +286,7 @@ package
 			if (FlxG.keys.justPressed("C")) {
 					FlxG.usersave.univUnlock = true;
 			}
+			*/
 			
 			if ((FlxG.usersave.scoreStars >= FlxG.usersave.maxStars) && (FlxG.usersave.gamefinished == false)) {
 				sfxIdle.stop();

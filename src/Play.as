@@ -95,7 +95,7 @@ package
 					if (sound == null) {
 						sound = new FlxSound();
 						sound.loadEmbedded(Music1, true, true);
-						sound.volume = 1;
+						sound.volume = 0.8;
 					}
 					break;
 				case -2:
@@ -109,7 +109,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
-								sound.volume = 1;
+								sound.volume = 0.8;
 							}
 							break;
 						case 2:
@@ -117,7 +117,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
-								sound.volume = 1;
+								sound.volume = 0.8;
 							}
 							break;
 						case 3:    
@@ -125,7 +125,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music1, true, true);
-								sound.volume = 1;
+								sound.volume = 0.8;
 							}
 							break;
 					}
@@ -138,7 +138,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
-								sound.volume = 1;
+								sound.volume = 0.8;
 							}
 							break;
 						case 2:
@@ -146,7 +146,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
-								sound.volume = 1;
+								sound.volume = 0.8;
 							}
 							break;
 						case 3:
@@ -154,7 +154,7 @@ package
 							if (sound == null) {
 								sound = new FlxSound();
 								sound.loadEmbedded(Music2, true, true);
-								sound.volume = 1;
+								sound.volume = 0.8;
 							}
 							break;
 					}
@@ -194,7 +194,7 @@ package
 					if (!player.onScreen(FlxG.camera)) {
 						player.die_motherfucker(1);
 					}
-					
+					/*
 					//DEV Respawn at checkpoint
 					if (FlxG.keys.pressed("R")) 
 					{
@@ -256,6 +256,7 @@ package
 						FlxG.map.reload_map();
 						FlxG.resetState();
 					}
+					*/
 					
 					// COLLISIONS
 					FlxG.overlap(player, map.ens, alien_coll);

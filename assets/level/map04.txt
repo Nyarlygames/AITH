@@ -1,3 +1,4 @@
 4
 30000
+../bin/level_2_1.tmx
 ../assets/level/vaisseau/level_2_1.tmx

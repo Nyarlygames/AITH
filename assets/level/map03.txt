@@ -1,3 +1,4 @@
 3
 30000
+../bin/level_1_3.tmx
 ../assets/level/exterieur/level_1_3.tmx

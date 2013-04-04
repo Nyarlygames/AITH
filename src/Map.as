@@ -21,6 +21,8 @@ package
 	 */
 	public class Map 
 	{
+		public const MODE_RELEASE:Boolean				= false;								// SI RELEASE MODE, CHARGER DANS BIN
+		
 		public var ens:FlxGroup				= new FlxGroup();								// ALIENS
 		public var tourelles:FlxGroup 		= new FlxGroup();								// TOURELLES
 		public var item:FlxGroup 			= new FlxGroup();								// TUBES VERTS
@@ -179,8 +181,15 @@ package
 				id = lignes[0];
 				largeur = lignes[1];
 				var loader:URLLoader = new URLLoader();
-				loader.addEventListener(Event.COMPLETE,onTmxLoaded);
-				loader.load(new	URLRequest(lignes[2]));
+				loader.addEventListener(Event.COMPLETE, onTmxLoaded);
+				if (MODE_RELEASE == true)
+				{
+					loader.load(new	URLRequest(lignes[2]));
+				}
+				else 
+				{
+					loader.load(new	URLRequest(lignes[3]));
+				}
 			}
 			FlxG.map = this;
 		}
