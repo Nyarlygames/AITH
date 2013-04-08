@@ -556,7 +556,6 @@
     <property name="orientation" value="gauche"/>
    </properties>
   </object>
-  <object type="tremplin" gid="20" x="11440" y="720"/>
   <object name="trigger_ascenseur" type="Trigger" x="9560" y="280" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="9600" y="280" width="40" height="40"/>
   <object name="trigger_ascenseur" type="Trigger" x="9640" y="280" width="40" height="40"/>
@@ -682,6 +681,11 @@
   <object name="HPique" type="Piques" x="11680" y="680" width="40" height="40">
    <properties>
     <property name="orientation" value="haut"/>
+   </properties>
+  </object>
+  <object type="Tremplin80" gid="20" x="11440" y="720">
+   <properties>
+    <property name="color" value="2"/>
    </properties>
   </object>
  </objectgroup>
